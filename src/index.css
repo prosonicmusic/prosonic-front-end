@@ -53,9 +53,12 @@ img {
     width: 100%;
     height: 60px;
     position: fixed;
-    top: 8px;
+    top: 0;
+    right: 7px;
     padding: 0 30px;
-    transition: 0.3s; }
+    transition: 0.3s ease-in-out;
+    background: transparent;
+    z-index: 10; }
     .header__navbar li {
       margin-top: 4px; }
   .header__btn {
@@ -71,8 +74,8 @@ img {
     all: unset;
     color: #fff;
     padding: 6px 12px;
-    margin: 0 5px 0 20px;
-    border-radius: 25px;
+    margin: 0 5px 0 10px;
+    border-radius: 20px;
     font-size: 14px;
     transition: 0.35s;
     background-color: rgba(75, 71, 71, 0.7);
@@ -93,19 +96,24 @@ img {
   .header__top {
     background: transparent; }
 
-.content {
+.hero {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
   height: 100%;
-  padding: 0 20px; }
-  .content h1 {
+  padding: 0 20px;
+  z-index: 20; }
+  .hero h1 {
     font-size: 55px;
     letter-spacing: 8px; }
-  .content p {
+  .hero p {
     font-size: 23px;
     max-width: 600px;
     margin: 20px 0 30px;
     letter-spacing: 6px; }
+
+.bg-nav {
+  background-color: rgba(20, 26, 34, 0.6);
+  border-radius: 0px 0px 25px 25px; }

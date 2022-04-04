@@ -5,14 +5,55 @@ import Navbar from "./Navbar";
 const Header = () => {
   return (
     <header className="header header__home">
-      <div className="header__container">
+      <div className="scroll">
         <Navbar />
       </div>
 
-      <div className="content">
+      <div className="hero">
         <h1>Listen, Pickup,  Order</h1>
         <p>Sound Like a Pro With Prosonic</p>
       </div>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
+      <br/>
     </header>
   )
 }
