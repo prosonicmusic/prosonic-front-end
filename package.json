@@ -1,5 +1,5 @@
 {
-  "name": "front_end",
+  "name": "prosonic-front_end",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -15,7 +15,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "compile:sass": "node-sass  src/sass/main.scss  src/index.css -w"
   },
   "eslintConfig": {
     "extends": [
@@ -36,8 +37,6 @@
     ]
   },
   "devDependencies": {
-    "autoprefixer": "^10.4.4",
-    "postcss": "^8.4.12",
-    "tailwindcss": "^3.0.23"
+    "node-sass": "^7.0.1"
   }
 }
