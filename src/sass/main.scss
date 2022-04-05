@@ -1,14 +1,17 @@
+
+
+@import "abstracts/variables";
+@import "components/container";
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
-
-
-$color-black: #000;
-$color-dark: #333;
-$color-light: #fff;
 
 * {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -18,6 +21,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   background: $color-black;
+  color: #bcc7d4;
 }
 
 ul {
@@ -29,7 +33,7 @@ a {
   text-decoration: none;
 }
 
-h1, h1 {
+h1, h2, h3, h4, h5 {
   font-weight: 300;
   line-height: 1.2;
 }
@@ -43,10 +47,10 @@ img {
 }
 
 .header {
-  background: url('/src/img/studio-2.jpg') no-repeat center center/cover;
+  background: url('/src/img/studio6.jpg') no-repeat center center/cover;
   height: 50vh;
   position: relative;
-  color: $color-light;
+  margin-bottom: 30px;
 
     &::before {
       content: '';
@@ -56,10 +60,11 @@ img {
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.6);
-      background: linear-gradient(180deg,rgba(0, 0, 0, 0.6) 75%,$color-black) 100%;
+      background: linear-gradient(180deg,rgba(0, 0, 0, 0.4) 75%,$color-black) 100%;
     }
 
-    * {
+    *, :after, :before {
+      box-sizing: border-box;
       z-index: 10;
     }
 
@@ -84,7 +89,7 @@ img {
     }
 
     &__btn {
-      color: $color-light;
+      color: #fff;
       padding: 5px 10px;
       margin: 0 5px;
       border-radius: 4px;
@@ -98,7 +103,6 @@ img {
 
     &__login {
       all: unset;
-      color: $color-light;
       padding: 6px 12px;
       margin: 0 5px 0 10px;
       border-radius: 20px;
