@@ -6,6 +6,7 @@ import PackagesPage from './pages/PackagesPage';
 import RegisterPage from './pages/RegisterPage';
 import ServicesPage from './pages/ServicesPage';
 import TracksPage from './pages/TracksPage';
+import Cart from './pages/Cart';
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
                     <Route path='/services' exact element = {<ServicesPage/>} />
                     <Route path='/contact' exact element = {<ContactPage />} />
                     <Route path='/register' exact element = {<RegisterPage/>} />
-
+                    <Route path='/cart' exact element = {<Cart/>} />
+                   
               </Routes>
           </BrowserRouter>
 
