@@ -2,6 +2,8 @@ import React, {useState} from "react";
 import image1 from '../img/prosonic-icon-white.png'
 import {FontAwesomeIcon} from  '@fortawesome/react-fontawesome';
 import { faCartShopping } from  '@fortawesome/free-solid-svg-icons';
+import PhoneNav from "./PhoneNav";
+import Burger from "./Burger";
 
 const Navbar = () => {
   const [color, setColor] = useState(false);
@@ -33,10 +35,12 @@ const Navbar = () => {
 
                   <button className="header__login">Login</button>
 
-                  <button id="navbarMenuIcon"></button>
+                  <Burger/>
+                  
             </ul>
-            
-          </div>  
+          </div> 
+
+          <PhoneNav/>
     </nav>
     </>
   )

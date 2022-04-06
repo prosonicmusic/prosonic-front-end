@@ -1,8 +1,16 @@
 import React from 'react'
 
+
+
 function Burger() {
   return (
-    <div>Burger</div>
+    <>
+    <div className='burger'>
+      <div className='burgerL'/>
+      <div className='burgerL'/>
+      <div className='burgerL'/>
+    </div>
+    </>
   )
 }
 
