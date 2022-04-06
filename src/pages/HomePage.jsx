@@ -20,7 +20,7 @@ function HomePage() {
             <div className='container__header-section'>
                 <h2>Latest Prosonic produced tracks</h2>
                 <div className='container__browse'>
-                  <a href="#" className='container__btn'>Browse more tracks</a>
+                  <a href="#" className='container__btn'><span><span>Browse more tracks</span></span></a>
                 </div>
             </div>
 
@@ -229,7 +229,7 @@ function HomePage() {
           <div className='container__header-section'>
               <h2>Premium Prosonic produced tracks</h2>
               <div className='container__browse'>
-                <a href="#" className='container__btn'>Browse more tracks</a>
+                <a href="#" className='container__btn'><span>Browse more tracks</span></a>
               </div>
           </div>
     

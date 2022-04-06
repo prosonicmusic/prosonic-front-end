@@ -42,10 +42,14 @@ html {
     opacity: 0.50;
     font-size: 14px;
     transition: 0.35s;
-    background-color: rgba(90, 90, 122, 0.2); }
+    background-color: rgba(90, 90, 122, 0.4); }
     @media (max-width: 900px) {
       .container__btn {
-        font-size: 100%; } }
+        font-size: 100%; }
+        .container__btn span {
+          display: none; }
+        .container__btn::after {
+          content: 'Browse More'; } }
     .container__btn:hover {
       background-color: rgba(90, 90, 122, 0.4);
       opacity: 3; }
@@ -286,7 +290,7 @@ img {
     width: 100%;
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 75%, #000) 100%; }
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 75%, #000) 100%; }
   .header *, .header :after, .header :before {
     box-sizing: border-box;
     z-index: 10; }

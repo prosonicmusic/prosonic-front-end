@@ -35,9 +35,17 @@
       opacity: 0.50;
       font-size: 14px;
       transition: 0.35s;
-      background-color: rgba(90, 90, 122, 0.2);
+      background-color: rgba(90, 90, 122, 0.4);
+
       @include respond-phone {
         font-size: 100%;
+        span {
+          display: none;
+        }
+        &::after {
+        content: 'Browse More';
+      }
+
       }
 
         &:hover {
