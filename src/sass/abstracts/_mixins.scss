@@ -1,0 +1,19 @@
+
+
+// Media Query
+/*
+0 - 600px:       Phone
+600 - 900px:     Tablet portrait
+600 - 1200px:    Tablet landscape
+[1200 - 1800]    normal styles
+1800 + :         Big screen
+*/
+
+@mixin respond-phone {
+  @media (max-width: 900px) { @content };
+}
+
+@mixin respond-phone-min {
+  @media (min-width: 900px) { @content };
+}
+

@@ -1,4 +1,19 @@
+/*
+0 - 600px:       Phone
+600 - 900px:     Tablet portrait
+600 - 1200px:    Tablet landscape
+[1200 - 1800]    normal styles
+1800 + :         Big screen
+*/
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0; }
+
+html {
+  -webkit-text-size-adjust: 100%; }
+
 .container {
   height: 100%;
   margin: auto;
@@ -17,6 +32,9 @@
     margin-bottom: 15px;
     margin-left: 10px;
     margin-right: 10px; }
+    @media (max-width: 900px) {
+      .container__header-section {
+        font-size: 60%; } }
   .container__btn {
     border-radius: 4px;
     padding: 8px 18px;
@@ -25,6 +43,9 @@
     font-size: 14px;
     transition: 0.35s;
     background-color: rgba(90, 90, 122, 0.2); }
+    @media (max-width: 900px) {
+      .container__btn {
+        font-size: 100%; } }
     .container__btn:hover {
       background-color: rgba(90, 90, 122, 0.4);
       opacity: 3; }
@@ -37,6 +58,10 @@
   flex-basis: 20%;
   max-width: 20%;
   padding: 7.5px; }
+  @media (max-width: 900px) {
+    .col {
+      flex-basis: 100%;
+      max-width: 100%; } }
 
 .beatItem {
   background: rgba(35, 37, 43, 0.5);
@@ -44,6 +69,9 @@
   .beatItem__top {
     position: relative;
     width: 100% !important; }
+    @media (max-width: 900px) {
+      .beatItem__top {
+        max-width: 120px; } }
   .beatItem__labels {
     display: flex;
     align-items: flex-start;
@@ -57,10 +85,53 @@
     background: #ce2900;
     padding: 3px 10px 3px 10px;
     border-radius: 0 300px 300px 0; }
+    @media (max-width: 900px) {
+      .beatItem__labels {
+        font-size: 9px; } }
   .beatItem__bottomWrapper {
     position: relative;
     color: #bcc7d4;
     text-align: left; }
+    @media (max-width: 900px) {
+      .beatItem__bottomWrapper {
+        align-self: center;
+        width: 100%;
+        height: 120px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start; } }
+    .beatItem__bottomWrapper a {
+      width: 100%;
+      height: 100%; }
+  .beatItem .moreInfoIcon {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .beatItem .moreInfoIcon a {
+      z-index: 70; }
+    .beatItem .moreInfoIcon .rightIcon {
+      position: absolute;
+      right: 20px;
+      height: 20px;
+      color: #dd1f5f;
+      z-index: 60; }
+    @media (min-width: 900px) {
+      .beatItem .moreInfoIcon {
+        display: none; } }
+  @media (max-width: 900px) {
+    .beatItem__MoreInfoForDevices {
+      width: 100%;
+      height: 100%;
+      left: 0;
+      top: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center; } }
   .beatItem__nameAndUsername {
     padding: 20px;
     overflow: hidden;
@@ -90,12 +161,19 @@
       background: #282b32bb;
       border-radius: 2px;
       margin-bottom: 10px; }
+      @media (max-width: 900px) {
+        .beatItem__lineData .price {
+          margin-left: 20px; } }
     .beatItem__lineData .daw {
       padding: 0 5px;
-      margin-left: 65px;
+      margin-left: 60px;
       margin-bottom: 10px;
       background: #282b32bb;
       border-radius: 10px; }
+      @media (max-width: 900px) {
+        .beatItem__lineData .daw {
+          margin-left: 5px;
+          background: none; } }
       .beatItem__lineData .daw img {
         max-width: 100%;
         height: 17px;
@@ -111,6 +189,9 @@
     height: 100%;
     background: #16181b;
     border-radius: 10px; }
+    @media (max-width: 900px) {
+      .beatItem__buttons {
+        visibility: hidden; } }
     .beatItem__buttons:hover {
       opacity: 1; }
     .beatItem__buttons a {
@@ -165,14 +246,6 @@
       max-width: 100%;
       -webkit-filter: grayscale(1) invert(1);
       filter: grayscale(1) invert(0.8); }
-
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0; }
-
-html {
-  -webkit-text-size-adjust: 100%; }
 
 body {
   font-family: 'Open Sans', sans-serif;
@@ -260,6 +333,9 @@ img {
     margin: 0;
     padding: 0 15px;
     position: relative; }
+    @media (max-width: 900px) {
+      .header__logo {
+        width: 130px; } }
     .header__logo img {
       max-width: 100%;
       border-style: none;
@@ -279,11 +355,17 @@ img {
   .hero h1 {
     font-size: 55px;
     letter-spacing: 8px; }
+    @media (max-width: 900px) {
+      .hero h1 {
+        font-size: 100%; } }
   .hero p {
     font-size: 23px;
     max-width: 600px;
     margin: 20px 0 30px;
     letter-spacing: 6px; }
+    @media (max-width: 900px) {
+      .hero p {
+        font-size: 100%; } }
 
 .bg-nav {
   background-color: rgba(20, 26, 34, 0.6);
