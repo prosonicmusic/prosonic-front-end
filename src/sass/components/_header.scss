@@ -29,8 +29,9 @@
       height: 60px;
       position: fixed;
       top: 0;
-      right: 7px;
+      right: 1px;
       padding: 0 30px;
+      margin-top: 5px;
       transition: 0.3s ease-in-out;
       background: transparent;
       z-index: 10;
@@ -103,6 +104,10 @@
             background-color: rgba(90, 90, 122, 0.6);
           }
 
+          @include respond-phone {
+            position: absolute;
+          }
+
           .shopIcon {
             color: #bcc7d4;
             height: 18px;
@@ -154,6 +159,6 @@
 
 // change bg on scroll
 .bg-nav {
-  background-color: rgba(20, 26, 34, 0.6);
-  border-radius: 0px 0px 25px 25px;
+  background-color: rgba(20, 26, 34, 0.7);
+  border-radius: 25px 25px 25px 25px;
 }
