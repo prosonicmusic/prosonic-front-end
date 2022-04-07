@@ -1,6 +1,5 @@
 @import "abstracts/mixins";
 
-
 @import "base/base";
 
 @import "abstracts/variables";
@@ -8,12 +7,10 @@
 @import "components/phoneNav";
 @import "components/burger";
 @import "components/header";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
-
-
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: $color-dark;
   line-height: 1.6;
   min-height: 100vh;
@@ -31,7 +28,11 @@ a {
   text-decoration: none;
 }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: 300;
   line-height: 1.2;
 }
@@ -44,8 +45,6 @@ img {
   width: 100%;
 }
 
-
-
 .hero {
   display: flex;
   flex-direction: column;
@@ -55,15 +54,13 @@ img {
   height: 100%;
   padding: 0 20px;
   z-index: 20;
-  
-  
 
   h1 {
     font-size: 55px;
     letter-spacing: 8px;
     @include respond-phone {
       font-size: 100%;
-    } 
+    }
   }
 
   p {
@@ -76,4 +73,3 @@ img {
     }
   }
 }
-

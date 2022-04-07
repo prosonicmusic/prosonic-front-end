@@ -1,26 +1,26 @@
-import React, {useState} from 'react'
-import PhoneNav from './PhoneNav';
-
+import React, { useState } from "react";
+import PhoneNav from "./PhoneNav";
 
 const Burger = () => {
-  const [status, setStatus] = useState('close');
+  const [status, setStatus] = useState(false);
 
   return (
     <>
-    <nav>
-      <div className='burger'
-      role="button"
-      onClick={() => setStatus(status === 'open' ? 'close' : 'open')}
-      >
-        <i className={status}></i>
-        <i className={status}></i>
-        <i className={status}></i>
-      </div>
+      <nav>
+        <div
+          className="burger"
+          role="button"
+          onClick={() => setStatus(!status)}
+        >
+          <i className={`${status ? "open" : ""}`}></i>
+          <i className={`${status ? "open" : ""}`}></i>
+          <i className={`${status ? "open" : ""}`}></i>
+        </div>
 
-      <PhoneNav/>
-    </nav>  
+        <PhoneNav status={status} />
+      </nav>
     </>
-  )
-}
+  );
+};
 
 export default Burger;

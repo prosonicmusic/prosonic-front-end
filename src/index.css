@@ -262,8 +262,9 @@ html {
   bottom: 0;
   top: 0;
   left: 0;
-  transition: .2s;
-  padding: 60px 0 80px; }
+  transition: 0.2s;
+  padding: 60px 0 80px;
+  transform: translateX(100%); }
   #navbarMenu ul {
     padding-left: 0 !important; }
     #navbarMenu ul li {
@@ -278,7 +279,7 @@ html {
           background: #17191d;
           border-radius: 5px; }
   #navbarMenu.active {
-    transform: translate(0); }
+    transform: translateX(0); }
   @media (min-width: 900px) {
     #navbarMenu {
       display: none; } }
@@ -304,7 +305,8 @@ html {
     height: 0.20rem;
     background-color: #7e8893;
     border-radius: 10px;
-    transition: all 0.3s linear; }
+    transition: all 0.3s linear;
+    transform-origin: 14.5px; }
   .burger .open:nth-child(1) {
     transform: rotate(45deg) translateY(11px); }
   .burger .open:nth-child(2) {
@@ -326,7 +328,7 @@ html {
   position: relative;
   margin-bottom: 30px; }
   .header::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     left: 0;
@@ -334,7 +336,9 @@ html {
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 75%, #000) 100%; }
-  .header *, .header :after, .header :before {
+  .header *,
+  .header :after,
+  .header :before {
     box-sizing: border-box;
     z-index: 10; }
   .header__navbar {
@@ -394,7 +398,7 @@ html {
       width: 32px;
       position: relative;
       text-align: center;
-      transition: .2s;
+      transition: 0.2s;
       align-items: center;
       display: flex;
       justify-content: flex-start;
@@ -447,7 +451,7 @@ html {
   border-radius: 25px 25px 25px 25px; }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   color: #333;
   line-height: 1.6;
   min-height: 100vh;
@@ -462,7 +466,11 @@ a {
   color: #333;
   text-decoration: none; }
 
-h1, h2, h3, h4, h5 {
+h1,
+h2,
+h3,
+h4,
+h5 {
   font-weight: 300;
   line-height: 1.2; }
 
