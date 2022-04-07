@@ -40,7 +40,7 @@ const Navbar = () => {
             </ul>
           </div> 
 
-          <PhoneNav/>
+          {/* <PhoneNav/> */}
     </nav>
     </>
   )

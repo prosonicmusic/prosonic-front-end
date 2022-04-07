@@ -5,7 +5,7 @@ function PhoneNav() {
     <div className='lockWrapper lockActive' id='navbarMenu'>
       <div className='wrapper'>
         <ul>
-          <li><a href="/home">Home</a></li>
+          <li><a href="/">Home</a></li>
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/packages">Packages</a></li>
           <li><a href="/services">Services</a></li>
