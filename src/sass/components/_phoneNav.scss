@@ -6,17 +6,16 @@
   background: #1e2025;
   bottom: 0;
   top: 0;
-  margin-left: -30px;
+  left: 0;
+  // margin-left: -30px;
   transition: .2s;
   padding: 60px 0 80px;
   // transform: translate(100%);
+  // display: none;
 
   ul {
     padding-left: 0!important;
     
-
-    
-
     li {
       background: #23252b;
       margin-bottom: 5px;

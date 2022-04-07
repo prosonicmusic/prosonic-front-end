@@ -23,11 +23,11 @@ const Navbar = () => {
           <div className="header__navbar header__top">
             <img src={image1} alt="Prosonic" id="logo" className="header__logo" />
             <ul className="header__menu">
-                  <li><a href="#" className="header__btn">Home</a></li>
-                  <li><a href="#" className="header__btn">Tracks</a></li>
-                  <li><a href="#" className="header__btn">Packages</a></li>
-                  <li><a href="#" className="header__btn">Services</a></li>
-                  <li><a href="#" className="header__btn">Contact</a></li>
+                  <li><a href="/" className="header__btn">Home</a></li>
+                  <li><a href="/tracks" className="header__btn">Tracks</a></li>
+                  <li><a href="/packages" className="header__btn">Packages</a></li>
+                  <li><a href="/services" className="header__btn">Services</a></li>
+                  <li><a href="contact" className="header__btn">Contact</a></li>
                   <a href="/cart" className="navbarCartIcon">
                     <FontAwesomeIcon icon={ faCartShopping} className="shopIcon"></FontAwesomeIcon>
                     <span className=""> 0 </span>
@@ -40,7 +40,8 @@ const Navbar = () => {
             </ul>
           </div> 
 
-         <PhoneNav/>
+         {/* <PhoneNav/> */}
+
     </nav>
     </>
   )

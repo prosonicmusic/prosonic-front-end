@@ -1,10 +1,15 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 function PhoneNav() {
+  const [showNav, setShowNav] = useState(false)
+
+  
+  // window.addEventListener('click', setShowNav);
+
   return (
-    <div className='lockWrapper lockActive' id='navbarMenu'>
+    <div className='lockWrapper ' id='navbarMenu'>
       <div className='wrapper'>
-        <ul>
+        <ul className={`menuLink ${showNav ? 'active' : ''}`}>
           <li><a href="/">Home</a></li>
           <li><a href="/tracks">Tracks</a></li>
           <li><a href="/packages">Packages</a></li>
@@ -13,10 +18,10 @@ function PhoneNav() {
           <li><a href="#">Login</a></li>
           <li><a href="/register">Register</a></li>
         </ul>
+       
       </div>
-
-
     </div>
+
   )
 }
 

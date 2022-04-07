@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-
+import PhoneNav from './PhoneNav';
 
 
 const Burger = () => {
@@ -16,6 +16,8 @@ const Burger = () => {
         <i className={status}></i>
         <i className={status}></i>
       </div>
+
+      <PhoneNav/>
     </nav>  
     </>
   )

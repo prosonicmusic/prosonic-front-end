@@ -231,6 +231,10 @@
         background: #282b32bb;
         border-radius: 10px;
 
+        @include fix-one {
+          margin-left: 45px;
+        }
+
         @include respond-phone {
           margin-left: 5px;
           background: none;

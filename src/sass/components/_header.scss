@@ -86,6 +86,7 @@
         display: flex;
 
         .navbarCartIcon {
+          z-index: 60;
           border-radius: 2px;
           margin-top: 2px;
           margin-right: 15px;
@@ -137,6 +138,7 @@
       }
 
       &__logo {
+        z-index: 60;
         width: 190px;
         margin: 0;
         padding: 0 15px;
