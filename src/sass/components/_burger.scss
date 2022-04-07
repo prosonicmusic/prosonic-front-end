@@ -1,18 +1,24 @@
 .burger {
   width: 2rem;
-  height: 1.5rem;
+  height: 1.2rem;
   position: fixed;
-  top: 20px;
+  top: 27px;
   right: 25px;
   display: flex;
   justify-content: space-between;
   flex-flow: column nowrap;
   cursor: pointer;
+  // background-color: #040405;
+
+
+  @include respond-phone-min {
+    display: none;
+  }
 
 
   i {
-    width: 2rem;
-    height: 0.23rem;
+    width: 1.8rem;
+    height: 0.20rem;
     background-color: #7e8893;
     border-radius: 10px;
     transition:all 0.3s linear;
@@ -20,14 +26,14 @@
 
   
   .open:nth-child(1) {
-    transform: rotate(45deg) translateY(14px);
+    transform: rotate(45deg) translateY(11px);
   }
   .open:nth-child(2) {
     transform: translateX(100%);
     opacity: 0;
   }
   .open:nth-child(3) {
-    transform: rotate(-45deg) translateY(-14px);
+    transform: rotate(-45deg) translateY(-11px);
   }
 
   .close:nth-child(1) {

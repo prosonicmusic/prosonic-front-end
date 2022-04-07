@@ -1,11 +1,9 @@
 import React, {useState} from 'react'
-import PhoneNav from './PhoneNav';
 
 
 
 const Burger = () => {
   const [status, setStatus] = useState('close');
-  const [open, setOpen] = useState(false);
 
   return (
     <>
@@ -18,7 +16,6 @@ const Burger = () => {
         <i className={status}></i>
         <i className={status}></i>
       </div>
-      <PhoneNav open={open}/>
     </nav>  
     </>
   )
