@@ -7,11 +7,9 @@
   bottom: 0;
   top: 0;
   left: 0;
-  // margin-left: -30px;
   transition: .2s;
   padding: 60px 0 80px;
   // transform: translate(100%);
-  // display: none;
 
   ul {
     padding-left: 0!important;
@@ -27,6 +25,7 @@
         color: #7e8893;
         &:hover {
           background: rgb(23, 25, 29);
+          border-radius: 5px;
         }
       }
     }

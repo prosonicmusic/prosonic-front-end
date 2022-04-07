@@ -275,7 +275,8 @@ html {
         display: block;
         color: #7e8893; }
         #navbarMenu ul li a:hover {
-          background: #17191d; }
+          background: #17191d;
+          border-radius: 5px; }
   #navbarMenu.active {
     transform: translate(0); }
   @media (min-width: 900px) {
