@@ -286,6 +286,10 @@ html {
   #navbarMenu .wrapper {
     padding: 10px; }
 
+@media (max-width: 900px) {
+  #socialMedia {
+    display: none; } }
+
 #socialMedia .links {
   position: fixed;
   right: -850px;
