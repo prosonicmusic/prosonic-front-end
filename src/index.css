@@ -450,6 +450,14 @@ html {
   background-color: rgba(20, 26, 34, 0.7);
   border-radius: 25px 25px 25px 25px; }
 
+@keyframes slide-1 {
+  0% {
+    color: #2b1055;
+    text-shadow: none; }
+  100% {
+    color: #fff;
+    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4, 0 0 80px #03bcf4, 0 0 100px #03bcf4; } }
+
 #contactPage {
   height: 100%;
   margin: auto;

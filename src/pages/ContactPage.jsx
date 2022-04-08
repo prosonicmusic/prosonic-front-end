@@ -12,13 +12,18 @@ function ContactPage() {
             </header>
 
             <div className='contactSlot'>
-              <div id='setting'>
+              <form id='setting'>
                 <div className='label first'>Name</div>
                 <div className='formInput'>
                   <input type="text"/>
                 </div>
 
                 <div className='label'>Email</div>
+                <div className='formInput'>
+                  <input type="email"/>
+                </div>
+
+                <div className='label'>Phone Number</div>
                 <div className='formInput'>
                   <input type="email"/>
                 </div>
@@ -36,13 +41,13 @@ function ContactPage() {
                 <div className='captcha'>
                   <div></div>
                   <div>
-                    <button id='subButton'>
+                    <button type='submit' id='subButton'>
                       <span className='sub-btn set-bg'>Submit</span>
                     </button>
                   </div>
                 </div>
                 
-              </div>
+              </form>
             </div>
           </div>
     </Layout>
