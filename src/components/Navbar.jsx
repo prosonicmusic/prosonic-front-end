@@ -44,7 +44,7 @@ const Navbar = () => {
               </Link>
             </li>
             <li>
-              <Link to="contact" className="header__btn">
+              <Link to="/contact" className="header__btn">
                 Contact
               </Link>
             </li>

@@ -296,7 +296,7 @@ html {
   z-index: 1;
   top: 350px; }
   #socialMedia .links a {
-    filter: invert(37%) sepia(3%) saturate(15%) hue-rotate(26deg) brightness(101%) contrast(85%); }
+    filter: invert(54%) sepia(16%) saturate(256%) hue-rotate(171deg) brightness(95%) contrast(89%); }
     #socialMedia .links a:hover {
       filter: brightness(0) invert(1); }
     #socialMedia .links a img {
