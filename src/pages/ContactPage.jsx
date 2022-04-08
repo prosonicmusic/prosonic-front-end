@@ -1,14 +1,19 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import SocialMedia from '../components/SocialMedia';
+
 
 function ContactPage() {
   return (
+    
     <Layout>
+      <SocialMedia>
       <div className="header"></div >
 
       <div id='contactPage'>
             <header>
               <h1>Contact us</h1>
+
             </header>
 
             <div className='contactSlot'>
@@ -50,6 +55,7 @@ function ContactPage() {
               </form>
             </div>
           </div>
+        </SocialMedia>
     </Layout>
   )
 }

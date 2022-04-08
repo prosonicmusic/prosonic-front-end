@@ -1,11 +1,11 @@
 import './App.css';
 import HomePage from './pages/HomePage';
 import {Route , BrowserRouter , Routes} from 'react-router-dom';
-import ContactPage from './pages/ContactPage';
 import PackagesPage from './pages/PackagesPage';
 import RegisterPage from './pages/RegisterPage';
 import ServicesPage from './pages/ServicesPage';
 import TracksPage from './pages/TracksPage';
+import ContactPage from './pages/ContactPage';
 import Cart from './pages/Cart';
 
 function App() {

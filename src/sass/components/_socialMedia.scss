@@ -1,0 +1,27 @@
+#socialMedia {
+  // position: fixed;
+  .links {
+    position: fixed;
+    right: -850px;
+    z-index: 1;
+    top: 350px;
+  
+    a {
+      filter: invert(37%) sepia(3%) saturate(15%) hue-rotate(26deg) brightness(101%) contrast(85%);
+
+      &:hover {
+        filter: brightness(0) invert(1);
+        
+      }
+      
+      img {
+        padding: 10px 0px;
+        
+      }
+      
+      
+      
+    }
+  }
+}
+

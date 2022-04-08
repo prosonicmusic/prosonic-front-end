@@ -7,13 +7,14 @@ import playIcon from '../icons/play-icon-1.svg';
 import logo1 from '../img/cubase_logo.png';
 import {FontAwesomeIcon} from  '@fortawesome/react-fontawesome';
 import { faChevronRight } from  '@fortawesome/free-solid-svg-icons';
+import SocialMedia from '../components/SocialMedia';
 
 function HomePage() {
   return (
     <>
       <Header/>
+      <SocialMedia></SocialMedia>
       <Layout>
-        
         <div className='homePage'>
           <section className='container'>
 

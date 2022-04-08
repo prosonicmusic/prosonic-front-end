@@ -286,6 +286,18 @@ html {
   #navbarMenu .wrapper {
     padding: 10px; }
 
+#socialMedia .links {
+  position: fixed;
+  right: -850px;
+  z-index: 1;
+  top: 350px; }
+  #socialMedia .links a {
+    filter: invert(37%) sepia(3%) saturate(15%) hue-rotate(26deg) brightness(101%) contrast(85%); }
+    #socialMedia .links a:hover {
+      filter: brightness(0) invert(1); }
+    #socialMedia .links a img {
+      padding: 10px 0px; }
+
 .burger {
   z-index: 60;
   width: 2rem;
@@ -449,14 +461,6 @@ html {
 .bg-nav {
   background-color: rgba(20, 26, 34, 0.7);
   border-radius: 25px 25px 25px 25px; }
-
-@keyframes slide-1 {
-  0% {
-    color: #2b1055;
-    text-shadow: none; }
-  100% {
-    color: #fff;
-    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4, 0 0 80px #03bcf4, 0 0 100px #03bcf4; } }
 
 #contactPage {
   height: 100%;
