@@ -629,7 +629,7 @@ html {
       position: absolute;
       left: 0;
       width: 100%;
-      padding: 20px;
+      padding: 50px;
       transition: .3s; }
       #loginSec #formBx .form form {
         width: 100%;
@@ -637,7 +637,7 @@ html {
         flex-direction: column; }
         #loginSec #formBx .form form h3 {
           font-size: 1.5em;
-          margin-bottom: 20px;
+          margin-bottom: 25px;
           font-weight: 500; }
         #loginSec #formBx .form form input {
           width: 100%;
@@ -662,6 +662,9 @@ html {
           color: #9ca5b1;
           text-decoration: underline;
           font-size: 15px; }
+      @media (max-width: 900px) {
+        #loginSec #formBx .form {
+          padding: 20px; } }
     @media (max-width: 900px) {
       #loginSec #formBx {
         width: 100%;
