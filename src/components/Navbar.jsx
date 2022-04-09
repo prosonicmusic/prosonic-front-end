@@ -56,7 +56,11 @@ const Navbar = () => {
               <span className=""> 0 </span>
             </Link>
 
-            <button className="header__login">Login</button>
+            <button className="header__login">
+              <Link to="/login" className="loginT">
+              Login
+              </Link>
+            </button>
 
             <Burger />
           </ul>

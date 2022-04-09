@@ -7,7 +7,6 @@ import { faBox } from '@fortawesome/free-solid-svg-icons'
 import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
 import { faUser } from '@fortawesome/free-solid-svg-icons'
 import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
-import { faUserPlus } from '@fortawesome/free-solid-svg-icons'
 
 
 function PhoneNav({ status }) {
@@ -42,15 +41,9 @@ function PhoneNav({ status }) {
 
           <li className="menuFlex">
           <FontAwesomeIcon icon={faRightToBracket} className="homeIcon"></FontAwesomeIcon>
-            <Link to="#">Login</Link>
+            <Link to="/login">Login</Link>
           </li>
 
-          <li className="menuFlex">
-          <FontAwesomeIcon icon={faUserPlus} className="homeIcon"></FontAwesomeIcon>
-            <Link to="/register">Register</Link>
-          </li>
-
-          
         </ul>
       </div>
     </div>
