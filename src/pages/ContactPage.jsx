@@ -25,7 +25,7 @@ function ContactPage() {
 
                   <div className='label'>Email</div>
                   <div className='formInput'>
-                    <input type="email"/>
+                    <input type="tel"/>
                   </div>
 
                   <div className='label'>Phone Number</div>

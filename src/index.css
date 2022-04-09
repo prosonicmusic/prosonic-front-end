@@ -490,7 +490,8 @@ html {
       #contactPage h1 {
         margin-left: -5px; } }
   #contactPage .contactSlot {
-    background: #1e2025;
+    background: #1e2025e0;
+    backdrop-filter: blur(8px);
     padding: 50px;
     color: #bcc7d4;
     border-radius: 10px;
@@ -586,6 +587,7 @@ html {
     width: 50%;
     height: 100%;
     background: #1a1a1a;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -594,6 +596,45 @@ html {
     border-radius: 15px; }
     #loginSec #formBx.active {
       left: 50%; }
+    #loginSec #formBx .signinForm.active {
+      left: 100% !important; }
+    #loginSec #formBx .form {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      padding: 50px;
+      transition: .3s; }
+      #loginSec #formBx .form form {
+        width: 100%;
+        display: flex;
+        flex-direction: column; }
+        #loginSec #formBx .form form h3 {
+          font-size: 1.5em;
+          margin-bottom: 20px;
+          font-weight: 500; }
+        #loginSec #formBx .form form input {
+          width: 100%;
+          color: #bcc7d4;
+          margin-bottom: 20px;
+          padding: 10px;
+          outline: none;
+          font-size: 16px;
+          background: #121316;
+          border: none;
+          border-radius: 8px; }
+        #loginSec #formBx .form form [type="submit"] {
+          background: #e91c60e7;
+          border: none;
+          color: #bcc7d4;
+          max-width: 100px;
+          cursor: pointer;
+          border-radius: 8px; }
+          #loginSec #formBx .form form [type="submit"]:hover {
+            background-color: #e91c60; }
+        #loginSec #formBx .form form .forgot {
+          color: #9ca5b1;
+          text-decoration: underline;
+          font-size: 15px; }
   #loginSec .loginContainer {
     position: relative;
     width: 800px;
@@ -610,7 +651,7 @@ html {
       background: rgba(14, 37, 48, 0.5);
       box-shadow: 0 5px 45px rgba(255, 255, 255, 0.12); }
       #loginSec .loginContainer #bgOne.active {
-        background: rgba(68, 21, 33, 0.5); }
+        background: rgba(51, 16, 16, 0.5); }
       #loginSec .loginContainer #bgOne .loginBox {
         position: relative;
         width: 50%;

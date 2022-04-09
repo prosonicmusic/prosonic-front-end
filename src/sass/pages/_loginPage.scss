@@ -33,7 +33,7 @@
     width: 50%;
     height: 100%;
     background: #1a1a1a;
-    // z-index: 1000;
+    z-index: 1000;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,6 +43,61 @@
 
     &.active {
       left: 50%;
+    }
+
+    .signinForm.active {
+      left: 100%!important;
+    }
+
+    .form {
+      position: absolute;
+      left: 0;
+      width: 100%;
+      padding: 50px;
+      transition: .3s;
+
+      form {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        h3 {
+          font-size: 1.5em;
+          margin-bottom: 20px;
+          font-weight: 500;
+        }
+
+        input {
+          width: 100%;
+          color: $color-light;
+          margin-bottom: 20px;
+          padding: 10px;
+          outline: none;
+          font-size: 16px;
+          background: #121316;
+          border: none;
+          border-radius: 8px;
+        }
+
+        [type="submit"] {
+          background: #e91c60e7;
+          border: none;
+          color: $color-light;
+          max-width: 100px;
+          cursor: pointer;
+          border-radius: 8px;
+
+          &:hover {
+            background-color: #e91c60
+          }
+        }
+
+        .forgot {
+          color: #9ca5b1;
+          text-decoration: underline;
+          font-size: 15px;
+        }
+      }
     }
   }
 
@@ -64,7 +119,7 @@
       box-shadow: 0 5px 45px rgba(255, 255, 255, 0.12);
 
       &.active {
-        background: rgba(68, 21, 33, 0.5);
+        background: rgba(51, 16, 16, 0.5);
       }
 
       .loginBox {
@@ -95,5 +150,4 @@
     }
   }
 }
-
 

@@ -21,7 +21,8 @@
   }
 
   .contactSlot {
-    background: #1e2025;
+    background: #1e2025e0;
+    backdrop-filter: blur(8px);
     padding: 50px;
     color: #bcc7d4;
     border-radius: 10px;
