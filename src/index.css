@@ -599,7 +599,7 @@ html {
     width: 800px;
     height: 500px;
     margin: 20px; }
-    #loginSec .loginContainer .bgOne {
+    #loginSec .loginContainer #bgOne {
       position: absolute;
       top: 40px;
       width: 100%;
@@ -607,9 +607,11 @@ html {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba(20, 19, 19, 0.5);
+      background: rgba(14, 37, 48, 0.5);
       box-shadow: 0 5px 45px rgba(255, 255, 255, 0.12); }
-      #loginSec .loginContainer .bgOne .loginBox {
+      #loginSec .loginContainer #bgOne.active {
+        background: rgba(68, 21, 33, 0.5); }
+      #loginSec .loginContainer #bgOne .loginBox {
         position: relative;
         width: 50%;
         height: 100%;
@@ -617,12 +619,12 @@ html {
         justify-content: center;
         align-items: center;
         flex-direction: column; }
-        #loginSec .loginContainer .bgOne .loginBox h2 {
+        #loginSec .loginContainer #bgOne .loginBox h2 {
           color: #bcc7d4;
           font-size: 1.2em;
           font-weight: 500;
           margin-bottom: 10px; }
-        #loginSec .loginContainer .bgOne .loginBox button {
+        #loginSec .loginContainer #bgOne .loginBox button {
           cursor: pointer;
           padding: 10px;
           background: #fff;

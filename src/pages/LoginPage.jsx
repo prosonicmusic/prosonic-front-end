@@ -9,9 +9,9 @@ function LoginPage() {
       <Layout>
         <SocialMedia></SocialMedia>
           <section id='loginPageHeader'>
-            <div id='loginSec'>
+            <div id='loginSec' >
               <div className='loginContainer'>
-                <div className='bgOne'>
+                <div id='bgOne' className={`oneBgColor ${move ? "active" : ""}`}>
                   <div className='loginBox signin'>
                     <h2>Already Have an Account ?</h2>
                     <button className='loginBtn'
