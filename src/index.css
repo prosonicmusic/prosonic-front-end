@@ -593,11 +593,21 @@ html {
     align-items: center;
     box-shadow: 0 5px 45px rgba(255, 255, 255, 0.1);
     transition: 0.3s ease-in-out;
-    border-radius: 15px; }
+    border-radius: 15px;
+    overflow: hidden; }
+    #loginSec #formBx .signinForm {
+      transition-delay: 0.5s; }
+    #loginSec #formBx .signupForm {
+      transition-delay: 0.5s;
+      margin-left: 100%; }
     #loginSec #formBx.active {
       left: 50%; }
-    #loginSec #formBx .signinForm.active {
-      left: 100% !important; }
+      #loginSec #formBx.active .signinForm {
+        left: -100%;
+        transition-delay: 0s; }
+      #loginSec #formBx.active .signupForm {
+        margin-left: 0;
+        transition-delay: 0s; }
     #loginSec #formBx .form {
       position: absolute;
       left: 0;
