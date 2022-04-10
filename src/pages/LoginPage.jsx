@@ -7,7 +7,7 @@ function LoginPage() {
 
   return (
       <Layout>
-        <SocialMedia></SocialMedia>
+        {/* <SocialMedia></SocialMedia> */}
           <section id='loginPageHeader'>
             <div id='loginSec' >
               <div className='loginContainer'>
