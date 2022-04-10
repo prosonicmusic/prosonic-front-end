@@ -1,13 +1,11 @@
 import React, {useState} from 'react'
 import Layout from '../components/Layout';
-import SocialMedia from '../components/SocialMedia';
 
 function LoginPage() {
   const [move, setMove] = useState(false);
 
   return (
       <Layout>
-        {/* <SocialMedia></SocialMedia> */}
           <section id='loginPageHeader'>
             <div id='loginSec' >
               <div className='loginContainer'>
