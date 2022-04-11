@@ -730,6 +730,13 @@ html {
           top: 25px;
           height: 600px; } }
 
+#services h1 {
+  position: absolute;
+  width: 50%;
+  height: 100%;
+  left: 20%;
+  top: 22%; }
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #333;

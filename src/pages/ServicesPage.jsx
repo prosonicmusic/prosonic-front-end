@@ -6,9 +6,11 @@ function ServicesPage() {
   return (
     
     <Layout>
-      <SocialMedia>
-      <h1>ServicesPage</h1>
-      </SocialMedia>
+      <SocialMedia></SocialMedia>
+      <div className="header"></div >
+      <div id='services'>
+        <h1>This page will be created soon</h1>
+      </div>
     </Layout>
   )
 }

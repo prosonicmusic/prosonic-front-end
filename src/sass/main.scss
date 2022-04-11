@@ -1,8 +1,8 @@
 @import "abstracts/mixins";
+@import "abstracts/variables";
 
 @import "base/base";
 
-@import "abstracts/variables";
 @import "components/container";
 @import "components/phoneNav";
 @import "components/socialMedia";
@@ -11,6 +11,8 @@
 
 @import "pages/contactPage";
 @import "pages/loginPage";
+@import "pages/servicesPage";
+@import "pages/tracksPage";
 
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap");
 
