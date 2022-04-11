@@ -3,8 +3,8 @@ import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import SocialMedia from '../components/SocialMedia';
-import Products1 from './products/Products1'
-import Products2 from './products/Products2'
+import Products1 from '../components/products/Products1'
+import Products2 from '../components/products/Products2'
 
 function HomePage() {
   return (

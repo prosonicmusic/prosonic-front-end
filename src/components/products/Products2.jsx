@@ -17,7 +17,6 @@ function Products2() {
                       <span><img src={playIcon} alt="play" className='cover__playIcon'/ ></span>
                     </div>
                     <ul className='beatItem__labels'>
-    
                       <li className='Premium'> PREMIUM </li>
                     </ul>
                   </div>

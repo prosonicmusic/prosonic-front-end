@@ -1,5 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
+import Allproducts from '../components/products/Allproducts';
 import SocialMedia from '../components/SocialMedia';
 
 function TracksPage() {
@@ -50,16 +51,10 @@ function TracksPage() {
                 </select>
                 <span className='caret'></span>
               </div>
-              <label htmlFor="sold" className="showSold mini-checkBox">
-                <div className="inputWrap">
-                  <input type="checkbox" id='sold' name='sold'/>
-                </div>
-                <div className="label">
-                  <span>Show sold</span>
-                </div>
-              </label>
             </div>
           </header>
+
+          <Allproducts/>
         </section>
     </Layout>
   )
