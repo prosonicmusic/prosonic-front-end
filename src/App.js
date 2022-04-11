@@ -1,4 +1,5 @@
 import HomePage from './pages/HomePage';
+import { ToastContainer } from 'react-toastify';
 import {Route , BrowserRouter , Routes} from 'react-router-dom';
 import PackagesPage from './pages/PackagesPage';
 import ServicesPage from './pages/ServicesPage';
@@ -10,7 +11,6 @@ import Cart from './pages/Cart';
 function App() {
   return (
     <>
-    <div>
 
           <BrowserRouter>
               <Routes>
@@ -25,8 +25,7 @@ function App() {
                    
               </Routes>
           </BrowserRouter>
-
-    </div>
+        <ToastContainer className='toast'/>
     </>
   );
 }

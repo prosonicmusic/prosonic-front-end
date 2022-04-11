@@ -1,6 +1,7 @@
 import React from 'react'
 import Footer from './Footer'
 import Navbar from './Navbar'
+import { ToastContainer } from 'react-toastify'
 
 
 function Layout(props) {

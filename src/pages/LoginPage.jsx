@@ -1,8 +1,33 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
+import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
 
 function LoginPage() {
   const [move, setMove] = useState(false);
+
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    password: '',
+    password2: ''
+  })
+
+  const {name, email, password, password2} = formData;
+
+  const onChange = (e) => {
+    setFormData((prevState) => ({
+      ...prevState,
+      [e.target.name]: e.target.value,
+      }))
+  }
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+    if(password !== password2) {
+      toast.error('Passwords do not match')
+    }
+  }
 
   return (
       <Layout>
@@ -38,13 +63,43 @@ function LoginPage() {
                   </div>
 
                   <div className='form signupForm'>
-                    <form>
+                    <form onSubmit={onSubmit}>
                       <h3>Sign Up</h3>
-                      <input type="text" placeholder='Username'/>
-                      <input type="email" placeholder='Email Address'/>
-                      <input type="password" placeholder='Password'/>
-                      <input type="password" placeholder='Confirm Password'/>
-                      <input type="submit" value="Register"/>
+                      <div className='formGroup'>
+                        <input 
+                          type="text" 
+                          placeholder='Name' 
+                          id='name' 
+                          name='name' 
+                          value={name} 
+                          onChange={onChange} 
+                          required/>
+                        <input 
+                          type="email" 
+                          placeholder='Email Address' 
+                          id='email' 
+                          name='email' 
+                          value={email} 
+                          onChange={onChange} 
+                          required/>
+                        <input 
+                          type="password" 
+                          placeholder='Password' 
+                          id='password' 
+                          name='password' 
+                          value={password} 
+                          onChange={onChange} 
+                          required/>
+                        <input 
+                          type="password" 
+                          placeholder='Confirm Password' 
+                          id='password2' 
+                          name='password2' 
+                          value={password2} 
+                          onChange={onChange} 
+                          required/>
+                        <input type="submit" value="Register"/>
+                      </div>
                     </form>
                   </div>
                 </div>
