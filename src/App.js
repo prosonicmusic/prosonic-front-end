@@ -1,5 +1,6 @@
 import HomePage from './pages/HomePage';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import {Route , BrowserRouter , Routes} from 'react-router-dom';
 import PackagesPage from './pages/PackagesPage';
 import ServicesPage from './pages/ServicesPage';
@@ -25,7 +26,7 @@ function App() {
                    
               </Routes>
           </BrowserRouter>
-        <ToastContainer className='toast'/>
+        <ToastContainer/>
     </>
   );
 }

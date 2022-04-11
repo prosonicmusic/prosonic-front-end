@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 function LoginPage() {
   const [move, setMove] = useState(false);
 
+// Sign up
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,7 +13,7 @@ function LoginPage() {
     password2: ''
   })
 
-  const {name, email, password, password2} = formData;
+  const { name, email, password, password2 } = formData;
 
   const onChange = (e) => {
     setFormData((prevState) => ({
@@ -28,7 +29,6 @@ function LoginPage() {
       toast.error('Passwords do not match')
     }
   }
-
   return (
       <Layout>
           <section id='loginPageHeader'>
@@ -55,8 +55,24 @@ function LoginPage() {
                   <div className='form signinForm'>
                     <form>
                       <h3>Sign In</h3>
-                      <input type="text" placeholder='Username'/>
-                      <input type="password" placeholder='Password'/>
+                      <input 
+                        type="email" 
+                        placeholder='Email'
+                        id='email' 
+                        name='email' 
+                        value={email} 
+                        onChange={onChange} 
+                        required
+                      />
+                      <input 
+                        type="password" 
+                        placeholder='Password'
+                        id='password' 
+                        name='password' 
+                        value={password} 
+                        onChange={onChange} 
+                        required
+                      />
                       <input type="submit" value="Login"/>
                       <a href="#" className='forgot'>Forgot Password</a>
                     </form>

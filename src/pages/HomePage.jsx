@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
 import cover1 from '../img/cover1.jpg'
