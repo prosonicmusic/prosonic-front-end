@@ -767,21 +767,35 @@ html {
   left: 20%;
   top: 22%; }
 
-#productsPage {
-  padding: 80px 20px 10px 20px;
+.tracksHeader {
+  height: 410vh;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: linear-gradient(180deg, #121316, #121317, #111419, #0f151c, #0b171f, #061822, #021a23, #021a23, #000000a1);
+  position: absolute;
+  z-index: -10; }
+
+#tracksPage {
+  position: relative;
+  padding: 10px 20px 10px 20px;
   overflow: visible;
-  margin-bottom: 30px;
+  background: #1a1c20;
   height: 100%;
   margin: auto;
   width: 100%;
   max-width: 1024px;
-  color: #bcc7d4; }
-  #productsPage::before {
+  color: #bcc7d4;
+  top: 75px;
+  border-radius: 20px;
+  margin-bottom: 300px; }
+  #tracksPage::before {
     content: '';
     clear: both;
     display: table;
     zoom: 1; }
-  #productsPage .header-section {
+  #tracksPage .header-section {
     height: 100%;
     margin: auto;
     width: 100%;
@@ -792,16 +806,16 @@ html {
     align-items: flex-end;
     margin-top: 20px;
     margin-bottom: 20px; }
-    #productsPage .header-section h1 {
+    #tracksPage .header-section h1 {
       font-weight: 500; }
-    #productsPage .header-section .beatsMenu {
+    #tracksPage .header-section .beatsMenu {
       display: flex;
       align-items: center;
       justify-content: center; }
-      #productsPage .header-section .beatsMenu .dropdown-select {
+      #tracksPage .header-section .beatsMenu .dropdown-select {
         margin-right: 12px;
         position: relative; }
-        #productsPage .header-section .beatsMenu .dropdown-select select {
+        #tracksPage .header-section .beatsMenu .dropdown-select select {
           padding: 6px 22px 6px 10px;
           font-size: 11px;
           border-radius: 8px;
@@ -811,12 +825,37 @@ html {
           border: none;
           outline: none;
           -webkit-appearance: none; }
-          #productsPage .header-section .beatsMenu .dropdown-select select option {
+          #tracksPage .header-section .beatsMenu .dropdown-select select option {
             font-weight: normal;
             display: block;
             white-space: nowrap;
             min-height: 1.2em;
             padding: 0px 2px 1px; }
+  #tracksPage .pagination {
+    margin-top: 30px;
+    text-align: center;
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; }
+    #tracksPage .pagination .prev {
+      max-width: 25%;
+      width: 20%;
+      background: #23252ba9;
+      padding: 15px 15px;
+      border-radius: 8px; }
+    #tracksPage .pagination .next {
+      max-width: 25%;
+      width: 20%;
+      background: #23252ba9;
+      padding: 15px 15px;
+      border-radius: 8px; }
+    #tracksPage .pagination .numberContainer {
+      display: flex;
+      background: #23252ba9;
+      padding: 15px 15px;
+      border-radius: 8px; }
 
 .caret {
   right: 8px;
