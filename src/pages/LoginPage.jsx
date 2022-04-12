@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
 import Layout from '../components/Layout';
+import Navbar from '../components/Navbar';
 
 function LoginPage() {
   const [move, setMove] = useState(false);
@@ -30,7 +31,8 @@ function LoginPage() {
     }
   }
   return (
-      <Layout>
+    <>
+        <Navbar/>
           <section id='loginPageHeader'>
             <div id='loginSec' >
               <div className='loginContainer'>
@@ -123,7 +125,7 @@ function LoginPage() {
               </div>
             </div>
           </section>
-      </Layout>
+        </>
   )
 }
 

@@ -21,7 +21,7 @@
   color: $color-light;
   top: 75px;
   border-radius: 20px;
-  margin-bottom: 300px;
+  margin-bottom: 150px;
 
 
 
@@ -45,14 +45,24 @@
     margin-top: 20px;
     margin-bottom: 20px;
 
+    @include respond-phone {
+      display: block;
+    }
+
     h1 {
       font-weight: 500;
+
+      @include respond-phone {
+        padding-bottom: 20px;
+        text-align: center;
+      }
     }
 
     .beatsMenu {
       display: flex;
       align-items: center;
       justify-content: center;
+
 
       .dropdown-select {
         margin-right: 12px;
@@ -92,19 +102,25 @@
     justify-content: space-between;
     align-items: center;
 
-
+    @include respond-phone {
+      justify-content: space-around;
+    }
 
     .prev {
       max-width: 25%;
       width: 20%;
       background: #23252ba9;
-      padding: 15px 15px;
+      padding: 15px;
       border-radius: 8px;
       cursor: pointer;
       transition: .3s;
 
       &:hover {
         background: #32353da9;
+      }
+
+      @include respond-phone {
+        width: 30%;
       }
     }
 
@@ -119,6 +135,10 @@
 
       &:hover {
         background: #32353da9;
+      }
+
+      @include respond-phone {
+        width: 30%;
       }
     }
 
@@ -139,6 +159,10 @@
         &:hover {
           background: #32353da9;
         }
+      }
+
+      @include respond-phone {
+        display: none;
       }
     }
 

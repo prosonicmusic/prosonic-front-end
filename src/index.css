@@ -505,6 +505,49 @@ html {
   display: flex;
   flex-flow: row wrap; }
 
+footer {
+  position: relative;
+  width: 100%;
+  height: auto;
+  padding: 50px 100px;
+  background: rgba(37, 37, 37, 0.781);
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap; }
+  footer section {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    flex-direction: row; }
+    footer section h2 {
+      position: relative;
+      font-weight: 500;
+      margin-bottom: 15px; }
+      footer section h2::before {
+        content: '';
+        position: absolute;
+        bottom: -6px;
+        left: 0;
+        width: 50px;
+        height: 2px;
+        background: #e91c60cb; }
+    footer section .footerSec {
+      margin-right: 30px; }
+    footer section .aboutUs {
+      width: 40%; }
+      footer section .aboutUs p {
+        color: #bcc7d4b2; }
+    footer section .quickLinks {
+      position: relative;
+      width: 25%; }
+      footer section .quickLinks li {
+        margin-bottom: 10px; }
+      footer section .quickLinks #footerLink {
+        color: #bcc7d49a;
+        display: inline-block; }
+        footer section .quickLinks #footerLink:hover {
+          color: #bcc7d4; }
+
 #contactPage {
   height: 100%;
   margin: auto;
@@ -791,7 +834,7 @@ html {
   color: #bcc7d4;
   top: 75px;
   border-radius: 20px;
-  margin-bottom: 300px; }
+  margin-bottom: 150px; }
   #tracksPage::before {
     content: '';
     clear: both;
@@ -808,8 +851,15 @@ html {
     align-items: flex-end;
     margin-top: 20px;
     margin-bottom: 20px; }
+    @media (max-width: 900px) {
+      #tracksPage .header-section {
+        display: block; } }
     #tracksPage .header-section h1 {
       font-weight: 500; }
+      @media (max-width: 900px) {
+        #tracksPage .header-section h1 {
+          padding-bottom: 20px;
+          text-align: center; } }
     #tracksPage .header-section .beatsMenu {
       display: flex;
       align-items: center;
@@ -841,16 +891,22 @@ html {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+    @media (max-width: 900px) {
+      #tracksPage .pagination {
+        justify-content: space-around; } }
     #tracksPage .pagination .prev {
       max-width: 25%;
       width: 20%;
       background: #23252ba9;
-      padding: 15px 15px;
+      padding: 15px;
       border-radius: 8px;
       cursor: pointer;
       transition: .3s; }
       #tracksPage .pagination .prev:hover {
         background: #32353da9; }
+      @media (max-width: 900px) {
+        #tracksPage .pagination .prev {
+          width: 30%; } }
     #tracksPage .pagination .next {
       max-width: 25%;
       width: 20%;
@@ -861,6 +917,9 @@ html {
       transition: .3s; }
       #tracksPage .pagination .next:hover {
         background: #32353da9; }
+      @media (max-width: 900px) {
+        #tracksPage .pagination .next {
+          width: 30%; } }
     #tracksPage .pagination .numberContainer .paginationNumbers {
       text-align: center;
       vertical-align: middle;
@@ -874,6 +933,9 @@ html {
       transition: .3s; }
       #tracksPage .pagination .numberContainer .paginationNumbers:hover {
         background: #32353da9; }
+    @media (max-width: 900px) {
+      #tracksPage .pagination .numberContainer {
+        display: none; } }
 
 .caret {
   right: 8px;

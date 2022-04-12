@@ -9,6 +9,10 @@ import ContactPage from './pages/ContactPage';
 import LoginPage from './pages/LoginPage';
 import Cart from './pages/Cart';
 import ForgotPassword from './pages/ForgotPassword';
+import AboutPage from './pages/AboutPage';
+import Jobs from './pages/Jobs';
+import Terms from './pages/Terms';
+import PrivacyPolicy from './pages/PrivacyPolicy';
 
 function App() {
   return (
@@ -25,6 +29,10 @@ function App() {
                     <Route path='/login' exact element = {<LoginPage/>} />
                     <Route path='/cart' exact element = {<Cart/>} />
                     <Route path='/forgot-password' exact element = {<ForgotPassword/>} />
+                    <Route path='/about' exact element = {<AboutPage/>} />
+                    <Route path='/jobs' exact element = {<Jobs/>} />
+                    <Route path='/privacy-policy' exact element = {<PrivacyPolicy/>} />
+                    <Route path='/terms' exact element = {<Terms/>} />
                    
               </Routes>
           </BrowserRouter>

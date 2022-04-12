@@ -21,6 +21,7 @@ function HomePage() {
                   <Link to="/tracks" className='container__btn'><span><span>Browse more tracks</span></span></Link>
                 </div>
             </div>
+            
             <Products1/>
           </section>
 
