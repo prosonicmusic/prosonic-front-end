@@ -4,14 +4,14 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background: linear-gradient(180deg, #121316, #121317, #111419, #0f151c, #0b171f, #061822, #021a23,#021a23, #000000a1);
+  background: linear-gradient(180deg, #1a1c20, #121317, #111419, #0f151c, #0b171f, #061822, #021a23,#021a23, #000000a1);
   position: absolute;
   z-index: -10;
 }
 
 #tracksPage {
   position: relative;
-  padding: 10px 20px 10px 20px;
+  padding: 10px 20px 20px 20px;
   overflow: visible;
   background: #1a1c20;
   height: 100%;
@@ -93,27 +93,53 @@
     align-items: center;
 
 
+
     .prev {
       max-width: 25%;
       width: 20%;
       background: #23252ba9;
       padding: 15px 15px;
       border-radius: 8px;
+      cursor: pointer;
+      transition: .3s;
+
+      &:hover {
+        background: #32353da9;
+      }
     }
 
     .next {
       max-width: 25%;
       width: 20%;
       background: #23252ba9;
-      padding: 15px 15px;
+      padding: 15px;
       border-radius: 8px;
+      cursor: pointer;
+      transition: .3s;
+
+      &:hover {
+        background: #32353da9;
+      }
     }
 
     .numberContainer {
-      display: flex;
-      background: #23252ba9;
-      padding: 15px 15px;
-      border-radius: 8px;
+
+      .paginationNumbers {
+        text-align: center;
+        vertical-align: middle;
+        margin-left: 4px;
+        margin-right: 4px;
+        display: inline-block;
+        background: #23252b;
+        cursor: pointer;
+        padding: 15px;
+        border-radius: 8px;
+        transition: .3s;
+
+        &:hover {
+          background: #32353da9;
+        }
+      }
     }
 
 
