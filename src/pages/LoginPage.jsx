@@ -1,12 +1,10 @@
 import React, { useState } from 'react'
 import { toast } from 'react-toastify';
-import Layout from '../components/Layout';
 import Navbar from '../components/Navbar';
 
 function LoginPage() {
   const [move, setMove] = useState(false);
 
-// Sign up
   const [formData, setFormData] = useState({
     name: '',
     email: '',

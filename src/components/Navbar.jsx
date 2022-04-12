@@ -21,7 +21,7 @@ const Navbar = () => {
     <>
       <nav className={color ? "header__navbar bg-nav" : "header__navbar"}>
         <div className="header__navbar header__top">
-          <img src={image1} alt="Prosonic" id="logo" className="header__logo" />
+          <img src={image1} alt="Prosonic" id="logo" className="header__logo"/>
           <ul className="header__menu">
             <li>
               <Link to="/" className="header__btn">

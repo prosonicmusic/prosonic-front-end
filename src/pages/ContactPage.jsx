@@ -10,7 +10,7 @@ function ContactPage() {
       <SocialMedia></SocialMedia>
 
       <div className="header"></div >
-        <div id='contactPage'>
+        <div id='contactPage' className=''>
               <header>
                 <h1>Contact us</h1>
 

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { FaTelegram, FaEnvelope} from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -26,13 +27,21 @@ function Footer() {
             <h2>Contact Info</h2>
             <ul className="contactInfo">
               <li>
-                <span></span>
-                <span></span>
+                <span><FaEnvelope/></span>
+                <a href="mailto:prosonictunes@gmail.com">prosonictunes@gmail.com</a>
+              </li>
+              <li>
+                <span><FaTelegram/></span>
+                <a href="https://t.me/ProsonicSupport">@ProsonicSupport</a>
               </li>
             </ul>
           </div>
         </section>
       </footer>
+
+      <div className="copyrightText">
+        <p>Copyright © 2022 Prosonic. All Rights Reserved.</p>
+      </div>
     </div> 
   )
 }

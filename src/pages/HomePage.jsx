@@ -12,7 +12,7 @@ function HomePage() {
       <Header/>
       <SocialMedia></SocialMedia>
       <Layout>
-        <div className='homePage'>
+        <div className='homePage colorPage'>
           <section className='container'>
 
             <div className='container__header-section'>

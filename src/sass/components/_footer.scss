@@ -3,10 +3,14 @@ footer {
   width: 100%;
   height: auto;
   padding: 50px 100px;
-  background: rgba(37, 37, 37, 0.781);
+  background: linear-gradient(#1d1d1dde,#1d1d1dde,#1d1d1dde,#1d1d1dde,#1d1d1dde,#1d1d1dde, #000);
   display: flex;
   justify-content: space-between;
   flex-wrap: wrap;
+
+  @include respond-phone {
+    padding: 40px;
+  }
 
 
   section {
@@ -15,10 +19,14 @@ footer {
     flex-wrap: wrap;
     flex-direction: row;
 
+    @include respond-phone {
+      flex-direction: column;
+    }
+
     h2 {
       position: relative;
       font-weight: 500;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
 
       &::before {
         content: '';
@@ -32,20 +40,33 @@ footer {
     }
 
     .footerSec {
-      margin-right: 30px;
+      margin-right: 35px;
+
+      @include respond-phone {
+        margin-right: 0;
+        margin-bottom: 40px;
+      }
     }
 
     .aboutUs {
-      width: 40%;
+      width: 30%;
 
       p {
         color: #bcc7d4b2;
+      }
+
+      @include respond-phone {
+        width: 100%;
       }
     }
 
     .quickLinks {
       position: relative;
       width: 25%;
+
+      @include respond-phone {
+        width: 100%;
+      }
 
       li {
         margin-bottom: 10px;
@@ -60,6 +81,48 @@ footer {
         }
       }
     }
+
+    .contact {
+      width: calc(35% - 60px);
+      margin-right: 0!important;
+
+      @include respond-phone {
+        width: 100%;
+      }
+
+      .contactInfo {
+        position: relative;
+
+        li {
+          display: flex;
+          margin-bottom: 10px;
+
+          span {
+            color: #bcc7d4ef;
+            font-size: 20px;
+            margin-right: 10px;
+            &:hover {
+              color: $color-light
+            }
+          }
+
+          a {
+            color: #bcc7d49a;
+            &:hover {
+              color: $color-light
+            }
+          }
+
+        }
+      }
+    }
   }
 }
 
+.copyrightText {
+  font-size: 10px;
+  text-transform: uppercase;
+  font-weight: 900;
+  color: rgba(90,98,107,.5);
+  text-align: center;
+}
