@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import Allproducts from '../components/products/Allproducts';
+import Allbeats from '../components/products/Allbeats';
 import SocialMedia from '../components/SocialMedia';
 
 function TracksPage() {
@@ -55,7 +55,7 @@ function TracksPage() {
             </div>
           </header>
 
-          <Allproducts/>
+          <Allbeats/>
 
           <div className='pagination'>
             <div className="prev"> Prev </div>

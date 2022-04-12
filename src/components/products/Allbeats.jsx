@@ -1,7 +1,6 @@
 import React from 'react'
 import Beat from './Beat';
-
-function Allproducts() {
+function Allbeats() {
   return (
     <div className='grid'>
             
@@ -60,4 +59,4 @@ function Allproducts() {
   )
 }
 
-export default Allproducts
+export default Allbeats;

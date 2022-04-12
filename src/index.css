@@ -19,9 +19,11 @@ html {
   margin: auto;
   width: 100%;
   max-width: 1024px;
-  padding: 0 20px;
+  padding: 20px 20px;
   color: #bcc7d4;
-  margin-bottom: 50px; }
+  margin-bottom: 50px;
+  border-radius: 20px;
+  background: #1a1c2096; }
   .container section {
     margin-bottom: 30px !important; }
   .container__header-section {
@@ -773,7 +775,7 @@ html {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background: linear-gradient(180deg, #1a1c20, #121317, #111419, #0f151c, #0b171f, #061822, #021a23, #021a23, #000000a1);
+  background: linear-gradient(180deg, #1a1c20, #121317, #111419, #0f151cb2, #0b171fb2, #061822b2, #021a23b2, #021a23b2, #000000a1);
   position: absolute;
   z-index: -10; }
 
@@ -938,3 +940,7 @@ img {
     @media (max-width: 900px) {
       .hero p {
         font-size: 100%; } }
+
+.homePage {
+  background: linear-gradient(180deg, #000, #1a1c2070);
+  padding-bottom: 80px; }
