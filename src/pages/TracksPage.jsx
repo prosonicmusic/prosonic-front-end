@@ -4,6 +4,8 @@ import Allbeats from '../components/products/Allbeats';
 import SocialMedia from '../components/SocialMedia';
 
 function TracksPage() {
+
+  
   return (
     <Layout>
       <SocialMedia></SocialMedia>

@@ -35,7 +35,7 @@ function Package() {
                       <a href="#" className='username'>Drum Kit</a>
                     </div>
                     <div className='beatItem__lineData'>
-                      <span className='price'> 300,000 T</span>
+                      <span className='price'> 50,000 T</span>
 
                     </div>
                     <div className='beatItem__buttons'>

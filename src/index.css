@@ -862,7 +862,7 @@ footer {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background: linear-gradient(180deg, #1a1c20, #121317, #111419, #0f151cb2, #0b171fb2, #061822b2, #021a23b2, #021a23b2, #1a1c2070);
+  background: linear-gradient(180deg, #1a1c20, #121317, #111419, #0f151cb2, #0b171fb2, #061822b2, #021a23b2, #021a23b2, #00000070);
   position: absolute;
   z-index: -10; }
 

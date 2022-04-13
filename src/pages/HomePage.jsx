@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import SocialMedia from '../components/SocialMedia';
 import Products1 from '../components/products/Products1'
 import Products2 from '../components/products/Products2'
+import Products3 from '../components/products/Products3';
 
 function HomePage() {
   return (
@@ -36,7 +37,22 @@ function HomePage() {
               </div>
           </div>
     
-          <Products2/>
+            <Products2/>
+          </section>
+
+
+
+
+          <section className='container'>
+    
+          <div className='container__header-section'>
+              <h2>Latest Prosonic Packages</h2>
+              <div className='container__browse'>
+              <Link to="/packages" className='container__btn'><span><span>Browse more tracks</span></span></Link>
+              </div>
+          </div>
+    
+            <Products3/>
           </section>
         </div>
       </Layout>
