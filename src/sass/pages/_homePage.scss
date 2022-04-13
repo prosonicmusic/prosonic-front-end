@@ -7,39 +7,98 @@
   color: $color-light;
   margin-bottom: 50px;
   border-radius: 20px;
-  background: linear-gradient(90deg, #1a1c208c, #181c218c, #171c228c, #151c248c, #141d258c, #121e268c);
+  background: linear-gradient(#1a1c2069,#1a1c2069,#1a1c2069,#1a1c2069,#1a1c2069,#00000069);
 
   
   .header-section {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
     color: #9ca4ad;
+    margin-left: 120px;
 
 
     @include respond-phone {
       font-size: 60%;
     }
 
-    h2 {
+    .h2-1 {
       font-size: 20px;
       font-weight: 400;
       color: #9ca4ad;
       padding: 0 10px 18px 10px;
-    }
+      margin-bottom: 20px;
 
-    ul {
-
-      li {
-        padding: 3px 10px;
-        font-size: 15px;
+      &::before {
+        content: '';
+        position: absolute;
+        margin-top: 35px;
+        width: 70px;
+        height: 2px;
+        background: #e91c60cb;
       }
     }
 
 
+    .blockContent {
+      
+
+      .h2-2 {
+        font-size: 20px;
+        font-weight: 400;
+        color: #9ca4ad;
+        padding: 0 10px 18px 10px;
+        margin-left: 20px;
+        margin-right: 20px;
+      }
+
+      #customLink {
+        border-radius: 4px;
+        padding: 8px 18px;
+        color: $color-light;
+        // opacity: 0.50;
+        font-size: 16px;
+        transition: 0.35s;
+        display: block;
+        text-align: center;
+        background-color: #5a5a7a1f;
+        animation: animate 1s linear infinite;
+  
+        &:hover {
+          background-color: #5a5a7a36;
+
+        }
+      }
+
+      @include respond-phone {
+        font-size: 100%;
+      }
+    }
+
+
+      ul {
+        li {
+          padding: 3px 10px;
+          font-size: 14px;
+          
+        }
+      }
+  }
+}
+
+
+@keyframes animate {
+  0% {
+    color: #103955;
+    text-shadow: none;
+  }
+  100% {
+    color: $color-light;
+    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
+      0 0 80px #03bcf4, 0 0 100px #03bcf4;
   }
 }

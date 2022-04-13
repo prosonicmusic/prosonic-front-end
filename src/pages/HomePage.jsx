@@ -17,7 +17,7 @@ function HomePage() {
           <section className='block'>
             <div className='header-section'>
               <div>
-                <h2>For singers and creators</h2>
+                <h2 className='h2-1'>For singers and creators</h2>
                 <ul>
                   <li>Exclusive Prosonic tracks and packages</li>
                   <li>Professional quality</li>
@@ -25,7 +25,11 @@ function HomePage() {
                   <li></li>
                 </ul>
               </div>
-              <div>
+              <div className='blockContent'>
+                <h2 className='h2-2'>Can’t find the perfect track?</h2>
+                <span><Link to='/tracks' id='customLink'> Order a custom track!</Link></span>
+              </div>
+            <div>
 
               </div>
             </div>

@@ -601,27 +601,66 @@ footer {
   color: #bcc7d4;
   margin-bottom: 50px;
   border-radius: 20px;
-  background: linear-gradient(90deg, #1a1c208c, #181c218c, #171c228c, #151c248c, #141d258c, #121e268c); }
+  background: linear-gradient(#1a1c2069, #1a1c2069, #1a1c2069, #1a1c2069, #1a1c2069, #00000069); }
   .block .header-section {
     display: flex;
     justify-content: space-between;
-    align-items: flex-end;
+    align-items: flex-start;
     margin-top: 20px;
     margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px;
-    color: #9ca4ad; }
+    color: #9ca4ad;
+    margin-left: 120px; }
     @media (max-width: 900px) {
       .block .header-section {
         font-size: 60%; } }
-    .block .header-section h2 {
+    .block .header-section .h2-1 {
       font-size: 20px;
       font-weight: 400;
       color: #9ca4ad;
-      padding: 0 10px 18px 10px; }
+      padding: 0 10px 18px 10px;
+      margin-bottom: 20px; }
+      .block .header-section .h2-1::before {
+        content: '';
+        position: absolute;
+        margin-top: 35px;
+        width: 70px;
+        height: 2px;
+        background: #e91c60cb; }
+    .block .header-section .blockContent .h2-2 {
+      font-size: 20px;
+      font-weight: 400;
+      color: #9ca4ad;
+      padding: 0 10px 18px 10px;
+      margin-left: 20px;
+      margin-right: 20px; }
+    .block .header-section .blockContent #customLink {
+      border-radius: 4px;
+      padding: 8px 18px;
+      color: #bcc7d4;
+      font-size: 16px;
+      transition: 0.35s;
+      display: block;
+      text-align: center;
+      background-color: #5a5a7a1f;
+      animation: animate 1s linear infinite; }
+      .block .header-section .blockContent #customLink:hover {
+        background-color: #5a5a7a36; }
+    @media (max-width: 900px) {
+      .block .header-section .blockContent {
+        font-size: 100%; } }
     .block .header-section ul li {
       padding: 3px 10px;
-      font-size: 15px; }
+      font-size: 14px; }
+
+@keyframes animate {
+  0% {
+    color: #103955;
+    text-shadow: none; }
+  100% {
+    color: #bcc7d4;
+    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4, 0 0 80px #03bcf4, 0 0 100px #03bcf4; } }
 
 #contactPage {
   height: 100%;
