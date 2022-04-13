@@ -31,7 +31,7 @@ html {
     justify-content: space-between;
     align-items: flex-end;
     margin-top: 20px;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     margin-left: 10px;
     margin-right: 10px; }
     @media (max-width: 900px) {
@@ -591,6 +591,37 @@ footer {
   font-weight: 900;
   color: rgba(90, 98, 107, 0.5);
   text-align: center; }
+
+.block {
+  height: 100%;
+  margin: auto;
+  width: 100%;
+  max-width: 1024px;
+  padding: 20px 20px;
+  color: #bcc7d4;
+  margin-bottom: 50px;
+  border-radius: 20px;
+  background: linear-gradient(90deg, #1a1c208c, #181c218c, #171c228c, #151c248c, #141d258c, #121e268c); }
+  .block .header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    color: #9ca4ad; }
+    @media (max-width: 900px) {
+      .block .header-section {
+        font-size: 60%; } }
+    .block .header-section h2 {
+      font-size: 20px;
+      font-weight: 400;
+      color: #9ca4ad;
+      padding: 0 10px 18px 10px; }
+    .block .header-section ul li {
+      padding: 3px 10px;
+      font-size: 15px; }
 
 #contactPage {
   height: 100%;

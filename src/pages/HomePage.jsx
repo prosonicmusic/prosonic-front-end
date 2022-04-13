@@ -13,6 +13,28 @@ function HomePage() {
       <Header/>
       <Layout>
         <div className='homePage colorPage'>
+
+          <section className='block'>
+            <div className='header-section'>
+              <div>
+                <h2>For singers and creators</h2>
+                <ul>
+                  <li>Exclusive Prosonic tracks and packages</li>
+                  <li>Professional quality</li>
+                  <li>Get project stems</li>
+                  <li></li>
+                </ul>
+              </div>
+              <div>
+
+              </div>
+            </div>
+            
+          </section>
+
+
+
+
           <section className='container'>
 
             <div className='container__header-section'>
@@ -47,7 +69,7 @@ function HomePage() {
           <div className='container__header-section'>
               <h2>Latest Prosonic Packages</h2>
               <div className='container__browse'>
-              <Link to="/packages" className='container__btn'><span><span>Browse more tracks</span></span></Link>
+              <Link to="/packages" className='container__btn'><span><span>Browse more packages</span></span></Link>
               </div>
           </div>
     
