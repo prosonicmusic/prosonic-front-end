@@ -15,7 +15,7 @@ function HomePage() {
         <div className='homePage colorPage'>
 
           <section className='block'>
-            <div className='header-section'>
+            <div className='blockContent1'>
               <div>
                 <h2 className='h2-1'>For singers and creators</h2>
                 <ul>
@@ -25,7 +25,7 @@ function HomePage() {
                   <li></li>
                 </ul>
               </div>
-              <div className='blockContent'>
+              <div className='blockContent2'>
                 <h2 className='h2-2'>Can’t find the perfect track?</h2>
                 <span><Link to='/tracks' id='customLink'> Order a custom track!</Link></span>
               </div>
