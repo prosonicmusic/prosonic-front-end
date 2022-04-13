@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FaTelegram, FaEnvelope} from 'react-icons/fa'
+import { FaTelegram, FaEnvelope, FaLinkedinIn, FaInstagram} from 'react-icons/fa'
 
 function Footer() {
   return (
@@ -33,6 +33,14 @@ function Footer() {
               <li>
                 <span><FaTelegram/></span>
                 <a href="https://t.me/ProsonicSupport">@ProsonicSupport</a>
+              </li>
+              <li>
+                <span><FaLinkedinIn/></span>
+                <a href="https://www.linkedin.com/company/prosonicstudio">@Prosonicstudio</a>
+              </li>
+              <li>
+                <span><FaInstagram/></span>
+                <a href="https://www.instagram.com/prosonictunes/">@Prosonictunes</a>
               </li>
             </ul>
           </div>

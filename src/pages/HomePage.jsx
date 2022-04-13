@@ -11,7 +11,6 @@ function HomePage() {
   return (
     <>
       <Header/>
-      <SocialMedia></SocialMedia>
       <Layout>
         <div className='homePage colorPage'>
           <section className='container'>

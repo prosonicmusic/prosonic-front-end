@@ -7,7 +7,6 @@ function ContactPage() {
   return (
     
     <Layout>
-      <SocialMedia></SocialMedia>
 
       <div className="header"></div >
         <div id='contactPage' className=''>

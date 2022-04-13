@@ -6,7 +6,6 @@ import SocialMedia from '../components/SocialMedia';
 function PackagesPage() {
   return (
     <Layout>
-      <SocialMedia></SocialMedia>
       <div className="tracksHeader"></div>
 
       <section id='tracksPage'>

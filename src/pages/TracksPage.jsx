@@ -8,7 +8,6 @@ function TracksPage() {
   
   return (
     <Layout>
-      <SocialMedia></SocialMedia>
       <div className="tracksHeader"></div>
         <section id='tracksPage'>
           <header className='header-section'>

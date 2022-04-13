@@ -86,6 +86,7 @@ footer {
       width: calc(35% - 60px);
       margin-right: 0!important;
 
+
       @include respond-phone {
         width: 100%;
       }
@@ -101,9 +102,11 @@ footer {
             color: #bcc7d4ef;
             font-size: 20px;
             margin-right: 10px;
+
             &:hover {
               color: $color-light
             }
+
           }
 
           a {
