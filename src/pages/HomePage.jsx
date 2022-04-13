@@ -27,7 +27,7 @@ function HomePage() {
               </div>
               <div className='blockContent2'>
                 <h2 className='h2-2'>Can’t find the perfect track?</h2>
-                <span><Link to='/tracks' id='customLink'> Order a custom track!</Link></span>
+                <span><Link to='' id='customLink'> Order a custom track!</Link></span>
               </div>
             <div>
 
