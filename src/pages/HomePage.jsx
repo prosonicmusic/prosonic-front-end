@@ -2,7 +2,6 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import Layout from '../components/Layout'
 import Header from '../components/Header'
-import SocialMedia from '../components/SocialMedia';
 import Products1 from '../components/products/Products1'
 import Products2 from '../components/products/Products2'
 import Products3 from '../components/products/Products3';
@@ -22,12 +21,11 @@ function HomePage() {
                   <li>Exclusive Prosonic tracks and packages</li>
                   <li>Professional quality</li>
                   <li>Get project stems</li>
-                  <li></li>
                 </ul>
               </div>
               <div className='blockContent2'>
                 <h2 className='h2-2'>Can’t find the perfect track?</h2>
-                <span><Link to='' id='customLink'> Order a custom track!</Link></span>
+                <span><Link to='/services' id='customLink'> Order a custom track!</Link></span>
               </div>
             <div>
 

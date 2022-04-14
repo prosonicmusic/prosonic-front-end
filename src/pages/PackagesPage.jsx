@@ -14,6 +14,18 @@ function PackagesPage() {
               <h1>Latest Packages</h1>
             </div>
             <div className="beatsMenu">
+            <div className="dropdown-select">
+                <select>
+                  <option value="">Types</option>
+                  <option value="Drum Kits">Drum Kits</option>
+                  <option value="MIDI">MIDI</option>
+                  <option value="Melodies">Melodies</option>
+                  <option value="One-Shots">One-Shots</option>
+                  <option value="Bundles">Bundles</option>
+                </select>
+                <span className='caret'></span>
+              </div>
+              
               <div className="dropdown-select">
                 <select>
                   <option value="">Prices</option>
@@ -25,6 +37,7 @@ function PackagesPage() {
                 </select>
                 <span className='caret'></span>
               </div>
+             
             </div>
           </header>
 

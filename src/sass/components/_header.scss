@@ -34,7 +34,6 @@
     top: 0;
     right: 1px;
     padding: 0 30px;
-    margin-top: 0px;
     transition: 0.3s ease-in-out;
     background: transparent;
     z-index: 60;
@@ -168,5 +167,5 @@
 // change bg on scroll
 .bg-nav {
   background-color: rgba(20, 26, 34, 0.8);
-  border-radius: 25px 25px 25px 25px;
+  border-radius: 0px 0px 20px 20px;
 }

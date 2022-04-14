@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import SocialMedia from '../components/SocialMedia';
+import { Link } from 'react-router-dom'
 
 function ServicesPage() {
   return (
@@ -8,7 +8,54 @@ function ServicesPage() {
     <Layout>
       <div className="header"></div >
       <div id='services'>
-        <h1>This page will be created soon</h1>
+        <section className='services-container'>
+
+            <div className='container__header-section'>
+                <h2>Order a custom track</h2>
+            </div>
+
+            <ul className='custom'>
+              <li>
+                <span>Custom track</span>
+                <div className="vertical-centering">
+                  <span className='price'>1,000,000 T</span>
+                  <button className='addService'> add </button>
+                </div>
+              </li>
+              <li>
+              <span>Mix / Mastering</span>
+                <div className="vertical-centering">
+                  <span className='price'>500,000 T</span>
+                  <button className='addService'> add </button>
+                </div>
+              </li>
+              <li>
+              <span>Audio Editing</span>
+                <div className="vertical-centering">
+                  <span className='price'>100,000 T</span>
+                  <button className='addService'> add </button>
+                </div>
+              </li>
+              <li>
+              <span>Stems</span>
+                <div className="vertical-centering">
+                  <span className='price'>500,000 T</span>
+                  <button className='addService'> add </button>
+                </div>
+              </li>
+              <br />
+              {/* <hr /> */}
+              <li className='all-in-one'>
+              <span>All in one</span>
+                <div className="vertical-centering">
+                  <span className='price'>1,900,000 T</span>
+                  <button className='addService'> add </button>
+                </div>
+              </li>
+            </ul>
+            
+          </section>
+
       </div>
     </Layout>
   )

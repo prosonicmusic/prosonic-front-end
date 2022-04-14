@@ -75,6 +75,7 @@ footer {
       #footerLink {
         color: #bcc7d49a;
         display: inline-block;
+        transition: .2s;
 
         &:hover {
           color: $color-light;
@@ -102,15 +103,18 @@ footer {
             color: #bcc7d4ef;
             font-size: 20px;
             margin-right: 10px;
+            transition: .2s;
 
             &:hover {
-              color: $color-light
+              color: #fff;
             }
 
           }
 
           a {
             color: #bcc7d49a;
+            transition: .2s;
+
             &:hover {
               color: $color-light
             }

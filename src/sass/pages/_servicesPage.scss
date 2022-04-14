@@ -1,5 +1,7 @@
 #services {
   
+  margin-top: -350px;
+  position: relative;
 
   h1 {
     position: absolute;
@@ -7,5 +9,74 @@
     height: 100%;
     left: 20%;
     top: 22%;
+  }
+
+
+  .services-container {
+    height: 100%;
+    margin: auto;
+    width: 100%;
+    max-width: 1024px;
+    padding: 20px 20px;
+    color: $color-light;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    background: #1a1c20e0;
+    backdrop-filter: blur(8px);
+
+    .custom {
+
+      hr {
+        border: 1px solid #383838;
+        width: 45em;
+        margin-left: 13%;
+      }
+
+      li {
+        background: #23252b;
+        padding: 20px;
+        margin-bottom: 10px;
+        border-radius: 2px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        .price {
+          display: inline-block;
+          background: #1e2025;
+          padding: 5px 10px;
+          font-size: 15px;
+          border-radius: 2px;
+          font-weight: 600;
+        }
+
+        .addService {
+          background: #0e95caab;
+          padding: 5px 10px;
+          font-size: 12px;
+          border-radius: 2px;
+          color: $color-light;
+          margin-left: 10px;
+          text-transform: uppercase;
+          font-weight: 700;
+          outline: none;
+          border: none;
+          vertical-align: middle;
+          cursor: pointer;
+          transition: .3s;
+
+          &:hover {
+            background: #0e95cae5;
+            color: #fff;
+          }
+        }
+      }
+
+      .all-in-one {
+        margin-top: 30px;
+        background: #1e8abd6c;
+        border-radius: 35px;
+      }
+    }
   }
 }

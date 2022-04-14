@@ -400,7 +400,6 @@ html {
     top: 0;
     right: 1px;
     padding: 0 30px;
-    margin-top: 0px;
     transition: 0.3s ease-in-out;
     background: transparent;
     z-index: 60; }
@@ -498,7 +497,7 @@ html {
 
 .bg-nav {
   background-color: rgba(20, 26, 34, 0.8);
-  border-radius: 25px 25px 25px 25px; }
+  border-radius: 0px 0px 20px 20px; }
 
 .grid {
   box-sizing: border-box;
@@ -560,7 +559,8 @@ footer {
         margin-bottom: 10px; }
       footer section .quickLinks #footerLink {
         color: #bcc7d49a;
-        display: inline-block; }
+        display: inline-block;
+        transition: .2s; }
         footer section .quickLinks #footerLink:hover {
           color: #bcc7d4; }
     footer section .contact {
@@ -577,11 +577,13 @@ footer {
           footer section .contact .contactInfo li span {
             color: #bcc7d4ef;
             font-size: 20px;
-            margin-right: 10px; }
+            margin-right: 10px;
+            transition: .2s; }
             footer section .contact .contactInfo li span:hover {
-              color: #bcc7d4; }
+              color: #fff; }
           footer section .contact .contactInfo li a {
-            color: #bcc7d49a; }
+            color: #bcc7d49a;
+            transition: .2s; }
             footer section .contact .contactInfo li a:hover {
               color: #bcc7d4; }
 
@@ -659,6 +661,7 @@ footer {
       .block .blockContent1 .blockContent2 {
         font-size: 100%; } }
     .block .blockContent1 ul li {
+      list-style: disc;
       padding: 3px 10px;
       font-size: 14px; }
 
@@ -927,12 +930,66 @@ footer {
           top: 25px;
           height: 600px; } }
 
-#services h1 {
-  position: absolute;
-  width: 50%;
-  height: 100%;
-  left: 20%;
-  top: 22%; }
+#services {
+  margin-top: -350px;
+  position: relative; }
+  #services h1 {
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    left: 20%;
+    top: 22%; }
+  #services .services-container {
+    height: 100%;
+    margin: auto;
+    width: 100%;
+    max-width: 1024px;
+    padding: 20px 20px;
+    color: #bcc7d4;
+    margin-bottom: 50px;
+    border-radius: 20px;
+    background: #1a1c20e0;
+    backdrop-filter: blur(8px); }
+    #services .services-container .custom hr {
+      border: 1px solid #383838;
+      width: 45em;
+      margin-left: 13%; }
+    #services .services-container .custom li {
+      background: #23252b;
+      padding: 20px;
+      margin-bottom: 10px;
+      border-radius: 2px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center; }
+      #services .services-container .custom li .price {
+        display: inline-block;
+        background: #1e2025;
+        padding: 5px 10px;
+        font-size: 15px;
+        border-radius: 2px;
+        font-weight: 600; }
+      #services .services-container .custom li .addService {
+        background: #0e95caab;
+        padding: 5px 10px;
+        font-size: 12px;
+        border-radius: 2px;
+        color: #bcc7d4;
+        margin-left: 10px;
+        text-transform: uppercase;
+        font-weight: 700;
+        outline: none;
+        border: none;
+        vertical-align: middle;
+        cursor: pointer;
+        transition: .3s; }
+        #services .services-container .custom li .addService:hover {
+          background: #0e95cae5;
+          color: #fff; }
+    #services .services-container .custom .all-in-one {
+      margin-top: 30px;
+      background: #1e8abd6c;
+      border-radius: 35px; }
 
 .tracksHeader {
   height: 410vh;
