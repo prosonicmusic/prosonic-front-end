@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Products1 from '../components/products/Products1'
 import Products2 from '../components/products/Products2'
 import Products3 from '../components/products/Products3';
+import Player from '../components/Player'
 
 function HomePage() {
   return (
@@ -79,6 +80,8 @@ function HomePage() {
           </section>
         </div>
       </Layout>
+      <Player/>
+
       </>
   )
 }

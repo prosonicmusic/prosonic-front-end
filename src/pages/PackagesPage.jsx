@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import Allpackages from '../components/products/Allpackages';
-import SocialMedia from '../components/SocialMedia';
 
 function PackagesPage() {
   return (

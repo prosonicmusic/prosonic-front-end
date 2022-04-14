@@ -594,6 +594,123 @@ footer {
   color: rgba(90, 98, 107, 0.5);
   text-align: center; }
 
+#player {
+  position: fixed;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  margin: auto;
+  max-width: 1024px;
+  height: 60px;
+  transition: .3s; }
+  #player .player-container {
+    height: 100%;
+    margin: auto;
+    width: 100%;
+    padding: 0 20px; }
+    #player .player-container .container-layer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: #23252be6;
+      width: 100%;
+      height: 60px;
+      border-radius: 40px; }
+      #player .player-container .container-layer .play-buttons {
+        text-transform: uppercase;
+        font-size: 15px;
+        color: #bcc7d4;
+        height: 60px;
+        width: 60px;
+        background: #282b32;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        overflow: visible;
+        cursor: pointer;
+        border: none;
+        border-radius: 50%; }
+        #player .player-container .container-layer .play-buttons span {
+          height: 16px;
+          width: 16px;
+          margin-bottom: 4px; }
+      #player .player-container .container-layer .player {
+        transform: .5s;
+        cursor: pointer;
+        position: relative;
+        height: 60px;
+        flex: 1;
+        padding-top: 10px; }
+        #player .player-container .container-layer .player .titleUsername {
+          z-index: 99;
+          background: #23252b80;
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 60px;
+          opacity: 1;
+          visibility: visible;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          transition: .3s; }
+          #player .player-container .container-layer .player .titleUsername:hover {
+            opacity: 0; }
+      #player .player-container .container-layer .closeBtn {
+        position: absolute;
+        right: 150px;
+        background: #4b5363;
+        border-radius: 100px;
+        height: 26px;
+        width: 26px;
+        padding: 6px;
+        z-index: 120;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        border: none; }
+        #player .player-container .container-layer .closeBtn span {
+          font-size: 19px;
+          color: #bcc7d4;
+          margin-top: 2px; }
+        #player .player-container .container-layer .closeBtn:hover {
+          background: #5d6472;
+          cursor: pointer; }
+      #player .player-container .container-layer .p-info {
+        border-right: 1px solid #23252b;
+        text-transform: uppercase;
+        color: #bcc7d4;
+        height: 60px;
+        width: 60px;
+        background: #282b32;
+        transform: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 900;
+        cursor: pointer; }
+        #player .player-container .container-layer .p-info:hover {
+          background: #3b3f49; }
+      #player .player-container .container-layer .buy {
+        text-transform: uppercase;
+        color: #bcc7d4;
+        font-size: 16px;
+        height: 60px;
+        width: 60px;
+        background: #282b32;
+        transition: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 700;
+        border: none;
+        cursor: pointer; }
+        #player .player-container .container-layer .buy:hover {
+          background: #3b3f49; }
+
 .block {
   height: 100%;
   margin: auto;
@@ -989,7 +1106,7 @@ footer {
     #services .services-container .custom .all-in-one {
       margin-top: 30px;
       background: #1e8abd6c;
-      border-radius: 35px; }
+      border-radius: 40px; }
 
 .tracksHeader {
   height: 410vh;

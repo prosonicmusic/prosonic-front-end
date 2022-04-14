@@ -1,7 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
 import Allbeats from '../components/products/Allbeats';
-import SocialMedia from '../components/SocialMedia';
 
 function TracksPage() {
 
