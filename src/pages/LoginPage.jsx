@@ -58,7 +58,7 @@ function LoginPage() {
                       <input 
                         type="email" 
                         placeholder='Email'
-                        id='email' 
+                        id='login-email' 
                         name='email' 
                         value={email} 
                         onChange={onChange} 
@@ -67,7 +67,7 @@ function LoginPage() {
                       <input 
                         type="password" 
                         placeholder='Password'
-                        id='password' 
+                        id='login-password' 
                         name='password' 
                         value={password} 
                         onChange={onChange} 

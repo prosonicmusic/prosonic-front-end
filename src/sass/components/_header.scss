@@ -13,7 +13,7 @@
     height: 100%;
     background: rgba(0, 0, 0, 0.6);
     background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 75%, $color-black)
-      100%;
+100%;
   }
 
   *,
@@ -93,7 +93,7 @@
     .navbarCartIcon {
       z-index: 60;
       border-radius: 2px;
-      margin-top: 7px;
+      margin-top: 2px;
       margin-right: 15px;
       margin-left: 15px;
       height: 29px;
@@ -113,6 +113,7 @@
       @include respond-phone {
         position: absolute;
         right: 60px;
+        margin-top: 7px;
       }
 
       .shopIcon {
