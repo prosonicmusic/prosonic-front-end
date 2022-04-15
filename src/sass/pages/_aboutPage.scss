@@ -27,12 +27,10 @@
     
 
     h1 {
-      // width: 640px;
       padding: 10px 248px;
       text-align: center;
       background: rgba(255, 255, 255, 0.05);
       font-weight: 500;
-      // border-radius: 0 0 15px 15px;
     }
   }
 
@@ -71,6 +69,20 @@
           li {
             transform: translateY(0px);
             opacity: 1;
+          }
+        }
+
+        .contentBx {
+          h3 {
+            .chngContent {
+              visibility: hidden;
+              &::after {
+                position: absolute;
+                left: 18px;
+                visibility: visible;
+                content: 'Front-end Developer';
+              }
+            }
           }
         }
       }
@@ -123,7 +135,6 @@
               text-transform: initial;
             }
           }
-
         }
       }
 
@@ -149,7 +160,7 @@
             }
 
           }
-          
+           
         }
       }
     }

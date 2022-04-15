@@ -440,7 +440,7 @@ html {
     .header__menu .navbarCartIcon {
       z-index: 60;
       border-radius: 2px;
-      margin-top: 2px;
+      margin-top: 7px;
       margin-right: 15px;
       margin-left: 15px;
       height: 29px;
@@ -1301,6 +1301,13 @@ footer {
       #aboutPage .team .teamCard:hover .sci li {
         transform: translateY(0px);
         opacity: 1; }
+      #aboutPage .team .teamCard:hover .contentBx h3 .chngContent {
+        visibility: hidden; }
+        #aboutPage .team .teamCard:hover .contentBx h3 .chngContent::after {
+          position: absolute;
+          left: 18px;
+          visibility: visible;
+          content: 'Front-end Developer'; }
       #aboutPage .team .teamCard .cardContent {
         position: relative;
         display: flex;
