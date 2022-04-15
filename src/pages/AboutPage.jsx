@@ -13,7 +13,7 @@ function AboutPage() {
           <h1>The Team</h1>
         </div>
         <section className='team'>
-          <Tilt max={10} speed={400} glare={true} maxGlare={0.2}> 
+          <Tilt max={15} speed={400}> 
             <div className='teamCard'>
               <div className='cardContent'>
                 <div className='imgBx'>
@@ -43,7 +43,7 @@ function AboutPage() {
               </ul>
             </div>
           </Tilt> 
-          <Tilt>
+          <Tilt  max={15} speed={400}>
             <div className='teamCard'>
               <div className='cardContent'>
                 <div className='imgBx'>
