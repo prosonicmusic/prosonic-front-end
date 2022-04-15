@@ -41,7 +41,7 @@
         overflow: visible;
         cursor: pointer;
         border: none;
-        border-radius: 50%;
+        border-radius: 10px 0px 0px 0;
 
         span {
           height: 16px;
@@ -107,8 +107,7 @@
       }
 
       .p-info {
-        border-right: 1px solid #23252b;
-
+        border-right: 2px solid #23252b;
         text-transform: uppercase;
         color: $color-light;
         height: 60px;
@@ -140,6 +139,7 @@
         font-weight: 700;
         border: none;
         cursor: pointer;
+        border-radius: 0px 10px 0px 0;
 
         &:hover {
           background: #3b3f49;

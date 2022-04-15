@@ -15,7 +15,7 @@ function Footer() {
           <div className='footerSec quickLinks'>
             <h2>Quick Links</h2>
             <ul>
-              <li><Link to='/about' id='footerLink'>About</Link></li>
+              <li><Link to='/about' id='footerLink'>About us</Link></li>
               <li><Link to='/jobs' id='footerLink'>Jobs</Link></li>
               <li><Link to='/contact' id='footerLink'>Contact</Link></li>
               <li><Link to='/terms' id='footerLink'>Terms & Conditions</Link></li>

@@ -630,7 +630,7 @@ footer {
         overflow: visible;
         cursor: pointer;
         border: none;
-        border-radius: 50%; }
+        border-radius: 10px 0px 0px 0; }
         #player .player-container .container-layer .play-buttons span {
           height: 16px;
           width: 16px;
@@ -680,7 +680,7 @@ footer {
           background: #5d6472;
           cursor: pointer; }
       #player .player-container .container-layer .p-info {
-        border-right: 1px solid #23252b;
+        border-right: 2px solid #23252b;
         text-transform: uppercase;
         color: #bcc7d4;
         height: 60px;
@@ -707,7 +707,8 @@ footer {
         justify-content: center;
         font-weight: 700;
         border: none;
-        cursor: pointer; }
+        cursor: pointer;
+        border-radius: 0px 10px 0px 0; }
         #player .player-container .container-layer .buy:hover {
           background: #3b3f49; }
 
@@ -1244,6 +1245,115 @@ footer {
   border-left: 4px solid transparent;
   border-right: 4px solid transparent;
   border-top: 4px solid #5a626b; }
+
+#aboutPage {
+  background: url("/src/img/studio6.jpg") no-repeat center center/cover;
+  height: 50vh;
+  position: relative;
+  margin-bottom: 410px; }
+  #aboutPage::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 75%, #000) 100%; }
+  #aboutPage .cardTitle {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    top: 150px; }
+    #aboutPage .cardTitle h1 {
+      padding: 10px 248px;
+      text-align: center;
+      background: rgba(255, 255, 255, 0.05);
+      font-weight: 500; }
+  #aboutPage .team {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    margin: 200px 0; }
+    #aboutPage .team .teamCard {
+      position: relative;
+      width: 300px;
+      height: 400px;
+      background: rgba(255, 255, 255, 0.05);
+      margin: 20px;
+      box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+      border-radius: 15px;
+      overflow: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      backdrop-filter: blur(5px);
+      border-top: 1px solid rgba(255, 255, 255, 0.301);
+      border-left: 0.5px solid rgba(255, 255, 255, 0.301); }
+      #aboutPage .team .teamCard:hover .cardContent {
+        opacity: 1;
+        transform: translateY(-20px); }
+      #aboutPage .team .teamCard:hover .sci li {
+        transform: translateY(0px);
+        opacity: 1; }
+      #aboutPage .team .teamCard .cardContent {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        opacity: 0.5;
+        transition: 0.3s; }
+        #aboutPage .team .teamCard .cardContent .imgBx {
+          position: relative;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+          overflow: hidden;
+          border: 7px solid rgba(0, 0, 0, 0.25); }
+          #aboutPage .team .teamCard .cardContent .imgBx img {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; }
+        #aboutPage .team .teamCard .cardContent .contentBx h3 {
+          color: #fff;
+          text-transform: uppercase;
+          letter-spacing: 5px;
+          font-weight: 600;
+          font-size: 18px;
+          text-align: center;
+          margin: 20px 0 10px;
+          line-height: 1.1em; }
+          #aboutPage .team .teamCard .cardContent .contentBx h3 span {
+            position: relative;
+            top: 5px;
+            letter-spacing: 3px;
+            font-size: 14px;
+            font-weight: 300;
+            text-transform: initial; }
+      #aboutPage .team .teamCard .sci {
+        position: absolute;
+        bottom: 50px;
+        display: flex; }
+        #aboutPage .team .teamCard .sci li {
+          list-style: none;
+          margin: 0 10px;
+          transform: translateY(40px);
+          transition: 0.3s;
+          opacity: 0;
+          transition-delay: 0.1s; }
+          #aboutPage .team .teamCard .sci li a {
+            color: #fff;
+            font-size: 24px; }
+            #aboutPage .team .teamCard .sci li a:hover {
+              color: #2da9c9; }
 
 body {
   font-family: "Open Sans", sans-serif;
