@@ -25,7 +25,7 @@ function Package() {
 
                 <div className='beatItem__bottomWrapper bottom-part'>
                   <div className='moreInfoIcon'>
-                      <a href="#"></a>
+                      <Link to=''></Link>
                       <FontAwesomeIcon icon={faChevronRight} className="rightIcon"></FontAwesomeIcon>
                   </div>
 

@@ -26,17 +26,17 @@ function AboutPage() {
 
               <ul className="sci">
                 <li>
-                  <a href="https://github.com/pakzadmusic" target="_blank">
+                  <a href="https://github.com/pakzadmusic" target="_blank rel=noopener" >
                     <FaGithub/>
                   </a>
                 </li>
                 <li>
-                  <a href="https://t.me/PakzadMusic" target="_blank">
+                  <a href="https://t.me/PakzadMusic" target="_blank rel=noopener">
                     <FaTelegramPlane/>
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/paakzad/" target="_blank">
+                  <a href="https://www.linkedin.com/in/paakzad/" target="_blank rel=noopener">
                     <FaLinkedinIn/>
                   </a>
                 </li>
@@ -56,17 +56,17 @@ function AboutPage() {
 
               <ul className="sci">
                 <li>
-                  <a href="https://github.com/mahmoud-eslami" target="_blank">
+                  <a href="https://github.com/mahmoud-eslami" target="_blank ">
                     <FaGithub/>
                   </a>
                 </li>
                 <li>
-                  <a href="https://t.me/es_mahmoud" target="_blank">
+                  <a href="https://t.me/es_mahmoud" target="_blank rel=noopener">
                     <FaTelegramPlane/>
                   </a>
                 </li>
                 <li>
-                  <a href="https://www.linkedin.com/in/mahmoud-eslami/" target="_blank">
+                  <a href="https://www.linkedin.com/in/mahmoud-eslami/" target="_blank rel=noopener">
                     <FaLinkedinIn/>
                   </a>
                 </li>

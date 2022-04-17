@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import Navbar from '../components/Navbar';
 
@@ -74,7 +75,7 @@ function LoginPage() {
                         required
                       />
                       <input type="submit" value="Login"/>
-                      <a href="#" className='forgot'>Forgot Password</a>
+                      <Link to='/' className='forgot'>Forgot Password</Link>
                     </form>
                   </div>
 
