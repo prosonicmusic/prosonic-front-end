@@ -36,7 +36,7 @@ export default function Beat({beat}) {
               <a href="#" className='username'>{beat.author}</a>
             </div>
             <div className='beatItem__lineData'>
-              <span className='price'> {beat.price} T</span>
+              <span className='price'> {beat.product_price} T</span>
               <div id='daw'>
                 <div  className={beat.daw}>
                   <img src={logo2} alt="FL Studio" className='FL'/>

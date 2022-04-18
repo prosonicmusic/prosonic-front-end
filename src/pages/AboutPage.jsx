@@ -50,7 +50,7 @@ function AboutPage() {
                   <img src={mahmoud} alt="Mahmoud Eslami" />
                 </div>
                 <div className="contentBx">
-                  <h3>Mahmoud Eslami<br /><span>Back-end developer</span></h3>
+                  <h3>Mahmoud Eslami<br /><span className='chngContent2'>Android & Flutter developer</span></h3>
                 </div>
               </div>
 

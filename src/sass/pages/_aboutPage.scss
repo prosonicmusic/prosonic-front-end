@@ -73,6 +73,7 @@
         }
 
         .contentBx {
+
           h3 {
             .chngContent {
               visibility: hidden;
@@ -81,6 +82,16 @@
                 left: 18px;
                 visibility: visible;
                 content: 'Front-end Developer';
+              }
+            }
+
+            .chngContent2 {
+              visibility: hidden;
+              &::after {
+                position: absolute;
+                left: 39px;
+                visibility: visible;
+                content: 'Back-end Developer';
               }
             }
           }
@@ -125,6 +136,7 @@
             text-align: center;
             margin: 20px 0 10px;
             line-height: 1.1em;
+
 
             span {
               position: relative;

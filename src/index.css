@@ -1318,6 +1318,13 @@ footer {
           left: 18px;
           visibility: visible;
           content: 'Front-end Developer'; }
+      #aboutPage .team .teamCard:hover .contentBx h3 .chngContent2 {
+        visibility: hidden; }
+        #aboutPage .team .teamCard:hover .contentBx h3 .chngContent2::after {
+          position: absolute;
+          left: 39px;
+          visibility: visible;
+          content: 'Back-end Developer'; }
       #aboutPage .team .teamCard .cardContent {
         position: relative;
         display: flex;
