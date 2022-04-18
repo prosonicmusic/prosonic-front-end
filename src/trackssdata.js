@@ -1,7 +1,6 @@
-
-
 const tracks = [
   {
+    id: "",
     title: "Forgetting",
     author: "Prosonic",
     price: "700000",
@@ -10,7 +9,6 @@ const tracks = [
     length: "2:23",
     bpm: "74",
     project_description: "N/A",
-    image: "./img/cover1.jpg",
     thumbnail: "",
     tag: "",
     files: ["string"],
@@ -22,6 +20,7 @@ const tracks = [
 
 
   {
+    id: "",
     title: "Excuses",
     author: "Prosonic",
     price: "1000000",
@@ -30,7 +29,6 @@ const tracks = [
     length: "2:47",
     bpm: "80",
     project_description: "N/A",
-    image: "",
     thumbnail: "",
     tag: "PREMIUM",
     files: ["string"],
@@ -42,6 +40,7 @@ const tracks = [
 
 
   {
+    id: "",
     title: "Darkness",
     author: "Prosonic",
     price: "500000",
@@ -50,7 +49,6 @@ const tracks = [
     length: "N/A",
     bpm: "145",
     project_description: "N/A",
-    image: "",
     thumbnail: "",
     tag: "",
     files: ["string"],
@@ -61,8 +59,8 @@ const tracks = [
 
 
 
-
   {
+    id: "",
     title: "Hero",
     author: "Prosonic",
     price: "500000",
@@ -71,7 +69,6 @@ const tracks = [
     length: "N/A",
     bpm: "115",
     project_description: "N/A",
-    image: "",
     thumbnail: "",
     tag: "",
     files: ["string"],
@@ -81,7 +78,9 @@ const tracks = [
 
 
 
+
   {
+    id: "",
     title: "Passion",
     author: "Prosonic",
     price: "1300000",
@@ -90,11 +89,11 @@ const tracks = [
     length: "N/A",
     bpm: "96",
     project_description: "N/A",
-    image: "",
     thumbnail: "",
     tag: "PREMIUM",
     files: ["string"],
     product_type: "track",
   },
 ];
-export default tracks
+
+export default tracks;

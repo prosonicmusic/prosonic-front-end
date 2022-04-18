@@ -545,9 +545,12 @@ footer {
     color: #bcc7d4;
     font-size: 11px;
     font-weight: 900;
-    background: #ce2900;
-    padding: 3px 10px 3px 10px;
-    border-radius: 0 300px 300px 0; }
+    visibility: hidden; }
+    .beatItem .labels .PREMIUM {
+      visibility: visible;
+      background: #ce2900;
+      padding: 3px 10px 3px 10px;
+      border-radius: 0 300px 300px 0; }
     @media (max-width: 900px) {
       .beatItem .labels {
         font-size: 9px; } }

@@ -1,12 +1,20 @@
 import React from 'react'
 import Package from './Package'
+import packages from '../../packagesdata';
 
 function Allpackages() {
   return (
-    <section className='grid'>
+    <div className='beats'>
+             
+              {packages.map(packs=>{
+                return <div className='beatsGrid'>
+                  <div>
+                    <Package packs={packs}/>
+                  </div>
+                </div>
+              })}
 
-     
-    </section>
+    </div>
   )
 }
 

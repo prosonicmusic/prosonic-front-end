@@ -5,7 +5,7 @@ import tracks from '../../trackssdata';
 function Products1() {
   return (
     <div className='beats'>
-      {tracks.map(beat=>{
+              {tracks.map(beat=>{
                 return <div className='beatsGrid'>
                   <div>
                     <Beat beat={beat}/>

@@ -1,89 +1,80 @@
 const packages = [
   {
-    title: "Forgetting",
-    price: "700000",
-    genre: "Hip Hop",
-    length: "2:23",
+    title: "Pop Kit Vol.1",
+    product_price: "20000",
+    genre: "Pop",
     bpm: "74",
     project_description: "N/A",
-    image: "./img/cover1.jpg",
     thumbnail: "",
-    tags: "",
-    files: ["string"],
-    product_type: "track",
-    package_type: "string",
-    sample_type: "string",
+    tag: "",
+    files: [""],
+    product_type: "package",
+    package_type: "Drum Kit",
+    sample_type: "",
   },
 
 
 
   {
-    title: "Excuses",
-    price: "1000000",
-    genre: "Hip Hop",
-    length: "2:47",
-    bpm: "80",
-    project_description: "N/A",
-    image: "",
-    thumbnail: "",
-    tags: "PREMIUM",
-    files: ["string"],
-    product_type: "track",
-    package_type: "string",
-    sample_type: "string"
-  },
-
-
-
-  {
-    title: "Darkness",
-    daw: "FL Studio",
-    genre: ["Rap", "Hip hop"],
-    length: "N/A",
-    bpm: "145",
-    project_description: "N/A",
-    image: "",
-    thumbnail: "",
-    tags: "",
-    files: ["string"],
-    product_type: "track",
-    package_type: "string",
-    sample_type: "string"
-  },
-
-
-
-  {
-    title: "Hero",
-    price: "500000",
-    genre: ["Rap", "Hip hop"],
-    length: "N/A",
-    bpm: "115",
-    project_description: "N/A",
-    image: "",
-    thumbnail: "",
-    tags: "",
-    files: ["string"],
-    product_type: "track",
-    package_type: "string",
-    sample_type: "string"
-  },
-
-
-
-  {
-    title: "Passion",
-    price: "1300000",
+    title: "Pop Kit Vol.1",
+    product_price: "20000",
     genre: "Pop",
-    bpm: "96",
+    bpm: "74",
     project_description: "N/A",
-    image: "",
     thumbnail: "",
-    tags: "PREMIUM",
-    files: ["string"],
-    product_type: "track",
-    package_type: "string",
-    sample_type: "string"
+    tag: "",
+    files: [""],
+    product_type: "package",
+    package_type: "Drum Kit",
+    sample_type: "",
+  },
+
+
+
+  {
+    title: "Pop Kit Vol.1",
+    product_price: "20000",
+    genre: "Pop",
+    bpm: "74",
+    project_description: "N/A",
+    thumbnail: "",
+    tag: "",
+    files: [""],
+    product_type: "package",
+    package_type: "Drum Kit",
+    sample_type: "",
+  },
+
+
+  {
+    title: "Pop Kit Vol.1",
+    product_price: "20000",
+    genre: "Pop",
+    bpm: "74",
+    project_description: "N/A",
+    thumbnail: "",
+    tag: "",
+    files: [""],
+    product_type: "package",
+    package_type: "Drum Kit",
+    sample_type: "",
+  },
+
+
+
+  {
+    title: "Pop Kit Vol.1",
+    product_price: "20000",
+    genre: "Pop",
+    bpm: "74",
+    project_description: "N/A",
+    thumbnail: "",
+    tag: "PREMIUM",
+    files: [""],
+    product_type: "package",
+    package_type: "Drum Kit",
+    sample_type: "",
   },
 ];
-export default tracks;
+
+export default packages;

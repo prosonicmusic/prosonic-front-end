@@ -1,6 +1,5 @@
 
 .beatItem {
-  // opacity: 0;
   background: rgba(35, 37, 43, 0.5);
   border-radius: 10px;
   transition: .3s;
@@ -54,14 +53,15 @@
       color: $color-light;
       font-size: 11px;
       font-weight: 900;
-      background: rgba(206, 41, 0, 1);
-      padding: 3px 10px 3px 10px;
-      border-radius: 0 300px 300px 0;
-      // display: none;
 
-      // &.active {
-      //   display: block;
-      // }
+      visibility: hidden;
+
+      .PREMIUM {
+        visibility: visible;
+        background: rgba(206, 41, 0, 1);
+        padding: 3px 10px 3px 10px;
+        border-radius: 0 300px 300px 0;
+      }
 
       @include respond-phone {
         font-size: 9px;
@@ -89,10 +89,8 @@
 
       .respo {
         @include respond-phone {
-          
         }
       }
-
     }
 
       .moreInfoIcon {
@@ -113,7 +111,6 @@
           right: 20px;
           height: 20px;
           color: #dd1f5f;
-          // z-index: 60;
         }
 
         @include respond-phone-min {
@@ -132,7 +129,6 @@
         align-items: center;
         justify-content: center;
       }
-
     }
 
 
@@ -142,8 +138,6 @@
       white-space: nowrap;
 
       
-      
-
       .name {
         color: #bcc7d4;
       }
@@ -190,17 +184,16 @@
         border-radius: 10px;
 
         .FLStudio {
-            .FL {
-              display: block;
-              height: 17px;
-            }
+          .FL {
+            display: block;
+            height: 17px;
+          }
         }
 
         .Cubase {
           .CU {
             display: block;
             height: 17px;
-
           }
         }
 
@@ -289,7 +282,6 @@
   &:after {
     content: "";
     display: block;
-    // padding-bottom: 100%;
   }
 
   span {
