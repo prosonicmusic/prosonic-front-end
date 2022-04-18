@@ -1,14 +1,17 @@
 import React from 'react'
 import Beat from './Beat';
+import tracks from '../../trackssdata';
 
 function Products1() {
   return (
-    <div className='container__grid-5'>
-      <Beat/>
-      <Beat/>
-      <Beat/>
-      <Beat/>
-      <Beat/> 
+    <div className='beats'>
+      {tracks.map(beat=>{
+                return <div className='beatsGrid'>
+                  <div>
+                    <Beat beat={beat}/>
+                  </div>
+                </div>
+              })}
     </div>
   )
 }

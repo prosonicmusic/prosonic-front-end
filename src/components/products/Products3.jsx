@@ -3,7 +3,7 @@ import Package from './Package';
 
 function Products3() {
   return (
-    <div className='container__grid-5'>
+    <div className='beats'>
       <Package/>
       <Package/>
       <Package/>

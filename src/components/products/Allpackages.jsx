@@ -5,57 +5,7 @@ function Allpackages() {
   return (
     <section className='grid'>
 
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-      <Package/>
-
+     
     </section>
   )
 }

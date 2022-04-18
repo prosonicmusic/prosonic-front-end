@@ -1,60 +1,18 @@
 import React from 'react'
+import tracks from '../../trackssdata';
 import Beat from './Beat';
 function Allbeats() {
   return (
-    <div className='grid'>
-            
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-            <Beat/>
-
+    <div className='beats'>
+             
+              {tracks.map(beat=>{
+                return <div className='beatsGrid'>
+                  <div>
+                    <Beat beat={beat}/>
+                  </div>
+                </div>
+              })}
+    
     </div>
   )
 }

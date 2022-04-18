@@ -3,10 +3,12 @@ import { Link } from 'react-router-dom'
 import cover2 from './../../img/cover1.jpg';
 import playIcon from './../../icons/play-icon-1.svg';
 import logo1 from './../../img/cubase_logo.png';
+import logo2 from './../../img/Fl-logo.png';
 import {FontAwesomeIcon} from  '@fortawesome/react-fontawesome';
 import { faChevronRight } from  '@fortawesome/free-solid-svg-icons';
+// import tracks from '../../trackssdata';
 
-function Beat() {
+export default function Beat({beat}) {
   return (
     <div className='col'>
               <div className='beatItem hoverOnBeatItem beatItem__MoreInfoForDevices'>
@@ -15,8 +17,8 @@ function Beat() {
                     <img src={cover2} alt="cover" />
                     <span><img src={playIcon} alt="play" className='cover__playIcon'/></span>
                   </div>
-                  <ul className='beatItem__labels'>
-                      <li className='Premium'> PREMIUM </li>
+                  <ul className='labels'>
+                      <li className='Premium'> {beat.tag} </li>
                   </ul>
                   <div className="soldLayer">
                     <span> SOLD </span>
@@ -31,14 +33,17 @@ function Beat() {
 
                   <div>
                     <div className='beatItem__nameAndUsername'>
-                      <a href="#" className='name'>Trailer Tension</a><br />
-                      <a href="#" className='username'>Prosonic</a>
+                      <a href="#" className='name'>{beat.title}</a><br />
+                      <a href="#" className='username'>{beat.author}</a>
                     </div>
                     <div className='beatItem__lineData'>
-                      <span className='price'> 300,000 T</span>
+                      <span className='price'> {beat.price} T</span>
 
-                      <div className='daw'>
-                          <img src={logo1} alt="Cubase" />
+                      <div id='daw'>
+                        <div  className={beat.daw}>
+                          <img src={logo2} alt="FL Studio" className='FL'/>
+                          <img src={logo1} alt="Cubase" className='CU'/>
+                        </div>  
                       </div>
                     </div>
                     <div className='beatItem__buttons'>
@@ -52,5 +57,3 @@ function Beat() {
             </div>
   )
 }
-
-export default Beat

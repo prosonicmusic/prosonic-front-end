@@ -1,5 +1,23 @@
-.grid {
-  box-sizing: border-box;
+// .grid {
+//   box-sizing: border-box;
+//   display: flex;
+//   flex-flow: row;
+//   flex-wrap: wrap;
+// }
+
+.beats {
   display: flex;
   flex-flow: row wrap;
+}
+
+.beatsGrid {
+    flex-basis: 20%;
+  max-width: 20%;
+  padding: 7.5px;
+
+
+  @include respond-phone {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
 }

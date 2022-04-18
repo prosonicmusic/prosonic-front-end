@@ -1,23 +1,20 @@
+
+
 const tracks = [
   {
     title: "Forgetting",
     author: "Prosonic",
-    track_type: ["track","trackStems"],
-    prices: [
-      {
-        track: 700000,
-        trackStems: 1200000,
-      },
-    ],
-    daw: "FL Studio",
+    price: "700000",
+    daw: "FLStudio",
     genres: "Hip Hop",
     length: "2:23",
     bpm: "74",
     project_description: "N/A",
-    image: "",
+    image: "./img/cover1.jpg",
     thumbnail: "",
-    tags: "",
+    tag: "",
     files: ["string"],
+    product_type: "track",
   },
 
 
@@ -27,22 +24,17 @@ const tracks = [
   {
     title: "Excuses",
     author: "Prosonic",
-    track_type: ["track","trackStems"],
-    prices: [
-      {
-        track: 1000000,
-        trackStems: 1500000,
-      },
-    ],
-    daw: "FL Studio",
+    price: "1000000",
+    daw: "FLStudio",
     genres: "Hip Hop",
     length: "2:47",
     bpm: "80",
     project_description: "N/A",
     image: "",
     thumbnail: "",
-    tags: "PREMIUM",
+    tag: "PREMIUM",
     files: ["string"],
+    product_type: "track",
   },
 
 
@@ -52,22 +44,17 @@ const tracks = [
   {
     title: "Darkness",
     author: "Prosonic",
-    track_type: ["track","trackStems"],
-    prices: [
-      {
-        track: 500000,
-        trackStems: 1000000,
-      },
-    ],
-    daw: "FL Studio",
+    price: "500000",
+    daw: "FLStudio",
     genres: ["Rap","Hip hop"],
     length: "N/A",
     bpm: "145",
     project_description: "N/A",
     image: "",
     thumbnail: "",
-    tags: "",
+    tag: "",
     files: ["string"],
+    product_type: "track",
   },
 
 
@@ -78,22 +65,17 @@ const tracks = [
   {
     title: "Hero",
     author: "Prosonic",
-    track_type: ["track","trackStems"],
-    prices: [
-      {
-        track: 500000,
-        trackStems: 1000000,
-      },
-    ],
-    daw: "FL Studio",
+    price: "500000",
+    daw: "FLStudio",
     genres: ["Rap","Hip hop"],
     length: "N/A",
     bpm: "115",
     project_description: "N/A",
     image: "",
     thumbnail: "",
-    tags: "",
+    tag: "",
     files: ["string"],
+    product_type: "track",
   },
 
 
@@ -102,22 +84,17 @@ const tracks = [
   {
     title: "Passion",
     author: "Prosonic",
-    track_type: ["track","trackStems"],
-    prices: [
-      {
-        track: 1300000,
-        trackStems: 1800000,
-      },
-    ],
-    daw: "FL Studio",
+    price: "1300000",
+    daw: "FLStudio",
     genres: "Pop",
     length: "N/A",
     bpm: "96",
     project_description: "N/A",
     image: "",
     thumbnail: "",
-    tags: "PREMIUM",
+    tag: "PREMIUM",
     files: ["string"],
+    product_type: "track",
   },
 ];
 export default tracks
