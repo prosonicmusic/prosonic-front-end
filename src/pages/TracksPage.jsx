@@ -1,12 +1,16 @@
-import React from 'react'
+import React, {Component} from 'react'
+import Pagination from '../components/common/Pagination';
 import Layout from '../components/Layout'
 import Allbeats from '../components/products/Allbeats';
+import tracks from '../trackssdata';
 
-function TracksPage() {
-
-  
-  return (
-    <Layout>
+class TracksPage extends Component {
+  state = { 
+   
+   }; 
+  render() { 
+    return (
+      <Layout>
       <div className="tracksHeader"></div>
         <section id='tracksPage'>
           <header className='header-section'>
@@ -57,22 +61,12 @@ function TracksPage() {
 
           <Allbeats/>
 
-          <div className='pagination'>
-            <div className="prev"> Prev </div>
-            <div className="numberContainer">
-              <div className="paginationNumbers currentPage"> 1 </div>
-              <div className="paginationNumbers"> 2 </div>
-              <div className="paginationNumbers"> 3 </div>
-              <div className="paginationNumbers"> 4 </div>
-              <div className="paginationNumbers"> 5 </div>
-              <div className="paginationNumbers"> 6 </div>
-              <div className="paginationNumbers"> 7 </div>
-            </div>
-            <div className="next"> Next </div>
-          </div>
+          <Pagination itemsCount={this.state.tracks.length} />
+
         </section>
     </Layout>
-  )
+    );
+  }
 }
-
+ 
 export default TracksPage;
