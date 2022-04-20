@@ -6,7 +6,7 @@ import tracks from '../trackssdata';
 
 class TracksPage extends Component {
   state = { 
-   
+    pageSize: 5
    }; 
   render() { 
     return (
@@ -61,7 +61,7 @@ class TracksPage extends Component {
 
           <Allbeats/>
 
-          <Pagination itemsCount={this.state.tracks.length} />
+          <Pagination itemsCount={this.state.tracks.length} pageSize={this.state.pageSize}/>
 
         </section>
     </Layout>
