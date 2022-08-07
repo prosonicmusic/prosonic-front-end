@@ -12,12 +12,12 @@ const Allbeats = ({ tracks, loading }) => {
 
               {tracks.map(beat=>{
                 return <div className='beatsGrid'>
-                  <div key={tracks.id}>
+                  <div key={beat.id}>
                     <Beat beat={beat}/>
                   </div>
                 </div>
               })}
-    
+  
     </div>
   )
 }

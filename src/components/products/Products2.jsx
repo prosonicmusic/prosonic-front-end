@@ -2,16 +2,22 @@ import React from 'react'
 import Beat from './Beat'
 import tracks from '../../trackssdata';
 
-function Products2() {
+const Products2 = ({ tracks, loading }) => {
+  if(loading) {
+    // return <h2>Loading...</h2>;
+  }
+
   return (
     <div className='beats'>
+
               {tracks.map(beat=>{
                 return <div className='beatsGrid'>
-                  <div>
+                  <div key={beat.id}>
                     <Beat beat={beat}/>
                   </div>
                 </div>
               })}
+              
     </div>
   )
 }

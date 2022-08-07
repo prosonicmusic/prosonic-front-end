@@ -1197,6 +1197,8 @@ footer {
     display: flex;
     justify-content: space-between;
     align-items: center; }
+    #tracksPage .pagination .disabled {
+      opacity: 0.4; }
     @media (max-width: 900px) {
       #tracksPage .pagination {
         justify-content: space-around; } }
@@ -1237,6 +1239,8 @@ footer {
       padding: 15px;
       border-radius: 8px;
       transition: .3s; }
+      #tracksPage .pagination .numberContainer .paginationNumbers a {
+        color: #bcc7d4; }
       #tracksPage .pagination .numberContainer .paginationNumbers:hover {
         background: #32353da9; }
     @media (max-width: 900px) {

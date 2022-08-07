@@ -102,6 +102,10 @@
     justify-content: space-between;
     align-items: center;
 
+    .disabled {
+      opacity: 0.4;
+    }
+
     @include respond-phone {
       justify-content: space-around;
     }
@@ -155,6 +159,10 @@
         padding: 15px;
         border-radius: 8px;
         transition: .3s;
+        
+        a {
+          color: $color-light;
+        }
 
         &:hover {
           background: #32353da9;
@@ -165,8 +173,6 @@
         display: none;
       }
     }
-
-
   }
 }
 

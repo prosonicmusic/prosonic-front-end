@@ -7,6 +7,7 @@ function Footer() {
     <div className='footerBody'>
       <footer>
         <section>
+          
           <div className='footerSec aboutUs'>
             <h2>About Us</h2>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus voluptate voluptas et modi? Et        consequatur iste corporis maiores, ea similique praesentium pariatur, optio eum soluta enim? Veritatis  quae  repellat nisi.</p>

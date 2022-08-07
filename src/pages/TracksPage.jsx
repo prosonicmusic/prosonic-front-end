@@ -9,7 +9,7 @@ const Trackspage = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [postsPerPage, setPostsPerPage] = useState(2);
+  const [postsPerPage] = useState(4);
 
   useEffect(() => {
     const fetchPosts = async () => {
@@ -18,14 +18,15 @@ const Trackspage = () => {
       setPosts(res.data);
       setLoading(false);
     }
-
     fetchPosts();
   }, []);
 
 
   const indexOfLastPost = currentPage * postsPerPage;
   const indexOfFirstPost = indexOfLastPost - postsPerPage;
-  // const currentPosts = tracks.slice(indexOfFirstPost, indexOfLastPost);
+  const currentPosts = tracks.slice(indexOfFirstPost, indexOfLastPost);
+
+  const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
   return (
     <Layout>
@@ -77,9 +78,9 @@ const Trackspage = () => {
             </div>
           </header>
 
-          <Allbeats tracks={tracks} loading={loading}/>
+          <Allbeats tracks={currentPosts} loading={loading}/>
 
-          <Pagination />
+          <Pagination postsPerPage={postsPerPage} TotalPosts={tracks.length} paginate={paginate}/>
 
         </section>
     </Layout>
