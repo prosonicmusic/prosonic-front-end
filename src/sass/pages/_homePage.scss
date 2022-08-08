@@ -1,115 +1,106 @@
 .block {
-  height: 100%;
-  margin: auto;
-  width: 100%;
-  max-width: 1024px;
-  padding: 20px 20px;
-  color: $color-light;
-  margin-bottom: 50px;
-  border-radius: 20px;
-  background: #1a1c2057;
-  // background: linear-gradient(#1a1c2069,#1a1c2069,#1a1c2069,#1a1c2069,#1a1c2069,#00000069);
+   height: 100%;
+   margin: auto;
+   width: 100%;
+   max-width: 1024px;
+   padding: 20px 20px;
+   color: $color-light;
+   margin-bottom: 50px;
+   border-radius: 20px;
+   background: #1a1c2057;
+   // background: linear-gradient(#1a1c2069,#1a1c2069,#1a1c2069,#1a1c2069,#1a1c2069,#00000069);
 
-
-  
-  .blockContent1 {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    margin-right: 10px;
-    margin-left: 120px;
-    color: #9ca4ad;
-
-
-    @include respond-phone {
-      font-size: 60%;
-      display: block;
-      margin-left: 0;
-    }
-
-    .h2-1 {
-      font-size: 20px;
-      font-weight: 400;
-      color: #9ca4ad;
-      padding: 0 10px 18px 10px;
+   .blockContent1 {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-top: 20px;
       margin-bottom: 20px;
+      margin-right: 10px;
+      margin-left: 120px;
+      color: #9ca4ad;
 
       @include respond-phone {
-       width: 100%;
+         font-size: 60%;
+         display: block;
+         margin-left: 0;
       }
 
-      &::before {
-        content: '';
-        position: absolute;
-        margin-top: 35px;
-        width: 70px;
-        height: 2px;
-        background: #e91c60cb;
-      }
-    }
+      .h2-1 {
+         font-size: 20px;
+         font-weight: 400;
+         color: #9ca4ad;
+         padding: 0 10px 18px 10px;
+         margin-bottom: 20px;
 
+         @include respond-phone {
+            width: 100%;
+         }
 
-    .blockContent2 {
-      
-
-      .h2-2 {
-        font-size: 20px;
-        font-weight: 400;
-        color: #9ca4ad;
-        padding: 0 10px 18px 10px;
-        margin-left: 20px;
-        margin-right: 20px;
-
-        @include respond-phone {
-          text-align: center;
-          margin-top: 40px;
+         &::before {
+            content: "";
+            position: absolute;
+            margin-top: 35px;
+            width: 70px;
+            height: 2px;
+            background: #e91c60cb;
          }
       }
 
-      #customLink {
-        border-radius: 4px;
-        padding: 8px 18px;
-        color: $color-light;
-        font-size: 16px;
-        transition: 0.35s;
-        display: block;
-        text-align: center;
-        background-color: #5a5a7a1f;
-        animation: animate 1s linear infinite;
-  
-        &:hover {
-          background-color: #5a5a7a36;
+      .blockContent2 {
+         .h2-2 {
+            font-size: 20px;
+            font-weight: 400;
+            color: #9ca4ad;
+            padding: 0 10px 18px 10px;
+            margin-left: 20px;
+            margin-right: 20px;
 
-        }
+            @include respond-phone {
+               text-align: center;
+               margin-top: 40px;
+            }
+         }
+
+         #customLink {
+            border-radius: 4px;
+            padding: 8px 18px;
+            color: $color-light;
+            font-size: 16px;
+            transition: 0.35s;
+            display: block;
+            text-align: center;
+            background-color: #5a5a7a1f;
+            animation: animate 1s linear infinite;
+
+            &:hover {
+               background-color: #5a5a7a36;
+            }
+         }
+
+         @include respond-phone {
+            font-size: 100%;
+         }
       }
-
-      @include respond-phone {
-        font-size: 100%;
-      }
-    }
-
 
       ul {
-        li {
-          list-style: disc;
-          padding: 3px 10px;
-          font-size: 14px;
-        }
+         li {
+            list-style: disc;
+            padding: 3px 10px;
+            font-size: 14px;
+         }
       }
-  }
+   }
 }
 
-
 @keyframes animate {
-  0% {
-    color: #103955;
-    text-shadow: none;
-  }
-  100% {
-    color: $color-light;
-    text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4,
-      0 0 80px #03bcf4, 0 0 100px #03bcf4;
-  }
+   0% {
+      color: #103955;
+      text-shadow: none;
+   }
+   100% {
+      color: $color-light;
+      text-shadow: 0 0 10px #03bcf4, 0 0 20px #03bcf4, 0 0 40px #03bcf4, 0 0 80px #03bcf4,
+         0 0 100px #03bcf4;
+   }
 }

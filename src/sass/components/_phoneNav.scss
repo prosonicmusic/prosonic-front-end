@@ -1,53 +1,52 @@
 #navbarMenu {
-  z-index: 50;
-  position: fixed;
-  width: 100%;
-  height: 100vh;
-  background: #1e2025;
-  bottom: 0;
-  top: 0;
-  left: 0;
-  transition: 0.2s;
-  padding: 60px 0 80px;
-  transform: translateX(100%);
+   z-index: 50;
+   position: fixed;
+   width: 100%;
+   height: 100vh;
+   background: #1e2025;
+   bottom: 0;
+   top: 0;
+   left: 0;
+   transition: 0.2s;
+   padding: 60px 0 80px;
+   transform: translateX(100%);
 
-  ul {
-    padding-left: 0 !important;
+   ul {
+      padding-left: 0 !important;
 
-    li {
-      background: #23252b;
-      margin-bottom: 5px;
-      border-radius: 8px;
+      li {
+         background: #23252b;
+         margin-bottom: 5px;
+         border-radius: 8px;
 
-      .homeIcon {
-        font-size: 13px;
-        position: absolute;
-        left: 5px;
-        padding: 15px;
+         .homeIcon {
+            font-size: 13px;
+            position: absolute;
+            left: 5px;
+            padding: 15px;
+         }
+
+         a {
+            padding: 10px 40px;
+            display: block;
+            color: #7e8893;
+            &:hover {
+               background: #17191d;
+               border-radius: 5px;
+            }
+         }
       }
+   }
 
-      a {
-        padding: 10px 40px;
-        display: block;
-        color: #7e8893;
-        &:hover {
-          background: #17191d;
-          border-radius: 5px;
-        }
-      }
-    }
-  }
+   &.active {
+      transform: translateX(0);
+   }
 
-  &.active {
-    transform: translateX(0);
-  }
+   @include respond-phone-min {
+      display: none;
+   }
 
-  @include respond-phone-min {
-    display: none;
-  }
-
-  .wrapper {
-    padding: 10px;
-  }
+   .wrapper {
+      padding: 10px;
+   }
 }
-

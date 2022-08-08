@@ -6,18 +6,17 @@
 // }
 
 .beats {
-  display: flex;
-  flex-flow: row wrap;
+   display: flex;
+   flex-flow: row wrap;
 }
 
 .beatsGrid {
-    flex-basis: 20%;
-  max-width: 20%;
-  padding: 7.5px;
+   flex-basis: 20%;
+   max-width: 20%;
+   padding: 7.5px;
 
-
-  @include respond-phone {
-    flex-basis: 100%;
-    max-width: 100%;
-  }
+   @include respond-phone {
+      flex-basis: 100%;
+      max-width: 100%;
+   }
 }

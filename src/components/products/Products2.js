@@ -4,7 +4,7 @@ import tracks from '../../trackssdata';
 
 const Products2 = ({ tracks, loading }) => {
   if(loading) {
-    // return <h2>Loading...</h2>;
+    return <h2>Loading...</h2>;
   }
 
   return (

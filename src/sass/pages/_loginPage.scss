@@ -1,235 +1,228 @@
 #loginPageHeader {
-  background: url("/src/img/studio4.jpg") no-repeat center center/cover;
-  height: 50vh;
-  position: relative;
-  margin-bottom: 410px;
+   background: url("/src/assets/img/studio4.jpg") no-repeat center center/cover;
+   height: 50vh;
+   position: relative;
+   margin-bottom: 410px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 75%, $color-black)
-      100%;
-  }
+   &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 75%, $color-black) 100%;
+   }
 }
 
-
 #loginSec {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  transition: 0.3s;
-  position: relative;
-  z-index: 40;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   min-height: 100vh;
+   transition: 0.3s;
+   position: relative;
+   z-index: 40;
 
-  @include respond-phone {
-    max-width: 500px;
-    height: 650px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: -40px;
-  }
+   @include respond-phone {
+      max-width: 500px;
+      height: 650px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: -40px;
+   }
 
-  #formBx {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 50%;
-    height: 100%;
-    background: #1a1a1a;
-    z-index: 1000;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 5px 45px rgba(255, 255, 255, 0.1);
-    transition: 0.3s ease-in-out;
-    border-radius: 15px;
-    overflow: hidden;
-
-    .signinForm {
-      transition-delay: 0s;
-    }
-    
-    .signupForm {
-      transition-delay: 0s;
-      margin-left: 100%;
-    }
-
-    &.active {
-      left: 50%;
-
- 
-        @include respond-phone {
-          left: 0;
-          top: 150px;
-        }
+   #formBx {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 50%;
+      height: 100%;
+      background: #1a1a1a;
+      z-index: 1000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 5px 45px rgba(255, 255, 255, 0.1);
+      transition: 0.3s ease-in-out;
+      border-radius: 15px;
+      overflow: hidden;
 
       .signinForm {
-        left: -100%;
-        transition-delay: 0s;
+         transition-delay: 0s;
       }
 
       .signupForm {
-        margin-left: 0;
-        transition-delay: 0.1s;
-
-        [type="submit"] {
-          background: #ca1854e7;
-          transition: 0.3s;
-
-          &:hover {
-            background-color: #e91c60f8;
-          }
-        }
+         transition-delay: 0s;
+         margin-left: 100%;
       }
-    }
-
-
-    .form {
-      position: absolute;
-      left: 0;
-      width: 100%;
-      padding: 50px;
-      transition: .3s;
-
-      form {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-
-
-        h3 {
-          font-size: 1.5em;
-          margin-bottom: 25px;
-          font-weight: 500;
-        }
-
-        input {
-          width: 100%;
-          color: $color-light;
-          margin-bottom: 20px;
-          padding: 10px;
-          outline: none;
-          font-size: 16px;
-          background: #121316;
-          border: none;
-          border-radius: 8px;
-        }
-
-        [type="submit"] {
-          background: #1aa2d8d3;
-          border: none;
-          color: $color-light;
-          max-width: 100px;
-          cursor: pointer;
-          border-radius: 8px;
-          transition: 0.3s;
-
-          &:hover {
-            background-color: #1cafe9f1
-          }
-        }
-
-        .forgot {
-          color: #9ca5b1;
-          text-decoration: underline;
-          font-size: 15px;
-        }
-      }
-
-      @include respond-phone {
-        padding: 20px;
-      }
-    }
-
-    @include respond-phone {
-      width: 100%;
-      height: 500px;
-      top: 0;
-      box-shadow: none;
-    }
-  }
-
-  .loginContainer {
-    position: relative;
-    width: 800px;
-    height: 500px;
-    margin: 20px;
-
-    #bgOne {
-      position: absolute;
-      top: 40px;
-      width: 100%;
-      height: 420px;
-      display: flex;
-      border-radius: 15px;
-      justify-content: center;
-      align-items: center;
-      background: rgba(14, 37, 48, 0.5);
-      box-shadow: 0 5px 45px rgba(255, 255, 255, 0.12);
-      transition: 0.8s;
 
       &.active {
-        background: rgba(51, 16, 16, 0.5);
+         left: 50%;
+
+         @include respond-phone {
+            left: 0;
+            top: 150px;
+         }
+
+         .signinForm {
+            left: -100%;
+            transition-delay: 0s;
+         }
+
+         .signupForm {
+            margin-left: 0;
+            transition-delay: 0.1s;
+
+            [type="submit"] {
+               background: #ca1854e7;
+               transition: 0.3s;
+
+               &:hover {
+                  background-color: #e91c60f8;
+               }
+            }
+         }
       }
 
-      .loginBox {
-        position: relative;
-        width: 50%;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
+      .form {
+         position: absolute;
+         left: 0;
+         width: 100%;
+         padding: 50px;
+         transition: 0.3s;
 
-      
+         form {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
 
-        @include respond-phone {
-          position: absolute;
-          width: 100%;
-          height: 150px;
-          bottom: 0;
-        }
+            h3 {
+               font-size: 1.5em;
+               margin-bottom: 25px;
+               font-weight: 500;
+            }
 
-        h2 {
-          color: $color-light;
-          font-size: 1.2em;
-          font-weight: 500;
-          margin-bottom: 12px;
-        }
+            input {
+               width: 100%;
+               color: $color-light;
+               margin-bottom: 20px;
+               padding: 10px;
+               outline: none;
+               font-size: 16px;
+               background: #121316;
+               border: none;
+               border-radius: 8px;
+            }
 
-        button {
-          cursor: pointer;
-          padding: 10px;
-          background: #bebebeda;
-          color: #333;
-          font-weight: 600;
-          border: none;
-          border-radius: 5px;
-          transition: 0.3s;
+            [type="submit"] {
+               background: #1aa2d8d3;
+               border: none;
+               color: $color-light;
+               max-width: 100px;
+               cursor: pointer;
+               border-radius: 8px;
+               transition: 0.3s;
 
-          &:hover {
-            background: #e6e6e6da;
-          }
-        }
-      }
+               &:hover {
+                  background-color: #1cafe9f1;
+               }
+            }
 
-      .signin {
-        @include respond-phone {
-          top: 0;
-        }
+            .forgot {
+               color: #9ca5b1;
+               text-decoration: underline;
+               font-size: 15px;
+            }
+         }
+
+         @include respond-phone {
+            padding: 20px;
+         }
       }
 
       @include respond-phone {
-       top: 25px;
-       height: 600px;
+         width: 100%;
+         height: 500px;
+         top: 0;
+         box-shadow: none;
       }
-    }
-  }
+   }
+
+   .loginContainer {
+      position: relative;
+      width: 800px;
+      height: 500px;
+      margin: 20px;
+
+      #bgOne {
+         position: absolute;
+         top: 40px;
+         width: 100%;
+         height: 420px;
+         display: flex;
+         border-radius: 15px;
+         justify-content: center;
+         align-items: center;
+         background: rgba(14, 37, 48, 0.5);
+         box-shadow: 0 5px 45px rgba(255, 255, 255, 0.12);
+         transition: 0.8s;
+
+         &.active {
+            background: rgba(51, 16, 16, 0.5);
+         }
+
+         .loginBox {
+            position: relative;
+            width: 50%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+
+            @include respond-phone {
+               position: absolute;
+               width: 100%;
+               height: 150px;
+               bottom: 0;
+            }
+
+            h2 {
+               color: $color-light;
+               font-size: 1.2em;
+               font-weight: 500;
+               margin-bottom: 12px;
+            }
+
+            button {
+               cursor: pointer;
+               padding: 10px;
+               background: #bebebeda;
+               color: #333;
+               font-weight: 600;
+               border: none;
+               border-radius: 5px;
+               transition: 0.3s;
+
+               &:hover {
+                  background: #e6e6e6da;
+               }
+            }
+         }
+
+         .signin {
+            @include respond-phone {
+               top: 0;
+            }
+         }
+
+         @include respond-phone {
+            top: 25px;
+            height: 600px;
+         }
+      }
+   }
 }

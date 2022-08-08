@@ -1,180 +1,171 @@
 #aboutPage {
-  background: url("/src/img/studio6.jpg") no-repeat center center/cover;
-  height: 50vh;
-  position: relative;
-  margin-bottom: 410px;
-  
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 75%, $color-black)
-      100%;
-  }
+   background: url("/src/assets/img/studio6.jpg") no-repeat center center/cover;
+   height: 50vh;
+   position: relative;
+   margin-bottom: 410px;
 
-  .cardTitle {
+   &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.6) 75%, $color-black) 100%;
+   }
 
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    top: 150px;
-    
-
-    h1 {
-      padding: 10px 248px;
-      text-align: center;
-      background: rgba(255, 255, 255, 0.05);
-      font-weight: 500;
-    }
-  }
-
-  .team {
-    position: relative;
-    z-index: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-    margin: 200px 0;
-
-    .teamCard {
+   .cardTitle {
       position: relative;
-      width: 300px;
-      height: 400px;
-      background: rgba(255, 255, 255, 0.05);
-      margin: 20px;
-      box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
-      border-radius: 15px;
-      overflow: hidden;
+      z-index: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      backdrop-filter: blur(5px);
-      border-top: 1px solid rgba(255, 255, 255, 0.301);
-      border-left: 0.5px solid rgba(255, 255, 255, 0.301);
+      flex-wrap: wrap;
+      top: 150px;
 
-      &:hover {
-        .cardContent {
-          opacity: 1;
-          transform: translateY(-20px);
-        }
-
-        .sci {
-          li {
-            transform: translateY(0px);
-            opacity: 1;
-          }
-        }
-
-        .contentBx {
-
-          h3 {
-            .chngContent {
-              visibility: hidden;
-              &::after {
-                position: absolute;
-                left: 18px;
-                visibility: visible;
-                content: 'Front-end Developer';
-              }
-            }
-
-            .chngContent2 {
-              visibility: hidden;
-              &::after {
-                position: absolute;
-                left: 39px;
-                visibility: visible;
-                content: 'Back-end Developer';
-              }
-            }
-          }
-        }
+      h1 {
+         padding: 10px 248px;
+         text-align: center;
+         background: rgba(255, 255, 255, 0.05);
+         font-weight: 500;
       }
+   }
 
+   .team {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin: 200px 0;
 
-      .cardContent {
-        position: relative;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        opacity: 0.5;
-        transition: 0.3s;
-        
-        .imgBx {
-          position: relative;
-          width: 150px;
-          height: 150px;
-          border-radius: 50%;
-          overflow: hidden;
-          border: 7px solid rgba(0, 0, 0, 0.25);
+      .teamCard {
+         position: relative;
+         width: 300px;
+         height: 400px;
+         background: rgba(255, 255, 255, 0.05);
+         margin: 20px;
+         box-shadow: 20px 20px 50px rgba(0, 0, 0, 0.5);
+         border-radius: 15px;
+         overflow: hidden;
+         display: flex;
+         justify-content: center;
+         align-items: center;
+         backdrop-filter: blur(5px);
+         border-top: 1px solid rgba(255, 255, 255, 0.301);
+         border-left: 0.5px solid rgba(255, 255, 255, 0.301);
 
-          img {
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-          }
-        }
-
-        .contentBx {
-
-          h3 {
-            color: #fff;
-            text-transform: uppercase;
-            letter-spacing: 5px;
-            font-weight: 600;
-            font-size: 18px;
-            text-align: center;
-            margin: 20px 0 10px;
-            line-height: 1.1em;
-
-
-            span {
-              position: relative;
-              top: 5px;
-              letter-spacing: 3px;
-              font-size: 14px;
-              font-weight: 300;
-              text-transform: initial;
-            }
-          }
-        }
-      }
-
-      .sci {
-        position: absolute;
-        bottom: 50px;
-        display: flex;
-
-        li {
-          list-style: none;
-          margin: 0 10px;
-          transform: translateY(40px);
-          transition: 0.3s;
-          opacity: 0;
-          transition-delay: 0.1s;
-          
-          a {
-            color: #fff;
-            font-size: 24px;
-
-            &:hover {
-              color: #2da9c9;
+         &:hover {
+            .cardContent {
+               opacity: 1;
+               transform: translateY(-20px);
             }
 
-          }
-           
-        }
+            .sci {
+               li {
+                  transform: translateY(0px);
+                  opacity: 1;
+               }
+            }
+
+            .contentBx {
+               h3 {
+                  .chngContent {
+                     visibility: hidden;
+                     &::after {
+                        position: absolute;
+                        left: 18px;
+                        visibility: visible;
+                        content: "Front-end Developer";
+                     }
+                  }
+
+                  .chngContent2 {
+                     visibility: hidden;
+                     &::after {
+                        position: absolute;
+                        left: 39px;
+                        visibility: visible;
+                        content: "Back-end Developer";
+                     }
+                  }
+               }
+            }
+         }
+
+         .cardContent {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            opacity: 0.5;
+            transition: 0.3s;
+
+            .imgBx {
+               position: relative;
+               width: 150px;
+               height: 150px;
+               border-radius: 50%;
+               overflow: hidden;
+               border: 7px solid rgba(0, 0, 0, 0.25);
+
+               img {
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+               }
+            }
+
+            .contentBx {
+               h3 {
+                  color: #fff;
+                  text-transform: uppercase;
+                  letter-spacing: 5px;
+                  font-weight: 600;
+                  font-size: 18px;
+                  text-align: center;
+                  margin: 20px 0 10px;
+                  line-height: 1.1em;
+
+                  span {
+                     position: relative;
+                     top: 5px;
+                     letter-spacing: 3px;
+                     font-size: 14px;
+                     font-weight: 300;
+                     text-transform: initial;
+                  }
+               }
+            }
+         }
+
+         .sci {
+            position: absolute;
+            bottom: 50px;
+            display: flex;
+
+            li {
+               list-style: none;
+               margin: 0 10px;
+               transform: translateY(40px);
+               transition: 0.3s;
+               opacity: 0;
+               transition-delay: 0.1s;
+
+               a {
+                  color: #fff;
+                  font-size: 24px;
+
+                  &:hover {
+                     color: #2da9c9;
+                  }
+               }
+            }
+         }
       }
-    }
-  }
+   }
 }

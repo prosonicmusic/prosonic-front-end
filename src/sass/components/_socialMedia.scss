@@ -1,31 +1,25 @@
 #socialMedia {
-  @include respond-phone {
-    display: none;
-  }
+   @include respond-phone {
+      display: none;
+   }
 
+   .links {
+      position: fixed;
+      right: -850px;
+      z-index: 1;
+      top: 350px;
 
-  .links {
-    position: fixed;
-    right: -850px;
-    z-index: 1;
-    top: 350px;
-  
-    a {
-      filter: invert(54%) sepia(16%) saturate(256%) hue-rotate(171deg) brightness(95%) contrast(89%);
+      a {
+         filter: invert(54%) sepia(16%) saturate(256%) hue-rotate(171deg) brightness(95%)
+            contrast(89%);
 
-      &:hover {
-        filter: brightness(0) invert(1);
-        
+         &:hover {
+            filter: brightness(0) invert(1);
+         }
+
+         img {
+            padding: 10px 0px;
+         }
       }
-      
-      img {
-        padding: 10px 0px;
-        
-      }
-      
-      
-      
-    }
-  }
+   }
 }
-

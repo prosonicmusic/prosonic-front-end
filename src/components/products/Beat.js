@@ -1,11 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import cover2 from './../../img/cover1.jpg';
-import playIcon from './../../icons/play-icon-1.svg';
-import logo1 from './../../img/cubase_logo.png';
-import logo2 from './../../img/Fl-logo.png';
-import { FontAwesomeIcon } from  '@fortawesome/react-fontawesome';
-import { faChevronRight } from  '@fortawesome/free-solid-svg-icons';
+import cover2 from '../../assets/img/cover1.jpg';
+import playIcon from '../../assets/icons/play-icon-1.svg';
+import logo1 from '../../assets/img/cubase_logo.png';
+import logo2 from '../../assets/img/Fl-logo.png';
+// import { FontAwesomeIcon } from  '@fortawesome/react-fontawesome';
+// import { faChevronRight } from  '@fortawesome/free-solid-svg-icons';
+
+import { FaChevronRight } from "react-icons/fa";
 
 export default function Beat({beat}) {
   return (
@@ -28,7 +30,7 @@ export default function Beat({beat}) {
         <div className='beatItem__bottomWrapper bottom-part'>
           <div className='moreInfoIcon'>
               <a href="#"></a>
-              <FontAwesomeIcon icon={faChevronRight} className="rightIcon"></FontAwesomeIcon>
+              <FaChevronRight className="rightIcon" />
           </div>
           <div>
             <div className='beatItem__nameAndUsername'>

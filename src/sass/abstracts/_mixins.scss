@@ -8,13 +8,19 @@
 */
 
 @mixin respond-phone {
-  @media (max-width: 900px) { @content };
+   @media (max-width: 900px) {
+      @content;
+   }
 }
 
 @mixin respond-phone-min {
-  @media (min-width: 900px) { @content };
+   @media (min-width: 900px) {
+      @content;
+   }
 }
 
 @mixin fix-one {
-  @media (max-width: 970px) { @content };
+   @media (max-width: 970px) {
+      @content;
+   }
 }

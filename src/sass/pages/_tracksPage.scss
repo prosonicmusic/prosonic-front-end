@@ -1,191 +1,194 @@
 .tracksHeader {
-  // height: 410vh;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background: linear-gradient(180deg, #1a1c20, #121317, #111419, #0f151cb2, #0b171fb2, #061822b2, #021a23b2,#021a23b2, #00000070);
-  position: absolute;
-  z-index: -10;
+   // height: 410vh;
+   width: 100%;
+   background-position: center;
+   background-repeat: no-repeat;
+   background-size: cover;
+   background: linear-gradient(
+      180deg,
+      #1a1c20,
+      #121317,
+      #111419,
+      #0f151cb2,
+      #0b171fb2,
+      #061822b2,
+      #021a23b2,
+      #021a23b2,
+      #00000070
+   );
+   position: absolute;
+   z-index: -10;
 }
 
 #tracksPage {
-  position: relative;
-  padding: 10px 20px 20px 20px;
-  overflow: visible;
-  background: #1a1c20;
-  height: 100%;
-  margin: auto;
-  width: 100%;
-  max-width: 1024px;
-  color: $color-light;
-  top: 75px;
-  border-radius: 20px;
-  margin-bottom: 134px;
+   position: relative;
+   padding: 10px 20px 20px 20px;
+   overflow: visible;
+   background: #1a1c20;
+   height: 100%;
+   margin: auto;
+   width: 100%;
+   max-width: 1024px;
+   color: $color-light;
+   top: 75px;
+   border-radius: 20px;
+   margin-bottom: 134px;
 
+   &::before {
+      content: "";
+      clear: both;
+      display: table;
+      zoom: 1;
+   }
 
-
-  &::before {
-    content: '';
-    clear: both;
-    display: table;
-    zoom: 1;
-  }
-  
-
-  .header-section {
-    height: 100%;
-    margin: auto;
-    width: 100%;
-    max-width: 1024px;
-    padding: 0 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    @include respond-phone {
-      display: block;
-    }
-
-    h1 {
-      font-weight: 500;
-
-      @include respond-phone {
-        padding-bottom: 20px;
-        text-align: center;
-      }
-    }
-
-    .beatsMenu {
+   .header-section {
+      height: 100%;
+      margin: auto;
+      width: 100%;
+      max-width: 1024px;
+      padding: 0 20px;
       display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-top: 20px;
+      margin-bottom: 20px;
+
+      @include respond-phone {
+         display: block;
+      }
+
+      h1 {
+         font-weight: 500;
+
+         @include respond-phone {
+            padding-bottom: 20px;
+            text-align: center;
+         }
+      }
+
+      .beatsMenu {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+
+         .dropdown-select {
+            margin-right: 12px;
+            position: relative;
+
+            select {
+               padding: 6px 22px 6px 10px;
+               font-size: 11px;
+               border-radius: 8px;
+               transition: 0.3s;
+               background: #23252b;
+               color: $color-light;
+               border: none;
+               outline: none;
+               -webkit-appearance: none;
+
+               option {
+                  font-weight: normal;
+                  display: block;
+                  white-space: nowrap;
+                  min-height: 1.2em;
+                  padding: 0px 2px 1px;
+               }
+            }
+         }
+      }
+   }
+
+   .pagination {
+      margin-top: 30px;
+      text-align: center;
+      width: 100%;
+      position: relative;
+      display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
 
-
-      .dropdown-select {
-        margin-right: 12px;
-        position: relative;
-
-        select {
-          padding: 6px 22px 6px 10px;
-          font-size: 11px;
-          border-radius: 8px;
-          transition: .3s;
-          background: #23252b;
-          color: $color-light;
-          border: none;
-          outline: none;
-          -webkit-appearance: none;
-
-
-          option {
-            font-weight: normal;
-            display: block;
-            white-space: nowrap;
-            min-height: 1.2em;
-            padding: 0px 2px 1px;
-            
-          }
-        }
-      }
-    }
-  }
-
-  .pagination {
-    margin-top: 30px;
-    text-align: center;
-    width: 100%;
-    position: relative;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    .disabled {
-      opacity: 0.4;
-    }
-
-    @include respond-phone {
-      justify-content: space-around;
-    }
-
-    .prev {
-      max-width: 25%;
-      width: 20%;
-      background: #23252ba9;
-      padding: 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: .3s;
-
-      &:hover {
-        background: #32353da9;
+      .disabled {
+         opacity: 0.4;
       }
 
       @include respond-phone {
-        width: 30%;
-      }
-    }
-
-    .next {
-      max-width: 25%;
-      width: 20%;
-      background: #23252ba9;
-      padding: 15px;
-      border-radius: 8px;
-      cursor: pointer;
-      transition: .3s;
-
-      &:hover {
-        background: #32353da9;
+         justify-content: space-around;
       }
 
-      @include respond-phone {
-        width: 30%;
-      }
-    }
+      .prev {
+         max-width: 25%;
+         width: 20%;
+         background: #23252ba9;
+         padding: 15px;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: 0.3s;
 
-    .numberContainer {
+         &:hover {
+            background: #32353da9;
+         }
 
-      .paginationNumbers {
-        text-align: center;
-        vertical-align: middle;
-        margin-left: 4px;
-        margin-right: 4px;
-        display: inline-block;
-        background: #23252b;
-        cursor: pointer;
-        padding: 15px;
-        border-radius: 8px;
-        transition: .3s;
-        
-        a {
-          color: $color-light;
-        }
-
-        &:hover {
-          background: #32353da9;
-        }
+         @include respond-phone {
+            width: 30%;
+         }
       }
 
-      @include respond-phone {
-        display: none;
+      .next {
+         max-width: 25%;
+         width: 20%;
+         background: #23252ba9;
+         padding: 15px;
+         border-radius: 8px;
+         cursor: pointer;
+         transition: 0.3s;
+
+         &:hover {
+            background: #32353da9;
+         }
+
+         @include respond-phone {
+            width: 30%;
+         }
       }
-    }
-  }
+
+      .numberContainer {
+         .paginationNumbers {
+            text-align: center;
+            vertical-align: middle;
+            margin-left: 4px;
+            margin-right: 4px;
+            display: inline-block;
+            background: #23252b;
+            cursor: pointer;
+            padding: 15px;
+            border-radius: 8px;
+            transition: 0.3s;
+
+            a {
+               color: $color-light;
+            }
+
+            &:hover {
+               background: #32353da9;
+            }
+         }
+
+         @include respond-phone {
+            display: none;
+         }
+      }
+   }
 }
 
 .caret {
-  right: 8px;
-  position: absolute;
-  top: 2px;
-  bottom: 0;
-  margin: auto;
-  width: 0;
-  height: 0;
-  border-left: 4px solid transparent;
-  border-right: 4px solid transparent;
-  border-top: 4px solid #5a626b;
-  
+   right: 8px;
+   position: absolute;
+   top: 2px;
+   bottom: 0;
+   margin: auto;
+   width: 0;
+   height: 0;
+   border-left: 4px solid transparent;
+   border-right: 4px solid transparent;
+   border-top: 4px solid #5a626b;
 }

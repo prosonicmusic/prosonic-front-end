@@ -1,12 +1,13 @@
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHome } from '@fortawesome/free-solid-svg-icons'
-import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
-import { faBox } from '@fortawesome/free-solid-svg-icons'
-import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faHome } from '@fortawesome/free-solid-svg-icons'
+// import { faFloppyDisk } from '@fortawesome/free-solid-svg-icons'
+// import { faBox } from '@fortawesome/free-solid-svg-icons'
+// import { faScrewdriverWrench } from '@fortawesome/free-solid-svg-icons'
+// import { faUser } from '@fortawesome/free-solid-svg-icons'
+// import { faRightToBracket } from '@fortawesome/free-solid-svg-icons'
 
+import { FaHome, FaBox, FaUser, FaScrewdriver, FaArrowRight, FaMusic } from "react-icons/fa";
 
 function PhoneNav({ status }) {
   return (
@@ -14,32 +15,32 @@ function PhoneNav({ status }) {
       <div className="wrapper">
         <ul className="menuLink">
           <li className="menuFlex">
-          <FontAwesomeIcon icon={faHome} className="homeIcon"></FontAwesomeIcon>
+          <FaHome className="homeIcon" />
             <Link to="/">Home</Link>
           </li>
 
           <li className="menuFlex">
-          <FontAwesomeIcon icon={faFloppyDisk} className="homeIcon"></FontAwesomeIcon>
+          <FaMusic className="homeIcon" />
             <Link to="/tracks">Tracks</Link>
           </li>
 
           <li className="menuFlex">
-          <FontAwesomeIcon icon={faBox} className="homeIcon"></FontAwesomeIcon>
+          <FaBox className="homeIcon" />
             <Link to="/packages">Packages</Link>
           </li>
 
           <li className="menuFlex">
-          <FontAwesomeIcon icon={faScrewdriverWrench} className="homeIcon"></FontAwesomeIcon>
+          <FaScrewdriver className="homeIcon" />
             <Link to="/services">Services</Link>
           </li>
 
           <li className="menuFlex">
-          <FontAwesomeIcon icon={faUser} className="homeIcon"></FontAwesomeIcon>
+          <FaUser className="homeIcon" />
             <Link to="/contact">Contact</Link>
           </li>
 
           <li className="menuFlex">
-          <FontAwesomeIcon icon={faRightToBracket} className="homeIcon"></FontAwesomeIcon>
+          <FaArrowRight className="homeIcon" />
             <Link to="/login">Login</Link>
           </li>
 

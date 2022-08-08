@@ -1,172 +1,171 @@
 .header {
-  background: url("/src/img/studio6.jpg") no-repeat center center/cover;
-  height: 50vh;
-  position: relative;
-  margin-bottom: 30px;
+   background: url("/src/assets/img/studio6.jpg") no-repeat center center/cover;
+   height: 50vh;
+   position: relative;
+   margin-bottom: 30px;
 
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 75%, $color-black)
-100%;
-  }
+   &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 75%, $color-black) 100%;
+   }
 
-  *,
-  :after,
-  :before {
-    box-sizing: border-box;
-    z-index: 10;
-  }
+   *,
+   :after,
+   :before {
+      box-sizing: border-box;
+      z-index: 10;
+   }
 
-  &__navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: $color-dark;
-    width: 100%;
-    height: 60px;
-    position: fixed;
-    top: 0;
-    right: 1px;
-    padding: 0 30px;
-    transition: 0.3s ease-in-out;
-    background: transparent;
-    z-index: 60;
-
-    li {
-      margin-top: 4px;
-    }
-
-    #navbarMenuIcon {
-      display: none;
-    }
-  }
-
-  &__btn {
-    color: #fff;
-    padding: 5px 10px;
-    margin: 0 5px;
-    border-radius: 4px;
-    font-size: 14px;
-    transition: 0.35s;
-
-    &:hover {
-      background-color: rgba(90, 90, 122, 0.6);
-    }
-
-    @include respond-phone {
-      visibility: hidden;
-    }
-  }
-
-  &__login {
-    all: unset;
-    padding: 4px 10px;
-    margin: 0 5px 0 10px;
-    border-radius: 5px;
-    font-size: 14px;
-    transition: 0.35s;
-    background-color: #e91c60e7;
-    cursor: pointer;
-    
-    .loginT {
-      color: $color-light;
-    }
-
-    &:hover {
-      background-color: #e91c60;
-    }
-
-    @include respond-phone {
-      visibility: hidden;
-    }
-  }
-
-  &__menu {
-    display: flex;
-
-    .navbarCartIcon {
-      z-index: 60;
-      border-radius: 2px;
-      margin-top: 2px;
-      margin-right: 15px;
-      margin-left: 15px;
-      height: 29px;
-      width: 32px;
-      position: relative;
-      text-align: center;
-      transition: 0.2s;
-      align-items: center;
+   &__navbar {
       display: flex;
-      justify-content: flex-start;
-      background-color: rgba(90, 90, 122, 0.4);
+      align-items: center;
+      justify-content: space-between;
+      background-color: $color-dark;
+      width: 100%;
+      height: 60px;
+      position: fixed;
+      top: 0;
+      right: 1px;
+      padding: 0 30px;
+      transition: 0.3s ease-in-out;
+      background: transparent;
+      z-index: 60;
+
+      li {
+         margin-top: 4px;
+      }
+
+      #navbarMenuIcon {
+         display: none;
+      }
+   }
+
+   &__btn {
+      color: #fff;
+      padding: 5px 10px;
+      margin: 0 5px;
+      border-radius: 4px;
+      font-size: 14px;
+      transition: 0.35s;
 
       &:hover {
-        background-color: rgba(90, 90, 122, 0.6);
+         background-color: rgba(90, 90, 122, 0.6);
       }
 
       @include respond-phone {
-        position: absolute;
-        right: 60px;
-        margin-top: 7px;
+         visibility: hidden;
+      }
+   }
+
+   &__login {
+      all: unset;
+      padding: 4px 10px;
+      margin: 0 5px 0 10px;
+      border-radius: 5px;
+      font-size: 14px;
+      transition: 0.35s;
+      background-color: #e91c60e7;
+      cursor: pointer;
+
+      .loginT {
+         color: $color-light;
       }
 
-      .shopIcon {
-        color: #bcc7d4;
-        height: 18px;
-        width: 100%;
-        padding-top: 2px;
-        padding-right: 1px;
+      &:hover {
+         background-color: #e91c60;
       }
 
-      span {
-        position: absolute;
-        top: -100%;
-        bottom: 0;
-        right: -100%;
-        left: 0;
-        margin: auto;
-        border-radius: 100px;
-        background: #e91c60;
-        height: 12px;
-        width: 12px;
-        font-size: 8px;
-        color: #fff;
-        font-weight: 900;
+      @include respond-phone {
+         visibility: hidden;
       }
-    }
-  }
+   }
 
-  &__logo {
-    z-index: 60;
-    width: 190px;
-    margin: 0;
-    padding: 0 15px;
-    position: relative;
+   &__menu {
+      display: flex;
 
-    @include respond-phone {
-      width: 130px;
-      left: -23px;
-    }
-    img {
-      max-width: 100%;
-      border-style: none;
-      vertical-align: middle;
-    }
-  }
+      .navbarCartIcon {
+         z-index: 60;
+         border-radius: 2px;
+         margin-top: 2px;
+         margin-right: 15px;
+         margin-left: 15px;
+         height: 29px;
+         width: 32px;
+         position: relative;
+         text-align: center;
+         transition: 0.2s;
+         align-items: center;
+         display: flex;
+         justify-content: flex-start;
+         background-color: rgba(90, 90, 122, 0.4);
 
-  &__top {
-    background: transparent;
-  }
+         &:hover {
+            background-color: rgba(90, 90, 122, 0.6);
+         }
+
+         @include respond-phone {
+            position: absolute;
+            right: 60px;
+            margin-top: 7px;
+         }
+
+         .shopIcon {
+            color: #bcc7d4;
+            height: 18px;
+            width: 100%;
+            padding-top: 2px;
+            padding-right: 1px;
+         }
+
+         span {
+            position: absolute;
+            top: -100%;
+            bottom: 0;
+            right: -100%;
+            left: 0;
+            margin: auto;
+            border-radius: 100px;
+            background: #e91c60;
+            height: 12px;
+            width: 12px;
+            font-size: 8px;
+            color: #fff;
+            font-weight: 900;
+         }
+      }
+   }
+
+   &__logo {
+      z-index: 60;
+      width: 190px;
+      margin: 0;
+      padding: 0 15px;
+      position: relative;
+
+      @include respond-phone {
+         width: 130px;
+         left: -23px;
+      }
+      img {
+         max-width: 100%;
+         border-style: none;
+         vertical-align: middle;
+      }
+   }
+
+   &__top {
+      background: transparent;
+   }
 }
 
 // change bg on scroll
 .bg-nav {
-  background-color: rgba(20, 26, 34, 0.8);
-  border-radius: 0px 0px 20px 20px;
+   background-color: rgba(20, 26, 34, 0.8);
+   border-radius: 0px 0px 20px 20px;
 }
