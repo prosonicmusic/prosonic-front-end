@@ -29,19 +29,19 @@ function Footer() {
             <ul className="contactInfo">
               <li>
                 <span><FaEnvelope/></span>
-                <a href="mailto:prosonictunes@gmail.com">prosonictunes@gmail.com</a>
+                <a href="mailto:prosonictunes@gmail.com" target="_blank rel=noopener">prosonictunes@gmail.com</a>
               </li>
               <li>
                 <span><FaTelegram/></span>
-                <a href="https://t.me/ProsonicSupport">@ProsonicSupport</a>
+                <a href="https://t.me/ProsonicSupport" target="_blank rel=noopener">@ProsonicSupport</a>
               </li>
               <li>
                 <span><FaLinkedinIn/></span>
-                <a href="https://www.linkedin.com/company/prosonicstudio">@Prosonicstudio</a>
+                <a href="https://www.linkedin.com/company/prosonictunes/" target="_blank rel=noopener">@Prosonictunes</a>
               </li>
               <li>
                 <span><FaInstagram/></span>
-                <a href="https://www.instagram.com/prosonictunes/">@Prosonictunes</a>
+                <a href="https://www.instagram.com/prosonictunes/" target="_blank rel=noopener">@Prosonictunes</a>
               </li>
             </ul>
           </div>
