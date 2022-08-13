@@ -1,5 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
+// icons
 import { FaTelegram, FaEnvelope, FaLinkedinIn, FaInstagram} from 'react-icons/fa'
 
 function Footer() {

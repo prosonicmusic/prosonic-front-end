@@ -3,7 +3,7 @@ const tracks = [
     id: "1",
     title: "Forgetting",
     author: "Prosonic",
-    daw: "FLStudio",
+    daw: "Cubase",
     genre: "Hip Hop",
     length: "2:23",
     bpm: "74",

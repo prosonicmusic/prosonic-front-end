@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import prosonicImg from "../assets/img/prosonic-icon-white.png";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faCartShopping } from "@fortawesome/free-solid-svg-icons";
-import { FaShoppingCart } from "react-icons/fa";
+
+// Components
 import Burger from "./Burger";
 import PhoneNav from "./PhoneNav";
+
+// assets
+import prosonicImg from "../assets/img/prosonic-icon-white.png";
+
+// icons
+import { FaShoppingCart } from "react-icons/fa";
 
 const Navbar = () => {
    const [color, setColor] = useState(false);

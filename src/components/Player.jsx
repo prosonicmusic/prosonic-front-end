@@ -1,5 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
+// icons
 import { FaPlay, Facirclex  } from 'react-icons/fa';
 import { AiOutlineClose } from 'react-icons/ai';
 

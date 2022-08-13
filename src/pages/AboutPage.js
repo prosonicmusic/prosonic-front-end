@@ -1,9 +1,15 @@
 import React from "react";
+import Tilt from "react-tilty";
+
+// Components
 import Layout from "../components/Layout";
+
+// icons
 import { FaGithub, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
+
+// assets
 import pakzad from "../assets/img/pakzad1.png";
 import mahmoud from "../assets/img/mahmoudeslami1.jpg";
-import Tilt from "react-tilty";
 
 function AboutPage() {
    return (

@@ -1,4 +1,6 @@
 import React from 'react'
+
+// Components
 import Layout from '../components/Layout'
 import Allpackages from '../components/products/Allpackages';
 

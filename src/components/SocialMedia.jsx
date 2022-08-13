@@ -1,8 +1,6 @@
 import React from 'react';
-// import instagram from '../icons/instagram.svg';
-// import telegram from '../icons/telegram.svg';
-// import linkedin from '../icons/linkedin.svg';
 
+// icons
 import { FaTelegram, FaInstagram, FaLinkedin } from "react-icons/fa";
 
 
@@ -24,5 +22,4 @@ function SocialMedia() {
     </div>
   )
 }
-
 export default SocialMedia;

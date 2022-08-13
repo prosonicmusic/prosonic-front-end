@@ -1,6 +1,8 @@
 import React from 'react'
-import Layout from '../components/Layout'
 import { Link } from 'react-router-dom'
+
+// Components
+import Layout from '../components/Layout'
 
 function ServicesPage() {
   return (

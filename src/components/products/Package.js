@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+
+// assets
 import pack3 from '../../assets/img/cover1.jpg';
 import playIcon from '../../assets/icons/play-icon-1.svg';
-import logo1 from '../../assets/img/cubase_logo.png';
-// import {FontAwesomeIcon} from  '@fortawesome/react-fontawesome';
-// import { faChevronRight } from  '@fortawesome/free-solid-svg-icons';
+// import logo1 from '../../assets/img/cubase_logo.png';
 
 import { FaChevronRight } from "react-icons/fa";
 
@@ -29,7 +29,7 @@ export default function Package({packs}) {
           </div>
           <div className='beatItem__bottomWrapper bottom-part'>
             <div className='moreInfoIcon'>
-                <Link to=''></Link>
+                <Link to='#'></Link>
                 <FaChevronRight className="rightIcon" />
             </div>
             <div>

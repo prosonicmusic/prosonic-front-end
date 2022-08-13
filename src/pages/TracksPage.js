@@ -1,8 +1,11 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react'
+import axios from 'axios';
+
+// Components
 import Pagination from '../components/common/Pagination';
 import Layout from '../components/Layout'
 import Allbeats from '../components/products/Allbeats';
+
 import tracks from '../trackssdata';
 
 const Trackspage = () => {
