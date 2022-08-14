@@ -1,10 +1,12 @@
 import HomePage from "./pages/HomePage";
 import { Route, BrowserRouter, Routes } from "react-router-dom";
+
+// Pages
 import PackagesPage from "./pages/PackagesPage";
 import ServicesPage from "./pages/ServicesPage";
 import TracksPage from "./pages/TracksPage";
 import ContactPage from "./pages/ContactPage";
-import LoginPage from "./pages/LoginPage";
+import LoginPage from "./pages/Login/LoginPage";
 import Cart from "./pages/Cart";
 import ForgotPassword from "./pages/ForgotPassword";
 import AboutPage from "./pages/AboutPage";
@@ -12,9 +14,12 @@ import Jobs from "./pages/Jobs";
 import Terms from "./pages/Terms";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
 
+// Context
+import ProductContextProvider from "./context/ProductContextProvider";
+
 function App() {
    return (
-      <>
+      <ProductContextProvider>
          <BrowserRouter>
             <Routes>
                <Route path="/" exact element={<HomePage />} />
@@ -31,7 +36,7 @@ function App() {
                <Route path="/terms" exact element={<Terms />} />
             </Routes>
          </BrowserRouter>
-      </>
+      </ProductContextProvider>
    );
 }
 export default App;

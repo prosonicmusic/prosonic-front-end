@@ -1,23 +1,26 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, createContext } from 'react';
 
 // API
 import { getProducts } from '../services/api';
 
-const ProductContextProvider  = () => {
+const ProductsContext = createContext()
+
+const ProductContextProvider  = ({children}) => {
 
    const [products, setProducts] = useState([])
 
    useEffect(() => {
+      const fetchAPI = async () => {
+         setProducts(await getProducts())
+      }
 
+      fetchAPI()
    }, [])
 
-   const fetchAPI = async () => {
-      
-   }
    return (
-      <div>
-         
-      </div>
+      <ProductsContext.Provider value={products}>
+         {children}
+      </ProductsContext.Provider>
    );
 };
 

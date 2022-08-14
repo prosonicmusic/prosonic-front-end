@@ -40,6 +40,11 @@
             cursor: pointer;
             border: none;
             border-radius: 10px 0px 0px 0;
+            transition: 0.3s;
+
+            &:hover {
+               background: #3b3f49;
+            }
 
             span {
                height: 16px;

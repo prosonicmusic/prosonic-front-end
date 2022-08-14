@@ -79,11 +79,57 @@
             [type="submit"] {
                background: #ca1854e7;
                transition: 0.3s;
+               padding: 10px 23px;
+               font-size: 15px;
 
                &:hover {
                   background-color: #e91c60f8;
                }
             }
+         }
+      }
+
+      .accept-terms {
+         display: flex;
+
+         .I-accept {
+            font-size: 15px;
+            color: #9ca5b1;
+
+            .privacyLink {
+               color: #9ca5b1;
+               font-size: 14px;
+               text-decoration: underline;
+               transition: 0.3s;
+
+               &:hover {
+                  color: #e91c60f8;
+               }
+            }
+         }
+
+         input[type="checkbox"] {
+            margin-left: 15px;
+            width: 18px;
+            height: 18px;
+            border: 1px solid #fff;
+            appearance: none;
+            border-radius: 5px;
+            transition: all 0.2s ease-in;
+         }
+
+         input[type="checkbox"]:checked {
+            width: 18px;
+            height: 18px;
+            background-color: #1aa2d8d3;
+            border-radius: 50%;
+         }
+
+         input[type="checkbox"]:focus {
+            height: 18px;
+            width: 18px;
+            outline: none;
+            border: 2px solid #fff;
          }
       }
 
@@ -125,6 +171,8 @@
                cursor: pointer;
                border-radius: 8px;
                transition: 0.3s;
+               padding: 9px;
+               font-size: 15px;
 
                &:hover {
                   background-color: #1cafe9f1;
@@ -135,6 +183,7 @@
                color: #9ca5b1;
                text-decoration: underline;
                font-size: 15px;
+               margin-top: 5px;
             }
          }
 

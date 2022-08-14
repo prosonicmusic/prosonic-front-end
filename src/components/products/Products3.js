@@ -7,9 +7,9 @@ function Products3() {
     <div className='beats'>
      
               {packages.map(packs=>{
-                return <div className='beatsGrid'>
+                return <div className='beatsGrid' >
                   <div>
-                    <Package packs={packs}/>
+                    <Package  packs={packs}/>
                   </div>
                 </div>
               })}

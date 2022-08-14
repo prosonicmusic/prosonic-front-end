@@ -76,7 +76,7 @@ const HomePage = () => {
                      </div>
                   </div>
 
-                  <Products3 />
+                  {/* <Products3 /> */}
                </section>
             </div>
          </Layout>
