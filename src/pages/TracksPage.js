@@ -2,7 +2,7 @@ import React, { useContext } from 'react'
 
 // Components
 import Layout from '../components/Layout'
-import Allbeats from '../components/products/Allbeats';
+import Tracks from '../components/products/Tracks';
 
 import { ProductsContext } from '../context/ProductContextProvider';
 
@@ -58,7 +58,7 @@ const Trackspage = () => {
             </div>
           </header>
 
-          <Allbeats />
+          <Tracks />
 
         </section>
     </Layout>

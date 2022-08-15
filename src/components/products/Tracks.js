@@ -6,7 +6,7 @@ import Track from "../shared/Track";
 // Context
 import { ProductsContext } from "../../context/ProductContextProvider";
 
-const Allbeats = () => {
+const Tracks = () => {
 
    const products = useContext(ProductsContext)
    const tracks = products.data.results
@@ -31,4 +31,4 @@ const Allbeats = () => {
    );
 };
 
-export default Allbeats;
+export default Tracks;
