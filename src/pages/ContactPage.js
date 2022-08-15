@@ -7,7 +7,6 @@ import SocialMedia from '../components/SocialMedia';
 
 function ContactPage() {
   return (
-    
     <Layout>
       <SocialMedia/>
       <div className="header"></div >
@@ -41,7 +40,7 @@ function ContactPage() {
 
                   <div className='label'>Message</div>
                   <div className='formText'>
-                    <textarea style={{height:'150px'}} class></textarea>
+                    <textarea style={{height:'150px'}}></textarea>
                   </div>
 
                   <div className='captcha'>

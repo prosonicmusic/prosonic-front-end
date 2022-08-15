@@ -1,25 +1,34 @@
-import React from 'react'
-import tracks from '../../trackssdata';
-import Beat from './Beat';
+import React, { useContext, useState } from "react";
 
-const Allbeats = ({ tracks, loading }) => {
-  if(loading) {
-    // return <h2>Loading...</h2>;
-  }
+// Components
+import Track from "../shared/Track";
 
-  return (
-    <div className='beats'>
+// Context
+import { ProductsContext } from "../../context/ProductContextProvider";
 
-              {tracks.map(beat=>{
-                return <div className='beatsGrid'>
-                  <div key={beat.id}>
-                    <Beat beat={beat}/>
+const Allbeats = () => {
+
+   const products = useContext(ProductsContext)
+   const tracks = products.data.results
+   
+   console.log(tracks);
+
+   return (
+      <div className="beats">
+         {
+            tracks.map(product => 
+            {
+               return (
+                  <div className="beatsGrid">
+                     {
+                        <Track key={product.id} productData={product}/>
+                     }
                   </div>
-                </div>
-              })}
-  
-    </div>
-  )
-}
+               );
+            })
+         }
+      </div>
+   );
+};
 
 export default Allbeats;
