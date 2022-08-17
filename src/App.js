@@ -1,41 +1,29 @@
 import HomePage from "./pages/HomePage";
-import { Route, BrowserRouter, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
 
 // Pages
-import PackagesPage from "./pages/PackagesPage";
-import ServicesPage from "./pages/ServicesPage";
 import TracksPage from "./pages/TracksPage";
-import ContactPage from "./pages/ContactPage";
-import LoginPage from "./pages/Login/LoginPage";
-import Cart from "./pages/Cart";
-import ForgotPassword from "./pages/ForgotPassword";
-import AboutPage from "./pages/AboutPage";
-import Jobs from "./pages/Jobs";
-import Terms from "./pages/Terms";
-import PrivacyPolicy from "./pages/PrivacyPolicy";
+
+// Components
+import ProductDetails from "./components/products/ProductDetails";
+import Cart from "./components/Cart";
 
 // Context
 import ProductContextProvider from "./context/ProductContextProvider";
+import CartContextProvider from "./context/CartContextProvider";
 
 function App() {
    return (
       <ProductContextProvider>
-         <BrowserRouter>
+         <CartContextProvider>
             <Routes>
+               <Route path="/tracks" element={<TracksPage />} />
+               <Route path="/tracks/:id" element={<ProductDetails />} />
                <Route path="/" exact element={<HomePage />} />
-               <Route path="/tracks" exact element={<TracksPage />} />
-               <Route path="/packages" exact element={<PackagesPage />} />
-               <Route path="/services" exact element={<ServicesPage />} />
-               <Route path="/contact" exact element={<ContactPage />} />
-               <Route path="/login" exact element={<LoginPage />} />
-               <Route path="/cart" exact element={<Cart />} />
-               <Route path="/forgot-password" exact element={<ForgotPassword />} />
-               <Route path="/about" exact element={<AboutPage />} />
-               <Route path="/jobs" exact element={<Jobs />} />
-               <Route path="/privacy-policy" exact element={<PrivacyPolicy />} />
-               <Route path="/terms" exact element={<Terms />} />
+               <Route path="/cart" element={<Cart />} />
+               <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
-         </BrowserRouter>
+         </CartContextProvider>
       </ProductContextProvider>
    );
 }

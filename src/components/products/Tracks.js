@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 
 // Components
 import Track from "../shared/Track";
@@ -7,26 +7,16 @@ import Track from "../shared/Track";
 import { ProductsContext } from "../../context/ProductContextProvider";
 
 const Tracks = () => {
-
-   const products = useContext(ProductsContext)
-   const tracks = products.data.results
-   
-   console.log(tracks);
+   const products = useContext(ProductsContext);
+   const productsData = products.data.results;
 
    return (
       <div className="beats">
-         {
-            tracks.map(product => 
-            {
-               return (
-                  <div className="beatsGrid">
-                     {
-                        <Track key={product.id} productData={product}/>
-                     }
-                  </div>
-               );
-            })
-         }
+         {productsData.map((product) => {
+            return (
+               <div className="beatsGrid">{<Track key={product.id} productData={product} />}</div>
+            );
+         })}
       </div>
    );
 };

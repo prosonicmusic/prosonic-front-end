@@ -4,8 +4,6 @@ import React, { useContext } from 'react'
 import Layout from '../components/Layout'
 import Tracks from '../components/products/Tracks';
 
-import { ProductsContext } from '../context/ProductContextProvider';
-
 const Trackspage = () => {
 
   return (

@@ -1,26 +1,35 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Link } from "react-router-dom";
 
 // assets
-import cover2 from "../../assets/img/cover1.jpg";
+import { FaChevronRight } from "react-icons/fa";
 import playIcon from "../../assets/icons/play-icon-1.svg";
 import logo1 from "../../assets/img/cubase_logo.png";
 import logo2 from "../../assets/img/Fl-logo.png";
 
-import { FaChevronRight } from "react-icons/fa";
+// Functions
+import { isInCart, quantityCount } from "../../helper/functions";
 
-const Track = ({productData}) => {
+// Context
+import { CartContext } from "../../context/CartContextProvider";
+
+const Track = ({ productData }) => {
+   const { state, dispatch } = useContext(CartContext);
+
+   const { thumbnail, tag, title, author, product_price, daw, id } = productData;
+
    return (
       <div className="col">
          <div className="beatItem hoverOnBeatItem beatItem__MoreInfoForDevices">
             <div className="beatItem__top">
                <div className="cover">
-                  <img src={productData.thumbnail} alt="cover" />
+                  <img src={thumbnail} alt="cover" />
                   <span>
                      <img src={playIcon} alt="play" className="cover__playIcon" />
                   </span>
                </div>
                <ul className="labels">
-                  <div className={productData.tag}>
+                  <div className={tag}>
                      <li className="Prem"> PREMIUM </li>
                   </div>
                </ul>
@@ -36,28 +45,46 @@ const Track = ({productData}) => {
                <div>
                   <div className="beatItem__nameAndUsername">
                      <a href="#" className="name">
-                        {productData.title}
+                        {title}
                      </a>
                      <br />
                      <a href="#" className="username">
-                        {productData.author}
+                        {author}
                      </a>
                   </div>
                   <div className="beatItem__lineData">
-                     <span className="price"> {productData.product_price} T</span>
+                     <span className="price"> {product_price} T</span>
                      <div id="daw">
-                        <div className={productData.daw}>
+                        <div className={daw}>
                            <img src={logo2} alt="FL Studio" className="FL" />
                            <img src={logo1} alt="Cubase" className="CU" />
                         </div>
                      </div>
                   </div>
                   <div className="beatItem__buttons">
-                     <a href="#" className="info">
+                     <Link to={`/tracks/${id}`} className="info">
                         {" "}
                         More Info{" "}
-                     </a>
-                     <button className="set-bg"> Add to cart </button>
+                     </Link>
+
+                     {isInCart(state, id) < 1 && (
+                        <button
+                           className="set-bg"
+                           onClick={() => dispatch({ type: "ADD_ITEM", payload: productData })}
+                        >
+                           {" "}
+                           Add to cart{" "}
+                        </button>
+                     )}
+                     {quantityCount(state, id) === 1 && (
+                        <button
+                           className="set-bg"
+                           onClick={() => dispatch({ type: "REMOVE_ITEM", payload: productData })}
+                        >
+                           {" "}
+                           Remove Item{" "}
+                        </button>
+                     )}
                   </div>
                </div>
             </div>

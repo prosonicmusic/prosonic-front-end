@@ -1,8 +1,8 @@
 @import "abstracts/mixins";
 @import "abstracts/variables";
-
 @import "base/base";
 
+// Components
 @import "components/container";
 @import "components/phoneNav";
 @import "components/socialMedia";
@@ -12,7 +12,9 @@
 @import "components/footer";
 @import "components/player";
 @import "components/track";
+@import "components/trackDetails";
 
+// Pages
 @import "pages/homePage";
 @import "pages/contactPage";
 @import "pages/loginPage";

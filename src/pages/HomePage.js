@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom'
 // Components
 import Header from "../components/Header";
 import Layout from "../components/Layout";
-import Products1 from '../components/products/Products1'
-import Products2 from '../components/products/Products2'
-import Products3 from '../components/products/Products3';
 import Player from '../components/Player'
 
 

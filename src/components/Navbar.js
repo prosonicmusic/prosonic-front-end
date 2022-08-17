@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Components
@@ -11,6 +11,9 @@ import prosonicImg from "../assets/img/prosonic-icon-white.png";
 // icons
 import { FaShoppingCart } from "react-icons/fa";
 
+// Context
+import { CartContext } from "../context/CartContextProvider";
+
 const Navbar = () => {
    const [color, setColor] = useState(false);
    const changeColor = () => {
@@ -21,7 +24,7 @@ const Navbar = () => {
       }
    };
 
-   window.addEventListener("scroll", changeColor);
+   const { state } = useContext(CartContext);
 
    return (
       <>
@@ -56,7 +59,7 @@ const Navbar = () => {
                   </li>
                   <Link to="/cart" className="navbarCartIcon">
                      <FaShoppingCart className="shopIcon" />
-                     <span className=""> 0 </span>
+                     <span> {state.itemsCounter} </span>
                   </Link>
 
                   <button className="header__login">

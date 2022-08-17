@@ -306,16 +306,16 @@ html {
 }
 .header__menu .navbarCartIcon span {
   position: absolute;
-  top: -100%;
+  top: -90%;
   bottom: 0;
-  right: -100%;
+  right: -90%;
   left: 0;
   margin: auto;
   border-radius: 100px;
   background: #e91c60;
-  height: 12px;
-  width: 12px;
-  font-size: 8px;
+  height: 16px;
+  width: 16px;
+  font-size: 10px;
   color: #fff;
   font-weight: 900;
 }
@@ -842,7 +842,7 @@ footer section .contact .contactInfo li a:hover {
   justify-content: center;
   border-radius: 10px;
 }
-.beatItem__buttons button {
+.beatItem__buttons .set-bg {
   all: unset;
   background: #dd1f5f;
   font-weight: 600;
@@ -888,6 +888,18 @@ footer section .contact .contactInfo li a:hover {
   max-width: 100%;
   -webkit-filter: grayscale(1) invert(1);
   filter: grayscale(1) invert(0.8);
+}
+
+.main-info {
+  background: rgba(35, 37, 43, 0.5);
+  border-radius: 10px;
+  transition: 0.3s;
+}
+
+.product-image {
+  position: relative;
+  width: 20%;
+  border-radius: 8px;
 }
 
 .block {
