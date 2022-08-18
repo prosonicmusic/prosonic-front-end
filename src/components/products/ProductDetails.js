@@ -1,16 +1,27 @@
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
-
-// Context
-import { ProductsContext } from "../../context/ProductContextProvider";
+import axios from "axios";
 
 const ProductDetails = () => {
    const params = useParams();
    const id = params.id;
+   const BASE_URL = "http://localhost:8080";
 
-   const products = useContext(ProductsContext);
-   const data = products.data.results;
-   const product = data[id];
+   const getSpecificProduct = async () => {
+      const response = await axios.get(`${BASE_URL}/product/specific?id=${id}`);
+      return response.data;
+   };
+
+   const [product, setProduct] = useState([]);
+
+   useEffect(() => {
+      const fetchAPI = async () => {
+         setProduct(await getSpecificProduct());
+      };
+
+      fetchAPI();
+   }, []);
+
    const {
       title,
       author,
@@ -29,13 +40,11 @@ const ProductDetails = () => {
       sold,
    } = product;
 
-   console.log(product);
-
    return (
       <div className="detail">
          <section className="main-info">
             <div>
-               <img src={thumbnail} alt="cover" className="product-image"/>
+               <img src={thumbnail} alt="cover" className="product-image" />
             </div>
             <div className="product-title">
                <h3>{title}</h3>
@@ -60,10 +69,6 @@ const ProductDetails = () => {
             <div>
                <span>BPM</span>
                <span>{bpm}</span>
-            </div>
-            <div>
-               <span>Daw</span>
-               <span>{daw}</span>
             </div>
          </section>
       </div>
