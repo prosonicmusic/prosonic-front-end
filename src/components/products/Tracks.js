@@ -1,7 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
-
-// API
-import { getProducts } from "../../services/api";
+import React, { useContext } from "react";
 
 // Components
 import Track from "../shared/Track";
@@ -16,7 +13,9 @@ const Tracks = () => {
       <div className="beats">
          {products.map((product) => {
             return (
-               <div className="beatsGrid">{<Track key={product.id} productData={product} />}</div>
+               <div className="beatsGrid" key={product.id}>
+                  {<Track productData={product} />}
+               </div>
             );
          })}
       </div>
