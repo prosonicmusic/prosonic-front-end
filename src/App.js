@@ -11,6 +11,7 @@ import Cart from "./components/Cart";
 // Context
 import ProductContextProvider from "./context/ProductContextProvider";
 import CartContextProvider from "./context/CartContextProvider";
+import ContactPage from "./pages/ContactPage";
 
 function App() {
    return (
@@ -22,6 +23,7 @@ function App() {
                <Route path="/" exact element={<HomePage />} />
                <Route path="/cart" element={<Cart />} />
                <Route path="/*" element={<Navigate to="/" />} />
+               <Route path="/contact" element={<ContactPage />}/>
             </Routes>
          </CartContextProvider>
       </ProductContextProvider>

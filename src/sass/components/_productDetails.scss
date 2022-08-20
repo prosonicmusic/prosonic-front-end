@@ -1,0 +1,33 @@
+#details {
+
+   margin-top: 65px;
+
+   display: flex;
+   .details {
+      background: rgba(35, 37, 43, 0.5);
+      border-radius: 10px;
+      transition: 0.3s;
+   }
+
+   .product-image {
+      position: relative;
+      width: 200px;
+      border-radius: 8px;
+   }
+
+   .description {
+      background: rgba(35, 37, 43, 0.5);
+      border-radius: 10px;
+      transition: 0.3s;
+      .daw-image {
+         width: 450px;
+         border-radius: 8px;
+      }
+   }
+
+   .files {
+      background: rgba(35, 37, 43, 0.5);
+      border-radius: 10px;
+      transition: 0.3s;
+   }
+}
