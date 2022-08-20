@@ -79,7 +79,7 @@ const ProductDetails = () => {
             <div>
                <section className="description">
                   <h3>Project Description</h3>
-                  <img src={project_image} alt="daw-image" className="daw-image" />
+                  <img src={project_image} alt="daw" className="daw-image" />
                   <p>{project_description}</p>
                </section>
                <section className="files">
