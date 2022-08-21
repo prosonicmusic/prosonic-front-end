@@ -15,7 +15,7 @@ import { FaShoppingCart } from "react-icons/fa";
 import { CartContext } from "../context/CartContextProvider";
 
 const Navbar = () => {
-   const [color, setColor] = useState(false);
+   const [color, setColor] = useState(true);
    const changeColor = () => {
       if (window.scrollY >= 80) {
          setColor(true);
