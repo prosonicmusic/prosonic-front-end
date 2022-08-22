@@ -3,7 +3,7 @@ import { useParams, Link } from "react-router-dom";
 import axios from "axios";
 
 // Components
-import Navbar from "../Navbar";
+import Navbar from "../shared/Navbar";
 
 // assets
 import playIcon from "../../assets/icons/play-icon-1.svg";
@@ -24,7 +24,7 @@ const ProductDetails = () => {
 
    const getSpecificProduct = async () => {
       const response = await axios.get(`${BASE_URL}/product/specific?id=${paramsID}`);
-      return response.data;
+      return response.data.data;
    };
 
    const [product, setProduct] = useState([]);
