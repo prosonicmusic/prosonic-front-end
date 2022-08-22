@@ -2,17 +2,17 @@ import React, { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 // Components
-import Burger from "./Burger";
-import PhoneNav from "./PhoneNav";
+import Burger from "../Burger";
+import PhoneNav from "../PhoneNav";
 
 // assets
-import prosonicImg from "../assets/img/prosonic-icon-white.png";
+import prosonicImg from "../../assets/img/prosonic-icon-white.png";
 
 // icons
 import { FaShoppingCart } from "react-icons/fa";
 
 // Context
-import { CartContext } from "../context/CartContextProvider";
+import { CartContext } from "../../context/CartContextProvider";
 
 const Navbar = () => {
    const [color, setColor] = useState(true);
