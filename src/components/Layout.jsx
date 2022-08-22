@@ -2,7 +2,7 @@ import React from "react";
 
 // components
 import Footer from "./Footer";
-import Navbar from "./Navbar";
+import Navbar from "./shared/Navbar";
 
 function Layout(props) {
    return (
