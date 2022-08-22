@@ -6,7 +6,8 @@ import TracksPage from "./pages/TracksPage";
 
 // Components
 import ProductDetails from "./components/products/ProductDetails";
-import Cart from "./components/Cart";
+import ShopCart from "./components/ShopCart";
+import ServicesPage from "./pages/ServicesPage";
 
 // Context
 import ProductContextProvider from "./context/ProductContextProvider";
@@ -20,10 +21,11 @@ function App() {
             <Routes>
                <Route path="/tracks" element={<TracksPage />} />
                <Route path="/tracks/:id" element={<ProductDetails />} />
-               <Route path="/" exact element={<HomePage />} />
-               <Route path="/cart" element={<Cart />} />
-               <Route path="/*" element={<Navigate to="/" />} />
+               <Route path="/cart" element={<ShopCart />} />
+               <Route path="/services" element={<ServicesPage />}/>
                <Route path="/contact" element={<ContactPage />}/>
+               <Route path="/" exact element={<HomePage />} />
+               <Route path="/*" element={<Navigate to="/" />} />
             </Routes>
          </CartContextProvider>
       </ProductContextProvider>

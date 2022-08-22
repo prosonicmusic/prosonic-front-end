@@ -13,7 +13,7 @@
 @import "components/player";
 @import "components/track";
 @import "components/productDetails";
-
+@import "components/shared/cart";
 // Pages
 @import "pages/homePage";
 @import "pages/contactPage";
@@ -92,4 +92,14 @@ img {
 .colorPage {
    background: linear-gradient(180deg, #000, #1a1c2070);
    padding-bottom: 80px;
+}
+
+.loader {
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   .loaderGIF {
+      width: 120px;
+      height: auto;
+   }
 }

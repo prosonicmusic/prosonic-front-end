@@ -6,6 +6,7 @@
    margin: auto;
    width: 100%;
    margin-top: 65px;
+   display: flex;
 
    #title {
       padding: 0px 10px 10px 10px;
@@ -14,7 +15,6 @@
       color: #abb5c2;
    }
 
-   display: flex;
    .details {
       background: rgba(46, 48, 56, 0.5);
       border-radius: 10px;
