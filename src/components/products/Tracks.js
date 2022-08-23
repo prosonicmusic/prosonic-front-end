@@ -1,21 +1,23 @@
 import React, { useContext } from "react";
 
 // Components
-import Track from "../shared/Track";
+import Track from "../products/Track";
 
 // Context
-import { ProductsContext } from "../../context/ProductContextProvider";
+import { TracksContext } from "../../context/TrackContextProvider";
 
 const Tracks = () => {
-   const products = useContext(ProductsContext);
-
+   const products = useContext(TracksContext);
    return (
       <div className="beats">
          {products.map((product) => {
+            const productType = product.product_type;
             return (
-               <div className="beatsGrid" key={product.id}>
-                  {<Track productData={product} />}
-               </div>
+               productType === "Track" && (
+                  <div className="beatsGrid" key={product.id}>
+                     {<Track productData={product} />}
+                  </div>
+               )
             );
          })}
       </div>

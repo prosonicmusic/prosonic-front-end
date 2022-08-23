@@ -6,10 +6,10 @@ import Tracks from "../components/products/Tracks";
 import Loader from "../components/shared/Loader";
 
 // Context
-import { ProductsContext } from "../context/ProductContextProvider";
+import { TracksContext } from "../context/TrackContextProvider";
 
 const Trackspage = () => {
-   const products = useContext(ProductsContext);
+   const tracks = useContext(TracksContext);
    return (
       <Layout>
          <div className="tracksHeader"></div>
@@ -59,7 +59,7 @@ const Trackspage = () => {
                   </div>
                </div>
             </header>
-            {products.length ? <Tracks /> : <Loader />}
+            {tracks.length ? <Tracks /> : <Loader />}
          </section>
       </Layout>
    );

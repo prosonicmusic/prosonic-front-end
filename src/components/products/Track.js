@@ -20,7 +20,7 @@ const Track = ({ productData }) => {
 
    return (
       <div className="col">
-         <div className="beatItem hoverOnBeatItem beatItem__MoreInfoForDevices">
+         <div className="beatItem">
             <div className="beatItem__top">
                <div className="cover">
                   <img src={thumbnail} alt="cover" />
