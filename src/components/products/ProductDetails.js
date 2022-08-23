@@ -95,27 +95,36 @@ const ProductDetails = () => {
                      <span className="title">Price</span>
                      <span className="data">{product_price} T</span>
                   </div>
-                  <div className="details-block-line">
-                     <span className="title">Genre</span>
-                     <span className="data">{genre}</span>
-                  </div>
-                  <div className="details-block-line">
-                     <span className="title">Length</span>
-                     <span className="data">{length}</span>
-                  </div>
-                  <div className="details-block-line">
-                     <span className="title">BPM</span>
-                     <span className="data">{bpm}</span>
-                  </div>
-                  <div className="details-block-line-daw">
-                     <span className="title">Daw</span>
-                     <div id="daw">
-                        <div className={daw}>
-                           <img src={logo2} alt="FL Studio" className="FL" />
-                           <img src={logo1} alt="Cubase" className="CU" />
+
+                  {genre !== null && (
+                     <div className="details-block-line">
+                        <span className="title">Genre</span>
+                        <span className="data">{genre}</span>
+                     </div>
+                  )}
+                  {length !== null && (
+                     <div className="details-block-line">
+                        <span className="title">Length</span>
+                        <span className="data">{length}</span>
+                     </div>
+                  )}
+                  {bpm !== null && (
+                     <div className="details-block-line">
+                        <span className="title">BPM</span>
+                        <span className="data">{bpm}</span>
+                     </div>
+                  )}
+                  {daw !== "Package" && (
+                     <div className="details-block-line-daw">
+                        <span className="title">Daw</span>
+                        <div id="daw">
+                           <div className={daw}>
+                              <img src={logo2} alt="FL Studio" className="FL" />
+                              <img src={logo1} alt="Cubase" className="CU" />
+                           </div>
                         </div>
                      </div>
-                  </div>
+                  )}
                </div>
                <hr className="hr" />
 

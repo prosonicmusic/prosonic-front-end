@@ -53,12 +53,6 @@ const Package = ({ productData }) => {
                   </div>
                   <div className="beatItem__lineData">
                      <span className="price"> {product_price} T</span>
-                     <div id="daw">
-                        <div className={daw}>
-                           <img src={logo2} alt="FL Studio" className="FL" />
-                           <img src={logo1} alt="Cubase" className="CU" />
-                        </div>
-                     </div>
                   </div>
                   <div className="beatItem__buttons">
                      <Link to={`/tracks/${id}`} className="info">
