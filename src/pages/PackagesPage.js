@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import Layout from "../components/Layout";
 import Packages from "../components/products/Packages.js";
 import Loader from "../components/shared/Loader";
+import Pagination from "../components/shared/Pagination";
 
 // Context
 import { PackagesContext } from "../context/PackageContextProvider";
@@ -46,19 +47,7 @@ function PackagesPage() {
             </header>
             {packages.length ? <Packages /> : <Loader />}
 
-            <div className="pagination">
-               <div className="prev"> Prev </div>
-               <div className="numberContainer">
-                  <div className="paginationNumbers currentPage"> 1 </div>
-                  <div className="paginationNumbers"> 2 </div>
-                  <div className="paginationNumbers"> 3 </div>
-                  <div className="paginationNumbers"> 4 </div>
-                  <div className="paginationNumbers"> 5 </div>
-                  <div className="paginationNumbers"> 6 </div>
-                  <div className="paginationNumbers"> 7 </div>
-               </div>
-               <div className="next"> Next </div>
-            </div>
+            <Pagination />
          </section>
       </Layout>
    );

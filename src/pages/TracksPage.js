@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 import Layout from "../components/Layout";
 import Tracks from "../components/products/Tracks";
 import Loader from "../components/shared/Loader";
+import Pagination from "../components/shared/Pagination";
 
 // Context
 import { TracksContext } from "../context/TrackContextProvider";
@@ -60,6 +61,8 @@ const Trackspage = () => {
                </div>
             </header>
             {tracks.length ? <Tracks /> : <Loader />}
+
+            <Pagination />
          </section>
       </Layout>
    );
