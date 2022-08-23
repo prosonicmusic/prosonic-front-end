@@ -25,30 +25,31 @@ function Cart(props) {
                   </div>
                </ul>
             </div>
-            <h3>{title}</h3>
-            <h4>{author}</h4>
+            <div>
+               <h3 className="h3-title">{title}</h3>
+               <h4>{author}</h4>
+            </div>
          </div>
          <div className="addons">
-            <h3>ADDONS</h3>
-            <div>
-               <span>Stems</span>
-               <span>500000</span>
-               <button>ADD</button>
+            <h3 className="h3-addons">ADDONS</h3>
+            <div className="addons-item">
+               <span className="title">Stems</span>
+               <span className="price">500000 T</span>
+               <button className="add-btn">ADD</button>
             </div>
-            <div>
-               <span>Cover</span>
-               <span>100000</span>
-               <button>ADD</button>
+            <div className="addons-item">
+               <span className="title">Cover</span>
+               <span className="price">100000 T</span>
+               <button className="add-btn">ADD</button>
             </div>
          </div>
          <div className="total">
             <span>1000000</span>
          </div>
-         <div>
+         <div className="remove-btn">
             {quantity === 1 && (
                <button onClick={() => dispatch({ type: "REMOVE_ITEM", payload: props.data })}>
-                  {" "}
-                  Remove{" "}
+                <AiOutlineClose />
                </button>
             )}
          </div>

@@ -13,8 +13,9 @@ const ShopCart = () => {
    console.log(state.total);
 
    return (
-      <div>
+      <div id="shopCart">
          <Navbar />
+         <h1>Shopping Cart</h1>
          <div>
             {state.selectedItems.map((item) => (
                <Cart key={item.id} data={item} />

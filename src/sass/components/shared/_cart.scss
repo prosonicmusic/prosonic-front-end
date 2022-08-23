@@ -1,10 +1,74 @@
 #cart {
+   background: rgba(46, 48, 56, 0.5);
+   border-radius: 10px;
+   transition: 0.3s;
+   padding: 25px;
+   color: #b6c1ce;
+   max-width: 1024px;
+   height: 100%;
+   margin: auto;
+   margin-top: 12px;
+   width: 100%;
+   display: flex;
+
    .product {
+      display: flex;
+      .h3-title {
+         max-width: fit-content;
+      }
       .cover-section {
+         position: relative;
+         width: 100%;
+         .labels {
+            display: flex;
+            align-items: flex-start;
+            flex-direction: column;
+            position: absolute;
+            top: 10px;
+            left: 0;
+            color: $color-light;
+            font-size: 11px;
+            font-weight: 900;
+
+            visibility: hidden;
+
+            .PREMIUM {
+               visibility: visible;
+               background: rgba(206, 41, 0, 1);
+               padding: 0px 10px 0px 10px;
+               border-radius: 0 300px 300px 0;
+            }
+
+            @include respond-phone {
+               font-size: 9px;
+            }
+         }
          .product-image {
             position: relative;
-            width: 200px;
+            width: 140px;
             border-radius: 8px;
+         }
+      }
+   }
+
+   .addons {
+      margin-left: 10em;
+      background: rgba(46, 48, 56, 0.5);
+      border-radius: 10px;
+      padding: 25px;
+
+      .addons-item {
+         padding: 10px 0 0 0;
+
+         .title {
+            padding-right: 20px;
+         }
+
+         .price {
+            padding-right: 20px;
+         }
+
+         .add-btn {
          }
       }
    }
