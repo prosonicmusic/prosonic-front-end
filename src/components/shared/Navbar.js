@@ -30,7 +30,10 @@ const Navbar = () => {
       <>
          <nav className={color ? "header__navbar bg-nav" : "header__navbar"}>
             <div className="header__navbar header__top">
-               <img src={prosonicImg} alt="Prosonic" id="logo" className="header__logo" />
+               <Link to="/">
+                  <img src={prosonicImg} alt="Prosonic" id="logo" className="header__logo" />
+               </Link>
+
                <ul className="header__menu">
                   <li>
                      <Link to="/" className="header__btn">
