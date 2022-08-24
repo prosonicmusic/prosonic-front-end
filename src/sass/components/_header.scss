@@ -147,6 +147,7 @@
       margin: 0;
       padding: 0 15px;
       position: relative;
+      top: 5px;
 
       @include respond-phone {
          width: 130px;

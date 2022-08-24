@@ -13,62 +13,58 @@ const ShopCart = () => {
    console.log(state.total);
 
    return (
-      <div id="shopCart">
+      <>
          <Navbar />
-         <h1>Shopping Cart</h1>
-         <div>
-            {state.selectedItems.map((item) => (
-               <Cart key={item.id} data={item} />
-            ))}
-         </div>
-
-         <div>
-            <div>
-               <h1>TRANSFER OF RIGHTS AGREEMENT</h1>
-               <p></p>
-               <ul>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-                  <li></li>
-               </ul>
+         <div id="shopCart">
+            <div className="cart-review">
+               <h1 className="title">Shopping Cart</h1>
+               <div>
+                  {state.selectedItems.map((item) => (
+                     <Cart key={item.id} data={item} />
+                  ))}
+               </div>
             </div>
-            <label>
-               <input type="checkbox" />
-               <p>I agree to the Transfer of Rights agreement for each track ordered</p>
-            </label>
-         </div>
-         <div>
-            {state.itemsCounter > 0 && (
+            <div className="cart-sum">
+               <h2 className="title">Checkout</h2>
                <div>
-                  <p>
-                     <span>Total Items:</span> {state.itemsCounter}
-                  </p>
-                  <p>
-                     <span>Total amount:</span> {state.total} T
-                  </p>
-                  <div>
-                     <button onClick={() => dispatch({ type: "CHECKOUT" })}>Check Out</button>
-                     <button onClick={() => dispatch({ type: "CLEAR" })}>Clear</button>
-                  </div>
-               </div>
-            )}
+                  {state.itemsCounter > 0 && (
+                     <div>
+                        <p className="total">
+                           <span>Total Items:</span>
+                           <span>{state.itemsCounter}</span> 
+                        </p>
+                        <p className="total">
+                           <span>Total amount:</span>
+                           <span>{state.total} T</span>
+                        </p>
+                        <label className="agree-terms">
+                           <input type="checkbox" />
+                           <p>I agree to the Transfer of Rights agreement for each product ordered</p>
+                        </label>
+                        <div className="buttons">
+                           <button onClick={() => dispatch({ type: "CHECKOUT" })} className="checkoutBtn">Checkout</button>
+                           <button onClick={() => dispatch({ type: "CLEAR" })} className="clearBtn">Clear All</button>
+                        </div>
+                     </div>
+                  )}
 
-            {state.checkout && (
-               <div>
-                  <h3>Checked Out Successfully</h3>
-                  <Link to="/">Buy More</Link>
-               </div>
-            )}
+                  {state.checkout && (
+                     <div className="no-item">
+                        <h3 className="success">Checked Out Successfully</h3>
+                        <Link className="link" to="/">Buy More</Link>
+                     </div>
+                  )}
 
-            {!state.checkout && state.itemsCounter === 0 && (
-               <div>
-                  <h3>Want to Buy?</h3>
-                  <Link to="/">Go Back to Products</Link>
+                  {!state.checkout && state.itemsCounter === 0 && (
+                     <div className="no-item">
+                        <h3 className="buy-more">Want to Buy?</h3>
+                        <Link className="link" to="/">Go Back to Products</Link>
+                     </div>
+                  )}
                </div>
-            )}
+            </div>
          </div>
-      </div>
+      </>
    );
 };
 

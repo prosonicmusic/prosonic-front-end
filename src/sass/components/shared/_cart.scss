@@ -2,63 +2,124 @@
    background: rgba(46, 48, 56, 0.5);
    border-radius: 10px;
    transition: 0.3s;
-   padding: 25px;
+   padding: 15px;
    color: #b6c1ce;
-   max-width: 1024px;
    height: 100%;
    margin: auto;
    margin-top: 12px;
-   width: 100%;
-   display: flex;
+   width: 40em;
 
-   .product {
+   .item {
       display: flex;
-      .h3-title {
-         max-width: fit-content;
-      }
-      .cover-section {
-         position: relative;
-         width: 100%;
-         .labels {
-            display: flex;
-            align-items: flex-start;
-            flex-direction: column;
-            position: absolute;
-            top: 10px;
-            left: 0;
-            color: $color-light;
-            font-size: 11px;
-            font-weight: 900;
+      align-items: center;
 
-            visibility: hidden;
+      .product {
+         display: flex;
+         align-items: center;
 
-            .PREMIUM {
-               visibility: visible;
-               background: rgba(206, 41, 0, 1);
-               padding: 0px 10px 0px 10px;
-               border-radius: 0 300px 300px 0;
+         .cover-section {
+            position: relative;
+            width: 100%;
+
+            .labels {
+               display: flex;
+               align-items: flex-start;
+               flex-direction: column;
+               position: absolute;
+               top: 10px;
+               left: 0;
+               color: $color-light;
+               font-size: 11px;
+               font-weight: 900;
+               visibility: hidden;
+
+               .PREMIUM {
+                  visibility: visible;
+                  background: rgba(206, 41, 0, 1);
+                  padding: 0px 10px 0px 10px;
+                  border-radius: 0 300px 300px 0;
+               }
+
+               @include respond-phone {
+                  font-size: 9px;
+               }
             }
-
-            @include respond-phone {
-               font-size: 9px;
+            .product-image {
+               position: relative;
+               width: 140px;
+               border-radius: 8px;
             }
          }
-         .product-image {
-            position: relative;
-            width: 140px;
-            border-radius: 8px;
+      }
+      .total {
+         margin: 0 10px 0 10px;
+         padding: 20px;
+         border-radius: 15px;
+         background: rgba(25, 26, 31, 0.5);
+
+         h4 {
+            padding: 5px;
+            margin-bottom: 5px;
+         }
+         
+         span {
+            background: rgba(61, 64, 75, 0.5);
+            padding: 5px;
+            border-radius: 3px;
          }
       }
    }
 
+   .detail {
+      margin: 20px;
+      width: 250px;
+
+      .id {
+         display: flex;
+         margin-top: 15px;
+
+         .id-title {
+            margin-right: 8px;
+         }
+      }
+
+      .h3-title {
+         font-weight: 600;
+         margin-bottom: 5px;
+      }
+
+      .author {
+         color: #b6c1ce7c;
+      }
+   }
+
+   .remove-btn {
+      margin-left: 5px;
+      color: #b6c1ce7c;
+      font-size: 20px;
+      .closeCross {
+         &:hover {
+            transition: 0.4s;
+            color: #c40000;
+         }
+         all: unset;
+         cursor: pointer;
+      }
+   }
+
    .addons {
-      margin-left: 10em;
       background: rgba(46, 48, 56, 0.5);
       border-radius: 10px;
-      padding: 25px;
+      padding: 15px;
+
+      .h3-addons {
+         color: #b6c1ce8f;
+      }
 
       .addons-item {
          padding: 10px 0 0 0;
+         display: flex;
+         justify-content: space-between;
 
          .title {
             padding-right: 20px;
@@ -69,6 +130,24 @@
          }
 
          .add-btn {
+            background: #0e95caab;
+            padding: 5px 10px;
+            font-size: 12px;
+            border-radius: 2px;
+            color: $color-light;
+            margin-left: 10px;
+            text-transform: uppercase;
+            font-weight: 700;
+            outline: none;
+            border: none;
+            vertical-align: middle;
+            cursor: pointer;
+            transition: 0.3s;
+
+            &:hover {
+               background: #0e95cae5;
+               color: #fff;
+            }
          }
       }
    }
