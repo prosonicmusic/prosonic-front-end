@@ -627,6 +627,11 @@ footer section .contact .contactInfo li a:hover {
   border-radius: 10px;
   transition: 0.3s;
 }
+@media (max-width: 900px) {
+  .beatItem {
+    display: flex;
+  }
+}
 .beatItem__top {
   position: relative;
   width: 100% !important;
@@ -900,6 +905,12 @@ footer section .contact .contactInfo li a:hover {
   margin-top: 65px;
   display: flex;
 }
+@media (max-width: 900px) {
+  #details {
+    display: block;
+    padding: 0;
+  }
+}
 #details #title {
   padding: 0px 10px 10px 10px;
   margin-bottom: 10px;
@@ -913,6 +924,13 @@ footer section .contact .contactInfo li a:hover {
   padding: 25px;
   margin: 15px 0px 15px 15px;
 }
+@media (max-width: 900px) {
+  #details .details {
+    margin: 15px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+  }
+}
 #details .details .hr {
   height: 1px;
   background-color: #383838;
@@ -925,48 +943,61 @@ footer section .contact .contactInfo li a:hover {
 #details .details .product-title h2 {
   font-weight: 600;
   color: #a9b4c0;
+  display: flex;
+  justify-content: center;
 }
 #details .details .product-title h4 {
   font-size: 15px;
   color: #b6c1ce;
   margin-top: 4px;
+  display: flex;
+  justify-content: center;
 }
 #details .details .cover-section {
   position: relative;
   width: 100%;
+}
+@media (max-width: 900px) {
+  #details .details .cover-section {
+    display: flex;
+    justify-content: center;
+  }
 }
 #details .details .cover-section .product-image {
   position: relative;
   width: 200px;
   border-radius: 8px;
 }
-#details .details .cover-section:after {
-  content: "";
-  display: block;
-}
 #details .details .cover-section .playIcon {
   cursor: pointer;
   transition: 0.3s linear;
-  opacity: 0;
 }
-#details .details .cover-section .playIcon:hover {
-  opacity: 1;
+@media (max-width: 900px) {
+  #details .details .cover-section .playIcon {
+    position: relative;
+    right: 200px;
+  }
 }
 #details .details .cover-section .playIcon .play-image {
   position: absolute;
-  font-size: 20px;
   left: 5px;
   top: 2px;
-  max-width: 100%;
-  -webkit-filter: grayscale(1) invert(1);
-  filter: grayscale(1) invert(0.8);
+  width: 50px;
+  height: 50px;
+  padding-left: 2px;
+  background-color: rgba(238, 238, 238, 0.862745098);
+  border-radius: 50px;
+  transition: 0.3s;
+}
+#details .details .cover-section .playIcon .play-image:hover {
+  background-color: #fff;
 }
 #details .details .cover-section .labels {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
   position: absolute;
-  top: 10px;
+  bottom: 20px;
   left: 0;
   color: #bcc7d4;
   font-size: 11px;
@@ -982,6 +1013,11 @@ footer section .contact .contactInfo li a:hover {
 @media (max-width: 900px) {
   #details .details .cover-section .labels {
     font-size: 9px;
+    bottom: -60px;
+    padding-left: 10px;
+  }
+  #details .details .cover-section .labels .PREMIUM {
+    border-radius: 10px;
   }
 }
 #details .details .cover-section .soldLayer {
@@ -1072,6 +1108,11 @@ footer section .contact .contactInfo li a:hover {
   background: #16181b;
   border-radius: 10px;
 }
+@media (max-width: 900px) {
+  #details .details .add-to-cart-button {
+    position: unset;
+  }
+}
 #details .details .add-to-cart-button:hover {
   opacity: 1;
 }
@@ -1096,9 +1137,20 @@ footer section .contact .contactInfo li a:hover {
   margin: 15px;
   min-height: 580px;
 }
+@media (max-width: 900px) {
+  #details .description-files .description {
+    margin: 15px;
+    margin-bottom: 10px;
+  }
+}
 #details .description-files .description .daw-image {
   width: 600px;
   border-radius: 8px;
+}
+@media (max-width: 900px) {
+  #details .description-files .description .daw-image {
+    width: 100%;
+  }
 }
 #details .description-files .files {
   background: rgba(46, 48, 56, 0.5);
@@ -1106,6 +1158,12 @@ footer section .contact .contactInfo li a:hover {
   transition: 0.3s;
   padding: 25px;
   margin: 15px;
+}
+@media (max-width: 900px) {
+  #details .description-files .files {
+    margin: 15px;
+    margin-bottom: 10px;
+  }
 }
 
 #cart {
@@ -1118,6 +1176,11 @@ footer section .contact .contactInfo li a:hover {
   margin: auto;
   margin-top: 12px;
   width: 40em;
+}
+@media (max-width: 900px) {
+  #cart {
+    width: 100%;
+  }
 }
 #cart .item {
   display: flex;
@@ -1174,6 +1237,11 @@ footer section .contact .contactInfo li a:hover {
   padding: 5px;
   border-radius: 3px;
 }
+@media (max-width: 900px) {
+  #cart .item .total span {
+    font-size: 13px;
+  }
+}
 #cart .detail {
   margin: 20px;
   width: 250px;
@@ -1188,6 +1256,11 @@ footer section .contact .contactInfo li a:hover {
 #cart .detail .h3-title {
   font-weight: 600;
   margin-bottom: 5px;
+}
+@media (max-width: 900px) {
+  #cart .detail .h3-title {
+    font-size: 15px;
+  }
 }
 #cart .detail .author {
   color: rgba(182, 193, 206, 0.4862745098);
@@ -1217,6 +1290,7 @@ footer section .contact .contactInfo li a:hover {
   padding: 10px 0 0 0;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 #cart .addons .addons-item .title {
   padding-right: 20px;
@@ -1255,8 +1329,21 @@ footer section .contact .contactInfo li a:hover {
   background: rgba(46, 48, 56, 0.5);
   border-radius: 20px;
 }
-#shopCart .title {
+@media (max-width: 900px) {
+  #shopCart {
+    display: block;
+    padding: 5px;
+  }
+}
+#shopCart .h1-title {
   font-weight: 600;
+  margin-left: 15px;
+}
+@media (max-width: 900px) {
+  #shopCart .h1-title {
+    font-size: 20px;
+    padding: 10px 0px;
+  }
 }
 #shopCart .cart-sum {
   background: rgba(13, 13, 15, 0.993);
@@ -1267,6 +1354,15 @@ footer section .contact .contactInfo li a:hover {
   height: 330px;
   border-radius: 10px;
   right: 0;
+}
+#shopCart .cart-sum .title {
+  font-weight: 600;
+}
+@media (max-width: 900px) {
+  #shopCart .cart-sum .title {
+    font-size: 17px;
+    padding: 10px 0px;
+  }
 }
 #shopCart .cart-sum .total {
   display: flex;
@@ -1288,6 +1384,12 @@ footer section .contact .contactInfo li a:hover {
   transition-duration: 0.3s;
   background: rgba(46, 48, 56, 0.5);
   cursor: pointer;
+}
+@media (max-width: 900px) {
+  #shopCart .cart-sum .agree-terms input {
+    height: 20px;
+    width: 20px;
+  }
 }
 #shopCart .cart-sum .agree-terms input:checked {
   background-color: #00bcd4;
@@ -1344,6 +1446,13 @@ footer section .contact .contactInfo li a:hover {
 }
 #shopCart .cart-sum .no-item .link:hover {
   background-color: rgba(70, 70, 70, 0.7333333333);
+}
+@media (max-width: 900px) {
+  #shopCart .cart-sum {
+    float: none;
+    margin: 0;
+    width: 100%;
+  }
 }
 
 .block {

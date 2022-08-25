@@ -39,7 +39,7 @@ const Track = ({ productData }) => {
             </div>
             <div className="beatItem__bottomWrapper bottom-part">
                <div className="moreInfoIcon">
-                  <a href="#"></a>
+                  <Link to={`/tracks/${id}`} className="info"></Link>
                   <FaChevronRight className="rightIcon" />
                </div>
                <div>

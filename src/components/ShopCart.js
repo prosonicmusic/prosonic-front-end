@@ -17,8 +17,8 @@ const ShopCart = () => {
          <Navbar />
          <div id="shopCart">
             <div className="cart-review">
-               <h1 className="title">Shopping Cart</h1>
-               <div>
+               <h1 className="h1-title">Shopping Cart</h1>
+               <div className="all-items">
                   {state.selectedItems.map((item) => (
                      <Cart key={item.id} data={item} />
                   ))}

@@ -8,6 +8,11 @@
    margin-top: 65px;
    display: flex;
 
+   @include respond-phone {
+      display: block;
+      padding: 0;
+   }
+
    #title {
       padding: 0px 10px 10px 10px;
       margin-bottom: 10px;
@@ -22,6 +27,12 @@
       padding: 25px;
       margin: 15px 0px 15px 15px;
 
+      @include respond-phone {
+         margin: 15px;
+         padding-bottom: 10px;
+         margin-bottom: 10px;
+      }
+
       .hr {
          height: 1px;
          background-color: #383838;
@@ -35,45 +46,60 @@
          h2 {
             font-weight: 600;
             color: #a9b4c0;
+            display: flex;
+            justify-content: center;
          }
 
          h4 {
             font-size: 15px;
             color: #b6c1ce;
             margin-top: 4px;
+            display: flex;
+            justify-content: center;
+         }
+
+         @include respond-phone {
          }
       }
 
       .cover-section {
          position: relative;
          width: 100%;
+
+         @include respond-phone {
+            display: flex;
+            justify-content: center;
+         }
+
          .product-image {
             position: relative;
             width: 200px;
             border-radius: 8px;
          }
-         &:after {
-            content: "";
-            display: block;
-         }
 
          .playIcon {
             cursor: pointer;
             transition: 0.3s linear;
-            opacity: 0;
 
-            &:hover {
-               opacity: 1;
+            @include respond-phone {
+               position: relative;
+               right: 200px;
             }
 
             .play-image {
                position: absolute;
-               font-size: 20px;
                left: 5px;
                top: 2px;
-               max-width: 100%;
-               -webkit-filter: grayscale(1) invert(1);
-               filter: grayscale(1) invert(0.8);
+               width: 50px;
+               height: 50px;
+               padding-left: 2px;
+               background-color: #eeeeeedc;
+               border-radius: 50px;
+               transition: 0.3s;
+
+               &:hover {
+                  background-color: #fff;
+               }
             }
          }
 
@@ -82,7 +108,8 @@
             align-items: flex-start;
             flex-direction: column;
             position: absolute;
-            top: 10px;
+            // top: 5em;
+            bottom: 20px;
             left: 0;
             color: $color-light;
             font-size: 11px;
@@ -99,6 +126,13 @@
 
             @include respond-phone {
                font-size: 9px;
+               bottom: -60px;
+               padding-left: 10px;
+               
+               .PREMIUM {
+                  border-radius: 10px;
+                  
+               }
             }
          }
 
@@ -204,6 +238,10 @@
          background: #16181b;
          border-radius: 10px;
 
+         @include respond-phone {
+            position: unset;
+         }
+
          &:hover {
             opacity: 1;
          }
@@ -232,9 +270,19 @@
          padding: 25px;
          margin: 15px;
          min-height: 580px;
+
+         @include respond-phone {
+            margin: 15px;
+            margin-bottom: 10px;
+         }
+
          .daw-image {
             width: 600px;
             border-radius: 8px;
+
+            @include respond-phone {
+               width: 100%;
+            }
          }
       }
 
@@ -244,6 +292,11 @@
          transition: 0.3s;
          padding: 25px;
          margin: 15px;
+
+         @include respond-phone {
+            margin: 15px;
+            margin-bottom: 10px;
+         }
       }
    }
 }

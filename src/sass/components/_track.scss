@@ -3,6 +3,10 @@
    border-radius: 10px;
    transition: 0.3s;
 
+   @include respond-phone {
+      display: flex;
+   }
+
    &__top {
       position: relative;
       width: 100% !important;
