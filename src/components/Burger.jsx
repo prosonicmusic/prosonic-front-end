@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import PhoneNav from "./PhoneNav";
+import PhoneNav from "./shared/PhoneNav";
 
 const Burger = () => {
    const [status, setStatus] = useState(false);
