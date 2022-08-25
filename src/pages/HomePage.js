@@ -42,8 +42,6 @@ const HomePage = () => {
                         </Link>
                      </div>
                   </div>
-
-                  {/* <Products1 tracks={currentPosts} loading={loading} /> */}
                </section>
 
                <section className="container">
@@ -57,8 +55,6 @@ const HomePage = () => {
                         </Link>
                      </div>
                   </div>
-
-                  {/* <Products2 tracks={currentPosts} loading={loading} /> */}
                </section>
 
                <section className="container">
@@ -73,11 +69,9 @@ const HomePage = () => {
                      </div>
                   </div>
 
-                  {/* <Products3 /> */}
                </section>
             </div>
          </Layout>
-         <Player />
       </div>
    );
 };

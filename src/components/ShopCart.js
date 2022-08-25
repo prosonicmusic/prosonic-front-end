@@ -7,6 +7,7 @@ import Cart from "./shared/Cart";
 // Context
 import { CartContext } from "../context/CartContextProvider";
 import Navbar from "./shared/Navbar";
+import Player from "./Player";
 
 const ShopCart = () => {
    const { state, dispatch } = useContext(CartContext);
@@ -64,6 +65,7 @@ const ShopCart = () => {
                </div>
             </div>
          </div>
+         <Player />
       </>
    );
 };
