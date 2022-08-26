@@ -6,148 +6,261 @@
    margin: auto;
    max-width: 1024px;
    height: 60px;
-   transition: 0.3s;
-   // transform: translateY(100%);
-   // opacity: 0;
+   // transition: 0.3s;
+   // padding: 0 20px;
 
-   .player-container {
-      height: 100%;
-      margin: auto;
+   .container-layer {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      background: #23252be6;
       width: 100%;
-      padding: 0 20px;
+      height: 60px;
+      border-radius: 40px;
 
-      .container-layer {
+      .play-buttons {
+         text-transform: uppercase;
+         font-size: 19px;
+         color: $color-light;
+         height: 60px;
+         width: 60px;
+         background: #282b32;
          display: flex;
          align-items: center;
-         justify-content: flex-start;
-         background: #23252be6;
-         width: 100%;
-         height: 60px;
-         border-radius: 40px;
+         justify-content: center;
+         font-weight: 900;
+         overflow: visible;
+         cursor: pointer;
+         border: none;
+         border-radius: 10px 0px 0px 0;
+         transition: 0.3s;
 
-         .play-buttons {
-            text-transform: uppercase;
-            font-size: 15px;
-            color: $color-light;
+         &:hover {
+            background: #3b3f49;
+         }
+
+         span {
+            height: 16px;
+            width: 16px;
+            margin-bottom: 4px;
+            transition: 0.3s;
+         }
+      }
+
+      .player {
+         transform: 0.5s;
+         position: relative;
+         height: 60px;
+         flex: 1;
+
+         .titleUsername {
+            z-index: 99;
+            background: #23252b80;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
             height: 60px;
-            width: 60px;
-            background: #282b32;
+            opacity: 1;
+            visibility: visible;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-weight: 900;
-            overflow: visible;
-            cursor: pointer;
-            border: none;
-            border-radius: 10px 0px 0px 0;
             transition: 0.3s;
 
             &:hover {
-               background: #3b3f49;
-            }
-
-            span {
-               height: 16px;
-               width: 16px;
-               margin-bottom: 4px;
+               opacity: 0;
             }
          }
 
-         .player {
-            transform: 0.5s;
-            cursor: pointer;
-            position: relative;
-            height: 60px;
-            flex: 1;
-            padding-top: 10px;
+         .progress-bar {
+            --bar-bg: #000000;
+            --seek-before-width: 0;
+            --seek-before-color: #dadada;
+            --knobby: #dcf7ff;
+            --selectedKnobby: #688392;
 
-            .titleUsername {
-               z-index: 99;
-               background: #23252b80;
+            appearance: none;
+            background: var(--bar-bg);
+            border-radius: 10px;
+            position: relative;
+            width: 100%;
+            height: 2px;
+            top: -17px;
+            cursor: pointer;
+
+            &:hover {
+               &::-webkit-slider-thumb {
+                  visibility: visible;
+               }
+            }
+
+            // progress bar - safari
+            &::-webkit-slider-runnable-track {
+               background: var(--bar-bg);
+               border-radius: 10px;
+               position: relative;
+               width: 100%;
+               height: 2px;
+               outline: none;
+            }
+
+            // progress bar - firefox
+            &::-moz-range-track {
+               background: var(--bar-bg);
+               border-radius: 10px;
+               position: relative;
+               width: 100%;
+               height: 2px;
+               outline: none;
+            }
+
+            &::-moz-range-progress {
+               background-color: var(--seek-before-color);
+               border-top-left-radius: 10px;
+               border-bottom-left-radius: 10px;
+               height: 2px;
+            }
+
+            // progress bar - chrome & safari
+            &::before {
+               content: "";
+               height: 2px;
+               width: var(--seek-before-width);
+               background-color: var(--seek-before-color);
+               border-top-left-radius: 10px;
+               border-bottom-left-radius: 10px;
                position: absolute;
                top: 0;
                left: 0;
-               width: 100%;
-               height: 60px;
-               opacity: 1;
-               visibility: visible;
-               display: flex;
-               align-items: center;
-               justify-content: center;
-               transition: 0.3s;
-
-               &:hover {
-                  opacity: 0;
-               }
-            }
-         }
-
-         .closeBtn {
-            position: absolute;
-            right: 150px;
-            background: #4b5363;
-            border-radius: 100px;
-            height: 26px;
-            width: 26px;
-            padding: 6px;
-            z-index: 120;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            border: none;
-
-            span {
-               font-size: 19px;
-               color: $color-light;
-               margin-top: 2px;
-            }
-
-            &:hover {
-               background: #5d6472;
+               z-index: 2;
                cursor: pointer;
+               box-shadow: 0px 0px 5px var(--seek-before-color);
             }
-         }
 
-         .p-info {
-            border-right: 2px solid #23252b;
-            text-transform: uppercase;
-            color: $color-light;
-            height: 60px;
-            width: 60px;
-            background: #282b32;
-            transform: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 900;
-            cursor: pointer;
-
-            &:hover {
-               background: #3b3f49;
+            // knobby - chrome & safari
+            &::-webkit-slider-thumb {
+               -webkit-appearance: none;
+               height: 16px;
+               width: 16px;
+               border-radius: 50%;
+               border: none;
+               background-color: var(--knobby);
+               cursor: grab;
+               position: relative;
+               margin: -7px 0 0 0;
+               z-index: 3;
+               box-sizing: border-box;
+               visibility: hidden;
             }
-         }
 
-         .buy {
-            text-transform: uppercase;
-            color: $color-light;
-            font-size: 16px;
-            height: 60px;
-            width: 60px;
-            background: #282b32;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            border: none;
-            cursor: pointer;
-            border-radius: 0px 10px 0px 0;
+            // knobby while dragging - chrome & safari
+            &:active::-webkit-slider-thumb {
+               transform: scale(1.2);
+               background: var(--selectedKnobby);
+            }
 
-            &:hover {
-               background: #3b3f49;
+            // knobby - firefox
+            &::-moz-range-thumb {
+               height: 16px;
+               width: 16px;
+               border-radius: 50%;
+               border: transparent;
+               background-color: var(--knobby);
+               cursor: pointer;
+               position: relative;
+               z-index: 3;
+               box-sizing: border-box;
+            }
+
+            // knobby while dragging - firefox
+            &:active:-moz-range-thumb {
+               transform: scale(1.2);
+               background: var(--selectedKnobby);
+            }
+
+            &::-moz-focus-outer {
+               border: 0;
             }
          }
       }
+
+      .closeBtn {
+         position: absolute;
+         right: 150px;
+         background: #4b5363;
+         border-radius: 100px;
+         height: 26px;
+         width: 26px;
+         padding: 6px;
+         z-index: 120;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-weight: 900;
+         border: none;
+
+         span {
+            font-size: 19px;
+            color: $color-light;
+            margin-top: 2px;
+         }
+
+         &:hover {
+            background: #5d6472;
+            cursor: pointer;
+         }
+      }
+
+      .p-info {
+         border-right: 2px solid #23252b;
+         text-transform: uppercase;
+         color: $color-light;
+         height: 60px;
+         width: 60px;
+         background: #282b32;
+         transform: 0.3s;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-weight: 900;
+         cursor: pointer;
+
+         &:hover {
+            background: #3b3f49;
+         }
+      }
+
+      .buy {
+         text-transform: uppercase;
+         color: $color-light;
+         font-size: 16px;
+         height: 60px;
+         width: 60px;
+         background: #282b32;
+         transition: 0.3s;
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         font-weight: 700;
+         border: none;
+         cursor: pointer;
+         border-radius: 0px 10px 0px 0;
+
+         &:hover {
+            background: #3b3f49;
+         }
+      }
+   }
+
+   .close {
+      transform: translateY(100%);
+      transition: 0.3s;
+   }
+   
+   .open {
+      transform: translateY(-100%);
+      transition: 0.3s;
    }
 }
+
