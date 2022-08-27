@@ -22,7 +22,6 @@ const Track = ({ productData }) => {
       <div className="col">
          <div className="beatItem">
             <div className="top">
-
                {sold && (
                   <div className="soldLayer">
                      <span> SOLD </span>
@@ -41,17 +40,21 @@ const Track = ({ productData }) => {
                      <li className="Prem"> PREMIUM </li>
                   </div>
                </ul>
-
             </div>
+
             <div className="beatItem__bottomWrapper bottom-part">
 
-               <div className="moreInfoIcon">
-                  <Link to={`/tracks/${id}`} className="info"></Link>
-                  <FaChevronRight className="rightIcon" />
-               </div>
+               {
+               sold ? (<div></div>) : 
+                  (
+                     <div className="moreInfoIcon">
+                        <Link to={`/tracks/${id}`} className="info"></Link>
+                        <FaChevronRight className="rightIcon" />
+                     </div>
+                  )
+               }
 
                <div>
-
                   <div className="beatItem__nameAndUsername">
                      <span className="name">{title}</span>
                      <br />
@@ -83,7 +86,7 @@ const Track = ({ productData }) => {
                            Add to cart{" "}
                         </button>
                      )}
-                     
+
                      {quantityCount(state, id) === 1 && (
                         <button
                            className="set-bg"
@@ -93,7 +96,6 @@ const Track = ({ productData }) => {
                            Remove Item{" "}
                         </button>
                      )}
-
                   </div>
                </div>
             </div>
