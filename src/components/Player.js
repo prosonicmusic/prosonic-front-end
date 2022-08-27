@@ -23,6 +23,13 @@ const Player = () => {
       progressBar.current.max = seconds;
    }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
+   useEffect(() => {
+      if (currentTime == duration) {
+         togglePlayPause();
+         timeTravel(0)
+      }
+   }, [currentTime]);
+
    const calculateTime = (secs) => {
       const minutes = Math.floor(secs / 60);
       const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
@@ -65,6 +72,11 @@ const Player = () => {
          `${(progressBar.current.value / duration) * 100}%`
       );
       setCurrentTime(progressBar.current.value);
+   };
+
+   const timeTravel = (newTime) => {
+      progressBar.current.value = newTime;
+      changeRange();
    };
 
    return (
