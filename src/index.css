@@ -722,17 +722,8 @@ footer section .contact .contactInfo li a:hover {
     display: flex;
   }
 }
-.beatItem .top {
-  position: relative;
-  width: 100% !important;
-}
-@media (max-width: 900px) {
-  .beatItem .top {
-    max-width: 120px;
-  }
-}
-.beatItem .top .soldLayer {
-  background: rgba(35, 37, 43, 0.8);
+.beatItem .soldLayer {
+  background: rgba(35, 37, 43, 0.8235294118);
   height: 100%;
   width: 100%;
   position: absolute;
@@ -743,7 +734,19 @@ footer section .contact .contactInfo li a:hover {
   display: flex;
   align-items: center;
   justify-content: center;
-  display: none;
+}
+.beatItem .soldLayer span {
+  font-size: 25px;
+  font-weight: 900;
+}
+.beatItem .top {
+  position: relative;
+  width: 100% !important;
+}
+@media (max-width: 900px) {
+  .beatItem .top {
+    max-width: 120px;
+  }
 }
 .beatItem .labels {
   display: flex;
@@ -772,6 +775,9 @@ footer section .contact .contactInfo li a:hover {
   position: relative;
   color: #bcc7d4;
   text-align: left;
+}
+.beatItem__bottomWrapper .hide {
+  display: none;
 }
 @media (max-width: 900px) {
   .beatItem__bottomWrapper {

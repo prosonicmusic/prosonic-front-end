@@ -7,27 +7,31 @@
       display: flex;
    }
 
+   .soldLayer {
+      background: #23252bd2;
+      height: 100%;
+      width: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      span {
+         font-size: 25px;
+         font-weight: 900;
+      }
+   }
+
    .top {
       position: relative;
       width: 100% !important;
 
       @include respond-phone {
          max-width: 120px;
-      }
-
-      .soldLayer {
-         background: rgba(35, 37, 43, 0.8);
-         height: 100%;
-         width: 100%;
-         position: absolute;
-         top: 0;
-         left: 0;
-         right: 0;
-         z-index: 1;
-         display: flex;
-         align-items: center;
-         justify-content: center;
-         display: none;
       }
    }
 
@@ -60,6 +64,10 @@
       position: relative;
       color: #bcc7d4;
       text-align: left;
+
+      .hide {
+         display: none;
+      }
 
       @include respond-phone {
          align-self: center;

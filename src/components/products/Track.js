@@ -16,42 +16,48 @@ import { CartContext } from "../../context/CartContextProvider";
 const Track = ({ productData }) => {
    const { state, dispatch } = useContext(CartContext);
 
-   const { thumbnail, tag, title, author, product_price, daw, id } = productData;
+   const { thumbnail, tag, title, author, product_price, daw, id, sold } = productData;
 
    return (
       <div className="col">
          <div className="beatItem">
             <div className="top">
+
+               {sold && (
+                  <div className="soldLayer">
+                     <span> SOLD </span>
+                  </div>
+               )}
+
                <div className="cover">
                   <img src={thumbnail} alt="cover" />
                   <span>
                      <BsPlay className="icon" />
                   </span>
                </div>
+
                <ul className="labels">
                   <div className={tag}>
                      <li className="Prem"> PREMIUM </li>
                   </div>
                </ul>
-               <div className="soldLayer">
-                  <span> SOLD </span>
-               </div>
+
             </div>
             <div className="beatItem__bottomWrapper bottom-part">
+
                <div className="moreInfoIcon">
                   <Link to={`/tracks/${id}`} className="info"></Link>
                   <FaChevronRight className="rightIcon" />
                </div>
+
                <div>
+
                   <div className="beatItem__nameAndUsername">
-                     <a href="#" className="name">
-                        {title}
-                     </a>
+                     <span className="name">{title}</span>
                      <br />
-                     <a href="#" className="username">
-                        {author}
-                     </a>
+                     <span className="username">{author}</span>
                   </div>
+
                   <div className="beatItem__lineData">
                      <span className="price"> {product_price} T</span>
                      <div id="daw">
@@ -61,7 +67,8 @@ const Track = ({ productData }) => {
                         </div>
                      </div>
                   </div>
-                  <div className="beatItem__buttons">
+
+                  <div className={sold ? "beatItem__buttons hide" : "beatItem__buttons"}>
                      <Link to={`/tracks/${id}`} className="info">
                         {" "}
                         More Info{" "}
@@ -76,6 +83,7 @@ const Track = ({ productData }) => {
                            Add to cart{" "}
                         </button>
                      )}
+                     
                      {quantityCount(state, id) === 1 && (
                         <button
                            className="set-bg"
@@ -85,6 +93,7 @@ const Track = ({ productData }) => {
                            Remove Item{" "}
                         </button>
                      )}
+
                   </div>
                </div>
             </div>
