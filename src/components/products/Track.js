@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 // assets
 import { FaChevronRight } from "react-icons/fa";
-import playIcon from "../../assets/icons/play-icon-1.svg";
+import { BsPlay, BsFillPauseFill } from "react-icons/bs";
 import logo1 from "../../assets/img/cubase_logo.png";
 import logo2 from "../../assets/img/Fl-logo.png";
 
@@ -21,11 +21,11 @@ const Track = ({ productData }) => {
    return (
       <div className="col">
          <div className="beatItem">
-            <div className="beatItem__top">
+            <div className="top">
                <div className="cover">
                   <img src={thumbnail} alt="cover" />
                   <span>
-                     <img src={playIcon} alt="play" className="cover__playIcon" />
+                     <BsPlay className="icon" />
                   </span>
                </div>
                <ul className="labels">

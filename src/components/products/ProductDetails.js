@@ -6,9 +6,9 @@ import axios from "axios";
 import Navbar from "../shared/Navbar";
 
 // assets
-import playIcon from "../../assets/icons/play-icon-1.svg";
 import logo1 from "../../assets/img/cubase_logo.png";
 import logo2 from "../../assets/img/Fl-logo.png";
+import { BsPlay, BsFillPauseFill } from "react-icons/bs";
 
 // Functions
 import { isInCart, quantityCount } from "../../helper/functions";
@@ -67,7 +67,8 @@ const ProductDetails = () => {
                      <img src={thumbnail} alt="cover" className="product-image" />
                   </div>
                   <span className="playIcon">
-                     <img src={playIcon} alt="play" className="play-image" />
+                     <BsPlay className="play-image"/>
+                     {/* <img src={playIcon} alt="play" className="play-image" /> */}
                   </span>
 
                   <ul className="labels">

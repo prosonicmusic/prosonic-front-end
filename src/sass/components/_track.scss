@@ -7,7 +7,7 @@
       display: flex;
    }
 
-   &__top {
+   .top {
       position: relative;
       width: 100% !important;
 
@@ -27,21 +27,7 @@
          display: flex;
          align-items: center;
          justify-content: center;
-
          display: none;
-
-         span {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            border: 2px solid #fff;
-            height: 60px;
-            width: 60px;
-            font-size: 15px;
-            font-weight: 900;
-            border-radius: 50%;
-         }
       }
    }
 
@@ -287,17 +273,30 @@
       transition: 0.3s linear;
       opacity: 0;
 
+      &::before {
+         content: "";
+         width: 100%;
+         height: 100%;
+         background-color: #0000006c;
+         position: absolute;
+         top: 0;
+         left: 0;
+      }
+
       &:hover {
          opacity: 1;
       }
 
-      img {
+      .icon {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         color: #d4d4d4;
+         height: 60%;
+         width: 60%;
          position: absolute;
-         font-size: 20px;
-         left: 5px;
-         max-width: 100%;
-         -webkit-filter: grayscale(1) invert(1);
-         filter: grayscale(1) invert(0.8);
+         top: 36px;
+         right: 36px;
       }
    }
 }
