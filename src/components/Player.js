@@ -7,7 +7,7 @@ import { AiOutlineClose } from "react-icons/ai";
 
 const Player = () => {
    // state
-   const [isPlaying, setIsPlaying] = useState(false);
+   const [isPlaying, setIsPlaying] = useState(true);
    const [duration, setDuration] = useState(0);
    const [currentTime, setCurrentTime] = useState(0);
    const [close, setClose] = useState(false);
