@@ -41,11 +41,16 @@ const Package = ({ productData }) => {
 
             </div>
             <div className="beatItem__bottomWrapper bottom-part">
-               
-               <div className="moreInfoIcon">
-                  <Link to={`/tracks/${id}`} className="info"></Link>
-                  <FaChevronRight className="rightIcon" />
-               </div>
+
+               {
+               sold ? (<div></div>) : 
+                  (
+                     <div className="moreInfoIcon">
+                        <Link to={`/tracks/${id}`} className="info"></Link>
+                        <FaChevronRight className="rightIcon" />
+                     </div>
+                  )
+               }
 
                <div>
 
