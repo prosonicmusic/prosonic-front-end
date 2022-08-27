@@ -83,7 +83,7 @@ const Player = () => {
       <div id="player">
          <div className={close ? "close" : ""}>
             <div className="container-layer">
-               <audio ref={audioPlayer} src="https://www.kozco.com/tech/LRMonoPhase4.mp3"></audio>
+               <audio ref={audioPlayer} src="https://www.kozco.com/tech/32.mp3"></audio>
 
                <button className="play-buttons" onClick={togglePlayPause}>
                   <span>{isPlaying ? <FaPause /> : <FaPlay />}</span>
