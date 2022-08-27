@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom'
 // Components
 import Header from "../components/Header";
 import Layout from "../components/Layout";
-import Player from '../components/Player'
-
 
 const HomePage = () => {
    return (

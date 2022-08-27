@@ -8,6 +8,13 @@
    margin-top: 65px;
    display: flex;
 
+   .hr {
+      height: 1px;
+      background-color: #383838;
+      border: none;
+      margin: unset;
+   }
+
    @include respond-phone {
       display: block;
       padding: 0;
@@ -31,13 +38,6 @@
          margin: 15px;
          padding-bottom: 10px;
          margin-bottom: 10px;
-      }
-
-      .hr {
-         height: 1px;
-         background-color: #383838;
-         border: none;
-         margin: unset;
       }
 
       .product-title {
@@ -75,34 +75,6 @@
             position: relative;
             width: 200px;
             border-radius: 8px;
-         }
-
-         .playIcon {
-            cursor: pointer;
-            transition: 0.3s linear;
-            
-
-            @include respond-phone {
-               position: relative;
-               right: 200px;
-            }
-
-            .play-image {
-               position: absolute;
-               left: 5px;
-               top: 2px;
-               width: 40px;
-               height: 40px;
-               padding-left: 2px;
-               background-color: #eeeeeedc;
-               border-radius: 50px;
-               transition: 0.3s;
-               color: #2b2b2b;
-
-               &:hover {
-                  background-color: #fff;
-               }
-            }
          }
 
          .labels {
@@ -272,6 +244,10 @@
          padding: 25px;
          margin: 15px;
          min-height: 580px;
+
+         p {
+            margin-bottom: 20px;
+         }
 
          @include respond-phone {
             margin: 15px;

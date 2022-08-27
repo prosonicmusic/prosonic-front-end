@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import axios from "axios";
 
 // Components
@@ -8,13 +8,13 @@ import Navbar from "../shared/Navbar";
 // assets
 import logo1 from "../../assets/img/cubase_logo.png";
 import logo2 from "../../assets/img/Fl-logo.png";
-import { BsPlay, BsFillPauseFill } from "react-icons/bs";
 
 // Functions
 import { isInCart, quantityCount } from "../../helper/functions";
 
 // Context
 import { CartContext } from "../../context/CartContextProvider";
+import ProductDetailsPlayer from "../player/ProductDetailsPlayer";
 
 const ProductDetails = () => {
    const params = useParams();
@@ -54,6 +54,7 @@ const ProductDetails = () => {
       stem_price,
       cover_price,
       sold,
+      files
    } = product;
 
    return (
@@ -66,10 +67,6 @@ const ProductDetails = () => {
                   <div>
                      <img src={thumbnail} alt="cover" className="product-image" />
                   </div>
-                  <span className="playIcon">
-                     <BsPlay className="play-image"/>
-                     {/* <img src={playIcon} alt="play" className="play-image" /> */}
-                  </span>
 
                   <ul className="labels">
                      <div className={tag}>
@@ -156,6 +153,8 @@ const ProductDetails = () => {
                   <h3 id="title">Project Description</h3>
                   <img src={project_image} alt="daw" className="daw-image" />
                   <p>{project_description}</p>
+                  <hr className="hr" />
+                  <ProductDetailsPlayer files={files}/>
                </section>
                <section className="files">
                   <h3 id="title">Files</h3>
