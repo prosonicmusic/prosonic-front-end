@@ -1,15 +1,5 @@
-import HomePage from "./pages/HomePage";
-import { Route, Routes, Navigate } from "react-router-dom";
 
-// Pages
-import TracksPage from "./pages/TracksPage";
-import PackagesPage from "./pages/PackagesPage";
-import ContactPage from "./pages/ContactPage";
-
-// Components
-import ProductDetails from "./components/products/ProductDetails";
-import ShopCart from "./components/ShopCart";
-import ServicesPage from "./pages/ServicesPage";
+import Routes from "./routes/Routes"
 
 // Context
 import CartContextProvider from "./context/CartContextProvider";
@@ -22,16 +12,7 @@ function App() {
       <TrackContextProvider>
          <PackageContextProvider>
             <CartContextProvider>
-               <Routes>
-                  <Route path="/tracks" element={<TracksPage />} />
-                  <Route path="/tracks/:id" element={<ProductDetails />} />
-                  <Route path="/packages" element={<PackagesPage />} />
-                  <Route path="/cart" element={<ShopCart />} />
-                  <Route path="/services" element={<ServicesPage />} />
-                  <Route path="/contact" element={<ContactPage />} />
-                  <Route path="/" exact element={<HomePage />} />
-                  <Route path="/*" element={<Navigate to="/" />} />
-               </Routes>
+               <Routes />
                <Player />
             </CartContextProvider>
          </PackageContextProvider>
