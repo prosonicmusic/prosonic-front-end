@@ -15,6 +15,7 @@ import ServicesPage from "./pages/ServicesPage";
 import CartContextProvider from "./context/CartContextProvider";
 import TrackContextProvider from "./context/TrackContextProvider";
 import PackageContextProvider from "./context/PackageContextProvider";
+import Player from "./components/player/Player";
 
 function App() {
    return (
@@ -31,6 +32,7 @@ function App() {
                   <Route path="/" exact element={<HomePage />} />
                   <Route path="/*" element={<Navigate to="/" />} />
                </Routes>
+               <Player />
             </CartContextProvider>
          </PackageContextProvider>
       </TrackContextProvider>

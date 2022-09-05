@@ -65,7 +65,6 @@ const Trackspage = () => {
 
             <Pagination />
          </section>
-         <Player />
       </Layout>
    );
 };

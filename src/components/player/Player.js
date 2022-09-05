@@ -26,7 +26,7 @@ const Player = () => {
    useEffect(() => {
       if (currentTime == duration) {
          togglePlayPause();
-         timeTravel(0)
+         timeTravel(0);
       }
    }, [currentTime]);
 
@@ -90,15 +90,7 @@ const Player = () => {
                </button>
 
                <div className="player">
-                  <div>
-                     <input
-                        type="range"
-                        className="progress-bar"
-                        defaultValue="0"
-                        ref={progressBar}
-                        onChange={changeRange}
-                     />
-                  </div>
+                  <input type="range" defaultValue="0" ref={progressBar} onChange={changeRange} />
                </div>
 
                <button className="closeBtn" onClick={closeHandler}>

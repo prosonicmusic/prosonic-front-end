@@ -4,8 +4,8 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
 
 const ProductDetailsPlayer = ({files}) => {
-   let demoURL = files.demo_file
-   console.log(demoURL);
+   // let demoURL = files.demo_file
+   // console.log(demoURL);
    
    // state
    const [isPlaying, setIsPlaying] = useState(true);
@@ -74,7 +74,7 @@ const ProductDetailsPlayer = ({files}) => {
 
    return (
       <div id="ProductDetailsPlayer">
-         <audio ref={audioPlayer} src={demoURL}></audio>
+         <audio ref={audioPlayer} src="{demoURL}"></audio>
 
          <button className="play-buttons" onClick={togglePlayPause}>
             <span>{isPlaying ? <FaPause /> : <FaPlay />}</span>
