@@ -5,9 +5,11 @@ import Track from "../products/Track";
 
 // Context
 import { TracksContext } from "../../context/TrackContextProvider";
+import playerContext from "../../context/player/PlayerContext";
 
 const Tracks = () => {
-   const products = useContext(TracksContext);
+   // const products = useContext(TracksContext);
+   const { products } = useContext(playerContext);
    return (
       <div className="beats">
          {products.map((product) => {
