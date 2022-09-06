@@ -1,11 +1,19 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 // icons
 import { FaPlay, FaPause } from "react-icons/fa";
 import { AiOutlineClose } from "react-icons/ai";
 
+// Context
+import playerContext from "../../context/player/PlayerContext";
+
 const Player = () => {
+   const { currentSong, products} = useContext(playerContext);
+   const demoFile = products[0]
+   const demoURL = demoFile
+   console.log(demoURL);
+
    // state
    const [isPlaying, setIsPlaying] = useState(true);
    const [duration, setDuration] = useState(0);
@@ -83,7 +91,7 @@ const Player = () => {
       <div id="player">
          <div className={close ? "close" : ""}>
             <div className="container-layer">
-               <audio ref={audioPlayer} src="https://www.kozco.com/tech/32.mp3"></audio>
+               <audio ref={audioPlayer} src={products[currentSong]}></audio>
 
                <button className="play-buttons" onClick={togglePlayPause}>
                   <span>{isPlaying ? <FaPause /> : <FaPlay />}</span>
