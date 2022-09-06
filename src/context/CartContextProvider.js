@@ -1,4 +1,5 @@
 import React, { useReducer, createContext } from "react";
+import { useEffect } from "react";
 
 const initialState = {
    selectedItems: [],
@@ -7,9 +8,15 @@ const initialState = {
    checkout: false,
 };
 
+const initializer = (initialValue = initialState) =>
+  JSON.parse(localStorage.getItem("products")) || initialValue;
+
 const sumItems = (items) => {
    const itemsCounter = items.reduce((total, product) => total + product.quantity, 0);
-   const total = items.reduce((total, product) => total + product.product_price * product.quantity, 0);
+   const total = items.reduce(
+      (total, product) => total + product.product_price * product.quantity,
+      0
+   );
    return { itemsCounter, total };
 };
 
@@ -61,7 +68,11 @@ const cartReducer = (state, action) => {
 export const CartContext = createContext();
 
 const CartContextProvider = ({ children }) => {
-   const [state, dispatch] = useReducer(cartReducer, initialState);
+   const [state, dispatch] = useReducer(cartReducer, initialState, initializer);
+
+   useEffect(() => {
+      localStorage.setItem("products", JSON.stringify(state))
+   }, [state])
 
    return <CartContext.Provider value={{ state, dispatch }}>{children}</CartContext.Provider>;
 };
