@@ -1,5 +1,5 @@
 import React, { createContext } from "react";
 
-const playerContext = createContext();
+export const playerContext = createContext();
 
 export default playerContext;

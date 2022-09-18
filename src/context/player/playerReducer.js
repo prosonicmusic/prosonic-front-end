@@ -3,18 +3,23 @@ let playerReducer = (state, action) => {
       case "SET_SONGS_ARRAY":
          return {
             ...state,
-            products: action.data,
+            products: action.payload,
          };
       case "SET_CURRENT_SONG":
          return {
             ...state,
-            currentSong: action.data,
+            currentSong: action.payload,
             playing: true,
          };
       case "TOGGLE_PLAYING":
          return {
             ...state,
-            playing: action.data,
+            playing: action.payload,
+         };
+      case "CLOSE":
+         return {
+            ...state,
+            close: action.payload,
          };
       default:
          return state;

@@ -1,45 +1,74 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer, useContext, useEffect, useState, useRef } from "react";
 
 // Context
-import { TracksContext } from "../../context/TrackContextProvider";
+import { TracksContext } from "../TrackContextProvider";
+import { PackagesContext } from "../PackageContextProvider";
 import playerContext from "./PlayerContext";
 import playerReducer from "./playerReducer";
 
 const PlayerState = (props) => {
-   const products = useContext(TracksContext);
-   // console.log(products);
+   const tracks = useContext(TracksContext);
+   const packages = useContext(PackagesContext);
+
+   // State
+   const [audioInfo, setAudioInfo] = useState({
+      currentTime: 0,
+      duration: 0,
+   });
+
+   // Ref
+   const audioRef = useRef(null);
 
    const initialState = {
-      products: products,
+      tracks: tracks,
+      packages: packages,
       currentSong: 0,
       playing: false,
-      audio: null,
+      close: true,
+      demoFile: "",
    };
 
-   // console.log(initialState);
+   //////////////////
+   const initializer = (initialValue = initialState) =>
+      JSON.parse(localStorage.getItem("player")) || initialValue;
 
-   const [state, dispatch] = useReducer(playerReducer, initialState);
+   const [state, playerDispatch] = useReducer(playerReducer, initialState, initializer);
 
-   // Set current song
-   const setCurrent = (id) => dispatch({ type: "SET_CURRENT_SONG", data: id });
+   useEffect(() => {
+      localStorage.setItem("player", JSON.stringify(state));
+   }, [state]);
+   /////////////////
 
-   // Set songs array
-   const songsSet = (songsArr) => dispatch({ type: "SET_SONGS_ARRAY", data: songsArr });
+   const currentSongData = tracks.find((item) => item.id === state.currentSong);
+   let currentAudioLink = currentSongData?.files?.demo_file;
 
-   // Set playing state
-   const togglePlaying = () =>
-      dispatch({ type: "TOGGLE_PLAYING", data: state.playing ? false : true });
+   // Player
+   const timeUpdateHandler = (e) => {
+      const current = e.target.currentTime;
+      const duration = e.target.duration;
+      setAudioInfo({ ...audioInfo, currentTime: current, duration });
+   };
+
+   const dragHandler = (e) => {
+      audioRef.current.currentTime = e.target.value;
+      setAudioInfo({ ...audioInfo, currentTime: e.target.value });
+   };
 
    return (
       <playerContext.Provider
          value={{
+            tracks: tracks,
+            packages: packages,
             currentSong: state.currentSong,
-            products: products,
+            audioInfo: audioInfo,
+            currentAudioLink: currentAudioLink,
+            playerDispatch,
             playing: state.playing,
-            audio: state.audio,
-            setCurrent,
-            songsSet,
-            togglePlaying
+            state,
+            audioRef,
+            timeUpdateHandler,
+            dragHandler,
+            setAudioInfo,
          }}
       >
          {props.children}
