@@ -1,45 +1,95 @@
-import React, { useReducer, useContext } from "react";
+import React, { useReducer, useContext, useEffect, useState, useRef } from "react";
 
 // Context
-import { TracksContext } from "../../context/TrackContextProvider";
+import { TracksContext } from "../TrackContextProvider";
+import { PackagesContext } from "../PackageContextProvider";
 import playerContext from "./PlayerContext";
 import playerReducer from "./playerReducer";
 
 const PlayerState = (props) => {
-   const products = useContext(TracksContext);
-   // console.log(products);
+   const tracks = useContext(TracksContext);
+   const packages = useContext(PackagesContext);
 
+   // State
    const initialState = {
-      products: products,
+      tracks: tracks,
+      packages: packages,
       currentSong: 0,
       playing: false,
-      audio: null,
+      close: true,
+      open: false,
    };
 
-   // console.log(initialState);
+   const [audioInfo, setAudioInfo] = useState({
+      currentTime: 0,
+      duration: 0,
+      widthPercentage: 0,
+   });
 
-   const [state, dispatch] = useReducer(playerReducer, initialState);
+   // Ref
+   const audioRef = useRef(null);
 
-   // Set current song
-   const setCurrent = (id) => dispatch({ type: "SET_CURRENT_SONG", data: id });
+   const [state, playerDispatch] = useReducer(playerReducer, initialState);
 
-   // Set songs array
-   const songsSet = (songsArr) => dispatch({ type: "SET_SONGS_ARRAY", data: songsArr });
+   const currentSongData = tracks.find((item) => item.id === state.currentSong);
+   let currentAudioLink = currentSongData?.files?.demo_file;
 
-   // Set playing state
-   const togglePlaying = () =>
-      dispatch({ type: "TOGGLE_PLAYING", data: state.playing ? false : true });
+   // Player
+   const timeUpdateHandler = (e) => {
+      const current = e.target.currentTime;
+      const duration = e.target.duration;
+      // Calculate Precentage
+      const roundedCurrent = Math.round(current);
+      const roundedDuration = Math.round(duration);
+      const widthPercentage = Math.round((roundedCurrent / roundedDuration) * 100);
+
+      setAudioInfo({ ...audioInfo, currentTime: current, duration, widthPercentage });
+   };
+
+   const dragHandler = (e) => {
+      audioRef.current.currentTime = e.target.value;
+      setAudioInfo({ ...audioInfo, currentTime: e.target.value });
+   };
+
+   const audioEndHandler = async () => {
+      playerDispatch({ type: "TOGGLE_PLAYING", payload: (state.playing = false) });
+   };
+
+   const openPlayer = () => {
+      playerDispatch({ type: "OPEN", payload: (state.close = false) });
+      // audioRef.current.play();
+   };
+
+   const closePlayer = () => {
+      playerDispatch({ type: "CLOSE", payload: (state.close = true) });
+      audioRef.current.pause();
+      setAudioInfo({
+         currentTime: 0,
+         duration: 0,
+         widthPercentage: 0,
+      });
+   };
 
    return (
       <playerContext.Provider
          value={{
+            tracks: tracks,
+            packages: packages,
             currentSong: state.currentSong,
-            products: products,
             playing: state.playing,
-            audio: state.audio,
-            setCurrent,
-            songsSet,
-            togglePlaying
+            close: state.close,
+            audioInfo,
+            currentAudioLink,
+            playerDispatch,
+            state,
+            audioRef,
+            timeUpdateHandler,
+            dragHandler,
+            setAudioInfo,
+            audioEndHandler,
+            currentSongData,
+            closePlayer,
+            openPlayer,
          }}
       >
          {props.children}

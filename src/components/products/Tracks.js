@@ -8,18 +8,16 @@ import { TracksContext } from "../../context/TrackContextProvider";
 import playerContext from "../../context/player/PlayerContext";
 
 const Tracks = () => {
-   // const products = useContext(TracksContext);
-   const { products } = useContext(playerContext);
+   // const tracks = useContext(TracksContext);
+   const { tracks } = useContext(playerContext);
    return (
       <div className="beats">
-         {products.map((product) => {
-            const productType = product.product_type;
+         {tracks.map((product, i) => {
+            const index = i + 1;
             return (
-               productType === "Track" && (
-                  <div className="beatsGrid" key={product.id}>
-                     {<Track productData={product} />}
-                  </div>
-               )
+               <div className="beatsGrid" key={product.id}>
+                  {<Track productData={product} index={index} />}
+               </div>
             );
          })}
       </div>

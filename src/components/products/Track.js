@@ -1,5 +1,6 @@
-import React, { useContext } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 // assets
 import { FaChevronRight } from "react-icons/fa";
@@ -12,11 +13,36 @@ import { isInCart, quantityCount } from "../../helper/functions";
 
 // Context
 import { CartContext } from "../../context/CartContextProvider";
+import { playerContext } from "../../context/player/PlayerContext";
 
-const Track = ({ productData }) => {
+const Track = ({ productData, index }) => {
+   const BASE_URL = "http://localhost:8080";
    const { state, dispatch } = useContext(CartContext);
 
+   const { playerDispatch, currentSong, playing, audioRef, close, openPlayer } =
+      useContext(playerContext);
+
    const { thumbnail, tag, title, author, product_price, daw, id, sold } = productData;
+
+   const getSpecificProduct = async () => {
+      const response = await axios.get(`${BASE_URL}/product/specific?id=${currentSong}`);
+      return response.data.data;
+   };
+
+   const PlayHandler = () => {
+      playerDispatch({ type: "SET_CURRENT_SONG", payload: id });
+      openPlayer();
+
+      // check if the song is playing
+      if (playing) {
+         const PlayPromise = audioRef.current.play();
+         if (PlayPromise !== undefined) {
+            PlayPromise.then((audio) => {
+               audioRef.current.play();
+            });
+         }
+      }
+   };
 
    return (
       <div className="col">
@@ -30,7 +56,8 @@ const Track = ({ productData }) => {
 
                <div className="cover">
                   <img src={thumbnail} alt="cover" />
-                  <span>
+                  <span onClick={PlayHandler}>
+                     {/* {playing ? <BsFillPauseFill className="icon" /> : <BsPlay className="icon" />} */}
                      <BsPlay className="icon" />
                   </span>
                </div>
@@ -40,19 +67,27 @@ const Track = ({ productData }) => {
                      <li className="Prem"> PREMIUM </li>
                   </div>
                </ul>
+
+               {/* <div className="wave">
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+               </div> */}
             </div>
 
             <div className="beatItem__bottomWrapper bottom-part">
-
-               {
-               sold ? (<div></div>) : 
-                  (
-                     <div className="moreInfoIcon">
-                        <Link to={`/tracks/${id}`} className="info"></Link>
-                        <FaChevronRight className="rightIcon" />
-                     </div>
-                  )
-               }
+               {sold ? (
+                  <div></div>
+               ) : (
+                  <div className="moreInfoIcon">
+                     <Link to={`/tracks/${id}`} className="info"></Link>
+                     <FaChevronRight className="rightIcon" />
+                  </div>
+               )}
 
                <div>
                   <div className="beatItem__nameAndUsername">
