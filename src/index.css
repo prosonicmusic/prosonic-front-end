@@ -493,7 +493,7 @@ footer section .contact .contactInfo li a:hover {
   margin: auto;
   max-width: 1024px;
   height: 60px;
-  z-index: 1;
+  z-index: 100;
 }
 #player .container-layer {
   display: flex;
@@ -518,8 +518,9 @@ footer section .contact .contactInfo li a:hover {
   overflow: visible;
   cursor: pointer;
   border: none;
-  border-radius: 10px 0px 0px 0;
   transition: 0.3s;
+  position: absolute;
+  left: 45%;
 }
 #player .container-layer .play-buttons:hover {
   background: #3b3f49;
@@ -530,18 +531,43 @@ footer section .contact .contactInfo li a:hover {
   margin-bottom: 4px;
   transition: 0.3s;
 }
+#player .container-layer .audio-image {
+  width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0px;
+  left: 1px;
+}
+#player .container-layer .audio-image img {
+  border-radius: 10px 10px 10px 0px;
+}
+#player .container-layer .audio-info {
+  position: absolute;
+  top: 0;
+  left: 70px;
+  padding: 10px;
+}
+#player .container-layer .audio-info h3 {
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+#player .container-layer .audio-info h4 {
+  color: rgba(211, 199, 199, 0.5803921569);
+}
 #player .container-layer .player {
+  --bar-bg: #0000000e;
+  --seek-before-width: 0;
+  --seek-before-color: #dadada;
+  --knobby: #dcf7ff;
+  --selectedKnobby: #688392;
   transform: 0.5s;
   position: relative;
   height: 60px;
   flex: 1;
 }
 #player .container-layer .player input {
-  --bar-bg: #0000000e;
-  --seek-before-width: 0;
-  --seek-before-color: #dadada;
-  --knobby: #dcf7ff;
-  --selectedKnobby: #688392;
   appearance: none;
   background: var(--bar-bg);
   border-radius: 10px;
@@ -576,19 +602,6 @@ footer section .contact .contactInfo li a:hover {
   border-top-left-radius: 10px;
   border-bottom-left-radius: 10px;
   height: 2px;
-}
-#player .container-layer .player input::before {
-  content: "";
-  height: 2px;
-  width: var(--seek-before-width);
-  background-color: var(--seek-before-color);
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
-  position: absolute;
-  left: 0;
-  z-index: 2;
-  cursor: pointer;
-  box-shadow: 0px 0px 5px var(--seek-before-color);
 }
 #player .container-layer .player input::-webkit-slider-thumb {
   -webkit-appearance: none;
@@ -626,27 +639,21 @@ footer section .contact .contactInfo li a:hover {
 #player .container-layer .player input::-moz-focus-outer {
   border: 0;
 }
-#player .container-layer .player .titleUsername {
-  z-index: 99;
-  background: rgba(35, 37, 43, 0.5019607843);
+#player .container-layer .player .progress-animate {
+  background-color: var(--seek-before-color);
+  height: 2px;
+  width: 0%;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
-  height: 60px;
-  opacity: 1;
-  visibility: visible;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: 0.3s;
-}
-#player .container-layer .player .titleUsername:hover {
-  opacity: 0;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  z-index: 2;
+  cursor: pointer;
 }
 #player .container-layer .closeBtn {
   position: absolute;
-  right: 150px;
+  right: 70px;
   background: #4b5363;
   border-radius: 100px;
   height: 26px;
@@ -667,23 +674,6 @@ footer section .contact .contactInfo li a:hover {
 #player .container-layer .closeBtn:hover {
   background: #5d6472;
   cursor: pointer;
-}
-#player .container-layer .p-info {
-  border-right: 2px solid #23252b;
-  text-transform: uppercase;
-  color: #bcc7d4;
-  height: 60px;
-  width: 60px;
-  background: #282b32;
-  transform: 0.3s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 900;
-  cursor: pointer;
-}
-#player .container-layer .p-info:hover {
-  background: #3b3f49;
 }
 #player .container-layer .buy {
   text-transform: uppercase;
@@ -1666,6 +1656,52 @@ footer section .contact .contactInfo li a:hover {
   }
 }
 
+.wave {
+  height: 5px;
+  display: flex;
+  align-items: center;
+  position: absolute;
+  top: 18px;
+  right: 5px;
+}
+.wave .stroke {
+  display: block;
+  position: relative;
+  background: #f1f1f1;
+  height: 20px;
+  width: 3px;
+  border-radius: 50px;
+  margin: 0 1.5px;
+  transition: 0.3s;
+  animation: waveAnimate 0.9s linear infinite;
+}
+.wave .stroke:nth-child(1) {
+  animation-delay: 0s;
+}
+.wave .stroke:nth-child(2) {
+  animation-delay: 0.3s;
+}
+.wave .stroke:nth-child(3) {
+  animation-delay: 0.6s;
+}
+.wave .stroke:nth-child(4) {
+  animation-delay: 0.9s;
+}
+.wave .stroke:nth-child(5) {
+  animation-delay: 0.6s;
+}
+.wave .stroke:nth-child(6) {
+  animation-delay: 0.3s;
+}
+.wave .stroke:nth-child(7) {
+  animation-delay: 0s;
+}
+
+@keyframes waveAnimate {
+  50% {
+    height: 20%;
+  }
+}
 .block {
   height: 100%;
   margin: auto;

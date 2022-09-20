@@ -21,6 +21,11 @@ let playerReducer = (state, action) => {
             ...state,
             close: action.payload,
          };
+      case "OPEN":
+         return {
+            ...state,
+            open: true,
+         };
       default:
          return state;
    }

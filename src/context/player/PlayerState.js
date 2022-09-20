@@ -11,33 +11,25 @@ const PlayerState = (props) => {
    const packages = useContext(PackagesContext);
 
    // State
-   const [audioInfo, setAudioInfo] = useState({
-      currentTime: 0,
-      duration: 0,
-   });
-
-   // Ref
-   const audioRef = useRef(null);
-
    const initialState = {
       tracks: tracks,
       packages: packages,
       currentSong: 0,
       playing: false,
       close: true,
-      demoFile: "",
+      open: false,
    };
 
-   //////////////////
-   const initializer = (initialValue = initialState) =>
-      JSON.parse(localStorage.getItem("player")) || initialValue;
+   const [audioInfo, setAudioInfo] = useState({
+      currentTime: 0,
+      duration: 0,
+      widthPercentage: 0,
+   });
 
-   const [state, playerDispatch] = useReducer(playerReducer, initialState, initializer);
+   // Ref
+   const audioRef = useRef(null);
 
-   useEffect(() => {
-      localStorage.setItem("player", JSON.stringify(state));
-   }, [state]);
-   /////////////////
+   const [state, playerDispatch] = useReducer(playerReducer, initialState);
 
    const currentSongData = tracks.find((item) => item.id === state.currentSong);
    let currentAudioLink = currentSongData?.files?.demo_file;
@@ -46,12 +38,36 @@ const PlayerState = (props) => {
    const timeUpdateHandler = (e) => {
       const current = e.target.currentTime;
       const duration = e.target.duration;
-      setAudioInfo({ ...audioInfo, currentTime: current, duration });
+      // Calculate Precentage
+      const roundedCurrent = Math.round(current);
+      const roundedDuration = Math.round(duration);
+      const widthPercentage = Math.round((roundedCurrent / roundedDuration) * 100);
+
+      setAudioInfo({ ...audioInfo, currentTime: current, duration, widthPercentage });
    };
 
    const dragHandler = (e) => {
       audioRef.current.currentTime = e.target.value;
       setAudioInfo({ ...audioInfo, currentTime: e.target.value });
+   };
+
+   const audioEndHandler = async () => {
+      playerDispatch({ type: "TOGGLE_PLAYING", payload: (state.playing = false) });
+   };
+
+   const openPlayer = () => {
+      playerDispatch({ type: "OPEN", payload: (state.close = false) });
+      // audioRef.current.play();
+   };
+
+   const closePlayer = () => {
+      playerDispatch({ type: "CLOSE", payload: (state.close = true) });
+      audioRef.current.pause();
+      setAudioInfo({
+         currentTime: 0,
+         duration: 0,
+         widthPercentage: 0,
+      });
    };
 
    return (
@@ -60,15 +76,20 @@ const PlayerState = (props) => {
             tracks: tracks,
             packages: packages,
             currentSong: state.currentSong,
-            audioInfo: audioInfo,
-            currentAudioLink: currentAudioLink,
-            playerDispatch,
             playing: state.playing,
+            close: state.close,
+            audioInfo,
+            currentAudioLink,
+            playerDispatch,
             state,
             audioRef,
             timeUpdateHandler,
             dragHandler,
             setAudioInfo,
+            audioEndHandler,
+            currentSongData,
+            closePlayer,
+            openPlayer,
          }}
       >
          {props.children}

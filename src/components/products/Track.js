@@ -19,7 +19,8 @@ const Track = ({ productData, index }) => {
    const BASE_URL = "http://localhost:8080";
    const { state, dispatch } = useContext(CartContext);
 
-   const { setCurrent, playerDispatch, currentSong, playing, audioRef } = useContext(playerContext);
+   const { playerDispatch, currentSong, playing, audioRef, close, openPlayer } =
+      useContext(playerContext);
 
    const { thumbnail, tag, title, author, product_price, daw, id, sold } = productData;
 
@@ -28,18 +29,9 @@ const Track = ({ productData, index }) => {
       return response.data.data;
    };
 
-   const [product, setProduct] = useState([]);
-
-   useEffect(() => {
-      const fetchAPI = async () => {
-         setProduct(await getSpecificProduct());
-      };
-
-      fetchAPI();
-   }, []);
-
    const PlayHandler = () => {
       playerDispatch({ type: "SET_CURRENT_SONG", payload: id });
+      openPlayer();
 
       // check if the song is playing
       if (playing) {
@@ -62,8 +54,6 @@ const Track = ({ productData, index }) => {
                   </div>
                )}
 
-               {currentSong}
-
                <div className="cover">
                   <img src={thumbnail} alt="cover" />
                   <span onClick={PlayHandler}>
@@ -77,6 +67,16 @@ const Track = ({ productData, index }) => {
                      <li className="Prem"> PREMIUM </li>
                   </div>
                </ul>
+
+               {/* <div className="wave">
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+                  <div className="stroke"></div>
+               </div> */}
             </div>
 
             <div className="beatItem__bottomWrapper bottom-part">

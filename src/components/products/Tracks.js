@@ -13,14 +13,11 @@ const Tracks = () => {
    return (
       <div className="beats">
          {tracks.map((product, i) => {
-            const productType = product.product_type;
             const index = i + 1;
             return (
-               // productType === "Track" && (
-                  <div className="beatsGrid" key={product.id}>
-                     {<Track productData={product} index={index} />}
-                  </div>
-               // )
+               <div className="beatsGrid" key={product.id}>
+                  {<Track productData={product} index={index} />}
+               </div>
             );
          })}
       </div>
