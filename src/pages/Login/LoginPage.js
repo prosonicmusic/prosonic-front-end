@@ -5,7 +5,7 @@ import { toast } from "react-toastify";
 import { validate } from "./validate";
 
 // Components
-import Navbar from "../../components/Navbar";
+import Navbar from "../../components/shared/Navbar";
 
 function LoginPage() {
    const [move, setMove] = useState(false);

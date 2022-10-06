@@ -2,13 +2,12 @@ import React, { useContext } from "react";
 
 // Components
 import Layout from "../components/Layout";
-import Player from "../components/player/Player";
 import Tracks from "../components/products/Tracks";
 import Loader from "../components/shared/Loader";
 import Pagination from "../components/shared/Pagination";
 
 // Context
-import { TracksContext } from "../context/TrackContextProvider";
+import { TracksContext } from "../context/Tracks/TrackContextProvider";
 
 const Trackspage = () => {
    const tracks = useContext(TracksContext);

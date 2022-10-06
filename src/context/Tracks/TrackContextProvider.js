@@ -1,7 +1,7 @@
 import React, { useState, useEffect, createContext } from "react";
 
 // API
-import { getTracks } from "../services/api";
+import { getTracks } from "../../services/api";
 
 export const TracksContext = createContext();
 

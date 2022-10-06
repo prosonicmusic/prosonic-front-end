@@ -1,19 +1,25 @@
-import React, { useReducer, useContext, useEffect, useState, useRef } from "react";
+import React, { useReducer, useContext, useState, useRef } from "react";
 
 // Context
-import { TracksContext } from "../TrackContextProvider";
+import { TracksContext } from "../Tracks/TrackContextProvider";
 import { PackagesContext } from "../PackageContextProvider";
 import playerContext from "./PlayerContext";
 import playerReducer from "./playerReducer";
+import { FiveTracksContext } from "../Tracks/FiveTracksContextProvider";
+import { PremiumTracksContext } from "../Tracks/PremiumTracksContextProvider";
 
 const PlayerState = (props) => {
    const tracks = useContext(TracksContext);
    const packages = useContext(PackagesContext);
+   const FiveTracks = useContext(FiveTracksContext);
+   const PremiumTracks = useContext(PremiumTracksContext);
 
    // State
    const initialState = {
       tracks: tracks,
       packages: packages,
+      fiveTracks: FiveTracks,
+      PremiumTracks: PremiumTracks,
       currentSong: 0,
       playing: false,
       close: true,
@@ -74,6 +80,8 @@ const PlayerState = (props) => {
       <playerContext.Provider
          value={{
             tracks: tracks,
+            fiveTracks: FiveTracks,
+            premiumTracks: PremiumTracks,
             packages: packages,
             currentSong: state.currentSong,
             playing: state.playing,

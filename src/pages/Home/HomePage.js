@@ -1,9 +1,11 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
 
 // Components
-import Header from "../components/Header";
-import Layout from "../components/Layout";
+import Header from "../../components/Header";
+import Layout from "../../components/Layout";
+import HomePremiumTracks from "./HomePremiumTracks";
+import HomeTracks from "./HomeTracks";
 
 const HomePage = () => {
    return (
@@ -23,7 +25,12 @@ const HomePage = () => {
                      </div>
                      <div className="blockContent2">
                         <h2 className="h2-2">Can’t find the perfect track?</h2>
-                        <span><Link to='/services' id='customLink'> Order a custom track!</Link></span>
+                        <span>
+                           <Link to="/services" id="customLink">
+                              {" "}
+                              Order a custom track!
+                           </Link>
+                        </span>
                      </div>
                      <div></div>
                   </div>
@@ -34,12 +41,11 @@ const HomePage = () => {
                      <h2>Latest Prosonic produced tracks</h2>
                      <div className="container__browse">
                         <Link to="/tracks" className="container__btn">
-                           <span>
-                              <span>Browse more tracks</span>
-                           </span>
+                           <span>Browse more tracks</span>
                         </Link>
                      </div>
                   </div>
+                  <HomeTracks />
                </section>
 
                <section className="container">
@@ -53,6 +59,7 @@ const HomePage = () => {
                         </Link>
                      </div>
                   </div>
+                  <HomePremiumTracks />
                </section>
 
                <section className="container">
@@ -66,7 +73,6 @@ const HomePage = () => {
                         </Link>
                      </div>
                   </div>
-
                </section>
             </div>
          </Layout>
