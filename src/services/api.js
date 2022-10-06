@@ -12,4 +12,16 @@ const getPackages = async () => {
    return response.data.results;
 };
 
-export { getTracks, getPackages };
+const getFiveTracks = async () => {
+   const response = await axios.get(`${BASE_URL}/product/get?product_type=Track&page_size=10`);
+   return response.data.results;
+};
+
+const getPremiumTracks = async () => {
+   const response = await axios.get(
+      `${BASE_URL}/product/get?tag=PREMIUM&product_type=Track&page=1&page_size=5`
+   );
+   return response.data.results;
+};
+
+export { getTracks, getFiveTracks, getPremiumTracks, getPackages };

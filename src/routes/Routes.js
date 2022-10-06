@@ -4,7 +4,7 @@ import { Route, Routes, Navigate } from "react-router-dom";
 
 
 // Pages
-import HomePage from "../pages/HomePage";
+import HomePage from "../pages/Home/HomePage";
 import TracksPage from "../pages/TracksPage";
 import PackagesPage from "../pages/PackagesPage";
 import ContactPage from "../pages/ContactPage";

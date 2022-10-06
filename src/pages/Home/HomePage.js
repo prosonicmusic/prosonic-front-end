@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // Components
 import Header from "../../components/Header";
 import Layout from "../../components/Layout";
+import HomePremiumTracks from "./HomePremiumTracks";
 import HomeTracks from "./HomeTracks";
 
 const HomePage = () => {
@@ -58,6 +59,7 @@ const HomePage = () => {
                         </Link>
                      </div>
                   </div>
+                  <HomePremiumTracks />
                </section>
 
                <section className="container">
