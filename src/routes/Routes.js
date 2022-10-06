@@ -8,6 +8,7 @@ import HomePage from "../pages/HomePage";
 import TracksPage from "../pages/TracksPage";
 import PackagesPage from "../pages/PackagesPage";
 import ContactPage from "../pages/ContactPage";
+import LoginPage from "../pages/Login/LoginPage";
 
 // Components
 import ProductDetails from "../components/products/ProductDetails";
@@ -24,6 +25,7 @@ const routes = () => {
             <Route path="/cart" element={<ShopCart />} />
             <Route path="/services" element={<ServicesPage />} />
             <Route path="/contact" element={<ContactPage />} />
+            <Route path="/login" element={<LoginPage />} />
             <Route path="/" exact element={<HomePage />} />
             <Route path="/*" element={<Navigate to="/" />} />
          </Routes>
