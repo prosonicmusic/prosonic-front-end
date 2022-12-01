@@ -11,13 +11,10 @@ const Packages = () => {
    return (
       <div className="beats">
          {packages.map((product) => {
-            const productType = product.product_type;
             return (
-               productType === "Package" && (
-                  <div className="beatsGrid" key={product.id}>
-                     {<Package productData={product} />}
-                  </div>
-               )
+               <div className="beatsGrid" key={product.id}>
+                  {<Package productData={product} />}
+               </div>
             );
          })}
       </div>

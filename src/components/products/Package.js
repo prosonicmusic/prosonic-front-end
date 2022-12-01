@@ -3,17 +3,18 @@ import { Link } from "react-router-dom";
 
 // assets
 import { FaChevronRight } from "react-icons/fa";
-import { BsPlay, BsFillPauseFill } from "react-icons/bs";
+// import { BsPlay, BsFillPauseFill } from "react-icons/bs";
 
 // Functions
 import { isInCart, quantityCount } from "../../helper/functions";
 
 // Context
 import { CartContext } from "../../context/CartContextProvider";
+
 const Package = ({ productData }) => {
    const { state, dispatch } = useContext(CartContext);
 
-   const { thumbnail, tag, title, author, product_price, id, daw, sold } = productData;
+   const { thumbnail, tag, title, author, product_price, id, sold } = productData;
 
    return (
       <div className="col">
@@ -28,9 +29,9 @@ const Package = ({ productData }) => {
 
                <div className="cover">
                   <img src={thumbnail} alt="cover" />
-                  <span>
+                  {/* <span onClick={playHandler}>
                      <BsPlay className="icon" />
-                  </span>
+                  </span> */}
                </div>
 
                <ul className="labels">

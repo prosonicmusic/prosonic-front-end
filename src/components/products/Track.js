@@ -29,7 +29,7 @@ const Track = ({ productData, index }) => {
       return response.data.data;
    };
 
-   const PlayHandler = () => {
+   const playHandler = () => {
       playerDispatch({ type: "SET_CURRENT_SONG", payload: id });
       openPlayer();
 
@@ -56,7 +56,7 @@ const Track = ({ productData, index }) => {
 
                <div className="cover">
                   <img src={thumbnail} alt="cover" />
-                  <span onClick={PlayHandler}>
+                  <span onClick={playHandler}>
                      {/* {playing ? <BsFillPauseFill className="icon" /> : <BsPlay className="icon" />} */}
                      <BsPlay className="icon" />
                   </span>
