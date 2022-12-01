@@ -80,6 +80,7 @@ const PlayerState = (props) => {
       <playerContext.Provider
          value={{
             tracks: tracks,
+            packages: packages,
             fiveTracks: FiveTracks,
             premiumTracks: PremiumTracks,
             packages: packages,

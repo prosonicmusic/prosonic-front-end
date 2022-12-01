@@ -4,14 +4,14 @@ import React, { useEffect, useRef, useState } from "react";
 import { FaPlay, FaPause } from "react-icons/fa";
 
 const ProductDetailsPlayer = ({files}) => {
-   // let demoURL = files.demo_file
-   // console.log(demoURL);
+   let demoURL = files?.demo_file
+   console.log(String(demoURL));
    
    // state
    const [isPlaying, setIsPlaying] = useState(true);
    const [duration, setDuration] = useState(0);
    const [currentTime, setCurrentTime] = useState(0);
-   const [close, setClose] = useState(false);
+   // const [close, setClose] = useState(false);
 
    // references
    const audioPlayer = useRef(); // reference our audio component
@@ -25,7 +25,7 @@ const ProductDetailsPlayer = ({files}) => {
    }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
 
    useEffect(() => {
-      if (currentTime == duration) {
+      if (currentTime === duration) {
          togglePlayPause();
          timeTravel(0);
       }
@@ -44,9 +44,9 @@ const ProductDetailsPlayer = ({files}) => {
       }
    };
 
-   const closeHandler = () => {
-      setClose(!close);
-   };
+   // const closeHandler = () => {
+   //    setClose(!close);
+   // };
 
    const whilePlaying = () => {
       progressBar.current.value = audioPlayer.current.currentTime;
@@ -74,7 +74,7 @@ const ProductDetailsPlayer = ({files}) => {
 
    return (
       <div id="ProductDetailsPlayer">
-         <audio ref={audioPlayer} src="{demoURL}"></audio>
+         <audio ref={audioPlayer} src={demoURL}></audio>
 
          <button className="play-buttons" onClick={togglePlayPause}>
             <span>{isPlaying ? <FaPause /> : <FaPlay />}</span>
