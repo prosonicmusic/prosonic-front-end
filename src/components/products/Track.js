@@ -1,6 +1,6 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import axios from "axios";
+// import axios from "axios";
 
 // assets
 import { FaChevronRight } from "react-icons/fa";
@@ -16,18 +16,18 @@ import { CartContext } from "../../context/CartContextProvider";
 import { playerContext } from "../../context/player/PlayerContext";
 
 const Track = ({ productData, index }) => {
-   const BASE_URL = "http://localhost:8080";
+   // const BASE_URL = "http://localhost:8080";
    const { state, dispatch } = useContext(CartContext);
 
-   const { playerDispatch, currentSong, playing, audioRef, close, openPlayer } =
+   const { playerDispatch, currentSong, playing, audioRef, openPlayer } =
       useContext(playerContext);
 
    const { thumbnail, tag, title, author, product_price, daw, id, sold } = productData;
 
-   const getSpecificProduct = async () => {
-      const response = await axios.get(`${BASE_URL}/product/specific?id=${currentSong}`);
-      return response.data.data;
-   };
+   // const getSpecificProduct = async () => {
+   //    const response = await axios.get(`${BASE_URL}/product/specific?id=${currentSong}`);
+   //    return response.data.data;
+   // };
 
    const playHandler = () => {
       playerDispatch({ type: "SET_CURRENT_SONG", payload: id });
