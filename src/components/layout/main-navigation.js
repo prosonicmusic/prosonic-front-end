@@ -4,6 +4,9 @@ import Image from "next/image";
 import { FaShoppingCart } from "react-icons/fa";
 
 function MainNavigation() {
+  const listStyles =
+    "py-1 px-2.5 mx-1 rounded text-[15px] transition duration-500 hover:bg-[#5a5a7a81]";
+
   return (
     <nav>
       <div className="flex  items-center justify-between bg-[#141a22cc] w-[100%] h-[60px] fixed top-0 pt-[30px] pb-[30px] transition duration-500 z-50 rounded-b-2xl">
@@ -17,19 +20,16 @@ function MainNavigation() {
         </Link>
 
         <ul className="flex items-center mr-10 text-white">
-          <li className="py-1 px-2.5 mx-1 rounded text-[15px] transition duration-500 hover:bg-[#5a5a7a81]">
+          <li className={listStyles}>
             <Link href="">Home</Link>
           </li>
-          <li className="py-1 px-2.5 mx-1 rounded text-[15px] transition duration-500 hover:bg-[#5a5a7a81]">
+          <li className={listStyles}>
             <Link href="">Tracks</Link>
           </li>
-          <li className="py-1 px-2.5 mx-1 rounded text-[15px] transition duration-500 hover:bg-[#5a5a7a81]">
+          <li className={listStyles}>
             <Link href="">Packages</Link>
           </li>
-          <li className="py-1 px-2.5 mx-1 rounded text-[15px] transition duration-500 hover:bg-[#5a5a7a81]">
-            <Link href="">Services</Link>
-          </li>
-          <li className="py-1 px-2.5 mx-1 rounded text-[15px] transition duration-500 hover:bg-[#5a5a7a81]">
+          <li className={listStyles}>
             <Link href="">Services</Link>
           </li>
           <Link
