@@ -11,7 +11,12 @@ module.exports = {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        hero: "url('/images/studio6.jpg')",
+        hero_before: "linear-gradient(180deg, #00000080 75%, #000)",
+      },
+    },
   },
   plugins: [],
 };
