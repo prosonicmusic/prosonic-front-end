@@ -14,8 +14,8 @@ function PhoneNav({ status }) {
   const listStyles =
     "bg-[#23252b] mb-[5px] rounded-[8px] flex items-center cursor-pointer hover:bg-[#17191d] transation duration-200";
   const linkStyles = "px-[12px] py-[11px] text-[#7e8893] text-[18px]";
-  const menuStyles = `z-10 fixed w-full h-[100vh] bg-[#1e2025] bottom-0 top-0 left-0 transation duration-500 px-[10px]  translate-x-full min-[900px]:hidden ${
-    status ? "translate-x-0" : ""
+  const menuStyles = `z-10 fixed w-full h-[100vh] bg-[#1e2025] bottom-0 top-0 left-0 transation duration-500 px-[10px] min-[900px]:hidden ${
+    status ? "clickOpen" : "translate-x-full"
   }`;
 
   return (
