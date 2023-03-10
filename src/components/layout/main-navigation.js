@@ -19,7 +19,10 @@ function MainNavigation() {
   return (
     <nav>
       <div className={navbarStyles}>
-        <Link href="/" className="w-[160px] relative ml-10 z-20 max-[900px]:w-[100px] max-[900px]:ml-5">
+        <Link
+          href="/"
+          className="w-[160px] relative ml-10 z-20 max-[900px]:w-[100px] max-[900px]:ml-5"
+        >
           <Image
             src="/images/prosonic-icon-white.png"
             alt="Prosonic"
@@ -30,16 +33,16 @@ function MainNavigation() {
 
         <ul className="flex items-center mr-10 text-white">
           <li className={listStyles}>
-            <Link href="">Home</Link>
+            <Link href="/">Home</Link>
           </li>
           <li className={listStyles}>
-            <Link href="">Tracks</Link>
+            <Link href="/tracks">Tracks</Link>
           </li>
           <li className={listStyles}>
-            <Link href="">Packages</Link>
+            <Link href="/packages">Packages</Link>
           </li>
           <li className={listStyles}>
-            <Link href="">Services</Link>
+            <Link href="/services">Services</Link>
           </li>
           <Link href="/cart" className={cartStyles}>
             <FaShoppingCart className="text-[#bcc7d4] h-[16px] w-full" />
