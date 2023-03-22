@@ -5,18 +5,18 @@ import { HiHeart } from "react-icons/hi";
 
 export default function productDetails({ tracksData }) {
   return (
-    <main className="text-[#b6c1ce] max-w-5xl h-full w-full m-auto mt-[65px] flex">
+    <main className="text-[#b6c1ce] max-w-5xl h-full w-full m-auto mt-[65px] flex max-[900px]:block">
       {/* Details */}
-      <section className="bg-[#2e303880] rounded-[10px] transition-all duration-300 p-[25px] my-[15px] max-[900px]:m-[15px] max-[900px]:pb-[10px] max-[900px]:mb-[10px]">
+      <section className="bg-[#2e303880] rounded-[10px] transition-all duration-300 p-[25px] my-[15px] ml-[15px] max-[900px]:m-[15px] max-[900px]:pb-[10px] max-[900px]:mb-[10px]">
         <h3 className="font-semibold text-xl px-3 pb-4">Details</h3>
         <div className="relative w-full max-[900px]:flex max-[900px]:justify-center">
           <img
             src={tracksData.thumbnail}
             alt="cover"
-            className="w-[700px] rounded-lg"
+            className="w-[700px] rounded-lg max-[900px]:w-[200px]"
           />
           {/* Tag */}
-          <ul className="flex items-start absolute top-2 text-xs font-bold invisible">
+          <ul className="flex items-start absolute top-2 text-xs font-bold invisible max-[900px]:left-1 max-[900px]:bottom-[-60px] max-[900px]:top-auto">
             <div className={tracksData.tag}>
               <li> PREMIUM </li>
             </div>
@@ -88,13 +88,15 @@ export default function productDetails({ tracksData }) {
           <div className="flex items-center justify-center bg-[#282b32] py-2 mt-5 rounded-[10px]">
             <HiOutlineHeart className="h-6 w-6 stroke-rose-500 hover:stroke-rose-700 cursor-pointer" />
             {/* <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" /> */}
-            <span className="text-xs ml-1 text-rose-200">{tracksData.like_count}</span>
+            <span className="text-xs ml-1 text-rose-200">
+              {tracksData.like_count}
+            </span>
           </div>
         </div>
         <hr className="h-[1px] bg-[#383838] border-none" />
 
         <div className="flex items-center justify-center">
-          <button className="p-3 transition-all duration-300 bg-[#cf1e59ee] hover:bg-[#dd1f5f] font-semibold text-[18px] text-white w-48 rounded-[10px] mt-5 mb-44">
+          <button className="p-3 transition-all duration-300 bg-[#cf1e59ee] hover:bg-[#dd1f5f] font-semibold text-[18px] text-white w-48 rounded-[10px] my-5 min-[900px]:mb-44">
             Add to cart
           </button>
         </div>
