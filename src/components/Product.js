@@ -2,8 +2,8 @@ import Link from "next/link";
 
 import { TbPlayerPlay } from "react-icons/tb";
 import { FaChevronRight } from "react-icons/fa";
-
-// import cubaseIcon from "/images/cubase_logo.png";
+import { HiOutlineHeart } from "react-icons/hi";
+import { HiHeart } from "react-icons/hi";
 
 export default function Product({ product }) {
   console.log(product);
@@ -102,10 +102,17 @@ export default function Product({ product }) {
             <div className="h-[45%] w-full mb-[10px] bg-[#282b32] text-[#bcc7d4] transition-all duration-200 flex items-center justify-center rounded-[10px]">
               <Link href={`/tracks/${product.id}`}> More Info </Link>
             </div>
-            <button className="bg-[#dd1f5f] font-semibold h-[45%] w-full text-white flex items-center justify-center rounded-[10px]">
-              {" "}
-              Add to cart{" "}
-            </button>
+            <div className="flex items-center gap-2">
+              <button className="bg-[#dd1f5f] font-semibold h-12 w-[70%] text-white flex items-center justify-center rounded-[10px]">
+                {" "}
+                Add to cart{" "}
+              </button>
+              <div className="flex items-center justify-center bg-[#282b32] w-[30%] h-12 rounded-[10px]">
+                <HiOutlineHeart className="h-6 w-6  cursor-pointer" />
+                {/* <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" /> */}
+                {/* <span className="text-xs">{product.like_count}</span> */}
+              </div>
+            </div>
           </div>
         </div>
       </div>
