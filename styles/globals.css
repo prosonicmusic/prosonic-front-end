@@ -4,9 +4,6 @@
 
 body {
   background: #000;
-  line-height: 1.6;
-  min-height: 100vh;
-  overflow-x: hidden;
   color: #bcc7d4;
 }
 
@@ -77,6 +74,13 @@ h5 {
   background: rgba(206, 41, 0, 1);
   padding: 3px 10px 3px 10px;
   border-radius: 80px 300px 300px 0;
+}
+
+@media (max-width: 900px) {
+ .PREMIUM {
+  border-radius: 300px 300px 300px 300px;
+  font-size: 10px;
+ }
 }
 
 .stroke {
