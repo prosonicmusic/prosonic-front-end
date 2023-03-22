@@ -6,6 +6,7 @@ import { FaChevronRight } from "react-icons/fa";
 // import cubaseIcon from "/images/cubase_logo.png";
 
 export default function Product({ product }) {
+  console.log(product);
   const strokeStyles =
     "block bg-[#f1f1f1] h-[20px] w-[2px] left-[9.6em] rounded-3xl mx-[1.5px] transition duration-200 stroke";
 
@@ -72,24 +73,26 @@ export default function Product({ product }) {
             <span className="relative px-[12px] bg-[#282b32bb] rounded-[2px] mb-[10px] max-[900px]:ml-5">
               {product.product_price} T
             </span>
-            <div className="px-[3px] py-[3px] min-[900px]:ml-[60px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
-              <div className={product.daw}>
-                <img
-                  src="images/cubase_logo.png"
-                  alt="Cubase"
-                  className={`max-w-full h-[17px] align-middle ${
-                    product.daw === "Cubase" ? "block" : "hidden"
-                  }`}
-                />
-                <img
-                  src="images/fl-logo.png"
-                  alt="FL Studio"
-                  className={`max-w-full h-[17px] align-middle ${
-                    product.daw === "FLStudio" ? "block" : "hidden"
-                  }`}
-                />
+            {product.product_type !== "Package" && (
+              <div className="px-[3px] py-[3px] min-[900px]:ml-[60px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
+                <div className={product.daw}>
+                  <img
+                    src="images/cubase_logo.png"
+                    alt="Cubase"
+                    className={`max-w-full h-[17px] align-middle ${
+                      product.daw === "Cubase" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="images/fl-logo.png"
+                    alt="FL Studio"
+                    className={`max-w-full h-[17px] align-middle ${
+                      product.daw === "FLStudio" ? "block" : "hidden"
+                    }`}
+                  />
+                </div>
               </div>
-            </div>
+            )}
           </div>
           <div
             className={`absolute top-0 transition-all duration-200 p-[10px] w-full h-full bg-[#16181b] rounded-[10px] max-[900px]:hidden ${
