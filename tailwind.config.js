@@ -14,6 +14,7 @@ module.exports = {
     extend: {
       backgroundImage: {
         hero: "url('/images/studio6.jpg')",
+        signin: "url('/images/studio4.jpg')",
         hero_before: "linear-gradient(180deg, #00000080 75%, #000)",
       },
     },

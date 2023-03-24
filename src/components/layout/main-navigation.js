@@ -50,7 +50,7 @@ function MainNavigation() {
           </Link>
 
           <button className={loginButtonStyles}>
-            <Link href="/login">Login</Link>
+            <Link href="/signin">Login</Link>
           </button>
 
           <Burger />
