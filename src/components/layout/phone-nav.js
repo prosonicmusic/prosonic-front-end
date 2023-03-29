@@ -10,7 +10,7 @@ import {
   FaMusic,
 } from "react-icons/fa";
 
-function PhoneNav({ status }) {
+function PhoneNav({ status, setStatus }) {
   const listStyles =
     "bg-[#23252b] mb-[5px] rounded-[8px] flex items-center cursor-pointer hover:bg-[#17191d] transation duration-200";
   const linkStyles = "px-[12px] py-[11px] text-[#7e8893] text-[18px]";
@@ -21,27 +21,43 @@ function PhoneNav({ status }) {
   return (
     <div className={menuStyles}>
       <div className="left-0 mt-20">
-        <Link href="/" className={listStyles}>
+        <Link href="/" className={listStyles} onClick={() => setStatus(false)}>
           <FaHome className="ml-[12px] text-[#bcc7d4]" />
           <div className={linkStyles}>Home</div>
         </Link>
 
-        <Link href="/tracks" className={listStyles}>
+        <Link
+          href="/tracks"
+          className={listStyles}
+          onClick={() => setStatus(false)}
+        >
           <FaMusic className="ml-[12px]" />
           <div className={linkStyles}>Tracks</div>
         </Link>
 
-        <Link href="/packages" className={listStyles}>
+        <Link
+          href="/packages"
+          className={listStyles}
+          onClick={() => setStatus(false)}
+        >
           <FaBox className="ml-[12px]" />
           <div className={linkStyles}>Packages</div>
         </Link>
 
-        <Link href="/services" className={listStyles}>
+        <Link
+          href="/services"
+          className={listStyles}
+          onClick={() => setStatus(false)}
+        >
           <FaScrewdriver className="ml-[12px]" />
           <div className={linkStyles}>Services</div>
         </Link>
 
-        <Link href="/login" className={listStyles}>
+        <Link
+          href="/login"
+          className={listStyles}
+          onClick={() => setStatus(false)}
+        >
           <FaArrowRight className="ml-[12px]" />
           <div className={linkStyles}>Login</div>
         </Link>

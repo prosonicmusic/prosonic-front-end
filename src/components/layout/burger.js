@@ -22,7 +22,7 @@ const Burger = () => {
           <i className={burgerList}></i>
         </div>
 
-        <PhoneNav status={status} />
+        <PhoneNav status={status} setStatus={setStatus} />
       </nav>
     </>
   );
