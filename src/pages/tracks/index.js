@@ -1,4 +1,4 @@
-import Product from "@/src/components/Product";
+import Product from "@/src/components/Product/Product";
 import axios from "axios";
 
 export default function TracksPage({ tracksData }) {
