@@ -1,5 +1,6 @@
 import { HiOutlineHeart } from "react-icons/hi";
 import { HiHeart } from "react-icons/hi";
+import { MdFolder } from "react-icons/md";
 
 export default function ProductDetails({ productData }) {
   const {
@@ -129,15 +130,24 @@ export default function ProductDetails({ productData }) {
             />
           )}
 
-          <p className="py-5">{project_description}</p>
+          <div
+            className="py-6 mt-3"
+            dangerouslySetInnerHTML={{ __html: project_description }}
+          ></div>
           <hr className="h-[1px] bg-[#383838] border-none" />
           {/* player */}
           <div>player</div>
         </section>
         {/* Files */}
         <section className="bg-[#2e303880] rounded-[10px] p-[25px] m-[15px]">
-          <h3 className="font-semibold text-xl px-3 pb-4">Files</h3>
-          <div>{file_description}</div>
+          <div className="mb-4 pl-3 flex items-center">
+            <MdFolder className="h-6 w-6" />
+            <h3 className="font-semibold text-xl pl-1">Files</h3>
+          </div>
+          <div
+            className="font-extralight bg-[#1d1f24bb] p-6 rounded-xl"
+            dangerouslySetInnerHTML={{ __html: file_description }}
+          ></div>
         </section>
       </div>
     </main>
