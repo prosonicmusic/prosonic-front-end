@@ -57,7 +57,7 @@ export default function TracksPage({ tracksData }) {
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getStaticProps() {
   const { data } = await axios.get(
     "http://localhost:4545/product/get?product_type=Track&page_size=5"
   );
@@ -67,5 +67,6 @@ export async function getServerSideProps(context) {
     props: {
       tracksData: results,
     },
+    revalidate: 60,
   };
 }
