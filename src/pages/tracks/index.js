@@ -1,9 +1,14 @@
-import Product from "@/src/components/Product";
 import axios from "axios";
+import queryString from "query-string";
+
+import Product from "@/src/components/Product/Product";
+import PaginationComponent from "@/src/components/common/Pagination";
 
 export default function TracksPage({ tracksData }) {
+  const { results } = tracksData;
+
   return (
-    <div className="flex flex-row flex-wrap relative p-5 overflow-visible bg-[#1a1c20] h-full m-auto w-full max-w-5xl text-[#bcc7d4] top-[75px] rounded-[20px] mb-[134px]">
+    <div className="relative p-5 overflow-visible bg-[#1a1c20] h-full m-auto w-full max-w-5xl text-[#bcc7d4] top-[75px] rounded-[20px] mb-[134px]">
       <div className="h-full w-full m-auto max-w-5xl px-5 flex max-md:block justify-between items-end my-5">
         <h1 className="font-medium max-[900px]:pb-5 max-[900px]:text-center text-2xl">
           Latest tracks
@@ -50,22 +55,30 @@ export default function TracksPage({ tracksData }) {
         </div>
       </div>
 
-      {tracksData.map((track) => {
-        return <Product product={track} key={track.id} />;
-      })}
+      <div className="flex flex-row flex-wrap">
+        {results.map((track) => {
+          return <Product product={track} key={track.id} />;
+        })}
+      </div>
+
+      <PaginationComponent
+        totalPages={tracksData.total_pages}
+        currentPage={tracksData.current_page}
+      />
     </div>
   );
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps({ query }) {
   const { data } = await axios.get(
-    "http://localhost:4545/product/get?product_type=Track&page_size=5"
+    `http://localhost:4545/product/get?product_type=Track&${queryString.stringify(
+      query
+    )}&page_size=2`
   );
-  const { results } = data;
 
   return {
     props: {
-      tracksData: results,
+      tracksData: data,
     },
   };
 }

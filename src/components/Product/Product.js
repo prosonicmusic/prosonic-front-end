@@ -6,7 +6,6 @@ import { HiOutlineHeart } from "react-icons/hi";
 import { HiHeart } from "react-icons/hi";
 
 export default function Product({ product }) {
-  console.log(product);
   const strokeStyles =
     "block bg-[#f1f1f1] h-[20px] w-[2px] left-[9.6em] rounded-3xl mx-[1.5px] transition duration-200 stroke";
 
@@ -100,7 +99,12 @@ export default function Product({ product }) {
             } opacity-0 hover:opacity-100 z-10`}
           >
             <div className="h-[45%] w-full mb-[10px] bg-[#282b32] text-[#bcc7d4] transition-all duration-200 flex items-center justify-center rounded-[10px]">
-              <Link href={`/tracks/${product.id}`}> More Info </Link>
+              <Link
+                href={`/${product.product_type.toLowerCase()}s/${product.id}`}
+              >
+                {" "}
+                More Info{" "}
+              </Link>
             </div>
             <div className="flex items-center gap-2">
               <button className="bg-[#dd1f5f] font-semibold h-12 w-[70%] text-white flex items-center justify-center rounded-[10px]">

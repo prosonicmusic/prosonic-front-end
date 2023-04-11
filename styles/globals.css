@@ -53,8 +53,6 @@ h5 {
   transform: translateX(0);
 }
 
-/* Footer */
-
 .footer {
   background: linear-gradient(#1d1d1dde, #1d1d1dde, #1d1d1dde, #1d1d1dde, #1d1d1dde, #000);
 }
@@ -123,4 +121,26 @@ h5 {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.MuiPagination-root {
+  margin-top: 30px;
+  color: #bcc7d4;
+}
+
+.MuiPagination-root div {
+  color: #bcc7d4;
+  font-size: 18px;
+}
+
+.MuiPagination-root button {
+  color: #bcc7d4;
+  background: #23252b;
+  padding: 15px;
+  height: 40px;
+  border-radius: 8px;
+}
+
+.MuiPagination-root button:hover {
+  background: #2e3038;
 }
