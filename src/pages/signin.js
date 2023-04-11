@@ -1,29 +1,32 @@
 import React, { useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+
 import InputComponent from "../components/FormInput";
 
 const initialSignInValues = {
-  email: "",
-  password: "",
+  signinEmail: "",
+  signinPassword: "",
 };
 
 const initialSignUpValues = {
   name: "",
-  email: "",
+  signupEmail: "",
   phoneNumber: "",
-  password: "",
+  signupPassword: "",
   confirmPassword: "",
   terms: false,
 };
 
 // validation schema
 const validationSchema = Yup.object({
-  email: Yup.string()
-    .required("Enter your email")
-    .email("The email is invalid"),
-  password: Yup.string()
+  signinEmail: Yup.string().required("Enter your email").email("The email is invalid"),
+  signinPassword: Yup.string()
     .required("Enter Your Password")
     .min(8, "Password must be at least six characters long"),
 });
@@ -32,14 +35,12 @@ const signUpvalidationSchema = Yup.object({
   name: Yup.string()
     .required("Enter your full name")
     .min(6, "Your name must contain at least 6 characters"),
-  email: Yup.string()
-    .required("Enter your email")
-    .email("The email is invalid"),
+  signupEmail: Yup.string().required("Enter your email").email("The email is invalid"),
   phoneNumber: Yup.string()
     .required("Enter your Phone number")
     .matches(/^[0-9]{11}$/, "Mobile number must be 11 digits")
     .nullable(),
-  password: Yup.string()
+  signupPassword: Yup.string()
     .required("Enter a Password")
     .min(8, "Password must contain at least 8 characters")
     .matches(/[0-9]/, "Password requires a number")
@@ -55,12 +56,25 @@ const signUpvalidationSchema = Yup.object({
 
 export default function Login() {
   const [move, setMove] = useState(false);
+  const router = useRouter();
 
   const onSubmitSignIn = (values) => {
-    const { email, password } = values;
+    const { signinEmail, signinPassword } = values;
+    const signinValues = {
+      username: signinEmail,
+      password: signinPassword,
+    };
+
+    axios
+      .post("http://localhost:4545/login", signinValues, { withCredentials: true })
+      .then((res) => {
+        toast.success("You have successfully logged in");
+        router.push("/");
+      })
+      .catch((err) => toast.error(err?.response?.data?.detail));
   };
   const onSubmitSignUp = (values) => {
-    const { name, email, phoneNumber, password } = values;
+    const { name, signupEmail, phoneNumber, signupPassword } = values;
   };
 
   const signInFormik = useFormik({
@@ -87,9 +101,7 @@ export default function Login() {
             }`}
           >
             <div className="relative w-[50%] h-full flex justify-center items-center flex-col max-[900px]:absolute max-[900px]:w-full max-[900px]:h-[150px] max-[900px]:bottom-0">
-              <h2 className="text-[1.2em] font-medium mb-[12px]">
-                Already Have an Account ?
-              </h2>
+              <h2 className="text-[1.2em] font-medium mb-[12px]">Already Have an Account ?</h2>
               <button
                 className="px-[10px] py-1 bg-[#bebebeda] text-gray-800 font-semibold rounded-md transition-all duration-300 hover:bg-[#e6e6e6da]"
                 onClick={() => setMove(!move)}
@@ -98,9 +110,7 @@ export default function Login() {
               </button>
             </div>
             <div className="relative w-[50%] h-full flex justify-center items-center flex-col max-[900px]:absolute max-[900px]:w-full max-[900px]:h-[150px] max-[900px]:bottom-0">
-              <h2 className="text-[1.2em] font-medium mb-[12px]">
-                Don't Have an Account ?
-              </h2>
+              <h2 className="text-[1.2em] font-medium mb-[12px]">Don't Have an Account ?</h2>
               <button
                 className="px-[10px] py-1 bg-[#bebebeda] text-gray-800 font-semibold rounded-md transition-all duration-300 hover:bg-[#e6e6e6da]"
                 onClick={() => setMove(!move)}
@@ -126,13 +136,9 @@ export default function Login() {
                 onSubmit={signInFormik.handleSubmit}
               >
                 <h3 className="text-[1.5em] font-medium mb-6">Sign In</h3>
+                <InputComponent name="signinEmail" formik={signInFormik} placeholder="Email" />
                 <InputComponent
-                  name="email"
-                  formik={signInFormik}
-                  placeholder="Email"
-                />
-                <InputComponent
-                  name="password"
+                  name="signinPassword"
                   type="password"
                   formik={signInFormik}
                   placeholder="Password"
@@ -159,13 +165,9 @@ export default function Login() {
               >
                 <h3 className="text-[1.5em] font-medium mb-6">Sign Up</h3>
                 <div className="formGroup">
+                  <InputComponent name="name" formik={signUpFormik} placeholder="Full Name" />
                   <InputComponent
-                    name="name"
-                    formik={signUpFormik}
-                    placeholder="Full Name"
-                  />
-                  <InputComponent
-                    name="email"
+                    name="signupEmail"
                     formik={signUpFormik}
                     placeholder="Email"
                     type="email"
@@ -177,7 +179,7 @@ export default function Login() {
                     type="tel"
                   />
                   <InputComponent
-                    name="password"
+                    name="signupPassword"
                     formik={signUpFormik}
                     placeholder="Password"
                     type="password"
