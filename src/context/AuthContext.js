@@ -44,7 +44,22 @@ const asyncActionHandlers = {
           toast.error(err?.response?.data?.detail);
         });
     },
-  SIGNUP: {},
+  SIGNUP:
+    ({ dispatch }) =>
+    (action) => {
+      dispatch({ type: "SIGNIN_PENDING" });
+
+      axios
+        .post("http://localhost:4545/user/register", action.payload)
+        .then(({ data }) => {
+          toast.success("You have successfully registered");
+          dispatch({ type: "SIGNIN_SUCCESS", payload: data });
+        })
+        .catch((err) => {
+          dispatch({ type: "SIGNIN_REJECT", error: err?.response?.data?.detail });
+          toast.error(err?.response?.data?.detail);
+        });
+    },
   SIGNOUT: {},
 };
 

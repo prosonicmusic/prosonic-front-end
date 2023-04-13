@@ -1,13 +1,12 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
-import { toast } from "react-hot-toast";
 
 import InputComponent from "../components/FormInput";
+import { useAuth, useAuthActions } from "../context/AuthContext";
 
 const initialSignInValues = {
   signinEmail: "",
@@ -47,16 +46,18 @@ const signUpvalidationSchema = Yup.object({
     .matches(/[a-z]/, "Password requires a lowercase letter")
     .matches(/[A-Z]/, "Password requires an uppercase letter"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Re-enter the password")
+    .oneOf([Yup.ref("signupPassword"), null], "Re-enter the password")
     .required("The password does not match"),
   terms: Yup.bool()
     .required("The terms and conditions must be accepted.")
     .oneOf([true], "The terms and conditions must be accepted."),
 });
 
-export default function Login() {
+const Signin = () => {
   const [move, setMove] = useState(false);
   const router = useRouter();
+  const dispatch = useAuthActions();
+  const { loading, user } = useAuth();
 
   const onSubmitSignIn = (values) => {
     const { signinEmail, signinPassword } = values;
@@ -65,16 +66,19 @@ export default function Login() {
       password: signinPassword,
     };
 
-    axios
-      .post("http://localhost:4545/login", signinValues, { withCredentials: true })
-      .then((res) => {
-        toast.success("You have successfully logged in");
-        router.push("/");
-      })
-      .catch((err) => toast.error(err?.response?.data?.detail));
+    dispatch({ type: "SIGNIN", payload: signinValues });
   };
+
   const onSubmitSignUp = (values) => {
     const { name, signupEmail, phoneNumber, signupPassword } = values;
+    const signupValues = {
+      email: signupEmail,
+      password: signupPassword,
+      name,
+      phoneNumber,
+    };
+
+    dispatch({ type: "SIGNUP", payload: signupValues });
   };
 
   const signInFormik = useFormik({
@@ -90,6 +94,10 @@ export default function Login() {
     validationSchema: signUpvalidationSchema,
     validateOnMount: true,
   });
+
+  // useEffect(() => {
+  //   if (user) router.push("/");
+  // }, [user]);
 
   return (
     <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[410px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before">
@@ -162,6 +170,7 @@ export default function Login() {
                 className={`absolute  top-0 w-full p-[50px] transition-all duration-[.45s] flex flex-col ${
                   move ? "left-0" : "left-[100%]"
                 }`}
+                onSubmit={signUpFormik.handleSubmit}
               >
                 <h3 className="text-[1.5em] font-medium mb-6">Sign Up</h3>
                 <div className="formGroup">
@@ -232,4 +241,6 @@ export default function Login() {
       </div>
     </main>
   );
-}
+};
+
+export default Signin;
