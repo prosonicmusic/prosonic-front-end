@@ -1,13 +1,30 @@
 import Link from "next/link";
 
-import { TbPlayerPlay } from "react-icons/tb";
+import { TbPlayerPlay, TbPlayerPause } from "react-icons/tb";
 import { FaChevronRight } from "react-icons/fa";
 import { HiOutlineHeart } from "react-icons/hi";
 import { HiHeart } from "react-icons/hi";
 
+import { usePlayer, usePlayerActions } from "@/src/context/PlayerContext";
+
 export default function Product({ product }) {
   const strokeStyles =
     "block bg-[#f1f1f1] h-[20px] w-[2px] left-[9.6em] rounded-3xl mx-[1.5px] transition duration-200 stroke";
+
+  const dispatch = usePlayerActions();
+  const player = usePlayer();
+
+  const playerHandler = () => {
+    dispatch({ type: "SET_CURRENT_SONG_URL", payload: product });
+    dispatch({ type: "PLAY_PAUSE", payload: !player.audio.playing });
+    dispatch({ type: "OPEN" });
+
+    if (!player.audio.playing) {
+      player?.audioRef.current.play();
+    } else {
+      player?.audioRef.current.pause();
+    }
+  };
 
   return (
     <div className="basis-full min-[900px]:basis-[20%] min-[900px]:max-w-[20%] max-x-[100%] p-[7.5px] z-10">
@@ -28,18 +45,27 @@ export default function Product({ product }) {
               className="max-x-[100%] border-none align-middle rounded-[10px]"
             />
             {/* wave */}
-            <div className="h-[5px] flex items-center absolute right-2 top-4">
-              <div className={strokeStyles}></div>
-              <div className={strokeStyles}></div>
-              <div className={strokeStyles}></div>
-              <div className={strokeStyles}></div>
-            </div>
+            {player?.audio?.playing && player?.audio?.currentSong?.id === product?.id && (
+              <div className="h-[5px] flex items-center absolute right-2 top-4">
+                <div className={strokeStyles}></div>
+                <div className={strokeStyles}></div>
+                <div className={strokeStyles}></div>
+                <div className={strokeStyles}></div>
+              </div>
+            )}
           </div>
 
           {/* play */}
           <div className="cursor-pointer transition-all duration-300 opacity-0 hover:opacity-100 icon">
-            <div className="flex items-center justify-center text-[#d4d4d4] absolute top-[50px] right-[50px] max-md:top-[20px] max-md:right-[35px] max-md:w-[50px]">
-              <TbPlayerPlay size={80} />
+            <div
+              onClick={playerHandler}
+              className="flex items-center justify-center text-[#d4d4d4] absolute top-[50px] right-[50px] max-md:top-[20px] max-md:right-[35px] max-md:w-[50px]"
+            >
+              {player.audio?.playing && player?.audio?.currentSong?.id === product?.id ? (
+                <TbPlayerPause size={80} />
+              ) : (
+                <TbPlayerPlay size={80} />
+              )}
             </div>
           </div>
 
@@ -79,14 +105,14 @@ export default function Product({ product }) {
                     src="images/cubase_logo.png"
                     alt="Cubase"
                     className={`max-w-full h-[17px] align-middle ${
-                      product.daw === "Cubase" ? "block" : "hidden"
+                      product?.daw?.name === "Cubase" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="images/fl-logo.png"
                     alt="FL Studio"
                     className={`max-w-full h-[17px] align-middle ${
-                      product.daw === "FLStudio" ? "block" : "hidden"
+                      product?.daw?.name === "FLStudio" ? "block" : "hidden"
                     }`}
                   />
                 </div>
@@ -99,17 +125,13 @@ export default function Product({ product }) {
             } opacity-0 hover:opacity-100 z-10`}
           >
             <div className="h-[45%] w-full mb-[10px] bg-[#282b32] text-[#bcc7d4] transition-all duration-200 flex items-center justify-center rounded-[10px]">
-              <Link
-                href={`/${product.product_type.toLowerCase()}s/${product.id}`}
-              >
-                {" "}
-                More Info{" "}
+              <Link href={`/${product.product_type.toLowerCase()}s/${product.id}`}>
+                More Info
               </Link>
             </div>
             <div className="flex items-center gap-2">
               <button className="bg-[#dd1f5f] font-semibold h-12 w-[70%] text-white flex items-center justify-center rounded-[10px]">
-                {" "}
-                Add to cart{" "}
+                Add to cart
               </button>
               <div className="flex items-center justify-center bg-[#282b32] w-[30%] h-12 rounded-[10px]">
                 <HiOutlineHeart className="h-6 w-6  cursor-pointer" />
