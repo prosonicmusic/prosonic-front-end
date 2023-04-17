@@ -1,4 +1,3 @@
-import React, { useState, useRef, useEffect } from "react";
 import Link from "next/link";
 
 import { FaPlay, FaPause } from "react-icons/fa";
@@ -7,74 +6,15 @@ import { AiOutlineClose } from "react-icons/ai";
 import { usePlayer, usePlayerActions } from "@/src/context/PlayerContext";
 
 export default function Player() {
-  // states
-  const [duration, setDuration] = useState(0);
-  const [currentTime, setCurrentTime] = useState(0);
-
   const player = usePlayer();
   const dispatch = usePlayerActions();
 
-  const audioPlayer = player?.audioRef; // reference our audio component
-  const progressBar = useRef(); // reference our progress bar
-  const animationRef = useRef(); // reference the animation
-
-  useEffect(() => {
-    const seconds = Math.floor(audioPlayer.current.duration);
-    setDuration(seconds);
-    progressBar.current.max = seconds;
-  }, [audioPlayer?.current?.loadedmetadata, audioPlayer?.current?.readyState]);
-
-  const calculateTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
-    return `${returnedMinutes}:${returnedSeconds}`;
-  };
-
-  const togglePlayPause = () => {
-    dispatch({ type: "PLAY_PAUSE", payload: !player.audio?.playing });
-
-    if (!player.audio?.playing) {
-      audioPlayer.current.play();
-      animationRef.current = requestAnimationFrame(whilePlaying);
-    } else {
-      audioPlayer.current.pause();
-      cancelAnimationFrame(animationRef.current);
-    }
-  };
-
-  const whilePlaying = () => {
-    progressBar.current.value = audioPlayer.current.currentTime;
-    changePlayerCurrentTime();
-    animationRef.current = requestAnimationFrame(whilePlaying);
-  };
-
-  const changeRange = () => {
-    audioPlayer.current.currentTime = progressBar.current.value;
-    changePlayerCurrentTime();
-  };
-
-  const changePlayerCurrentTime = () => {
-    progressBar.current.style.setProperty(
-      "--seek-before-width",
-      `${(progressBar.current.value / duration) * 100}%`
-    );
-    setCurrentTime(progressBar.current.value);
-  };
-
-  // const backThirty = () => {
-  //   progressBar.current.value = Number(progressBar.current.value - 30);
-  //   changeRange();
-  // };
-
-  // const forwardThirty = () => {
-  //   progressBar.current.value = Number(progressBar.current.value + 30);
-  //   changeRange();
-  // };
-
   const closeHandler = () => {
     dispatch({ type: "CLOSE" });
+
+    if (player?.audio?.playing) {
+      player?.audioPlayer.current.pause();
+    }
   };
 
   return (
@@ -87,7 +27,7 @@ export default function Player() {
         className={`flex items-center justify-start bg-[#23252be6] w-full h-[60px] rounded-[40px]`}
       >
         <audio
-          ref={audioPlayer}
+          ref={player?.audioPlayer}
           src={player?.audio?.currentSong?.files?.demo_file}
           preload="metadata"
         ></audio>
@@ -103,8 +43,8 @@ export default function Player() {
             className="bg-[#0000000e] relative rounded-[10px] top-[-14px] w-full h-[2px] cursor-pointer z-40"
             type="range"
             defaultValue="0"
-            ref={progressBar}
-            onChange={changeRange}
+            ref={player?.progressBar}
+            onChange={player?.changeRange}
           />
           {/* <div style={{ width: "500px" }} className="bg-[#dadada] h-[2px] absolute top-0 left-[53px] z-50"></div> */}
 
@@ -116,9 +56,10 @@ export default function Player() {
           </div>
         </div>
 
+        {/* Play Button */}
         <button
           className="bg-[#282b32] w-[60px] h-[60px] flex items-center justify-center transition-all duration-300 absolute left-[47%] hover:bg-[#3b3f49] z-30"
-          onClick={togglePlayPause}
+          onClick={player?.togglePlayPause}
         >
           {player.audio?.playing ? (
             <FaPause className="w-[20px] h-[20px]" />
