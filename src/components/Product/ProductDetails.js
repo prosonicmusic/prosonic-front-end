@@ -1,6 +1,9 @@
 import { HiOutlineHeart } from "react-icons/hi";
 import { HiHeart } from "react-icons/hi";
 import { MdFolder } from "react-icons/md";
+import { FaPlay, FaPause } from "react-icons/fa";
+
+import { usePlayer, usePlayerActions } from "@/src/context/PlayerContext";
 
 export default function ProductDetails({ productData }) {
   const {
@@ -10,15 +13,27 @@ export default function ProductDetails({ productData }) {
     author,
     id,
     product_price,
+    product_type,
     genre,
     bpm,
     daw,
     length,
     like_count,
     project_image,
-    project_description,
+    product_description,
     file_description,
+    sold,
   } = productData;
+
+  const dispatch = usePlayerActions();
+  const player = usePlayer();
+
+  const playerHandler = () => {
+    dispatch({ type: "SET_CURRENT_SONG_URL", payload: productData });
+    dispatch({ type: "OPEN" });
+
+    player?.togglePlayPause();
+  };
 
   return (
     <main className="text-[#b6c1ce] max-w-5xl h-full w-full m-auto mt-[65px] flex max-[900px]:block">
@@ -37,10 +52,12 @@ export default function ProductDetails({ productData }) {
               <li> PREMIUM </li>
             </div>
           </ul>
-
-          {/* <div className="">
-            <span> SOLD </span>
-          </div> */}
+          {/* Sold */}
+          {sold && (
+            <div className="absolute h-full w-full bg-[#23252bd2] top-0 left-0 right-0 z-50 flex items-center justify-center">
+              <span className="text-[30px] font-bold"> SOLD </span>
+            </div>
+          )}
         </div>
         <div className="py-[10px] text-center">
           <h2 className="font-semibold text-2xl">{title}</h2>
@@ -58,25 +75,28 @@ export default function ProductDetails({ productData }) {
             <span>{product_price} T</span>
           </div>
 
-          {genre !== null && (
+          {genre && (
             <div className="p-[3px]">
               <span className="pr-5 text-[#959faa]">Genre</span>
               <span>{genre}</span>
             </div>
           )}
-          {length !== null && (
+
+          {length && (
             <div className="p-[3px]">
               <span className="pr-5 text-[#959faa]">Length</span>
               <span>{length}</span>
             </div>
           )}
-          {bpm !== null && (
+
+          {bpm && (
             <div className="p-[3px]">
               <span className="pr-5 text-[#959faa]">BPM</span>
               <span>{bpm}</span>
             </div>
           )}
-          {daw !== "Package" && (
+
+          {product_type !== "Package" && (
             <div className="p-[3px] flex">
               <span className="pr-5 text-[#959faa]">Daw</span>
               <div className="py-[3px] px-[5px] bg-[#282b32bb] rounded-[10px]">
@@ -85,14 +105,14 @@ export default function ProductDetails({ productData }) {
                     src="/images/cubase_logo.png"
                     alt="Cubase"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw === "Cubase" ? "block" : "hidden"
+                      daw.name === "Cubase" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="/images/fl-logo.png"
                     alt="FL Studio"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw === "FLStudio" ? "block" : "hidden"
+                      daw.name === "FLStudio" ? "block" : "hidden"
                     }`}
                   />
                 </div>
@@ -107,21 +127,35 @@ export default function ProductDetails({ productData }) {
             <span className="text-xs ml-1 text-rose-200">{like_count}</span>
           </div>
         </div>
+
         <hr className="h-[1px] bg-[#383838] border-none" />
 
-        <div className="flex items-center justify-center">
-          <button className="p-3 transition-all duration-300 bg-[#cf1e59ee] hover:bg-[#dd1f5f] font-semibold text-[18px] text-white w-48 rounded-[10px] my-5">
-            Add to cart
-          </button>
-        </div>
+        {sold ? (
+          <div className="flex py-4 justify-center">SOLD</div>
+        ) : (
+          <div className=" items-center justify-center">
+            <button className="flex items-center justify-center p-3 transition-all duration-300 bg-[#cf1e59ee] hover:bg-[#dd1f5f] font-semibold text-[18px] text-white w-48 rounded-[10px] my-4 m-auto">
+              Add to cart
+            </button>
+
+            <button
+              className="bg-[#282b32] w-[100px] h-[50px] flex items-center justify-center transition-all duration-300 rounded-[10px] hover:bg-[#3b3f49] m-auto"
+              onClick={playerHandler}
+            >
+              {player.audio?.playing ? (
+                <FaPause className="w-[20px] h-[20px]" />
+              ) : (
+                <FaPlay className="w-[20px] h-[20px]" />
+              )}
+            </button>
+          </div>
+        )}
       </section>
 
       <div>
         {/* Project Description */}
         <section className="bg-[#2e303880] rounded-[10px] p-[25px] m-[15px] min-h-[580px] max-[900px]:mb-[10px]">
-          <h3 className="font-semibold text-xl px-3 pb-4">
-            Project Description
-          </h3>
+          <h3 className="font-semibold text-xl px-3 pb-4">Project Description</h3>
           {project_image && (
             <img
               src={project_image}
@@ -132,12 +166,11 @@ export default function ProductDetails({ productData }) {
 
           <div
             className="py-6 mt-3"
-            dangerouslySetInnerHTML={{ __html: project_description }}
+            dangerouslySetInnerHTML={{ __html: product_description }}
           ></div>
-          <hr className="h-[1px] bg-[#383838] border-none" />
-          {/* player */}
-          <div>player</div>
+          {/* <hr className="h-[1px] bg-[#383838] border-none" /> */}
         </section>
+
         {/* Files */}
         <section className="bg-[#2e303880] rounded-[10px] p-[25px] m-[15px]">
           <div className="mb-4 pl-3 flex items-center">
