@@ -1,29 +1,31 @@
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
+import { useRouter } from "next/router";
+
 import { useFormik } from "formik";
 import * as Yup from "yup";
+
 import InputComponent from "../components/FormInput";
+import { useAuth, useAuthActions } from "../context/AuthContext";
 
 const initialSignInValues = {
-  email: "",
-  password: "",
+  signinEmail: "",
+  signinPassword: "",
 };
 
 const initialSignUpValues = {
   name: "",
-  email: "",
+  signupEmail: "",
   phoneNumber: "",
-  password: "",
+  signupPassword: "",
   confirmPassword: "",
   terms: false,
 };
 
 // validation schema
 const validationSchema = Yup.object({
-  email: Yup.string()
-    .required("Enter your email")
-    .email("The email is invalid"),
-  password: Yup.string()
+  signinEmail: Yup.string().required("Enter your email").email("The email is invalid"),
+  signinPassword: Yup.string()
     .required("Enter Your Password")
     .min(8, "Password must be at least six characters long"),
 });
@@ -32,35 +34,51 @@ const signUpvalidationSchema = Yup.object({
   name: Yup.string()
     .required("Enter your full name")
     .min(6, "Your name must contain at least 6 characters"),
-  email: Yup.string()
-    .required("Enter your email")
-    .email("The email is invalid"),
+  signupEmail: Yup.string().required("Enter your email").email("The email is invalid"),
   phoneNumber: Yup.string()
     .required("Enter your Phone number")
     .matches(/^[0-9]{11}$/, "Mobile number must be 11 digits")
     .nullable(),
-  password: Yup.string()
+  signupPassword: Yup.string()
     .required("Enter a Password")
     .min(8, "Password must contain at least 8 characters")
     .matches(/[0-9]/, "Password requires a number")
     .matches(/[a-z]/, "Password requires a lowercase letter")
     .matches(/[A-Z]/, "Password requires an uppercase letter"),
   confirmPassword: Yup.string()
-    .oneOf([Yup.ref("password"), null], "Re-enter the password")
+    .oneOf([Yup.ref("signupPassword"), null], "Re-enter the password")
     .required("The password does not match"),
   terms: Yup.bool()
     .required("The terms and conditions must be accepted.")
     .oneOf([true], "The terms and conditions must be accepted."),
 });
 
-export default function Login() {
+const Signin = () => {
   const [move, setMove] = useState(false);
+  const router = useRouter();
+  const dispatch = useAuthActions();
+  const { loading, user } = useAuth();
 
   const onSubmitSignIn = (values) => {
-    const { email, password } = values;
+    const { signinEmail, signinPassword } = values;
+    const signinValues = {
+      username: signinEmail,
+      password: signinPassword,
+    };
+
+    dispatch({ type: "SIGNIN", payload: signinValues });
   };
+
   const onSubmitSignUp = (values) => {
-    const { name, email, phoneNumber, password } = values;
+    const { name, signupEmail, phoneNumber, signupPassword } = values;
+    const signupValues = {
+      email: signupEmail,
+      password: signupPassword,
+      name,
+      phoneNumber,
+    };
+
+    dispatch({ type: "SIGNUP", payload: signupValues });
   };
 
   const signInFormik = useFormik({
@@ -77,6 +95,10 @@ export default function Login() {
     validateOnMount: true,
   });
 
+  // useEffect(() => {
+  //   if (user) router.push("/");
+  // }, [user]);
+
   return (
     <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[410px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before">
       <div className="flex justify-center items-center min-h-[100vh] transition-all duration-300 relative z-40 max-[900px]:max-w-[500px] max-[900px]:h-[650px] max-[900px]:flex max-[900px]:items-center max-[900px]:justify-center max-[900px]:mt-[-40px]">
@@ -87,9 +109,7 @@ export default function Login() {
             }`}
           >
             <div className="relative w-[50%] h-full flex justify-center items-center flex-col max-[900px]:absolute max-[900px]:w-full max-[900px]:h-[150px] max-[900px]:bottom-0">
-              <h2 className="text-[1.2em] font-medium mb-[12px]">
-                Already Have an Account ?
-              </h2>
+              <h2 className="text-[1.2em] font-medium mb-[12px]">Already Have an Account ?</h2>
               <button
                 className="px-[10px] py-1 bg-[#bebebeda] text-gray-800 font-semibold rounded-md transition-all duration-300 hover:bg-[#e6e6e6da]"
                 onClick={() => setMove(!move)}
@@ -98,9 +118,7 @@ export default function Login() {
               </button>
             </div>
             <div className="relative w-[50%] h-full flex justify-center items-center flex-col max-[900px]:absolute max-[900px]:w-full max-[900px]:h-[150px] max-[900px]:bottom-0">
-              <h2 className="text-[1.2em] font-medium mb-[12px]">
-                Don't Have an Account ?
-              </h2>
+              <h2 className="text-[1.2em] font-medium mb-[12px]">Don't Have an Account ?</h2>
               <button
                 className="px-[10px] py-1 bg-[#bebebeda] text-gray-800 font-semibold rounded-md transition-all duration-300 hover:bg-[#e6e6e6da]"
                 onClick={() => setMove(!move)}
@@ -126,13 +144,9 @@ export default function Login() {
                 onSubmit={signInFormik.handleSubmit}
               >
                 <h3 className="text-[1.5em] font-medium mb-6">Sign In</h3>
+                <InputComponent name="signinEmail" formik={signInFormik} placeholder="Email" />
                 <InputComponent
-                  name="email"
-                  formik={signInFormik}
-                  placeholder="Email"
-                />
-                <InputComponent
-                  name="password"
+                  name="signinPassword"
                   type="password"
                   formik={signInFormik}
                   placeholder="Password"
@@ -156,16 +170,13 @@ export default function Login() {
                 className={`absolute  top-0 w-full p-[50px] transition-all duration-[.45s] flex flex-col ${
                   move ? "left-0" : "left-[100%]"
                 }`}
+                onSubmit={signUpFormik.handleSubmit}
               >
                 <h3 className="text-[1.5em] font-medium mb-6">Sign Up</h3>
                 <div className="formGroup">
+                  <InputComponent name="name" formik={signUpFormik} placeholder="Full Name" />
                   <InputComponent
-                    name="name"
-                    formik={signUpFormik}
-                    placeholder="Full Name"
-                  />
-                  <InputComponent
-                    name="email"
+                    name="signupEmail"
                     formik={signUpFormik}
                     placeholder="Email"
                     type="email"
@@ -177,7 +188,7 @@ export default function Login() {
                     type="tel"
                   />
                   <InputComponent
-                    name="password"
+                    name="signupPassword"
                     formik={signUpFormik}
                     placeholder="Password"
                     type="password"
@@ -230,4 +241,6 @@ export default function Login() {
       </div>
     </main>
   );
-}
+};
+
+export default Signin;
