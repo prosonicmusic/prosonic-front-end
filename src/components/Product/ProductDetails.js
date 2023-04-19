@@ -150,7 +150,7 @@ export default function ProductDetails({ productData }) {
               className="bg-[#282b32] w-[100px] h-[50px] flex items-center justify-center transition-all duration-300 rounded-[10px] hover:bg-[#3b3f49] m-auto"
               onClick={playerHandler}
             >
-              {player?.playing ? (
+              {player.playing && player?.currentSong?.id === id ? (
                 <FaPause className="w-[20px] h-[20px]" />
               ) : (
                 <FaPlay className="w-[20px] h-[20px]" />
