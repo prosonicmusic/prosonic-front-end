@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { FaShoppingCart } from "react-icons/fa";
+import { useAuth } from "@/src/context/AuthContext";
 import Burger from "./burger";
 
 function MainNavigation() {
@@ -15,6 +16,8 @@ function MainNavigation() {
     "py-0.5 px-2.5 bg-[#e91c60e7] rounded-[5px] hover:bg-[#e91c60] transition duration-500 ml-[7px] mr-[0px] max-[900px]:hidden";
   const cartCount =
     "absolute top-[-9px] right-[-4px] rounded-full bg-[#e91c60] w-4 h-4 text-[11px] font-black";
+
+  const { user } = useAuth();
 
   return (
     <nav>
@@ -49,9 +52,15 @@ function MainNavigation() {
             <span className={cartCount}>0</span>
           </Link>
 
-          <button className={loginButtonStyles}>
-            <Link href="/signin">Login</Link>
-          </button>
+          {user ? (
+            <button className={loginButtonStyles}>
+              <Link href="/profile">Profile</Link>
+            </button>
+          ) : (
+            <button className={loginButtonStyles}>
+              <Link href="/signin">Login</Link>
+            </button>
+          )}
 
           <Burger />
         </ul>
