@@ -15,16 +15,23 @@ export default function Product({ product }) {
   const player = usePlayer();
 
   const playerHandler = () => {
-    dispatch({ type: "SET_CURRENT_SONG_URL", payload: product });
-    dispatch({ type: "OPEN" });
+    dispatch({
+      type: "SET_CURRENT_SONG_URL",
+      payload: product,
+    });
 
-    player?.togglePlayPause();
+    if (!player?.playing) {
+      dispatch({ type: "PLAY_PAUSE", payload: true });
+    } else if (player?.playing) {
+      dispatch({ type: "PLAY_PAUSE", payload: false });
+    }
+
+    dispatch({ type: "OPEN" });
   };
 
   return (
     <div className="basis-full min-[900px]:basis-[20%] min-[900px]:max-w-[20%] max-x-[100%] p-[7.5px] z-10">
       <div className="bg-[#23252b80] rounded-[10px] transition duration-200 max-[900px]:flex">
-
         {/* top */}
         <div className="relative w-full rounded-lg max-[900px]:max-w-[120px]">
           {product.sold && (
@@ -42,7 +49,7 @@ export default function Product({ product }) {
             />
 
             {/* wave */}
-            {player?.audio?.playing && player?.audio?.currentSong?.id === product?.id && (
+            {player?.playing && player?.currentSong?.id === product?.id && (
               <div className="h-[5px] flex items-center absolute right-2 top-4">
                 <div className={strokeStyles}></div>
                 <div className={strokeStyles}></div>
@@ -58,7 +65,7 @@ export default function Product({ product }) {
               onClick={playerHandler}
               className="flex items-center justify-center text-[#d4d4d4] absolute top-[50px] right-[50px] max-md:top-[20px] max-md:right-[35px] max-md:w-[50px] max-[900px]:w-[70px] max-[900px]:top-6 max-[900px]:right-7"
             >
-              {player.audio?.playing && player?.audio?.currentSong?.id === product?.id ? (
+              {player.playing && player?.currentSong?.id === product?.id ? (
                 <TbPlayerPause size={80} />
               ) : (
                 <TbPlayerPlay size={80} />
@@ -117,7 +124,7 @@ export default function Product({ product }) {
               </div>
             )}
           </div>
-          
+
           <div
             className={`absolute top-0 transition-all duration-200 p-[10px] w-full h-full bg-[#16181b] rounded-[10px] max-[900px]:hidden ${
               product.sold && "hidden"

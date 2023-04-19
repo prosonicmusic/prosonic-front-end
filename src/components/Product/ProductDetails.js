@@ -29,10 +29,18 @@ export default function ProductDetails({ productData }) {
   const player = usePlayer();
 
   const playerHandler = () => {
-    dispatch({ type: "SET_CURRENT_SONG_URL", payload: productData });
-    dispatch({ type: "OPEN" });
+    dispatch({
+      type: "SET_CURRENT_SONG_URL",
+      payload: productData,
+    });
 
-    player?.togglePlayPause();
+    if (!player?.playing) {
+      dispatch({ type: "PLAY_PAUSE", payload: true });
+    } else if (player?.playing) {
+      dispatch({ type: "PLAY_PAUSE", payload: false });
+    }
+
+    dispatch({ type: "OPEN" });
   };
 
   return (
@@ -142,7 +150,7 @@ export default function ProductDetails({ productData }) {
               className="bg-[#282b32] w-[100px] h-[50px] flex items-center justify-center transition-all duration-300 rounded-[10px] hover:bg-[#3b3f49] m-auto"
               onClick={playerHandler}
             >
-              {player.audio?.playing ? (
+              {player?.playing ? (
                 <FaPause className="w-[20px] h-[20px]" />
               ) : (
                 <FaPlay className="w-[20px] h-[20px]" />
