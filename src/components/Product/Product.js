@@ -15,15 +15,18 @@ export default function Product({ product }) {
   const player = usePlayer();
 
   const playerHandler = () => {
-    dispatch({ type: "SET_CURRENT_SONG_URL", payload: product });
-    dispatch({ type: "PLAY_PAUSE", payload: !player.audio.playing });
-    dispatch({ type: "OPEN" });
+    dispatch({
+      type: "SET_CURRENT_SONG_URL",
+      payload: product,
+    });
 
-    if (!player.audio.playing) {
-      player?.audioRef.current.play();
-    } else {
-      player?.audioRef.current.pause();
+    if (!player?.playing) {
+      dispatch({ type: "PLAY_PAUSE", payload: true });
+    } else if (player?.playing) {
+      dispatch({ type: "PLAY_PAUSE", payload: false });
     }
+
+    dispatch({ type: "OPEN" });
   };
 
   return (
@@ -44,8 +47,9 @@ export default function Product({ product }) {
               alt={product.title}
               className="max-x-[100%] border-none align-middle rounded-[10px]"
             />
+
             {/* wave */}
-            {player?.audio?.playing && player?.audio?.currentSong?.id === product?.id && (
+            {player?.playing && player?.currentSong?.id === product?.id && (
               <div className="h-[5px] flex items-center absolute right-2 top-4">
                 <div className={strokeStyles}></div>
                 <div className={strokeStyles}></div>
@@ -56,12 +60,12 @@ export default function Product({ product }) {
           </div>
 
           {/* play */}
-          <div className="cursor-pointer transition-all duration-300 opacity-0 hover:opacity-100 icon">
+          <div className="cursor-pointer transition-all duration-300 opacity-0 hover:opacity-100 before:rounded-[10px] icon">
             <div
               onClick={playerHandler}
-              className="flex items-center justify-center text-[#d4d4d4] absolute top-[50px] right-[50px] max-md:top-[20px] max-md:right-[35px] max-md:w-[50px]"
+              className="flex items-center justify-center text-[#d4d4d4] absolute top-[50px] right-[50px] max-md:top-[20px] max-md:right-[35px] max-md:w-[50px] max-[900px]:w-[70px] max-[900px]:top-6 max-[900px]:right-7"
             >
-              {player.audio?.playing && player?.audio?.currentSong?.id === product?.id ? (
+              {player.playing && player?.currentSong?.id === product?.id ? (
                 <TbPlayerPause size={80} />
               ) : (
                 <TbPlayerPlay size={80} />
@@ -98,6 +102,7 @@ export default function Product({ product }) {
             <span className="relative px-[12px] bg-[#282b32bb] rounded-[2px] mb-[10px] max-[900px]:ml-5">
               {product.product_price} T
             </span>
+
             {product.product_type !== "Package" && (
               <div className="px-[3px] py-[3px] min-[900px]:ml-[60px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
                 <div className={product.daw}>
@@ -119,6 +124,7 @@ export default function Product({ product }) {
               </div>
             )}
           </div>
+
           <div
             className={`absolute top-0 transition-all duration-200 p-[10px] w-full h-full bg-[#16181b] rounded-[10px] max-[900px]:hidden ${
               product.sold && "hidden"

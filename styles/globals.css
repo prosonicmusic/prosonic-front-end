@@ -144,3 +144,20 @@ h5 {
 .MuiPagination-root button:hover {
   background: #2e3038;
 }
+
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-current-time-display,
+audio::-webkit-media-controls-time-remaining-display,
+audio::-webkit-media-controls-volume-control-container {
+  display: none;
+}
+
+audio::-webkit-media-controls-enclosure {
+  background: #00000000;
+}
+
+audio::-webkit-media-controls-timeline {
+  background: #35373f;
+  border-radius: 50px;
+  margin-right: 10px;
+}

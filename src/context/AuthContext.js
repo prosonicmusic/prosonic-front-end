@@ -1,6 +1,8 @@
 import { createContext, useContext } from "react";
 import Router from "next/router";
+
 import axios from "axios";
+import { setCookie } from "nookies";
 import { toast } from "react-hot-toast";
 import { useReducerAsync } from "use-reducer-async";
 
@@ -33,8 +35,15 @@ const asyncActionHandlers = {
       dispatch({ type: "SIGNIN_PENDING" });
 
       axios
-        .post("http://localhost:4545/login", action.payload, { withCredentials: true })
+        .post("http://localhost:4545/login", action.payload)
         .then(({ data }) => {
+          setCookie(null, "token", data?.access, {
+            maxAge: 30 * 24 * 60 * 60,
+            path: "/",
+            secure: true,
+            sameSite: "strict",
+          });
+
           toast.success("You have successfully logged in");
           dispatch({ type: "SIGNIN_SUCCESS", payload: data });
           Router.push("/");
@@ -44,6 +53,7 @@ const asyncActionHandlers = {
           toast.error(err?.response?.data?.detail);
         });
     },
+
   SIGNUP:
     ({ dispatch }) =>
     (action) => {
@@ -60,6 +70,7 @@ const asyncActionHandlers = {
           toast.error(err?.response?.data?.detail);
         });
     },
+
   SIGNOUT: {},
 };
 

@@ -1,4 +1,11 @@
-import React, { createContext, useContext, useReducer, useRef } from "react";
+import React, {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useRef,
+  useState,
+} from "react";
 
 const PlayerContext = createContext();
 const PlayerContextDispatcher = createContext();
@@ -28,10 +35,9 @@ const reducer = (state, action) => {
 
 export default function PlayerProvider({ children }) {
   const [audio, dispatch] = useReducer(reducer, initialState);
-  const audioRef = useRef(null);
 
   return (
-    <PlayerContext.Provider value={{audio, audioRef }}>
+    <PlayerContext.Provider value={audio}>
       <PlayerContextDispatcher.Provider value={dispatch}>
         {children}
       </PlayerContextDispatcher.Provider>
