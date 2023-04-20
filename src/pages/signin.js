@@ -44,7 +44,9 @@ const signUpvalidationSchema = Yup.object({
     .min(8, "Password must contain at least 8 characters")
     .matches(/[0-9]/, "Password requires a number")
     .matches(/[a-z]/, "Password requires a lowercase letter")
-    .matches(/[A-Z]/, "Password requires an uppercase letter"),
+    .matches(/[A-Z]/, "Password requires an uppercase letter")
+    .matches(/[!@#$%^&()_+]/, "At least one special character (!@#$%^&()_+)")
+    .matches(/^\S*$/, "No whitespace"),
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("signupPassword"), null], "Re-enter the password")
     .required("The password does not match"),
