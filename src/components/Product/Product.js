@@ -105,19 +105,47 @@ export default function Product({ product }) {
 
             {product.product_type !== "Package" && (
               <div className="px-[3px] py-[3px] min-[900px]:ml-[60px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
-                <div className={product.daw}>
+                <div>
                   <img
-                    src="images/cubase_logo.png"
+                    src="images/daw-icons/cubase_logo.png"
                     alt="Cubase"
                     className={`max-w-full h-[17px] align-middle ${
                       product?.daw?.name === "Cubase" ? "block" : "hidden"
                     }`}
                   />
                   <img
-                    src="images/fl-logo.png"
+                    src="images/daw-icons/fl-logo.png"
                     alt="FL Studio"
                     className={`max-w-full h-[17px] align-middle ${
                       product?.daw?.name === "FLStudio" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="images/daw-icons/ableton-logo.png"
+                    alt="ableton"
+                    className={`max-w-full h-[17px] align-middle ${
+                      product?.daw?.name === "Ableton" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="images/daw-icons/logicpro-logo.png"
+                    alt="logicpro"
+                    className={`max-w-full h-[17px] align-middle ${
+                      product?.daw?.name === "LogicPro" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="images/daw-icons/protools-logo.png"
+                    alt="protools"
+                    className={`max-w-full h-[17px] align-middle ${
+                      product?.daw?.name === "Protools" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="images/daw-icons/studioOne-logo.png"
+                    alt="studioOne"
+                    className={`max-w-full h-[17px] align-middle rounded-md ${
+                      product?.daw?.name === "StudioOne" ? "block" : "hidden"
                     }`}
                   />
                 </div>
