@@ -8,7 +8,7 @@ export default function InputComponent({
   return (
     <div className={className}>
       {formik.touched[name] && formik.errors[name] ? (
-        <div className="mb-1 ml-2 text-rose-500 text-left text-xs">
+        <div className="mb-1 ml-2 text-rose-500 text-left text-xs font-bold">
           {formik.errors[name]}
         </div>
       ) : null}

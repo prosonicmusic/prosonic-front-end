@@ -48,12 +48,8 @@ export default function ProductDetails({ productData }) {
       {/* Details */}
       <section className="bg-[#2e303880] rounded-[10px] transition-all duration-300 p-[25px] my-[15px] ml-[15px] max-[900px]:m-[15px] max-[900px]:pb-[10px] max-[900px]:mb-[10px]">
         <h3 className="font-semibold text-xl px-3 pb-4">Details</h3>
-        <div className="relative w-full max-[900px]:flex max-[900px]:justify-center">
-          <img
-            src={thumbnail}
-            alt="product cover"
-            className="w-[700px] rounded-lg max-[900px]:w-[200px]"
-          />
+        <div className="relative w-full max-[900px]:w-full max-[900px]:flex max-[900px]:justify-center">
+          <img src={thumbnail} alt="product cover" className="w-[200px] rounded-lg m-auto" />
           {/* Tag */}
           <ul className="flex items-start absolute top-2 text-xs font-bold invisible max-[900px]:left-1 max-[900px]:bottom-[-60px] max-[900px]:top-auto">
             <div className={tag}>
@@ -108,19 +104,47 @@ export default function ProductDetails({ productData }) {
             <div className="p-[3px] flex">
               <span className="pr-5 text-[#959faa]">Daw</span>
               <div className="py-[3px] px-[5px] bg-[#282b32bb] rounded-[10px]">
-                <div className={daw}>
+                <div>
                   <img
-                    src="/images/cubase_logo.png"
+                    src="/images/daw-icons/cubase_logo.png"
                     alt="Cubase"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw.name === "Cubase" ? "block" : "hidden"
+                      daw?.name === "Cubase" ? "block" : "hidden"
                     }`}
                   />
                   <img
-                    src="/images/fl-logo.png"
+                    src="/images/daw-icons/fl-logo.png"
                     alt="FL Studio"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw.name === "FLStudio" ? "block" : "hidden"
+                      daw?.name === "FLStudio" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="/images/daw-icons/ableton-logo.png"
+                    alt="ableton"
+                    className={`max-w-full h-[17px] align-middle ${
+                      daw?.name === "Ableton" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="/images/daw-icons/logicpro-logo.png"
+                    alt="logicpro"
+                    className={`max-w-full h-[17px] align-middle ${
+                      daw?.name === "LogicPro" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="/images/daw-icons/protools-logo.png"
+                    alt="protools"
+                    className={`max-w-full h-[17px] align-middle ${
+                      daw?.name === "Protools" ? "block" : "hidden"
+                    }`}
+                  />
+                  <img
+                    src="/images/daw-icons/studioOne-logo.png"
+                    alt="studioOne"
+                    className={`max-w-full h-[17px] align-middle rounded-md ${
+                      daw?.name === "StudioOne" ? "block" : "hidden"
                     }`}
                   />
                 </div>
