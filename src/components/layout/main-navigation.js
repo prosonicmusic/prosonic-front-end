@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { FaShoppingCart } from "react-icons/fa";
-import { useAuth } from "@/src/context/AuthContext";
+import { useAuth, useAuthActions } from "@/src/context/AuthContext";
 import Burger from "./burger";
 
 function MainNavigation() {
@@ -14,10 +14,17 @@ function MainNavigation() {
     "flex rounded-[2px] bg-[#5a5a7a66] mx-[14px] h-[29px] w-[32px] relative text-center transition duration-500 items-center hover:bg-[#5a5a7a99] z-20 max-[900px]:mr-[40px]";
   const loginButtonStyles =
     "py-0.5 px-2.5 bg-[#e91c60e7] rounded-[5px] hover:bg-[#e91c60] transition duration-500 ml-[7px] mr-[0px] max-[900px]:hidden";
+  const logoutButtonStyles =
+    "py-0.5 px-2.5 rounded-[5px] text-[14px] hover:text-[#fc4e88] transition duration-300 ml-[7px] mr-[0px] max-[900px]:hidden";
   const cartCount =
     "absolute top-[-9px] right-[-4px] rounded-full bg-[#e91c60] w-4 h-4 text-[11px] font-black";
 
   const { user } = useAuth();
+  const dispatch = useAuthActions();
+
+  const logoutHandler = () => {
+    dispatch({ type: "SIGNOUT" });
+  };
 
   return (
     <nav>
@@ -59,6 +66,12 @@ function MainNavigation() {
           ) : (
             <button className={loginButtonStyles}>
               <Link href="/signin">Login</Link>
+            </button>
+          )}
+
+          {user && (
+            <button className={logoutButtonStyles} onClick={logoutHandler}>
+              Logout
             </button>
           )}
 
