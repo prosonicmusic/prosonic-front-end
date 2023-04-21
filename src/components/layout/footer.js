@@ -18,10 +18,10 @@ function Footer() {
   const footerSectionStyles =
     "mr-[35px] max-[900px]:mr-0 max-[900px]:mb-[40px] max-[900px]:w-full max-[1000px]:ml-0";
   const footerStyles =
-    "relative w-full  py-[50px] px-[100px] footer flex max-[900px]:p-[40px] max-[900px]:flex-col";
+    "relative w-full  py-[50px] px-[100px] footer flex max-[900px]:p-[40px] max-[900px]:flex-col max-[900px]:mt-[550px]";
 
   return (
-    <div className="footerBody">
+    <div>
       <footer className={footerStyles}>
         <div className={`${footerSectionStyles} w-[30%]`}>
           <h2 className={h2Styles}>About Us</h2>
