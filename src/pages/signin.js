@@ -105,7 +105,7 @@ const Signin = () => {
   // }, [user]);
 
   return (
-    <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[410px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before">
+    <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[410px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before max-[900px]:mb-[590px]">
       <div className="flex justify-center items-center min-h-[100vh] transition-all duration-300 relative z-40 max-[900px]:max-w-[500px] max-[900px]:h-[650px] max-[900px]:flex max-[900px]:items-center max-[900px]:justify-center max-[900px]:mt-[-40px]">
         <div className="relative w-[800px] h-[500px] m-[20px]">
           <div

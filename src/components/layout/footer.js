@@ -1,12 +1,7 @@
 import Link from "next/link";
 
 // icons
-import {
-  FaTelegram,
-  FaEnvelope,
-  FaLinkedinIn,
-  FaInstagram,
-} from "react-icons/fa";
+import { FaTelegram, FaEnvelope, FaLinkedinIn, FaInstagram } from "react-icons/fa";
 
 function Footer() {
   const h2Styles = "relative text-[25px] font-[400] mb-[20px] h2";
@@ -18,7 +13,7 @@ function Footer() {
   const footerSectionStyles =
     "mr-[35px] max-[900px]:mr-0 max-[900px]:mb-[40px] max-[900px]:w-full max-[1000px]:ml-0";
   const footerStyles =
-    "relative w-full  py-[50px] px-[100px] footer flex max-[900px]:p-[40px] max-[900px]:flex-col max-[900px]:mt-[550px]";
+    "relative w-full py-[50px] px-[100px] footer flex max-[900px]:p-[40px] max-[900px]:flex-col";
 
   return (
     <div>
@@ -26,10 +21,9 @@ function Footer() {
         <div className={`${footerSectionStyles} w-[30%]`}>
           <h2 className={h2Styles}>About Us</h2>
           <p className="text-[#bcc7d4b2]">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus
-            voluptate voluptas et modi? Et consequatur iste corporis maiores, ea
-            similique praesentium pariatur, optio eum soluta enim? Veritatis
-            quae repellat nisi.
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Possimus voluptate
+            voluptas et modi? Et consequatur iste corporis maiores, ea similique praesentium
+            pariatur, optio eum soluta enim? Veritatis quae repellat nisi.
           </p>
         </div>
 
