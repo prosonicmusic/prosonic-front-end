@@ -48,12 +48,8 @@ export default function ProductDetails({ productData }) {
       {/* Details */}
       <section className="bg-[#2e303880] rounded-[10px] transition-all duration-300 p-[25px] my-[15px] ml-[15px] max-[900px]:m-[15px] max-[900px]:pb-[10px] max-[900px]:mb-[10px]">
         <h3 className="font-semibold text-xl px-3 pb-4">Details</h3>
-        <div className="relative w-[120px] max-[900px]:w-full max-[900px]:flex max-[900px]:justify-center">
-          <img
-            src={thumbnail}
-            alt="product cover"
-            className="w-full rounded-lg max-[900px]:w-[200px]"
-          />
+        <div className="relative w-full max-[900px]:w-full max-[900px]:flex max-[900px]:justify-center">
+          <img src={thumbnail} alt="product cover" className="w-[200px] rounded-lg m-auto" />
           {/* Tag */}
           <ul className="flex items-start absolute top-2 text-xs font-bold invisible max-[900px]:left-1 max-[900px]:bottom-[-60px] max-[900px]:top-auto">
             <div className={tag}>
