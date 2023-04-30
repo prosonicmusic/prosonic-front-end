@@ -1,21 +1,21 @@
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import dayjs from "dayjs";
-import nookies, { setCookie } from "nookies";
+import nookies from "nookies";
 
-export default function axiosInstance(context) {
+export default function useAxios(context) {
   const baseURL = "http://127.0.0.1:4545";
   const cookies = nookies.get(context);
 
   const accessToken = cookies.accessToken ? cookies.accessToken : null;
   const refreshToken = cookies.refreshToken ? cookies.refreshToken : null;
 
-  const axiosClient = axios.create({
+  const axiosInstance = axios.create({
     baseURL,
   });
 
   if (accessToken) {
-    axiosClient.interceptors.request.use(async (req) => {
+    axiosInstance.interceptors.request.use(async (req) => {
       if (accessToken) {
         req.headers.Authorization = `Bearer ${accessToken}`;
         console.log("Interceptor ran - Bearer");
@@ -26,26 +26,23 @@ export default function axiosInstance(context) {
       console.log("isExpired", isExpired);
       if (!isExpired) return req;
 
-      if (cookies.accessToken) {
-        axios
-          .post(`${baseURL}/token/refresh`, { refresh: refreshToken })
-          .then(({ data }) => {
-            nookies.set(context, "accessToken", data?.access, {
-              path: "/",
-              secure: true,
-              httpOnly: true,
-            });
+      axios
+        .post(`${baseURL}/token/refresh`, { refresh: refreshToken })
+        .then(({ data }) => {
+          nookies.set(context, "accessToken", data?.access, {
+            path: "/",
+            secure: true,
+          });
 
-            req.headers.Authorization = `Bearer ${accessToken}`;
+          req.headers.Authorization = `Bearer ${data?.access}`;
 
-            console.log("access token updated");
-          })
-          .catch((err) => {});
-      }
+          console.log("access token updated");
+        })
+        .catch((err) => {});
 
       return req;
     });
   }
 
-  return axiosClient;
+  return axiosInstance;
 }
