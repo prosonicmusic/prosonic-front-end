@@ -2,10 +2,11 @@ import Link from "next/link";
 import Image from "next/image";
 
 import { FaShoppingCart } from "react-icons/fa";
+import { parseCookies } from "nookies";
 import { useAuth, useAuthActions } from "@/src/context/AuthContext";
 import Burger from "./burger";
 
-function MainNavigation() {
+const MainNavigation = () => {
   const listStyles =
     "py-[2.5px] px-2.5 mx-1 rounded text-[15px] transition duration-500 hover:bg-[#5a5a7a81] max-[900px]:hidden";
   const navbarStyles =
@@ -19,12 +20,14 @@ function MainNavigation() {
   const cartCount =
     "absolute top-[-9px] right-[-4px] rounded-full bg-[#e91c60] w-4 h-4 text-[11px] font-black";
 
-  const { user } = useAuth();
   const dispatch = useAuthActions();
+  const cookies = parseCookies();
 
   const logoutHandler = () => {
     dispatch({ type: "SIGNOUT" });
   };
+
+  const access = cookies.accessToken;
 
   return (
     <nav>
@@ -59,7 +62,7 @@ function MainNavigation() {
             <span className={cartCount}>0</span>
           </Link>
 
-          {user ? (
+          {access ? (
             <button className={loginButtonStyles}>
               <Link href="/profile">Profile</Link>
             </button>
@@ -69,7 +72,7 @@ function MainNavigation() {
             </button>
           )}
 
-          {user && (
+          {access && (
             <button className={logoutButtonStyles} onClick={logoutHandler}>
               Logout
             </button>
@@ -80,6 +83,6 @@ function MainNavigation() {
       </div>
     </nav>
   );
-}
+};
 
 export default MainNavigation;

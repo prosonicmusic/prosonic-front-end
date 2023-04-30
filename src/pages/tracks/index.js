@@ -4,8 +4,11 @@ import queryString from "query-string";
 import Product from "@/src/components/Product/Product";
 import PaginationComponent from "@/src/components/common/Pagination";
 
+import useAxios from "@/src/utils/useAxios";
+
 export default function TracksPage({ tracksData }) {
   const { results } = tracksData;
+  // console.log(results);
 
   return (
     <div className="relative p-5 overflow-visible bg-[#1a1c20] h-full m-auto w-full max-w-5xl text-[#bcc7d4] top-[75px] rounded-[20px] mb-[134px]">
@@ -69,16 +72,14 @@ export default function TracksPage({ tracksData }) {
   );
 }
 
-export async function getServerSideProps({ query }) {
-  const { data } = await axios.get(
-    `http://localhost:4545/product/get?product_type=Track&${queryString.stringify(
-      query
-    )}&page_size=2`
+export async function getServerSideProps(context) {
+  const data = await useAxios(context).get(
+    `/product/get?product_type=Track&${queryString.stringify(context.query)}&page_size=2`
   );
 
   return {
     props: {
-      tracksData: data,
+      tracksData: data.data,
     },
   };
 }
