@@ -2,6 +2,8 @@ import { createContext, useContext, useEffect } from "react";
 import Router from "next/router";
 
 import axios from "axios";
+import jwtDecode from "jwt-decode";
+import dayjs from "dayjs";
 import { toast } from "react-hot-toast";
 import { useReducerAsync } from "use-reducer-async";
 import { setCookie, destroyCookie, parseCookies } from "nookies";
@@ -17,16 +19,19 @@ const initialState = {
   loading: true,
   error: null,
   otp: false,
+  token: null,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "SIGNIN_PENDING":
-      return { error: null, loading: true, user: null };
+      return { ...state, error: null, loading: true, user: null };
     case "SIGNIN_SUCCESS":
-      return { error: null, loading: false, user: action.payload };
+      return { ...state, error: null, loading: false, user: action.payload };
     case "OTP_SUCCESS":
       return { ...state, error: null, otp: true };
+    case "TOKEN_SUCCESS":
+      return { ...state, token: action.payload };
     case "SIGNIN_REJECT":
       return { error: action.error, loading: false, user: null, otp: false };
     default:
@@ -44,7 +49,7 @@ const asyncActionHandlers = {
         .post(`${baseUrl}/user/register`, action.payload)
         .then(({ data }) => {
           toast.success("You have successfully registered");
-          dispatch({ type: "SIGNIN_SUCCESS", payload: data });
+          // dispatch({ type: "SIGNIN_SUCCESS", payload: data });
           window.location.href = "/signin";
         })
         .catch((err) => {
@@ -69,19 +74,17 @@ const asyncActionHandlers = {
         .then(({ data }) => {
           if (data.verified) {
             setCookie(null, "accessToken", data?.access, {
-              maxAge: 30 * 24 * 60 * 60,
               path: "/",
               secure: true,
               sameSite: "strict",
             });
             setCookie(null, "refreshToken", data?.refresh, {
-              maxAge: 30 * 24 * 60 * 60,
               path: "/",
               secure: true,
               sameSite: "strict",
             });
+
             toast.success("You have successfully logged in");
-            dispatch({ type: "SIGNIN_SUCCESS", payload: data });
             Router.push("/");
           } else {
             toast.error("Your email address is not verified");
@@ -91,6 +94,21 @@ const asyncActionHandlers = {
           dispatch({ type: "SIGNIN_REJECT", error: err?.response?.data?.detail });
           toast.error(err?.response?.data?.detail);
         });
+    },
+
+  SIGNOUT:
+    ({ dispatch }) =>
+    (action) => {
+      dispatch({ type: "SIGNIN_PENDING" });
+      destroyCookie(null, "accessToken");
+      destroyCookie(null, "refreshToken");
+      window.location.href = "/";
+    },
+
+  SET_TOKEN:
+    ({ dispatch }) =>
+    (action) => {
+      dispatch({ type: "TOKEN_SUCCESS", payload: action.tokenPayload });
     },
 
   UPDATE_TOKEN:
@@ -104,7 +122,6 @@ const asyncActionHandlers = {
             console.log("access token updated");
 
             setCookie(null, "accessToken", data?.access, {
-              maxAge: 30 * 24 * 60 * 60,
               path: "/",
               secure: true,
               sameSite: "strict",
@@ -135,13 +152,21 @@ const asyncActionHandlers = {
         });
     },
 
-  SIGNOUT:
+  SET_USER:
     ({ dispatch }) =>
     (action) => {
-      dispatch({ type: "SIGNIN_PENDING" });
-      destroyCookie(null, "accessToken");
-      destroyCookie(null, "refreshToken");
-      window.location.href = "/";
+      if (cookies.accessToken) {
+        axios
+          .get(`${baseUrl}/user/get`, {
+            headers: {
+              Authorization: `Bearer ${cookies.accessToken}`,
+            },
+          })
+          .then((res) => {
+            dispatch({ type: "SIGNIN_SUCCESS", payload: res.data });
+          })
+          .catch((err) => {});
+      }
     },
 };
 
@@ -149,13 +174,22 @@ export default function AuthProvider({ children }) {
   const [user, dispatch] = useReducerAsync(reducer, initialState, asyncActionHandlers);
 
   useEffect(() => {
+    const oneHour = 1000 * 60 * 60;
+
     const interval = setInterval(() => {
       if (cookies.accessToken) {
         dispatch({ type: "UPDATE_TOKEN" });
       }
-    }, 860000);
+    }, oneHour);
     return () => clearInterval(interval);
-  }, [user.loading, cookies]);
+  }, []);
+
+  useEffect(() => {
+    if (cookies.accessToken) {
+      dispatch({ type: "SET_TOKEN", tokenPayload: cookies.accessToken });
+      dispatch({ type: "SET_USER" });
+    }
+  }, []);
 
   return (
     <AuthContext.Provider value={user}>
