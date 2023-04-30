@@ -19,6 +19,7 @@ const initialSignUpValues = {
   phoneNumber: "",
   signupPassword: "",
   confirmPassword: "",
+  otp: "",
   terms: false,
 };
 
@@ -53,6 +54,9 @@ const signUpvalidationSchema = Yup.object({
   confirmPassword: Yup.string()
     .oneOf([Yup.ref("signupPassword"), null], "Re-enter the password")
     .required("The password does not match"),
+  otp: Yup.number()
+    .required("Enter the code sent to the email")
+    .min(5, "Enter the code correctly"),
   terms: Yup.bool()
     .required("The terms and conditions must be accepted.")
     .oneOf([true], "The terms and conditions must be accepted."),
@@ -60,9 +64,12 @@ const signUpvalidationSchema = Yup.object({
 
 const Signin = () => {
   const [move, setMove] = useState(false);
+  // const [minutes, setMinutes] = useState(1);
+  // const [seconds, setSeconds] = useState(0);
+
   const router = useRouter();
   const dispatch = useAuthActions();
-  const { loading, user } = useAuth();
+  const { user, otp } = useAuth();
 
   const onSubmitSignIn = (values) => {
     const { signinEmail, signinPassword } = values;
@@ -75,12 +82,13 @@ const Signin = () => {
   };
 
   const onSubmitSignUp = (values) => {
-    const { name, signupEmail, phoneNumber, signupPassword } = values;
+    const { name, signupEmail, phoneNumber, signupPassword, otp } = values;
     const signupValues = {
       email: signupEmail,
       name,
       password: signupPassword,
       phone_number: phoneNumber,
+      otp,
     };
 
     dispatch({ type: "SIGNUP", payload: signupValues });
@@ -100,12 +108,44 @@ const Signin = () => {
     validateOnMount: true,
   });
 
+  const verifyHandler = () => {
+    const body = {
+      email: signUpFormik.values?.signupEmail,
+      type: "register",
+    };
+
+    // setMinutes(1);
+    // setSeconds(0);
+    dispatch({ type: "SET_OTP", payload: body });
+  };
+
   // useEffect(() => {
-  //   if (user) router.push("/");
-  // }, [user]);
+  //   const interval = setInterval(() => {
+  //     if (seconds > 0) {
+  //       setSeconds(seconds - 1);
+  //     }
+
+  //     if (seconds === 0) {
+  //       if (minutes === 0) {
+  //         clearInterval(interval);
+  //       } else {
+  //         setSeconds(59);
+  //         setMinutes(minutes - 1);
+  //       }
+  //     }
+  //   }, 1000);
+
+  //   return () => {
+  //     clearInterval(interval);
+  //   };
+  // }, [seconds]);
+
+  useEffect(() => {
+    if (user) router.push("/");
+  }, [user]);
 
   return (
-    <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[410px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before max-[900px]:mb-[590px]">
+    <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[480px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before max-[900px]:mb-[590px]">
       <div className="flex justify-center items-center min-h-[100vh] transition-all duration-300 relative z-40 max-[900px]:max-w-[500px] max-[900px]:h-[650px] max-[900px]:flex max-[900px]:items-center max-[900px]:justify-center max-[900px]:mt-[-40px]">
         <div className="relative w-[800px] h-[500px] m-[20px]">
           <div
@@ -136,6 +176,8 @@ const Signin = () => {
           <div
             className={`absolute top-0 left-0 w-[50%] max-[900px]:w-full ${
               move ? "h-[600px]" : "h-full"
+            } ${
+              otp && move && "h-[680px]"
             } bg-[#1a1a1a] z-50 flex justify-center items-center shadow-[0_4px_45px_#ffffff1a] transition-all duration-[0.4s] overflow-hidden rounded-[15px] ${
               move && "left-[50%] max-[900px]:top-[35%] max-[900px]:left-0"
             }`}
@@ -205,7 +247,13 @@ const Signin = () => {
                     type="password"
                   />
 
-                  <div className="flex items-center mb-5">
+                  {/* policy */}
+                  {signUpFormik.errors.terms && signUpFormik.touched.terms && (
+                    <div className="mb-1 ml-1 text-rose-500 text-left text-xs">
+                      {signUpFormik.errors.terms}
+                    </div>
+                  )}
+                  <div className="flex items-center mb-6 ml-1">
                     <label className="text-sm">
                       I accept terms of
                       <Link
@@ -225,19 +273,55 @@ const Signin = () => {
                       checked={signUpFormik.values.terms}
                     />
                   </div>
-                  {signUpFormik.errors.terms && signUpFormik.touched.terms && (
-                    <div className="mb-1 ml-2 text-rose-500 text-left text-xs">
-                      {signUpFormik.errors.terms}
+
+                  {/* verification code */}
+                  {otp && (
+                    <div className="flex items-center">
+                      <InputComponent
+                        name="otp"
+                        formik={signUpFormik}
+                        placeholder="Verification Code"
+                        type="number"
+                      />
+                      {/* {seconds > 0 || minutes > 0 ? (
+                        <p className="ml-3">
+                          {minutes < 10 ? `0${minutes}` : minutes}:
+                          {seconds < 10 ? `0${seconds}` : seconds}
+                        </p>
+                      ) : (
+                        <div>
+                          <p className="ml-3 mt-3 w-[130px] text-sm text-center">
+                            Didn't recieve code?
+                          </p>
+                          <button
+                            disabled={seconds > 0 || minutes > 0}
+                            onClick={verifyHandler}
+                            className="text-white ml-3"
+                          >
+                            Resend
+                          </button>
+                        </div>
+                      )} */}
                     </div>
                   )}
 
-                  <button
-                    className="bg-[#ca1854e7] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
-                    type="submit"
-                    disabled={!signUpFormik.isValid}
-                  >
-                    Register
-                  </button>
+                  {/* buttons */}
+                  {otp ? (
+                    <button
+                      className="bg-[#ca1854e7] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
+                      type="submit"
+                      disabled={!signUpFormik.isValid}
+                    >
+                      Register
+                    </button>
+                  ) : (
+                    <button
+                      className="bg-[#ca1854e7] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
+                      onClick={verifyHandler}
+                    >
+                      Verify
+                    </button>
+                  )}
                 </div>
               </form>
             </section>

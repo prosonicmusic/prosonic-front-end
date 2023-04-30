@@ -103,7 +103,7 @@ export default function Product({ product }) {
               {product.product_price} T
             </span>
 
-            {product.product_type !== "Package" && (
+            {product.product_type !== "Package" && product?.daw && (
               <div className="px-[3px] py-[3px] min-[900px]:ml-[60px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
                 <div>
                   <img
@@ -168,9 +168,11 @@ export default function Product({ product }) {
                 Add to cart
               </button>
               <div className="flex items-center justify-center bg-[#282b32] w-[30%] h-12 rounded-[10px]">
-                <HiOutlineHeart className="h-6 w-6  cursor-pointer" />
-                {/* <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" /> */}
-                {/* <span className="text-xs">{product.like_count}</span> */}
+                {product.is_liked ? (
+                  <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" />
+                ) : (
+                  <HiOutlineHeart className="h-6 w-6  cursor-pointer" />
+                )}
               </div>
             </div>
           </div>

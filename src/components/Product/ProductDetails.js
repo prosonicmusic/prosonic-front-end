@@ -23,6 +23,7 @@ export default function ProductDetails({ productData }) {
     product_description,
     file_description,
     sold,
+    is_liked,
   } = productData;
 
   const dispatch = usePlayerActions();
@@ -48,6 +49,7 @@ export default function ProductDetails({ productData }) {
       {/* Details */}
       <section className="bg-[#2e303880] rounded-[10px] transition-all duration-300 p-[25px] my-[15px] ml-[15px] max-[900px]:m-[15px] max-[900px]:pb-[10px] max-[900px]:mb-[10px]">
         <h3 className="font-semibold text-xl px-3 pb-4">Details</h3>
+
         <div className="relative w-full max-[900px]:w-full max-[900px]:flex max-[900px]:justify-center">
           <img src={thumbnail} alt="product cover" className="w-[200px] rounded-lg m-auto" />
           {/* Tag */}
@@ -63,6 +65,7 @@ export default function ProductDetails({ productData }) {
             </div>
           )}
         </div>
+
         <div className="py-[10px] text-center">
           <h2 className="font-semibold text-2xl">{title}</h2>
           <h4>By {author}</h4>
@@ -74,6 +77,7 @@ export default function ProductDetails({ productData }) {
             <span className="pr-5 text-[#959faa]">ID</span>
             <span>{id}</span>
           </div>
+
           <div className="p-[3px]">
             <span className="pr-5 text-[#959faa]">Price</span>
             <span>{product_price} T</span>
@@ -154,8 +158,12 @@ export default function ProductDetails({ productData }) {
 
           {/* Like */}
           <div className="flex items-center justify-center bg-[#282b32] py-2 mt-5 rounded-[10px]">
-            <HiOutlineHeart className="h-6 w-6 stroke-rose-500 hover:stroke-rose-700 cursor-pointer" />
-            {/* <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" /> */}
+            {is_liked ? (
+              <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" />
+            ) : (
+              <HiOutlineHeart className="h-6 w-6 stroke-rose-500 hover:stroke-rose-700 cursor-pointer" />
+            )}
+
             <span className="text-xs ml-1 text-rose-200">{like_count}</span>
           </div>
         </div>
@@ -188,6 +196,7 @@ export default function ProductDetails({ productData }) {
         {/* Project Description */}
         <section className="bg-[#2e303880] rounded-[10px] p-[25px] m-[15px] min-h-[580px] max-[900px]:mb-[10px]">
           <h3 className="font-semibold text-xl px-3 pb-4">Project Description</h3>
+
           {project_image && (
             <img
               src={project_image}
@@ -209,6 +218,7 @@ export default function ProductDetails({ productData }) {
             <MdFolder className="h-6 w-6" />
             <h3 className="font-semibold text-xl pl-1">Files</h3>
           </div>
+
           <div
             className="font-extralight bg-[#1d1f24bb] p-6 rounded-xl"
             dangerouslySetInnerHTML={{ __html: file_description }}
