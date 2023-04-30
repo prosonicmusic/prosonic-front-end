@@ -4,7 +4,7 @@ import queryString from "query-string";
 import Product from "@/src/components/Product/Product";
 import PaginationComponent from "@/src/components/common/Pagination";
 
-import axiosInstance from "@/src/utils/axiosInstance";
+import useAxios from "@/src/utils/useAxios";
 
 export default function TracksPage({ tracksData }) {
   const { results } = tracksData;
@@ -73,7 +73,7 @@ export default function TracksPage({ tracksData }) {
 }
 
 export async function getServerSideProps(context) {
-  const data = await axiosInstance(context).get(
+  const data = await useAxios(context).get(
     `/product/get?product_type=Track&${queryString.stringify(context.query)}&page_size=2`
   );
 
