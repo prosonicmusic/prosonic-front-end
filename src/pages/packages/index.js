@@ -3,6 +3,7 @@ import queryString from "query-string";
 
 import Product from "@/src/components/Product/Product";
 import PaginationComponent from "@/src/components/common/Pagination";
+import useAxios from "@/src/utils/useAxios";
 
 export default function TracksPage({ packagesData }) {
   const { results } = packagesData;
@@ -51,10 +52,10 @@ export default function TracksPage({ packagesData }) {
   );
 }
 
-export async function getServerSideProps({ query }) {
-  const { data } = await axios.get(
+export async function getServerSideProps(context) {
+  const { data } = await useAxios(context).get(
     `http://localhost:4545/product/get?product_type=Package&${queryString.stringify(
-      query
+      context.query
     )}&page_size=2`
   );
 
