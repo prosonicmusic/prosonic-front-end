@@ -29,7 +29,7 @@ export default function Product({ product }) {
   };
 
   return (
-    <div className="basis-full min-[900px]:basis-[20%] min-[900px]:max-w-[20%] max-x-[100%] p-[7.5px] z-10">
+    <div className="basis-full min-[900px]:basis-[20%] min-[900px]:max-w-[20%] max-x-[100%] p-[7.5px] z-20">
       <div className="bg-[#23252b80] rounded-[10px] transition duration-200 max-[900px]:flex">
         {/* top */}
         <div className="relative w-full rounded-lg max-[900px]:max-w-[120px]">
@@ -103,7 +103,7 @@ export default function Product({ product }) {
             </span>
 
             {product.product_type !== "Package" && product?.daw && (
-              <div className="px-[3px] py-[3px] min-[900px]:ml-[60px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
+              <div className="px-[3px] py-[3px] min-[990px]:ml-[60px] min-[900px]:ml-[40px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
                 <div>
                   <img
                     src="images/daw-icons/cubase_logo.png"
