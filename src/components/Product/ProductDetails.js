@@ -1,8 +1,7 @@
-import { HiOutlineHeart } from "react-icons/hi";
-import { HiHeart } from "react-icons/hi";
 import { MdFolder } from "react-icons/md";
 import { FaPlay, FaPause } from "react-icons/fa";
 
+import PostInteraction from "../common/PostInteraction";
 import { usePlayer, usePlayerActions } from "@/src/context/PlayerContext";
 
 export default function ProductDetails({ productData }) {
@@ -157,15 +156,14 @@ export default function ProductDetails({ productData }) {
           )}
 
           {/* Like */}
-          <div className="flex items-center justify-center bg-[#282b32] py-2 mt-5 rounded-[10px]">
-            {is_liked ? (
-              <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" />
-            ) : (
-              <HiOutlineHeart className="h-6 w-6 stroke-rose-500 hover:stroke-rose-700 cursor-pointer" />
-            )}
-
-            <span className="text-xs ml-1 text-rose-200">{like_count}</span>
-          </div>
+          <PostInteraction
+            isLiked={is_liked}
+            id={id}
+            likeCount={like_count}
+            styles={
+              "flex items-center justify-center bg-[#282b32] py-2 mt-5 w-full rounded-[10px]"
+            }
+          />
         </div>
 
         <hr className="h-[1px] bg-[#383838] border-none" />

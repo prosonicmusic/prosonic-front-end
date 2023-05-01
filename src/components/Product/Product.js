@@ -2,10 +2,9 @@ import Link from "next/link";
 
 import { TbPlayerPlay, TbPlayerPause } from "react-icons/tb";
 import { FaChevronRight } from "react-icons/fa";
-import { HiOutlineHeart } from "react-icons/hi";
-import { HiHeart } from "react-icons/hi";
 
 import { usePlayer, usePlayerActions } from "@/src/context/PlayerContext";
+import PostInteraction from "../common/PostInteraction";
 
 export default function Product({ product }) {
   const strokeStyles =
@@ -167,13 +166,15 @@ export default function Product({ product }) {
               <button className="bg-[#dd1f5f] font-semibold h-12 w-[70%] text-white flex items-center justify-center rounded-[10px]">
                 Add to cart
               </button>
-              <div className="flex items-center justify-center bg-[#282b32] w-[30%] h-12 rounded-[10px]">
-                {product.is_liked ? (
-                  <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" />
-                ) : (
-                  <HiOutlineHeart className="h-6 w-6  cursor-pointer" />
-                )}
-              </div>
+
+              {/* Like */}
+              <PostInteraction
+                isLiked={product.is_liked}
+                id={product.id}
+                styles={
+                  "flex items-center justify-center bg-[#282b32] w-[30%] h-12 rounded-[10px]"
+                }
+              />
             </div>
           </div>
         </div>
