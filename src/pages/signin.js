@@ -64,8 +64,10 @@ const signUpvalidationSchema = Yup.object({
 
 const Signin = () => {
   const [move, setMove] = useState(false);
-  // const [minutes, setMinutes] = useState(1);
-  // const [seconds, setSeconds] = useState(0);
+  const [timer, setTimer] = useState(600);
+  const [seconds, setSeconds] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [showResendButton, setShowResendButton] = useState(false);
 
   const router = useRouter();
   const dispatch = useAuthActions();
@@ -108,37 +110,36 @@ const Signin = () => {
     validateOnMount: true,
   });
 
-  const verifyHandler = () => {
+  useEffect(() => {
+    let interval = null;
+    if (timer > -1) {
+      interval = setInterval(() => {
+        const seconds = timer % 60;
+        const minutes = Math.floor(timer / 60);
+        setSeconds(seconds);
+        setMinutes(minutes);
+        setTimer((timer) => timer - 1);
+      }, 1000);
+    } else {
+      clearInterval(interval);
+      setShowResendButton(true);
+    }
+    return () => clearInterval(interval);
+  }, [timer]);
+
+  const verifyHandler = async () => {
+    setTimer(600);
+    setShowResendButton(false);
+
     const body = {
       email: signUpFormik.values?.signupEmail,
       type: "register",
     };
 
-    // setMinutes(1);
-    // setSeconds(0);
-    dispatch({ type: "SET_OTP", payload: body });
+    await dispatch({ type: "SET_OTP", payload: body });
+
+    signUpFormik.handleSubmit();
   };
-
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     if (seconds > 0) {
-  //       setSeconds(seconds - 1);
-  //     }
-
-  //     if (seconds === 0) {
-  //       if (minutes === 0) {
-  //         clearInterval(interval);
-  //       } else {
-  //         setSeconds(59);
-  //         setMinutes(minutes - 1);
-  //       }
-  //     }
-  //   }, 1000);
-
-  //   return () => {
-  //     clearInterval(interval);
-  //   };
-  // }, [seconds]);
 
   useEffect(() => {
     if (user) router.push("/");
@@ -283,25 +284,19 @@ const Signin = () => {
                         placeholder="Verification Code"
                         type="number"
                       />
-                      {/* {seconds > 0 || minutes > 0 ? (
+
+                      {seconds > 0 || minutes > 0 ? (
                         <p className="ml-3">
                           {minutes < 10 ? `0${minutes}` : minutes}:
                           {seconds < 10 ? `0${seconds}` : seconds}
                         </p>
+                      ) : showResendButton ? (
+                        <button className="ml-3" onClick={verifyHandler}>
+                          Resend
+                        </button>
                       ) : (
-                        <div>
-                          <p className="ml-3 mt-3 w-[130px] text-sm text-center">
-                            Didn't recieve code?
-                          </p>
-                          <button
-                            disabled={seconds > 0 || minutes > 0}
-                            onClick={verifyHandler}
-                            className="text-white ml-3"
-                          >
-                            Resend
-                          </button>
-                        </div>
-                      )} */}
+                        <p className="ml-3">Waiting for OTP...</p>
+                      )}
                     </div>
                   )}
 
