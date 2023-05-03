@@ -2,10 +2,9 @@ import Link from "next/link";
 
 import { TbPlayerPlay, TbPlayerPause } from "react-icons/tb";
 import { FaChevronRight } from "react-icons/fa";
-import { HiOutlineHeart } from "react-icons/hi";
-import { HiHeart } from "react-icons/hi";
 
 import { usePlayer, usePlayerActions } from "@/src/context/PlayerContext";
+import PostInteraction from "../common/PostInteraction";
 
 export default function Product({ product }) {
   const strokeStyles =
@@ -30,7 +29,7 @@ export default function Product({ product }) {
   };
 
   return (
-    <div className="basis-full min-[900px]:basis-[20%] min-[900px]:max-w-[20%] max-x-[100%] p-[7.5px] z-10">
+    <div className="basis-full min-[900px]:basis-[20%] min-[900px]:max-w-[20%] max-x-[100%] p-[7.5px] z-20">
       <div className="bg-[#23252b80] rounded-[10px] transition duration-200 max-[900px]:flex">
         {/* top */}
         <div className="relative w-full rounded-lg max-[900px]:max-w-[120px]">
@@ -104,7 +103,7 @@ export default function Product({ product }) {
             </span>
 
             {product.product_type !== "Package" && product?.daw && (
-              <div className="px-[3px] py-[3px] min-[900px]:ml-[60px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
+              <div className="px-[3px] py-[3px] min-[990px]:ml-[60px] min-[900px]:ml-[40px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
                 <div>
                   <img
                     src="images/daw-icons/cubase_logo.png"
@@ -167,13 +166,15 @@ export default function Product({ product }) {
               <button className="bg-[#dd1f5f] font-semibold h-12 w-[70%] text-white flex items-center justify-center rounded-[10px]">
                 Add to cart
               </button>
-              <div className="flex items-center justify-center bg-[#282b32] w-[30%] h-12 rounded-[10px]">
-                {product.is_liked ? (
-                  <HiHeart className="h-6 w-6 cursor-pointer fill-[#dd1f5f]" />
-                ) : (
-                  <HiOutlineHeart className="h-6 w-6  cursor-pointer" />
-                )}
-              </div>
+
+              {/* Like */}
+              <PostInteraction
+                isLiked={product.is_liked}
+                id={product.id}
+                styles={
+                  "flex items-center justify-center bg-[#282b32] w-[30%] h-12 rounded-[10px]"
+                }
+              />
             </div>
           </div>
         </div>
