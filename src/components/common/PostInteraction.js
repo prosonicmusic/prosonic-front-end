@@ -10,31 +10,31 @@ export default function PostInteraction({ isLiked, id, styles, likeCount }) {
   const baseUrl = "http://127.0.0.1:4545";
   const router = useRouter();
 
-  const likeHandler = (productId) => {
-    const cookies = parseCookies();
+  const likeHandler = async (productId) => {
+    const { accessToken } = parseCookies();
     const body = {
       product_id: productId,
       value: "like",
     };
 
-    axios
-      .post(`${baseUrl}/user/like`, body, {
+    try {
+      const response = await axios.post(`${baseUrl}/user/like`, body, {
         headers: {
-          Authorization: `Bearer ${cookies.accessToken}`,
+          Authorization: `Bearer ${accessToken}`,
         },
-      })
-      .then((res) => {
-        routerPush(router);
-        if (!isLiked) {
-          toast.success("Liked successfully");
-        } else {
-          toast.success("Unliked");
-        }
-      })
-      .catch((err) => {
-        toast.error("Login first");
-        router.push("/signin");
       });
+
+      routerPush(router);
+
+      if (!isLiked) {
+        toast.success("Liked successfully");
+      } else {
+        toast.success("Unliked");
+      }
+    } catch (error) {
+      toast.error("Please sign in to like the product.");
+      router.push("/signin");
+    }
   };
 
   return (
