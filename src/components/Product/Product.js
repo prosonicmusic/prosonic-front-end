@@ -74,7 +74,8 @@ export default function Product({ product }) {
 
           {/* tag */}
           <div className="flex items-start flex-col absolute top-[8px] text-[#bcc7d4] md:text-[11px] text-[9px] font-black invisible">
-            <div className={product.tag}>PREMIUM</div>
+            {product.tag == "premium" && <div className={product.tag}>PREMIUM</div>}
+            {product.tag == "on-sale" && <div className={product.tag}>On Sale</div>}
           </div>
         </div>
 
@@ -102,6 +103,7 @@ export default function Product({ product }) {
               {product.product_price} T
             </span>
 
+            {/* daws */}
             {product.product_type !== "Package" && product?.daw && (
               <div className="px-[3px] py-[3px] min-[990px]:ml-[60px] min-[900px]:ml-[40px] ml-3 mb-[10px] bg-[#282b32bb] rounded-lg">
                 <div>
@@ -109,42 +111,42 @@ export default function Product({ product }) {
                     src="images/daw-icons/cubase_logo.png"
                     alt="Cubase"
                     className={`max-w-full h-[17px] align-middle ${
-                      product?.daw?.name === "Cubase" ? "block" : "hidden"
+                      product?.daw?.name === "cubase" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="images/daw-icons/fl-logo.png"
                     alt="FL Studio"
                     className={`max-w-full h-[17px] align-middle ${
-                      product?.daw?.name === "FLStudio" ? "block" : "hidden"
+                      product?.daw?.name === "flstudio" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="images/daw-icons/ableton-logo.png"
                     alt="ableton"
                     className={`max-w-full h-[17px] align-middle ${
-                      product?.daw?.name === "Ableton" ? "block" : "hidden"
+                      product?.daw?.name === "ableton" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="images/daw-icons/logicpro-logo.png"
                     alt="logicpro"
                     className={`max-w-full h-[17px] align-middle ${
-                      product?.daw?.name === "LogicPro" ? "block" : "hidden"
+                      product?.daw?.name === "logicpro" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="images/daw-icons/protools-logo.png"
                     alt="protools"
                     className={`max-w-full h-[17px] align-middle ${
-                      product?.daw?.name === "Protools" ? "block" : "hidden"
+                      product?.daw?.name === "protools" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="images/daw-icons/studioOne-logo.png"
                     alt="studioOne"
                     className={`max-w-full h-[17px] align-middle rounded-md ${
-                      product?.daw?.name === "StudioOne" ? "block" : "hidden"
+                      product?.daw?.name === "studioone" ? "block" : "hidden"
                     }`}
                   />
                 </div>
