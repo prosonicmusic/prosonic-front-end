@@ -3,7 +3,7 @@ import Image from "next/image";
 
 import { FaShoppingCart } from "react-icons/fa";
 import { parseCookies } from "nookies";
-import { useAuth, useAuthActions } from "@/src/context/AuthContext";
+import { useAuthActions } from "@/src/context/AuthContext";
 import Burger from "./burger";
 
 const MainNavigation = () => {
@@ -64,7 +64,7 @@ const MainNavigation = () => {
 
           {access ? (
             <button className={loginButtonStyles}>
-              <Link href="/profile">Profile</Link>
+              <Link href="/dashboard/user-profile">Dashboard</Link>
             </button>
           ) : (
             <button className={loginButtonStyles}>
