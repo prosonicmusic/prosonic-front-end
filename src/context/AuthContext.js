@@ -20,19 +20,16 @@ const initialState = {
   loading: true,
   error: null,
   otp: false,
-  token: null,
 };
 
 const reducer = (state, action) => {
   switch (action.type) {
     case "SIGNIN_PENDING":
-      return { ...state, error: null, loading: true, user: null };
+      return { ...state, error: null, loading: true, user: null, otp: null };
     case "SIGNIN_SUCCESS":
       return { ...state, error: null, loading: false, user: action.payload };
     case "OTP_SUCCESS":
       return { ...state, error: null, otp: true };
-    case "TOKEN_SUCCESS":
-      return { ...state, token: action.payload };
     case "SIGNIN_REJECT":
       return { error: action.error, loading: false, user: null, otp: false };
     default:
@@ -107,12 +104,6 @@ const authHandlers = {
       routerPush(Router);
     },
 
-  SET_TOKEN:
-    ({ dispatch }) =>
-    (action) => {
-      dispatch({ type: "TOKEN_SUCCESS", payload: action.tokenPayload });
-    },
-
   UPDATE_TOKEN:
     ({ dispatch }) =>
     async (action) => {
@@ -184,13 +175,6 @@ export default function AuthProvider({ children }) {
     }, refreshInterval);
 
     return () => clearInterval(interval);
-  }, []);
-
-  useEffect(() => {
-    if (cookies.accessToken) {
-      dispatch({ type: "SET_TOKEN", tokenPayload: cookies.accessToken });
-      dispatch({ type: "SET_USER" });
-    }
   }, []);
 
   return (
