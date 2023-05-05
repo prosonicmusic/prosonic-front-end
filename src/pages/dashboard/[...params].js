@@ -1,4 +1,7 @@
+import { useEffect } from "react";
 import { useRouter } from "next/router";
+
+import { parseCookies } from "nookies";
 
 import DashboardSettings from "@/src/components/dashboard/DashboardSettings";
 import UserProfile from "@/src/components/dashboard/UserProfile";
@@ -8,7 +11,8 @@ import Password from "@/src/components/dashboard/Password";
 import UploadTrack from "@/src/components/dashboard/UploadTrack";
 
 const Dashboard = () => {
-  const { params } = useRouter().query;
+  const { query, push } = useRouter();
+  const { accessToken } = parseCookies();
 
   const settingsStyles =
     "bg-[#2e303880] rounded-[10px] transition-all duration-300 my-[15px] ml-[15px] max-[900px]:m-[15px] max-[900px]:pb-[10px] max-[900px]:mb-[10px]";
@@ -18,19 +22,27 @@ const Dashboard = () => {
     "text-[#b6c1ce] max-w-5xl h-full w-full m-auto mt-[65px] flex max-[900px]:block";
 
   const renderSectionContent = () => {
-    switch (params?.[0]) {
+    switch (query.params?.[0]) {
       case "user-profile":
         return <UserProfile />;
       case "producer-profile":
         return <ProducerProfile />;
       case "my-products":
-        return !params?.[1] ? <MyProducts /> : params?.[1] === "new" ? <UploadTrack /> : null;
+        return !query.params?.[1] ? (
+          <MyProducts />
+        ) : query.params?.[1] === "new" ? (
+          <UploadTrack />
+        ) : null;
       case "password":
         return <Password />;
       default:
         return null;
     }
   };
+
+  useEffect(() => {
+    if (!accessToken) push("/signin");
+  }, [accessToken]);
 
   return (
     <main className={dashboardStyles}>
