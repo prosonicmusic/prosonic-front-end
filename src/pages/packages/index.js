@@ -36,8 +36,8 @@ export default function TracksPage({ packagesData, filtersData }) {
 }
 
 export async function getServerSideProps(context) {
-  const baseUrl = process.env.BASE_API_URL;
-  const pageSize = process.env.PAGE_SIZE;
+  const baseUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
+  const pageSize = process.env.NEXT_PUBLIC_PAGE_SIZE;
 
   try {
     const [dataRes, typesRes] = await Promise.all([
