@@ -22,7 +22,7 @@ const Dashboard = ({ user }) => {
   const settingStyles =
     "bg-[#2e303880] rounded-[10px] w-full m-[15px] min-h-[580px] max-[900px]:mb-[10px]";
   const dashboardStyles =
-    "text-[#b6c1ce] max-w-5xl m-auto mt-[65px] flex max-[900px]:flex-col";
+    "text-[#b6c1ce] max-w-5xl m-auto mt-[65px] flex max-[900px]:items-center max-[900px]:flex-col max-[900px]:p-3";
 
   const renderSectionContent = (userData) => {
     switch (query.params?.[0]) {
