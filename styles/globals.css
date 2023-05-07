@@ -169,3 +169,14 @@ audio::-webkit-media-controls-timeline {
   border-radius: 50px;
   margin-right: 10px;
 }
+
+
+input::-webkit-file-upload-button {
+  background: #929292;
+  border-radius: 10px;
+  all: unset;
+  margin-right: 5px;
+  font-size: 15px;
+  color: #bcc7d4;
+  font-weight: 600;
+}
