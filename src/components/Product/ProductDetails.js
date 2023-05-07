@@ -53,9 +53,8 @@ export default function ProductDetails({ productData }) {
           <img src={thumbnail} alt="product cover" className="w-[200px] rounded-lg m-auto" />
           {/* Tag */}
           <ul className="flex items-start absolute top-2 text-xs font-bold invisible max-[900px]:left-1 max-[900px]:bottom-[-60px] max-[900px]:top-auto">
-            <div className={tag}>
-              <li> PREMIUM </li>
-            </div>
+            {tag == "premium" && <div className={tag}>PREMIUM</div>}
+            {tag == "on-sale" && <div className={tag}>On Sale</div>}
           </ul>
           {/* Sold */}
           {sold && (
@@ -85,7 +84,7 @@ export default function ProductDetails({ productData }) {
           {genre && (
             <div className="p-[3px]">
               <span className="pr-5 text-[#959faa]">Genre</span>
-              <span>{genre}</span>
+              <span>{genre?.name}</span>
             </div>
           )}
 
@@ -103,6 +102,7 @@ export default function ProductDetails({ productData }) {
             </div>
           )}
 
+          {/* daws */}
           {product_type !== "Package" && (
             <div className="p-[3px] flex">
               <span className="pr-5 text-[#959faa]">Daw</span>
@@ -112,42 +112,42 @@ export default function ProductDetails({ productData }) {
                     src="/images/daw-icons/cubase_logo.png"
                     alt="Cubase"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw?.name === "Cubase" ? "block" : "hidden"
+                      daw?.name === "cubase" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="/images/daw-icons/fl-logo.png"
                     alt="FL Studio"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw?.name === "FLStudio" ? "block" : "hidden"
+                      daw?.name === "flstudio" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="/images/daw-icons/ableton-logo.png"
                     alt="ableton"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw?.name === "Ableton" ? "block" : "hidden"
+                      daw?.name === "ableton" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="/images/daw-icons/logicpro-logo.png"
                     alt="logicpro"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw?.name === "LogicPro" ? "block" : "hidden"
+                      daw?.name === "logicpro" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="/images/daw-icons/protools-logo.png"
                     alt="protools"
                     className={`max-w-full h-[17px] align-middle ${
-                      daw?.name === "Protools" ? "block" : "hidden"
+                      daw?.name === "protools" ? "block" : "hidden"
                     }`}
                   />
                   <img
                     src="/images/daw-icons/studioOne-logo.png"
                     alt="studioOne"
                     className={`max-w-full h-[17px] align-middle rounded-md ${
-                      daw?.name === "StudioOne" ? "block" : "hidden"
+                      daw?.name === "studioone" ? "block" : "hidden"
                     }`}
                   />
                 </div>

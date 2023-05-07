@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import InputComponent from "../components/FormInput";
+import InputComponent from "../components/common/FormInput";
 import { useAuth, useAuthActions } from "../context/AuthContext";
 
 const initialSignInValues = {
