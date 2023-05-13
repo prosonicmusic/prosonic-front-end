@@ -94,10 +94,10 @@ export default function UserProfile({ userData }) {
 
     const userProfileValues = {
       phone_number: phoneNumber,
-      bio: bio,
-      city: city,
-      provice: province,
-      address: address,
+      bio,
+      city,
+      province,
+      address,
       social_media_description: socialMediaDescription,
     };
     try {
