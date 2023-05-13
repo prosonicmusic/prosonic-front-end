@@ -37,7 +37,7 @@ const Dashboard = ({ user }) => {
           <UploadTrack />
         ) : null;
       case "password":
-        return <Password />;
+        return <Password userData={userData} />;
       default:
         return null;
     }
