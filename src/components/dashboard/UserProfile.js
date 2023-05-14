@@ -147,18 +147,18 @@ export default function UserProfile({ userData }) {
         </div>
 
         {/* Change avatar */}
-        <div className="flex items-center relative bg-[#2e303880] p-3 m-4 rounded-lg">
-          <h5 className="mr-6">Change Avatar</h5>
+        <div className="flex items-center relative bg-[#2e303880] p-3 m-4 rounded-lg max-[900px]:block">
+          <h5 className="mr-6 max-[900px]:mb-1 max-[900px]:p-3">Change Avatar</h5>
           <input
             type="file"
             name="file"
             onChange={chooseFileHandler}
-            className="w-[300px] bg-[#2e3038c7] px-3 py-2 rounded-lg text-xs text-[#696969] cursor-pointer"
+            className="w-[300px] max-[500px]:w-full bg-[#2e3038c7] px-3 py-2 rounded-lg text-xs text-[#696969] cursor-pointer max-[900px]:p-6 max-[900px]:mb-4"
           />
 
           <button
             onClick={fileChangeHandler}
-            className="bg-[#2e3038c7] w-[100px] ml-3 text-sm cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#3f424dc7] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
+            className="bg-[#2e3038c7] w-[100px] ml-3 text-sm cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#3f424dc7] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed max-[900px]:p-2 max-[495px]:ml-0"
             disabled={selectedFile ? false : true}
           >
             Change
@@ -173,8 +173,8 @@ export default function UserProfile({ userData }) {
           <h3 className="text-[#9ba3bb] text-lg font-extrabold py-5 px-3">Your info</h3>
 
           {/* Phone Number */}
-          <div className="flex items-center ml-16">
-            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+          <div className="flex items-center ml-16 max-[900px]:block max-[900px]:ml-0">
+            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               Phone Number
             </h6>
             <InputComponent
@@ -187,8 +187,8 @@ export default function UserProfile({ userData }) {
           </div>
 
           {/* Bio */}
-          <div className="flex items-center ml-16">
-            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+          <div className="flex items-center ml-16 max-[900px]:block max-[900px]:ml-0">
+            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               Biography
             </h6>
             <div className="w-full">
@@ -211,8 +211,8 @@ export default function UserProfile({ userData }) {
           </div>
 
           {/* City */}
-          <div className="flex items-center ml-16">
-            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+          <div className="flex items-center ml-16 max-[900px]:block max-[900px]:ml-0">
+            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               City
             </h6>
             <InputComponent
@@ -225,8 +225,8 @@ export default function UserProfile({ userData }) {
           </div>
 
           {/* Province */}
-          <div className="flex items-center ml-16">
-            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+          <div className="flex items-center ml-16 max-[900px]:block max-[900px]:ml-0">
+            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               Province
             </h6>
             <InputComponent
@@ -239,8 +239,8 @@ export default function UserProfile({ userData }) {
           </div>
 
           {/* Address */}
-          <div className="flex items-center ml-16">
-            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+          <div className="flex items-center ml-16 max-[900px]:block max-[900px]:ml-0">
+            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               Address
             </h6>
             <InputComponent
@@ -253,8 +253,8 @@ export default function UserProfile({ userData }) {
           </div>
 
           {/* social Media Description */}
-          <div className="flex items-center ml-16">
-            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+          <div className="flex items-center ml-16 max-[900px]:block max-[900px]:ml-0">
+            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               Social Media
             </h6>
             <InputComponent

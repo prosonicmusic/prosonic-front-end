@@ -118,8 +118,8 @@ export default function Password({ userData }) {
         onSubmit={passwordFormik.handleSubmit}
       >
         {/* New Password */}
-        <div className="flex items-center ml-16 mt-4">
-          <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+        <div className="flex items-center ml-16 mt-4 max-[900px]:block max-[900px]:ml-0">
+          <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
             New Password
           </h6>
           <InputComponent
@@ -132,8 +132,8 @@ export default function Password({ userData }) {
         </div>
 
         {/* New Password */}
-        <div className="flex items-center ml-16">
-          <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+        <div className="flex items-center ml-16 max-[900px]:block max-[900px]:ml-0">
+          <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
             Confirmation
           </h6>
           <InputComponent
@@ -147,8 +147,8 @@ export default function Password({ userData }) {
 
         {/* verification code */}
         {otp && (
-          <div className="flex items-center ml-5">
-            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right">
+          <div className="flex items-center ml-5 max-[900px]:block max-[900px]:ml-0">
+            <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               Verification
             </h6>
             <InputComponent
@@ -158,7 +158,7 @@ export default function Password({ userData }) {
               type="number"
               className={""}
             />
-            <div className="p-4">
+            <div className="p-4 max-[900px]:p-0">
               {seconds > 0 || minutes > 0 ? (
                 <p className="ml-3">
                   {minutes < 10 ? `0${minutes}` : minutes}:
