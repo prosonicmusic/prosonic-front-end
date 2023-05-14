@@ -34,15 +34,14 @@ const passwordValidationSchema = Yup.object({
 });
 
 export default function Password({ userData }) {
-  const [timer, setTimer] = useState(600);
+  const [timer, setTimer] = useState(300);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [showResendButton, setShowResendButton] = useState(false);
 
   const { accessToken } = parseCookies();
-  const router = useRouter();
   const dispatch = useAuthActions();
-  const { user, otp } = useAuth();
+  const { otp } = useAuth();
 
   const onSubmitPassword = async (values) => {
     const { newPassword, otp } = values;
@@ -69,8 +68,6 @@ export default function Password({ userData }) {
     } catch (error) {
       toast.error("Something went wrong, please try again later!");
     }
-
-    // fetch data
   };
 
   const passwordFormik = useFormik({
@@ -98,7 +95,7 @@ export default function Password({ userData }) {
   }, [timer]);
 
   const verifyHandler = async () => {
-    setTimer(600);
+    setTimer(300);
     setShowResendButton(false);
 
     const body = {
