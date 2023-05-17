@@ -30,6 +30,8 @@ const reducer = (state, action) => {
       return { ...state, error: null, loading: false, user: action.payload };
     case "OTP_SUCCESS":
       return { ...state, error: null, otp: true };
+    case "TOKEN_SUCCESS":
+      return { ...state, token: action.payload };
     case "SIGNIN_REJECT":
       return { error: action.error, loading: false, user: null, otp: false };
     default:
