@@ -8,6 +8,7 @@ import UserProfile from "@/src/components/dashboard/UserProfile";
 import ProducerProfile from "@/src/components/dashboard/ProducerProfile";
 import MyProducts from "@/src/components/dashboard/MyProducts";
 import Password from "@/src/components/dashboard/Password";
+import Email from "@/src/components/dashboard/Email";
 import UploadTrack from "@/src/components/dashboard/UploadTrack";
 
 import { useAuth } from "@/src/context/AuthContext";
@@ -20,7 +21,7 @@ const Dashboard = ({ user }) => {
   const settingsStyles =
     "bg-[#2e303880] rounded-[10px] w-[350px] h-full overflow-hidden transition-all duration-300 my-[15px] ml-[15px] max-[900px]:w-full max-[900px]:m-[15px] max-[900px]:pb-[10px] max-[900px]:mb-[10px]";
   const settingStyles =
-    "bg-[#2e303880] rounded-[10px] w-full m-[15px] min-h-[580px] max-[900px]:mb-[10px]";
+    "bg-[#2e303880] rounded-[10px] w-full m-[15px] min-h-[500px] max-[900px]:mb-[10px]";
   const dashboardStyles =
     "text-[#b6c1ce] max-w-5xl m-auto mt-[65px] flex max-[900px]:items-center max-[900px]:flex-col max-[900px]:p-3";
 
@@ -37,7 +38,9 @@ const Dashboard = ({ user }) => {
           <UploadTrack />
         ) : null;
       case "password":
-        return <Password />;
+        return <Password userData={userData} />;
+      case "email":
+        return <Email userData={userData} />;
       default:
         return null;
     }

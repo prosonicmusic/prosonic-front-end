@@ -6,6 +6,7 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import InputComponent from "../components/common/FormInput";
+import ForgotPassword from "../components/ForgotPassword";
 import { useAuth, useAuthActions } from "../context/AuthContext";
 
 const initialSignInValues = {
@@ -64,7 +65,8 @@ const signUpvalidationSchema = Yup.object({
 
 const Signin = () => {
   const [move, setMove] = useState(false);
-  const [timer, setTimer] = useState(600);
+  const [showForgetPassword, setShowForgetPassword] = useState(false);
+  const [timer, setTimer] = useState(300);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
   const [showResendButton, setShowResendButton] = useState(false);
@@ -128,7 +130,7 @@ const Signin = () => {
   }, [timer]);
 
   const verifyHandler = async () => {
-    setTimer(600);
+    setTimer(300);
     setShowResendButton(false);
 
     const body = {
@@ -136,7 +138,7 @@ const Signin = () => {
       type: "register",
     };
 
-    await dispatch({ type: "SET_OTP", payload: body });
+    await dispatch({ type: "SET_OTP", payload: body, otpPayload: "signup" });
 
     signUpFormik.handleSubmit();
   };
@@ -177,39 +179,56 @@ const Signin = () => {
           <div
             className={`absolute top-0 left-0 w-[50%] max-[900px]:w-full ${
               move ? "h-[600px]" : "h-full"
-            } ${
-              otp && move && "h-[680px]"
+            } ${otp == 'forgot_password' && "h-[520px]"} ${
+              otp == "signup" && "h-[680px]"
             } bg-[#1a1a1a] z-50 flex justify-center items-center shadow-[0_4px_45px_#ffffff1a] transition-all duration-[0.4s] overflow-hidden rounded-[15px] ${
               move && "left-[50%] max-[900px]:top-[35%] max-[900px]:left-0"
             }`}
           >
             {/* Signin */}
             <section className={`z-50 delay-[0s] ${move && "left-0"}`}>
-              <form
-                className={`absolute top-20 w-full p-[50px] transition-all duration-[.35s] flex flex-col ${
-                  !move ? "right-0" : "right-[100%]"
-                }`}
-                onSubmit={signInFormik.handleSubmit}
-              >
-                <h3 className="text-[1.5em] font-medium mb-6">Sign In</h3>
-                <InputComponent name="signinEmail" formik={signInFormik} placeholder="Email" />
-                <InputComponent
-                  name="signinPassword"
-                  type="password"
-                  formik={signInFormik}
-                  placeholder="Password"
+              {showForgetPassword ? (
+                <ForgotPassword
+                  move={move}
+                  showForgetPassword={showForgetPassword}
+                  setShowForgetPassword={setShowForgetPassword}
                 />
-                <button
-                  className="bg-[#1aa2d8d3] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#1cafe9f1] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
-                  type="submit"
-                  disabled={!signInFormik.isValid}
+              ) : (
+                <form
+                  className={`absolute top-16 w-full p-[50px] transition-all duration-[.35s] flex flex-col ${
+                    !move ? "right-0" : "right-[100%]"
+                  }`}
+                  onSubmit={signInFormik.handleSubmit}
                 >
-                  Login
-                </button>
-                <Link href="/" className="underline text-sm mt-2">
-                  Forgot Password
-                </Link>
-              </form>
+                  <div>
+                    <h3 className="text-[1.5em] font-medium mb-6">Sign In</h3>
+                    <InputComponent
+                      name="signinEmail"
+                      formik={signInFormik}
+                      placeholder="Email"
+                    />
+                    <InputComponent
+                      name="signinPassword"
+                      type="password"
+                      formik={signInFormik}
+                      placeholder="Password"
+                    />
+                    <button
+                      className="bg-[#1aa2d8d3] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#1cafe9f1] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
+                      type="submit"
+                      disabled={!signInFormik.isValid}
+                    >
+                      Login
+                    </button>
+                    <div
+                      onClick={() => setShowForgetPassword(!showForgetPassword)}
+                      className="underline text-sm mt-4 hover:text-white transition duration-200 cursor-pointer"
+                    >
+                      Forgot your password?
+                    </div>
+                  </div>
+                </form>
+              )}
             </section>
 
             {/* sign up */}
@@ -276,7 +295,7 @@ const Signin = () => {
                   </div>
 
                   {/* verification code */}
-                  {otp && (
+                  {otp == "signup" && (
                     <div className="flex items-center">
                       <InputComponent
                         name="otp"
@@ -301,7 +320,7 @@ const Signin = () => {
                   )}
 
                   {/* buttons */}
-                  {otp ? (
+                  {otp == "signup" ? (
                     <button
                       className="bg-[#ca1854e7] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
                       type="submit"
