@@ -152,7 +152,8 @@ export default function Email({ userData }) {
             type="email"
             className={"w-full"}
           />
-
+        </div>
+        <div className="flex items-center ml-16 mt-4 max-[900px]:block max-[900px]:ml-0">
           <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
             Your Password
           </h6>
