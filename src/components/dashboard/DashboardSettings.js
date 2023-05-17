@@ -14,6 +14,7 @@ export default function DashboardSettings() {
     { title: "Producer Profile", href: "/dashboard/producer-profile" },
     { title: "My Products", href: "/dashboard/my-products" },
     { title: "Password", href: "/dashboard/password" },
+    { title: "Email", href: "/dashboard/email" },
     { title: "Upload a Track", href: "/dashboard/my-products/new" },
   ];
 

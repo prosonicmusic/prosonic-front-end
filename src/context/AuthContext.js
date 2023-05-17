@@ -29,7 +29,9 @@ const reducer = (state, action) => {
     case "SIGNIN_SUCCESS":
       return { ...state, error: null, loading: false, user: action.payload };
     case "OTP_SUCCESS":
-      return { ...state, error: null, otp: true };
+      return { ...state, error: null, otp: action.payload || null };
+    case "TOKEN_SUCCESS":
+      return { ...state, token: action.payload };
     case "SIGNIN_REJECT":
       return { error: action.error, loading: false, user: null, otp: false };
     default:
@@ -127,10 +129,16 @@ const authHandlers = {
     async (action) => {
       try {
         const { data } = await axios.post(`${baseUrl}/user/verification/send`, action.payload);
-        dispatch({ type: "OTP_SUCCESS" });
+        dispatch({ type: "OTP_SUCCESS", payload: action.otpPayload });
         toast.success(data?.message);
       } catch (err) {
         dispatch({ type: "SIGNIN_REJECT", error: "Something went wrong, Check your email" });
+
+        if (err?.response?.data?.message == "Check your email") {
+          dispatch({ type: "OTP_SUCCESS", payload: action.otpPayload });
+        } else {
+          dispatch({ type: "OTP_SUCCESS", payload: null });
+        }
         const { message } = err?.response?.data || {};
         toast.error(message || "An error occurred. Please try again later.");
       }

@@ -1,39 +1,32 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { parseCookies } from "nookies";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import routerPush from "@/src/utils/routerPush";
+import { BiCheck } from "react-icons/bi";
+
 import { useAuth, useAuthActions } from "@/src/context/AuthContext";
 import InputComponent from "../common/FormInput";
 
-const initialPasswordValues = {
-  newPassword: "",
-  confirmNewPassword: "",
+const initialEmailValues = {
+  newEmail: "",
+  emailPassword: "",
   otp: "",
 };
 
-const passwordValidationSchema = Yup.object({
-  newPassword: Yup.string()
-    .required("Enter a Password")
-    .min(8, "Password must contain at least 8 characters")
-    .matches(/[0-9]/, "Password requires a number")
-    .matches(/[a-z]/, "Password requires a lowercase letter")
-    .matches(/[A-Z]/, "Password requires an uppercase letter")
-    .matches(/[!@#$%^&()_+]/, "At least one special character (!@#$%^&()_+)")
-    .matches(/^\S*$/, "No whitespace"),
-  confirmNewPassword: Yup.string()
-    .oneOf([Yup.ref("newPassword"), null], "Re-enter the password")
-    .required("The password does not match"),
+const emailValidationSchema = Yup.object({
+  newEmail: Yup.string().required("Enter your email").email("The email is invalid"),
+  emailPassword: Yup.string()
+    .required("Enter Your Password")
+    .min(8, "Password must be at least six characters long"),
   otp: Yup.number()
     .required("Enter the code sent to the email")
     .min(5, "Enter the code correctly"),
 });
 
-export default function Password({ userData }) {
+export default function Email({ userData }) {
   const [timer, setTimer] = useState(300);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
@@ -43,37 +36,40 @@ export default function Password({ userData }) {
   const dispatch = useAuthActions();
   const { otp } = useAuth();
 
-  const onSubmitPassword = async (values) => {
-    const { newPassword, otp } = values;
-    const API_URL = `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/password/update`;
+  const onSubmitEmail = async (values) => {
+    const { newEmail, otp } = values;
+    const API_URL = `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/email/update`;
 
-    const signupValues = {
-      email: userData?.user?.email,
-      password: newPassword,
+    const emailValues = {
+      email: newEmail,
       otp,
     };
 
     try {
       if (accessToken) {
-        const response = await axios.put(API_URL, signupValues, {
+        const response = await axios.put(API_URL, emailValues, {
           headers: {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-        window.location.href = "/dashboard/password";
-        toast.success("Successfully your password changed");
+        window.location.href = "/dashboard/email";
+        toast.success("Successfully your email changed");
       } else {
         toast.error("Login first");
       }
     } catch (error) {
-      toast.error("Something went wrong, please try again later!");
+      toast.error(
+        error?.response?.data?.message && error?.response?.data?.message == "invalid otp"
+          ? "Invalid verification code or password"
+          : "Invalid data"
+      );
     }
   };
 
-  const passwordFormik = useFormik({
-    initialValues: initialPasswordValues,
-    onSubmit: onSubmitPassword,
-    validationSchema: passwordValidationSchema,
+  const emailFormik = useFormik({
+    initialValues: initialEmailValues,
+    onSubmit: onSubmitEmail,
+    validationSchema: emailValidationSchema,
     validateOnMount: true,
   });
 
@@ -98,48 +94,73 @@ export default function Password({ userData }) {
     setTimer(300);
     setShowResendButton(false);
 
+    const API_URL = `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/verification/email/send`;
+
     const body = {
-      email: userData?.user?.email,
-      type: "password",
+      email: emailFormik.values.newEmail,
+      password: emailFormik.values.emailPassword,
     };
 
-    await dispatch({ type: "SET_OTP", payload: body });
-
-    passwordFormik.handleSubmit();
+    try {
+      if (accessToken) {
+        const response = await axios.post(API_URL, body, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+        toast.success(`Verification code sent to ${emailFormik.values.newEmail}`);
+        await dispatch({ type: "OTP_SUCCESS" });
+      } else {
+        toast.error("Login first");
+      }
+    } catch (error) {
+      const errorMessage = error?.response?.data?.message?.email;
+      toast.error(
+        errorMessage
+          ? errorMessage
+          : error?.response?.data?.message || "Something went wrong, please try again later!"
+      );
+    }
   };
 
   return (
     <>
-      <h3 className="font-semibold text-[#9ba3bb] text-lg py-4 px-6">Password</h3>
+      <h3 className="font-semibold text-[#9ba3bb] text-lg py-4 px-6">Email</h3>
       <hr className="h-[2px] w-[] bg-[#000000] border-none" />
 
-      <form
-        className="bg-[#2e303880] p-3 m-4 rounded-lg"
-        onSubmit={passwordFormik.handleSubmit}
-      >
-        {/* New Password */}
+      {/* Your email */}
+      <div className="bg-[#2e303880] p-3 m-4 rounded-lg flex items-center max-[900px]:block">
+        <h5 className="p-3 max-[900px]:mb-2">Your Email:</h5>
+        <div className="flex items-center mb-3">
+          <span className="ml-3 font-semibold text-white bg-[#2e3038bd] p-3 rounded-lg">
+            {userData?.user?.email}
+          </span>
+          <BiCheck size={30} className="ml-1 fill-green-600" />
+        </div>
+      </div>
+
+      <form className="bg-[#2e303880] p-3 m-4 rounded-lg" onSubmit={emailFormik.handleSubmit}>
+        {/* New Email */}
         <div className="flex items-center ml-16 mt-4 max-[900px]:block max-[900px]:ml-0">
           <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
-            New Password
+            Change Email
           </h6>
           <InputComponent
-            name="newPassword"
-            formik={passwordFormik}
-            placeholder="New Password"
-            type="password"
+            name="newEmail"
+            formik={emailFormik}
+            placeholder="Enter your new email"
+            type="email"
             className={"w-full"}
           />
         </div>
-
-        {/* New Password */}
-        <div className="flex items-center ml-16 max-[900px]:block max-[900px]:ml-0">
+        <div className="flex items-center ml-16 mt-4 max-[900px]:block max-[900px]:ml-0">
           <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
-            Confirmation
+            Your Password
           </h6>
           <InputComponent
-            name="confirmNewPassword"
-            formik={passwordFormik}
-            placeholder="Password Confirmation"
+            name="emailPassword"
+            formik={emailFormik}
+            placeholder="Enter your password"
             type="password"
             className={"w-full"}
           />
@@ -153,10 +174,9 @@ export default function Password({ userData }) {
             </h6>
             <InputComponent
               name="otp"
-              formik={passwordFormik}
+              formik={emailFormik}
               placeholder="Verification Code"
               type="number"
-              className={""}
             />
             <div className="p-4 max-[900px]:p-0">
               {seconds > 0 || minutes > 0 ? (
@@ -180,7 +200,7 @@ export default function Password({ userData }) {
           <button
             className="bg-[#ca1854e7] my-4 w-full cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
             type="submit"
-            disabled={!passwordFormik.isValid}
+            disabled={!emailFormik.isValid}
           >
             Save
           </button>
