@@ -26,7 +26,7 @@ const initialState = {
 const reducer = (state, action) => {
   switch (action.type) {
     case "SIGNIN_PENDING":
-      return { ...state, error: null, loading: true, user: null };
+      return { ...state, error: null, loading: true, user: null, token: null };
     case "SIGNIN_SUCCESS":
       return { ...state, error: null, loading: false, user: action.payload };
     case "OTP_STATUS":
@@ -100,8 +100,12 @@ const authHandlers = {
     ({ dispatch }) =>
     (action) => {
       dispatch({ type: "SIGNIN_PENDING" });
-      destroyCookie(null, "accessToken");
-      destroyCookie(null, "refreshToken");
+      destroyCookie(null, "accessToken", {
+        path: "/",
+      });
+      destroyCookie(null, "refreshToken", {
+        path: "/",
+      });
 
       toast("You logged out!");
 
