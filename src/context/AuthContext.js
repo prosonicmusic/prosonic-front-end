@@ -34,7 +34,7 @@ const reducer = (state, action) => {
     case "TOKEN_SUCCESS":
       return { ...state, token: action.payload };
     case "SIGNIN_REJECT":
-      return { error: action.error, loading: false, user: null, otp: false };
+      return { ...state, error: action.error, loading: false, user: null };
     default:
       return { ...state };
   }
@@ -53,9 +53,10 @@ const authHandlers = {
       } catch (err) {
         dispatch({ type: "SIGNIN_REJECT", error: err?.response?.data?.detail });
         const { detail } = err?.response?.data || {};
+        const errorMsg = err?.response?.data?.message;
 
-        if (detail) {
-          toast.error(detail);
+        if (detail || errorMsg) {
+          toast.error(detail || errorMsg);
         } else {
           toast.error("Something went wrong. Please try again later!");
         }
@@ -143,9 +144,8 @@ const authHandlers = {
 
         if (err?.response?.data?.message == "Check your email") {
           dispatch({ type: "OTP_STATUS", payload: action.otpPayload });
-        } else {
-          dispatch({ type: "OTP_STATUS", payload: null });
         }
+
         const { message } = err?.response?.data || {};
         toast.error(message || "An error occurred. Please try again later.");
       }
