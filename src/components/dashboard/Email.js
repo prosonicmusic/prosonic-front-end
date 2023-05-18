@@ -109,12 +109,17 @@ export default function Email({ userData }) {
           },
         });
         toast.success(`Verification code sent to ${emailFormik.values.newEmail}`);
-        await dispatch({ type: "OTP_SUCCESS" });
+        await dispatch({ type: "OTP_STATUS", payload: "change_email" });
       } else {
         toast.error("Login first");
       }
     } catch (error) {
       const errorMessage = error?.response?.data?.message?.email;
+
+      if (error?.response?.data?.message == "Check your email") {
+        dispatch({ type: "OTP_STATUS", payload: "change_email" });
+      }
+
       toast.error(
         errorMessage
           ? errorMessage
@@ -167,7 +172,7 @@ export default function Email({ userData }) {
         </div>
 
         {/* verification code */}
-        {otp && (
+        {otp == "change_email" && (
           <div className="flex items-center ml-5 max-[900px]:block max-[900px]:ml-0">
             <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               Verification
@@ -196,7 +201,7 @@ export default function Email({ userData }) {
         )}
 
         {/* buttons */}
-        {otp ? (
+        {otp == "change_email" ? (
           <button
             className="bg-[#ca1854e7] my-4 w-full cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
             type="submit"

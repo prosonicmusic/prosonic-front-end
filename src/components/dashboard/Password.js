@@ -1,12 +1,10 @@
 import { useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import axios from "axios";
 import { toast } from "react-hot-toast";
 import { parseCookies } from "nookies";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
-import routerPush from "@/src/utils/routerPush";
 import { useAuth, useAuthActions } from "@/src/context/AuthContext";
 import InputComponent from "../common/FormInput";
 
@@ -66,7 +64,15 @@ export default function Password({ userData }) {
         toast.error("Login first");
       }
     } catch (error) {
-      toast.error("Something went wrong, please try again later!");
+      const errorMessage = error?.response?.data?.message;
+
+      if (errorMessage == "Check your email") {
+        dispatch({ type: "OTP_STATUS", payload: "change_password" });
+      }
+
+      toast.error(
+        errorMessage ? errorMessage : "Something went wrong, please try again later!"
+      );
     }
   };
 
@@ -103,7 +109,7 @@ export default function Password({ userData }) {
       type: "password",
     };
 
-    await dispatch({ type: "SET_OTP", payload: body });
+    await dispatch({ type: "SET_OTP", payload: body, otpPayload: "change_password" });
 
     passwordFormik.handleSubmit();
   };
@@ -146,7 +152,7 @@ export default function Password({ userData }) {
         </div>
 
         {/* verification code */}
-        {otp && (
+        {otp == "change_password" && (
           <div className="flex items-center ml-5 max-[900px]:block max-[900px]:ml-0">
             <h6 className="p-4 whitespace-nowrap mb-5 w-[200px] font-medium text-[#707688] text-right max-[900px]:text-left max-[900px]:mb-3 max-[900px]:ml-1 max-[900px]:p-0">
               Verification
@@ -176,7 +182,7 @@ export default function Password({ userData }) {
         )}
 
         {/* buttons */}
-        {otp ? (
+        {otp == "change_password" ? (
           <button
             className="bg-[#ca1854e7] my-4 w-full cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
             type="submit"
