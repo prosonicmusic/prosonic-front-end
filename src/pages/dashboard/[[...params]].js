@@ -14,7 +14,7 @@ import UploadTrack from "@/src/components/dashboard/UploadTrack";
 import { useAuth } from "@/src/context/AuthContext";
 import useAxios from "@/src/utils/useAxios";
 
-const Dashboard = ({ user }) => {
+const Dashboard = ({ user, genres, daws, producerFavorites }) => {
   const { query, push } = useRouter();
   const { accessToken } = parseCookies();
 
@@ -30,7 +30,14 @@ const Dashboard = ({ user }) => {
       case "user-profile":
         return <UserProfile userData={userData} />;
       case "producer-profile":
-        return <ProducerProfile userData={userData} />;
+        return (
+          <ProducerProfile
+            userData={userData}
+            genres={genres.data}
+            daws={daws.data}
+            producerFavorites={producerFavorites}
+          />
+        );
       case "my-products":
         return !query.params?.[1] ? (
           <MyProducts />
@@ -66,17 +73,32 @@ export async function getServerSideProps(context) {
   const baseUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
 
   try {
-    const response = await useAxios(context).get(`${baseUrl}/user/get`);
+    const userData = await useAxios(context).get(`${baseUrl}/user/get`);
+    const producerFavGenres = await useAxios(context).get(
+      `${baseUrl}/producer/favorite/genre`
+    );
+    const producerFavDaws = await useAxios(context).get(`${baseUrl}/producer/favorite/daw`);
+    const allGenresData = await useAxios().get(`${baseUrl}/product/genre/all`);
+    const allDawsData = await useAxios().get(`${baseUrl}/producer/daws`);
 
     return {
       props: {
-        user: response.data,
+        user: userData?.data,
+        genres: allGenresData?.data,
+        daws: allDawsData?.data,
+        producerFavorites: {
+          genres: producerFavGenres?.data?.data,
+          daws: producerFavDaws?.data?.data,
+        },
       },
     };
   } catch (err) {
     return {
       props: {
         user: [],
+        genres: [],
+        daws: [],
+        producerFavorites: [],
       },
     };
   }
