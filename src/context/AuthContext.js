@@ -13,7 +13,7 @@ const AuthContext = createContext();
 const AuthContextDispatcher = createContext();
 const cookies = parseCookies();
 
-const baseUrl = "http://localhost:4545";
+const baseUrl = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 const initialState = {
   user: null,
