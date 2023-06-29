@@ -98,8 +98,12 @@ const authHandlers = {
     ({ dispatch }) =>
     (action) => {
       dispatch({ type: "SIGNIN_PENDING" });
-      destroyCookie(null, "accessToken");
-      destroyCookie(null, "refreshToken");
+      destroyCookie(null, "accessToken", {
+        path: "/",
+      });
+      destroyCookie(null, "refreshToken", {
+        path: "/",
+      });
 
       toast("You logged out!");
 
