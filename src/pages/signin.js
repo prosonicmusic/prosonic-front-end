@@ -10,7 +10,7 @@ import ForgotPassword from "../components/ForgotPassword";
 import { useAuth, useAuthActions } from "../context/AuthContext";
 
 const initialSignInValues = {
-  signinEmail: "",
+  signinUsername: "",
   signinPassword: "",
 };
 
@@ -26,7 +26,7 @@ const initialSignUpValues = {
 
 // validation schema
 const validationSchema = Yup.object({
-  signinEmail: Yup.string().required("Enter your email").email("The email is invalid"),
+  signinUsername: Yup.string().required("Enter your username"),
   signinPassword: Yup.string()
     .required("Enter Your Password")
     .min(8, "Password must be at least six characters long"),
@@ -76,9 +76,9 @@ const Signin = () => {
   const { user, otp } = useAuth();
 
   const onSubmitSignIn = (values) => {
-    const { signinEmail, signinPassword } = values;
+    const { signinUsername, signinPassword } = values;
     const signinValues = {
-      username: signinEmail,
+      username: signinUsername,
       password: signinPassword,
     };
 
@@ -203,9 +203,9 @@ const Signin = () => {
                   <div>
                     <h3 className="text-[1.5em] font-medium mb-6">Sign In</h3>
                     <InputComponent
-                      name="signinEmail"
+                      name="signinUsername"
                       formik={signInFormik}
-                      placeholder="Email"
+                      placeholder="Username"
                     />
                     <InputComponent
                       name="signinPassword"
