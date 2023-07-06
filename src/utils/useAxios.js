@@ -3,7 +3,7 @@ import jwtDecode from "jwt-decode";
 import dayjs from "dayjs";
 import nookies from "nookies";
 
-const baseURL = "http://127.0.0.1:4545";
+const baseURL = process.env.NEXT_PUBLIC_BASE_API_URL;
 
 export default function useAxios(context) {
   const cookies = nookies.get(context);
