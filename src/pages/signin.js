@@ -16,6 +16,7 @@ const initialSignInValues = {
 
 const initialSignUpValues = {
   name: "",
+  username: "",
   signupEmail: "",
   phoneNumber: "",
   signupPassword: "",
@@ -37,6 +38,9 @@ const signUpvalidationSchema = Yup.object({
     .required("Enter your full name")
     .min(6, "Your name must contain at least 6 characters"),
   signupEmail: Yup.string().required("Enter your email").email("The email is invalid"),
+  username: Yup.string()
+    .required("Enter a username")
+    .min(4, "Password must contain at least 4 characters"),
   phoneNumber: Yup.string()
     .required("Enter your Phone number")
     .matches(
@@ -86,8 +90,9 @@ const Signin = () => {
   };
 
   const onSubmitSignUp = (values) => {
-    const { name, signupEmail, phoneNumber, signupPassword, otp } = values;
+    const { name, username, signupEmail, phoneNumber, signupPassword, otp } = values;
     const signupValues = {
+      username,
       email: signupEmail,
       name,
       password: signupPassword,
@@ -178,9 +183,9 @@ const Signin = () => {
 
           <div
             className={`absolute top-0 left-0 w-[50%] max-[900px]:w-full ${
-              move ? "h-[600px]" : "h-full"
-            } ${otp == 'forgot_password' && "h-[520px]"} ${
-              otp == "signup" && "h-[680px]"
+              move ? "h-[650px]" : "h-full"
+            } ${otp == "forgot_password" && "h-[520px]"} ${
+              otp == "signup" && "h-[740px]"
             } bg-[#1a1a1a] z-50 flex justify-center items-center shadow-[0_4px_45px_#ffffff1a] transition-all duration-[0.4s] overflow-hidden rounded-[15px] ${
               move && "left-[50%] max-[900px]:top-[35%] max-[900px]:left-0"
             }`}
@@ -234,13 +239,18 @@ const Signin = () => {
             {/* sign up */}
             <section className="delay-[0s]">
               <form
-                className={`absolute  top-0 w-full p-[50px] transition-all duration-[.45s] flex flex-col ${
+                className={`absolute top-0 w-full p-[50px] transition-all duration-[.45s] flex flex-col ${
                   move ? "left-0" : "left-[100%]"
                 }`}
                 onSubmit={signUpFormik.handleSubmit}
               >
                 <h3 className="text-[1.5em] font-medium mb-6">Sign Up</h3>
                 <div className="formGroup">
+                  <InputComponent
+                    name="username"
+                    formik={signUpFormik}
+                    placeholder="username"
+                  />
                   <InputComponent name="name" formik={signUpFormik} placeholder="Full Name" />
                   <InputComponent
                     name="signupEmail"
