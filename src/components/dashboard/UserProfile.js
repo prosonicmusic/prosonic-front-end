@@ -9,6 +9,7 @@ import routerPush from "@/src/utils/routerPush";
 import { useRouter } from "next/router";
 
 import InputComponent from "../common/FormInput";
+import Image from "next/image";
 
 const initialUserProfileValues = {
   phoneNumber: "",
@@ -41,50 +42,51 @@ const profileInfoValidationSchema = Yup.object({
 });
 
 export default function UserProfile({ userData }) {
-  const [selectedFile, setSelectedFile] = useState();
   const [fileIsValid, setFileIsValid] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const { accessToken } = parseCookies();
   const router = useRouter();
 
-  const mb = selectedFile?.size / 1000000;
-  const filetype = selectedFile?.type;
+  const chooseFileHandler = async (event) => {
+    const file = event.target.files[0];
 
-  const chooseFileHandler = (event) => {
-    setSelectedFile(event.target.files[0]);
-  };
+    const mb = file?.size / 1000000;
+    const filetype = file?.type;
 
-  const fileChangeHandler = async () => {
-    if (mb <= 1 && filetype === "image/jpeg") {
-      setFileIsValid(true);
+    if (file) {
+      if (mb <= 1 && filetype === "image/jpeg") {
+        setFileIsValid(true);
+        setLoading(true);
 
-      try {
-        if (fileIsValid && accessToken) {
-          const formData = new FormData();
-          formData.append("avatar", selectedFile);
+        try {
+          if (accessToken) {
+            const formData = new FormData();
+            formData.append("avatar", file);
 
-          const response = await axios.put(
-            `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/avatar`,
-            formData,
-            {
-              headers: {
-                Authorization: `Bearer ${accessToken}`,
-                "Content-Type": "multipart/form-data",
-              },
-            }
-          );
+            const response = await axios.put(
+              `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/avatar`,
+              formData,
+              {
+                headers: {
+                  Authorization: `Bearer ${accessToken}`,
+                  "Content-Type": "multipart/form-data",
+                },
+              }
+            );
 
-          routerPush(router);
+            routerPush(router);
 
-          toast.success("Successfully your avatar changed");
+            setLoading(false);
+            toast.success("Successfully changed your avatar");
+          }
+        } catch (error) {
+          console.log(error);
+          toast.error("Something went wrong, please try again later!");
         }
-      } catch (error) {
-        setFileIsValid(false);
-
-        toast.error("Something went wrong, please try again later!");
+      } else {
+        toast.error("Only files in jpg format and a maximum of 1MB are allowed");
       }
-    } else {
-      toast.error("Only files in jpg format and a maximum of 1MB are allowed");
     }
   };
 
@@ -156,13 +158,7 @@ export default function UserProfile({ userData }) {
             className="w-[300px] max-[500px]:w-full bg-[#2e3038c7] px-3 py-2 rounded-lg text-xs text-[#696969] cursor-pointer max-[900px]:p-6 max-[900px]:mb-4"
           />
 
-          <button
-            onClick={fileChangeHandler}
-            className="bg-[#2e3038c7] w-[100px] ml-3 text-sm cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#3f424dc7] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed max-[900px]:p-2 max-[495px]:ml-0"
-            disabled={selectedFile ? false : true}
-          >
-            Change
-          </button>
+          {loading && <Image className="ml-3" src="/loading.gif" width={60} height={60} />}
         </div>
 
         {/* Change user info */}

@@ -10,12 +10,13 @@ import ForgotPassword from "../components/ForgotPassword";
 import { useAuth, useAuthActions } from "../context/AuthContext";
 
 const initialSignInValues = {
-  signinEmail: "",
+  signinUsername: "",
   signinPassword: "",
 };
 
 const initialSignUpValues = {
   name: "",
+  username: "",
   signupEmail: "",
   phoneNumber: "",
   signupPassword: "",
@@ -26,7 +27,7 @@ const initialSignUpValues = {
 
 // validation schema
 const validationSchema = Yup.object({
-  signinEmail: Yup.string().required("Enter your email").email("The email is invalid"),
+  signinUsername: Yup.string().required("Enter your username"),
   signinPassword: Yup.string()
     .required("Enter Your Password")
     .min(8, "Password must be at least six characters long"),
@@ -37,6 +38,10 @@ const signUpvalidationSchema = Yup.object({
     .required("Enter your full name")
     .min(6, "Your name must contain at least 6 characters"),
   signupEmail: Yup.string().required("Enter your email").email("The email is invalid"),
+  username: Yup.string()
+    .matches(/[a-z]/, "Password requires a lowercase letter")
+    .required("Enter a username")
+    .min(4, "Password must contain at least 4 characters"),
   phoneNumber: Yup.string()
     .required("Enter your Phone number")
     .matches(
@@ -69,6 +74,7 @@ const Signin = () => {
   const [timer, setTimer] = useState(300);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
+  const [emailEntered, setEmailEntered] = useState(false);
   const [showResendButton, setShowResendButton] = useState(false);
 
   const router = useRouter();
@@ -76,9 +82,9 @@ const Signin = () => {
   const { user, otp } = useAuth();
 
   const onSubmitSignIn = (values) => {
-    const { signinEmail, signinPassword } = values;
+    const { signinUsername, signinPassword } = values;
     const signinValues = {
-      username: signinEmail,
+      username: signinUsername,
       password: signinPassword,
     };
 
@@ -86,8 +92,9 @@ const Signin = () => {
   };
 
   const onSubmitSignUp = (values) => {
-    const { name, signupEmail, phoneNumber, signupPassword, otp } = values;
+    const { name, username, signupEmail, phoneNumber, signupPassword, otp } = values;
     const signupValues = {
+      username,
       email: signupEmail,
       name,
       password: signupPassword,
@@ -147,6 +154,14 @@ const Signin = () => {
     if (user) router.push("/");
   }, [user]);
 
+  useEffect(() => {
+    if (signUpFormik.values.signupEmail) {
+      setEmailEntered(true);
+    } else {
+      setEmailEntered(false);
+    }
+  }, [signUpFormik]);
+
   return (
     <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[480px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before max-[900px]:mb-[590px]">
       <div className="flex justify-center items-center min-h-[100vh] transition-all duration-300 relative z-40 max-[900px]:max-w-[500px] max-[900px]:h-[650px] max-[900px]:flex max-[900px]:items-center max-[900px]:justify-center max-[900px]:mt-[-40px]">
@@ -178,9 +193,9 @@ const Signin = () => {
 
           <div
             className={`absolute top-0 left-0 w-[50%] max-[900px]:w-full ${
-              move ? "h-[600px]" : "h-full"
-            } ${otp == 'forgot_password' && "h-[520px]"} ${
-              otp == "signup" && "h-[680px]"
+              move ? "h-[650px]" : "h-full"
+            } ${otp == "forgot_password" && "h-[520px]"} ${
+              otp == "signup" && "h-[740px]"
             } bg-[#1a1a1a] z-50 flex justify-center items-center shadow-[0_4px_45px_#ffffff1a] transition-all duration-[0.4s] overflow-hidden rounded-[15px] ${
               move && "left-[50%] max-[900px]:top-[35%] max-[900px]:left-0"
             }`}
@@ -203,9 +218,9 @@ const Signin = () => {
                   <div>
                     <h3 className="text-[1.5em] font-medium mb-6">Sign In</h3>
                     <InputComponent
-                      name="signinEmail"
+                      name="signinUsername"
                       formik={signInFormik}
-                      placeholder="Email"
+                      placeholder="Username"
                     />
                     <InputComponent
                       name="signinPassword"
@@ -234,13 +249,18 @@ const Signin = () => {
             {/* sign up */}
             <section className="delay-[0s]">
               <form
-                className={`absolute  top-0 w-full p-[50px] transition-all duration-[.45s] flex flex-col ${
+                className={`absolute top-0 w-full p-[50px] transition-all duration-[.45s] flex flex-col ${
                   move ? "left-0" : "left-[100%]"
                 }`}
                 onSubmit={signUpFormik.handleSubmit}
               >
                 <h3 className="text-[1.5em] font-medium mb-6">Sign Up</h3>
                 <div className="formGroup">
+                  <InputComponent
+                    name="username"
+                    formik={signUpFormik}
+                    placeholder="username"
+                  />
                   <InputComponent name="name" formik={signUpFormik} placeholder="Full Name" />
                   <InputComponent
                     name="signupEmail"
@@ -332,6 +352,7 @@ const Signin = () => {
                     <button
                       className="bg-[#ca1854e7] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
                       onClick={verifyHandler}
+                      disabled={!emailEntered}
                     >
                       Verify
                     </button>
