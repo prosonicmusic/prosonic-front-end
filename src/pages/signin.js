@@ -73,6 +73,7 @@ const Signin = () => {
   const [timer, setTimer] = useState(300);
   const [seconds, setSeconds] = useState(0);
   const [minutes, setMinutes] = useState(0);
+  const [emailEntered, setEmailEntered] = useState(false);
   const [showResendButton, setShowResendButton] = useState(false);
 
   const router = useRouter();
@@ -151,6 +152,14 @@ const Signin = () => {
   useEffect(() => {
     if (user) router.push("/");
   }, [user]);
+
+  useEffect(() => {
+    if (signUpFormik.values.signupEmail) {
+      setEmailEntered(true);
+    } else {
+      setEmailEntered(false);
+    }
+  }, [signUpFormik]);
 
   return (
     <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[480px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before max-[900px]:mb-[590px]">
@@ -342,6 +351,7 @@ const Signin = () => {
                     <button
                       className="bg-[#ca1854e7] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
                       onClick={verifyHandler}
+                      disabled={!emailEntered}
                     >
                       Verify
                     </button>
