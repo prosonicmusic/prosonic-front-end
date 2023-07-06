@@ -39,6 +39,7 @@ const signUpvalidationSchema = Yup.object({
     .min(6, "Your name must contain at least 6 characters"),
   signupEmail: Yup.string().required("Enter your email").email("The email is invalid"),
   username: Yup.string()
+    .matches(/[a-z]/, "Password requires a lowercase letter")
     .required("Enter a username")
     .min(4, "Password must contain at least 4 characters"),
   phoneNumber: Yup.string()
