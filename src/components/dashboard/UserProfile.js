@@ -92,7 +92,7 @@ export default function UserProfile({ userData }) {
 
   const onSubmit = async (values) => {
     const { address, bio, city, phoneNumber, province, socialMediaDescription } = values;
-    const API_URL = `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/profile/update`;
+    const API_URL = `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/update`;
 
     const userProfileValues = {
       phone_number: phoneNumber,
