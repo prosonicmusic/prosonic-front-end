@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
+import { parseCookies } from "nookies";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
 import InputComponent from "@/common/FormInput";
 import Loading from "@/common/Loading";
-import { registerOTP } from "@/services/authServices";
+import { register, registerOTP } from "@/services/authServices";
 
 const initialSignUpValues = {
   name: "",
@@ -64,14 +64,17 @@ export default function SignupForm({ move, otp, setOtp }) {
   const [emailEntered, setEmailEntered] = useState(false);
   const [showResendButton, setShowResendButton] = useState(false);
 
-  const {
-    data,
-    error,
-    isLoading,
-    mutateAsync: mutateSignupOTP,
-  } = useMutation({ mutationFn: registerOTP });
+  const { accessToken } = parseCookies();
 
-  const onSubmitSignUp = (values) => {
+  const { isLoading: otpLoading, mutateAsync: mutateSignupOTP } = useMutation({
+    mutationFn: registerOTP,
+  });
+
+  const { isLoading: RegisterLoading, mutateAsync: mutateRegister } = useMutation({
+    mutationFn: register,
+  });
+
+  const onSubmitSignUp = async (values) => {
     const { name, username, signupEmail, phoneNumber, signupPassword, otp } = values;
     const signupValues = {
       username,
@@ -82,7 +85,23 @@ export default function SignupForm({ move, otp, setOtp }) {
       otp,
     };
 
-    // dispatch({ type: "SIGNUP", payload: signupValues });
+    if (accessToken) {
+      toast.error("You are logged in, log out to register");
+    } else {
+      try {
+        const { data } = await mutateRegister(signupValues);
+        toast.success("You have successfully registered");
+        window.location.href = "/auth";
+      } catch (error) {
+        console.log(error);
+
+        if (error?.response?.data?.message) {
+          toast.error(error?.response?.data?.message[0]);
+        } else {
+          toast.error("Something went wrong!");
+        }
+      }
+    }
   };
 
   const signUpFormik = useFormik({
@@ -132,18 +151,18 @@ export default function SignupForm({ move, otp, setOtp }) {
 
         toast.success("Verification code sent");
 
-        setOtp('signup');
+        setOtp("signup");
         setTimer(300);
         setShowResendButton(false);
       } catch (error) {
         if (error?.response?.data?.message == "Check your email") {
-          setOtp('signup');
+          setOtp("signup");
           setTimer(300);
           setShowResendButton(false);
 
           toast.error(error?.response?.data?.message);
         } else {
-          setOtp('');
+          setOtp("");
 
           toast.error(error?.response?.data?.message);
         }
@@ -154,6 +173,10 @@ export default function SignupForm({ move, otp, setOtp }) {
 
     signUpFormik.handleSubmit();
   };
+
+  useEffect(() => {
+    setOtp("");
+  }, [signUpFormik.values.signupEmail]);
 
   return (
     <section className="delay-[0s]">
@@ -247,11 +270,11 @@ export default function SignupForm({ move, otp, setOtp }) {
           {/* buttons */}
           {otp ? (
             <button
-              className="bg-[#ca1854e7] w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
+              className="bg-[#ca1854e7] flex justify-center w-[100px] cursor-pointer rounded-lg transition-all duration-300 p-1 hover:bg-[#e91c60f8] hover:text-white disabled:bg-gray-500 disabled:cursor-not-allowed"
               type="submit"
               disabled={!signUpFormik.isValid}
             >
-              Register
+              {RegisterLoading ? <Loading w={24} h={20} /> : "Register"}
             </button>
           ) : (
             <button
@@ -259,7 +282,7 @@ export default function SignupForm({ move, otp, setOtp }) {
               onClick={verifyHandler}
               disabled={!emailEntered}
             >
-              {isLoading ? <Loading w={24} h={20} /> : "Verify"}
+              {otpLoading ? <Loading w={24} h={20} /> : "Verify"}
             </button>
           )}
         </div>
