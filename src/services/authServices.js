@@ -1,3 +1,4 @@
+import axios from "axios";
 import http from "./httpService";
 
 export function login(signinValues) {
@@ -9,9 +10,9 @@ export function register(signupValues) {
 }
 
 export function changePassword(body) {
-  return http.post("/user/verification/send", body);
+  return axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URL}/user/verification/send`, body);
 }
 
 export function registerOTP(body) {
-  return http.post("/user/verification/send", body);
+  return axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URL}/user/verification/send`, body);
 }
