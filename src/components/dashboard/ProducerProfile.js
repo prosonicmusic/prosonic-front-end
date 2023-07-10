@@ -1,13 +1,60 @@
 import { useState } from "react";
+import { useRouter } from "next/router";
+
+import axios from "axios";
+import { parseCookies } from "nookies";
+
+import routerPush from "@/src/utils/routerPush";
 import { AiOutlineClose } from "react-icons/ai";
+import { toast } from "react-hot-toast";
 
 export default function ProducerProfile({ genres, daws, userData, producerFavorites }) {
   const [showDawOptions, setShowDawOptions] = useState(false);
   const [showGenresOptions, setShowGenresOptions] = useState(false);
 
-  console.log(producerFavorites);
+  const cookies = parseCookies();
+  const router = useRouter();
+
   const caretStyles =
     "relative top-3.5 ml-2 border-l-4 border-l-[transparent] border-r-4 border-r-[transparent] border-t-4 border-t-[#5a626b]";
+
+
+  const addGenreHandler = async (id) => {
+    try {
+      const { data } = await axios.post(
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/producer/favorite/genre`,
+        { genre_id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${cookies.accessToken}`,
+          },
+        }
+      );
+      routerPush(router);
+      toast.success("Genre successfully added");
+    } catch (error) {
+      toast.error(error?.response?.data?.message);
+    }
+  };
+
+  const removeGenreHandler = (id) => {
+    try {
+      const { data } = axios.delete(
+        `${process.env.NEXT_PUBLIC_BASE_API_URL}/producer/favorite/genre`,
+        { genre_id: id },
+        {
+          headers: {
+            Authorization: `Bearer ${cookies.accessToken}`,
+          },
+        }
+      );
+      routerPush(router);
+      // toast.success("Genre successfully removed");
+    } catch (error) {
+      console.log(error);
+      toast.error(error?.response?.data?.message);
+    }
+  };
 
   return (
     <>
@@ -35,8 +82,12 @@ export default function ProducerProfile({ genres, daws, userData, producerFavori
                   <ul className="bg-[#1c1d22f3] mx-4 rounded-lg absolute py-2 px-1">
                     {genres?.map((genre) => {
                       return (
-                        <li className="px-2 hover:bg-[#393b46] transition duration-200 rounded-lg cursor-pointer">
-                          {genre.name}
+                        <li
+                          key={genre?.id}
+                          className="px-2 hover:bg-[#393b46] transition duration-200 rounded-lg cursor-pointer"
+                          onClick={() => addGenreHandler(genre?.id)}
+                        >
+                          {genre?.name}
                         </li>
                       );
                     })}
@@ -46,9 +97,15 @@ export default function ProducerProfile({ genres, daws, userData, producerFavori
                 {/* Producer favorite genres */}
                 {producerFavorites?.genres?.map((genre) => {
                   return (
-                    <div className="px- mx-4 my-2 rounded-lg bg-[#1c1d22f3] flex justify-between">
-                      <div className="ml-3 text-[#9ca3b8]">{genre.genre}</div>
-                      <button className="p-1 hover:text-rose-500 transition duration-200">
+                    <div
+                      key={genre?.id}
+                      className="px- mx-4 my-2 rounded-lg bg-[#1c1d22f3] flex justify-between"
+                    >
+                      <div className="ml-3 text-[#9ca3b8]">{genre?.genre}</div>
+                      <button
+                        className="p-1 hover:text-rose-500 transition duration-200"
+                        onClick={() => removeGenreHandler(genre?.id)}
+                      >
                         <AiOutlineClose />
                       </button>
                     </div>
@@ -68,7 +125,10 @@ export default function ProducerProfile({ genres, daws, userData, producerFavori
                   <ul className="bg-[#1c1d22f3] mx-4 rounded-lg absolute py-2 px-1">
                     {daws?.map((daw) => {
                       return (
-                        <li className="px-2 hover:bg-[#393b46] transition duration-200 rounded-lg cursor-pointer">
+                        <li
+                          key={daw.name}
+                          className="px-2 hover:bg-[#393b46] transition duration-200 rounded-lg cursor-pointer"
+                        >
                           {daw.name === "flstudio" && "FL Studio"}
                           {daw.name === "cubase" && "Cubase"}
                           {daw.name === "logicpro" && "Logic Pro"}
@@ -84,7 +144,10 @@ export default function ProducerProfile({ genres, daws, userData, producerFavori
                 {/* Producer favorite daws */}
                 {producerFavorites?.daws?.map((daw) => {
                   return (
-                    <div className="px- mx-4 my-2 rounded-lg bg-[#1c1d22f3] flex justify-between">
+                    <div
+                      key={daw.daw}
+                      className="px- mx-4 my-2 rounded-lg bg-[#1c1d22f3] flex justify-between"
+                    >
                       <div className="ml-3 text-[#9ca3b8]">
                         {daw.daw === "flstudio" && "FL Studio"}
                         {daw.daw === "cubase" && "Cubase"}
