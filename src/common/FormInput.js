@@ -1,10 +1,4 @@
-export default function InputComponent({
-  formik,
-  name,
-  type,
-  className,
-  placeholder = "",
-}) {
+export default function InputComponent({ formik, name, type, className, placeholder = "" }) {
   return (
     <div className={className}>
       {formik?.touched[name] && formik?.errors[name] ? (
@@ -13,7 +7,7 @@ export default function InputComponent({
         </div>
       ) : null}
       <input
-        className="w-full mb-5 p-[10px] bg-[#121316] rounded-lg outline-none border-none"
+        className="w-full mb-5 p-[10px] bg-[#121316] focus:bg-[#1b1c20] rounded-lg outline-none border-none"
         type={type || "text"}
         placeholder={placeholder}
         name={name}
