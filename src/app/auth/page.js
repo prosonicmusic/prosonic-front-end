@@ -1,20 +1,23 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import { parseCookies } from "nookies";
 
 import SigninForm from "./SigninForm";
 import SignupForm from "./SignupForm";
 
 export default function AuthPage() {
   const [move, setMove] = useState(false);
-  const [otp, setOtp] = useState('');
+  const [otp, setOtp] = useState("");
+
+  const { accessToken } = parseCookies();
 
   const router = useRouter();
 
-  // useEffect(() => {
-  //   if (user) router.push("/");
-  // }, [user]);
+  useEffect(() => {
+    if (accessToken) router.push("/");
+  }, [accessToken]);
 
   return (
     <main className="bg-signin bg-center bg-no-repeat bg-cover relative h-[50vh] mb-[480px] before:content-[''] before:absolute before:w-full before:h-full before:top-0 before:left-0 before:bg-hero_before max-[900px]:mb-[590px]">
@@ -55,7 +58,7 @@ export default function AuthPage() {
             }`}
           >
             {/* Signin */}
-            <SigninForm move={move} otp={otp} setOtp={setOtp}/>
+            <SigninForm move={move} otp={otp} setOtp={setOtp} />
 
             {/* sign up */}
             <SignupForm move={move} otp={otp} setOtp={setOtp} />
