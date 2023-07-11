@@ -1,14 +1,15 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
+
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { parseCookies } from "nookies";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 
+import { register, registerOTP } from "@/services/authServices";
 import InputComponent from "@/common/FormInput";
 import Loading from "@/common/Loading";
-import { register, registerOTP } from "@/services/authServices";
 
 const initialSignUpValues = {
   name: "",
@@ -93,10 +94,8 @@ export default function SignupForm({ move, otp, setOtp }) {
         toast.success("You have successfully registered");
         window.location.href = "/auth";
       } catch (error) {
-        console.log(error);
-
         if (error?.response?.data?.message) {
-          toast.error(error?.response?.data?.message[0]);
+          toast.error(error?.response?.data?.message || error?.response?.data?.message[0]);
         } else {
           toast.error("Something went wrong!");
         }
