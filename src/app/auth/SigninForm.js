@@ -1,6 +1,5 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
-import Image from "next/image";
 
 import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
@@ -27,8 +26,9 @@ const validationSchema = Yup.object({
 
 export default function SigninForm({ move, otp, setOtp }) {
   const [showForgetPassword, setShowForgetPassword] = useState(false);
+  const router = useRouter();
 
-  const { data, error, isLoading, mutateAsync } = useMutation({ mutationFn: login });
+  const { isLoading, mutateAsync } = useMutation({ mutationFn: login });
 
   const onSubmitSignIn = async (values) => {
     const { signinUsername, signinPassword } = values;
@@ -42,6 +42,7 @@ export default function SigninForm({ move, otp, setOtp }) {
       if (data?.verified) {
         setTokens(data?.access, data?.refresh);
         toast.success("You have successfully logged in");
+        router.refresh("/");
       } else {
         failureAction("Your email address is not verified");
       }
