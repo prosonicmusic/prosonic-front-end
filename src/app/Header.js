@@ -2,11 +2,14 @@
 
 import Link from "next/link";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useEffect, useState } from "react";
 
 import { FaShoppingCart } from "react-icons/fa";
 import { parseCookies } from "nookies";
 
 import Burger from "@/components/navbar/burger";
+import logout from "@/utils/logout";
 
 export default function Header() {
   const listStyles =
@@ -22,10 +25,20 @@ export default function Header() {
   const cartCount =
     "absolute top-[-9px] right-[-4px] rounded-full bg-[#e91c60] w-4 h-4 text-[11px] font-black";
 
+  const [access, setAccess] = useState("");
   const { accessToken } = parseCookies();
+  const router = useRouter();
+
+  useEffect(() => {
+    if (accessToken) {
+      setAccess(accessToken);
+    } else {
+      setAccess(null);
+    }
+  }, [accessToken]);
 
   const logoutHandler = () => {
-    console.log("hi");
+    logout(router);
   };
 
   return (
@@ -55,7 +68,7 @@ export default function Header() {
           <span className={cartCount}>0</span>
         </Link>
 
-        {/* {accessToken ? (
+        {access ? (
           <button className={loginButtonStyles}>
             <Link href="/dashboard/user-profile">Dashboard</Link>
           </button>
@@ -63,13 +76,13 @@ export default function Header() {
           <button className={loginButtonStyles}>
             <Link href="/auth">Login</Link>
           </button>
-        )} */}
+        )}
 
-        {/* {accessToken && (
+        {access && (
           <button className={logoutButtonStyles} onClick={logoutHandler}>
             Logout
           </button>
-        )} */}
+        )}
 
         <Burger />
       </ul>
