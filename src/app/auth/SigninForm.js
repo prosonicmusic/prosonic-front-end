@@ -11,6 +11,7 @@ import setTokens from "@/utils/setTokens";
 import InputComponent from "@/common/FormInput";
 import Loading from "@/common/Loading";
 import ForgotPassword from "./ForgotPassword";
+import checkErrors from "@/utils/errorHandler";
 
 const initialSignInValues = {
   signinUsername: "",
@@ -47,9 +48,9 @@ export default function SigninForm({ move, otp, setOtp }) {
         failureAction("Your email address is not verified");
       }
     } catch (error) {
-      const errorMsg =
-        error?.response?.data?.detail || "Something went wrong. Please try again later!";
-      toast.error(errorMsg);
+      const errors = error?.response?.data?.detail;
+
+      error ? checkErrors(errors) : toast.error("Something went wrong!");
     }
   };
 

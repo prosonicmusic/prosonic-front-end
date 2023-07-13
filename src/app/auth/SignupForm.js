@@ -10,6 +10,7 @@ import * as Yup from "yup";
 import { register, registerOTP } from "@/services/authServices";
 import InputComponent from "@/common/FormInput";
 import Loading from "@/common/Loading";
+import checkErrors from "@/utils/errorHandler";
 
 const initialSignUpValues = {
   name: "",
@@ -94,8 +95,10 @@ export default function SignupForm({ move, otp, setOtp }) {
         toast.success("You have successfully registered");
         window.location.href = "/auth";
       } catch (error) {
-        if (error?.response?.data?.message) {
-          toast.error(error?.response?.data?.message || error?.response?.data?.message[0]);
+        const errors = error.response?.data?.detail;
+
+        if (error) {
+          checkErrors(errors);
         } else {
           toast.error("Something went wrong!");
         }
@@ -154,16 +157,17 @@ export default function SignupForm({ move, otp, setOtp }) {
         setTimer(300);
         setShowResendButton(false);
       } catch (error) {
-        if (error?.response?.data?.message == "Check your email") {
+        const errors = error.response?.data?.detail;
+
+        if (errors == "Check your email") {
           setOtp("signup");
           setTimer(300);
           setShowResendButton(false);
 
-          toast.error(error?.response?.data?.message);
+          toast.error(errors);
         } else {
           setOtp("");
-
-          toast.error(error?.response?.data?.message);
+          checkErrors(errors);
         }
       }
     } else {
