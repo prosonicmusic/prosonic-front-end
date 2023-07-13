@@ -10,6 +10,10 @@ export function register(signupValues) {
 }
 
 export function changePassword(body) {
+  return axios.put(`${process.env.NEXT_PUBLIC_BASE_API_URL}/user/password/update`, body);
+}
+
+export function changePasswordOTP(body) {
   return axios.post(`${process.env.NEXT_PUBLIC_BASE_API_URL}/user/verification/send`, body);
 }
 

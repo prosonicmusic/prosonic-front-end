@@ -5,10 +5,10 @@ import { useMutation } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
 import { useFormik } from "formik";
 import * as Yup from "yup";
-import axios from "axios";
 
 import InputComponent from "@/common/FormInput";
-import { changePassword } from "@/services/authServices";
+import checkErrors from "@/utils/errorHandler";
+import { changePassword, changePasswordOTP } from "@/services/authServices";
 
 const initialPasswordValues = {
   email: "",
@@ -47,16 +47,16 @@ export default function ForgotPassword({
   const [minutes, setMinutes] = useState(0);
   const [showResendButton, setShowResendButton] = useState(false);
 
-  const {
-    data,
-    error,
-    isLoading,
-    mutateAsync: mutateForgotPassword,
-  } = useMutation({ mutationFn: changePassword });
+  const { isLoadingOTP, mutateAsync: mutateForgotPasswordOTP } = useMutation({
+    mutationFn: changePasswordOTP,
+  });
+
+  const { isLoading, mutateAsync: mutateForgotPassword } = useMutation({
+    mutationFn: changePassword,
+  });
 
   const onSubmitPassword = async (values) => {
     const { password, otp, email } = values;
-    const API_URL = `${process.env.NEXT_PUBLIC_BASE_API_URL}/user/password/update`;
 
     const body = {
       email,
@@ -65,15 +65,15 @@ export default function ForgotPassword({
     };
 
     try {
-      const response = await axios.put(API_URL, body, {});
+      const { data } = await mutateForgotPassword(body);
       toast.success("Successfully your password changed");
-      window.location.href = "/signin";
+      window.location.href = "/auth";
     } catch (error) {
-      toast.error(
-        error?.response?.data?.message
-          ? error?.response?.data?.message
-          : "Something went wrong, please try again later!"
-      );
+      const errors = error?.response?.data?.detail;
+
+      error?.response?.data?.detail
+        ? checkErrors(errors)
+        : toast.error(error?.response?.data?.message || "Something went wrong!");
     }
   };
 
@@ -102,23 +102,34 @@ export default function ForgotPassword({
   }, [timer]);
 
   const passwordVerifyHandler = async () => {
-    setTimer(300);
-    setShowResendButton(false);
-
     const body = {
       email: forgotPasswordFormik.values.email,
       type: "password",
     };
 
-    console.log(body);
-
     if (forgotPasswordFormik.values.email) {
       try {
-        const { data } = await mutateForgotPassword(body);
+        const { data } = await mutateForgotPasswordOTP(body);
+        setTimer(300);
+        setShowResendButton(false);
+        setOtp("forgot_password");
+
         console.log(data);
+
+        toast.success(data?.detail);
       } catch (error) {
-        console.log(error);
-        toast.error(error?.response?.data?.message);
+        const errors = error?.response?.data?.detail;
+
+        if (errors == "Check your email") {
+          setOtp("forgot_password");
+          setTimer(300);
+          setShowResendButton(false);
+
+          toast.error(errors);
+        } else {
+          setOtp("");
+          checkErrors(errors);
+        }
       }
     } else {
       toast.error("Enter your email");
@@ -126,6 +137,10 @@ export default function ForgotPassword({
 
     forgotPasswordFormik.handleSubmit();
   };
+
+  useEffect(() => {
+    setOtp("");
+  }, [forgotPasswordFormik.values.email]);
 
   return (
     <form
@@ -170,7 +185,7 @@ export default function ForgotPassword({
                 {seconds < 10 ? `0${seconds}` : seconds}
               </p>
             ) : showResendButton ? (
-              <button className="ml-3" onClick={verifyHandler}>
+              <button className="ml-3" onClick={passwordVerifyHandler}>
                 Resend
               </button>
             ) : (

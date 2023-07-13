@@ -51,7 +51,7 @@ export default function AuthPage() {
           <div
             className={`absolute top-0 left-0 w-[50%] max-[900px]:w-full ${
               move ? "h-[650px]" : "h-full"
-            } ${otp == "forgot_password" && "h-[520px]"} ${
+            } ${otp == "forgot_password" && "h-[530px]"} ${
               otp == "signup" && "h-[740px]"
             } bg-[#1a1a1a] z-50 flex justify-center items-center shadow-[0_4px_45px_#ffffff1a] transition-all duration-[0.4s] overflow-hidden rounded-[15px] ${
               move && "left-[50%] max-[900px]:top-[35%] max-[900px]:left-0"
