@@ -1,12 +1,11 @@
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 
-import { parseCookies } from "nookies";
 import logout from "@/utils/logout";
 
 import { FaHome, FaBox, FaScrewdriver, FaArrowRight, FaMusic } from "react-icons/fa";
 
-function PhoneNav({ status, setStatus }) {
+function PhoneNav({ status, setStatus, data, error, isLoading }) {
   const listStyles =
     "bg-[#23252b] mb-[5px] rounded-[8px] flex items-center cursor-pointer hover:bg-[#17191d] transation duration-200";
   const linkStyles = "px-[12px] py-[11px] text-[#7e8893] text-[18px]";
@@ -17,7 +16,6 @@ function PhoneNav({ status, setStatus }) {
     "bg-[#23252b] mb-[5px] rounded-[8px] w-full flex items-center cursor-pointer hover:bg-[#17191d] transation duration-200";
 
   const router = useRouter();
-  const { accessToken } = parseCookies();
 
   const logoutHandler = () => {
     setStatus(false);
@@ -47,7 +45,7 @@ function PhoneNav({ status, setStatus }) {
           <div className={linkStyles}>Services</div>
         </Link>
 
-        {accessToken ? (
+        {data ? (
           <Link href="/dashboard" className={listStyles} onClick={() => setStatus(false)}>
             <FaArrowRight className="ml-[12px]" />
             <div className={linkStyles}>Profile</div>
@@ -59,7 +57,7 @@ function PhoneNav({ status, setStatus }) {
           </Link>
         )}
 
-        {accessToken && (
+        {data && (
           <button className={logoutBtnStyles} onClick={logoutHandler}>
             <FaArrowRight className="ml-[12px]" />
             <div className={linkStyles}>Logout</div>

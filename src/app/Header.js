@@ -3,19 +3,18 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
 
 import { FaShoppingCart } from "react-icons/fa";
-import { parseCookies } from "nookies";
 
 import Burger from "@/components/navbar/burger";
+import { useGetUser } from "@/hooks/useAuth";
 import logout from "@/utils/logout";
 
 export default function Header() {
   const listStyles =
     "py-[2.5px] px-2.5 mx-1 rounded text-[15px] transition duration-500 hover:bg-[#5a5a7a81] max-[900px]:hidden";
   const navbarStyles =
-    "flex  items-center justify-between bg-[#141a22cc] w-[100%] h-[60px] fixed top-0 pt-[30px] pb-[30px] transition duration-500 z-50 rounded-b-2xl";
+    "flex items-center sticky top-0 justify-between bg-[#141a22cc] w-[100%] h-[60px] fixed top-0 pt-[30px] pb-[30px] transition duration-300 z-50 rounded-b-2xl";
   const cartStyles =
     "flex rounded-[2px] bg-[#5a5a7a66] mx-[14px] h-[29px] w-[32px] relative text-center transition duration-500 items-center hover:bg-[#5a5a7a99] z-20 max-[900px]:mr-[40px]";
   const loginButtonStyles =
@@ -25,24 +24,20 @@ export default function Header() {
   const cartCount =
     "absolute top-[-9px] right-[-4px] rounded-full bg-[#e91c60] w-4 h-4 text-[11px] font-black";
 
-  const [access, setAccess] = useState("");
-  const { accessToken } = parseCookies();
   const router = useRouter();
 
-  useEffect(() => {
-    if (accessToken) {
-      setAccess(accessToken);
-    } else {
-      setAccess(null);
-    }
-  }, [accessToken]);
+  const { data, error, isLoading } = useGetUser();
 
   const logoutHandler = () => {
     logout(router);
   };
 
   return (
-    <nav className={navbarStyles}>
+    <nav
+      className={`${navbarStyles} ${
+        isLoading ? "blur-[3px] opacity-60" : "blur-0 opacity-100"
+      }`}
+    >
       <Link
         href="/"
         className="w-[160px] relative ml-10 z-20 max-[900px]:w-[100px] max-[900px]:ml-5"
@@ -68,7 +63,7 @@ export default function Header() {
           <span className={cartCount}>0</span>
         </Link>
 
-        {access ? (
+        {data ? (
           <button className={loginButtonStyles}>
             <Link href="/dashboard/user-profile">Dashboard</Link>
           </button>
@@ -78,13 +73,13 @@ export default function Header() {
           </button>
         )}
 
-        {access && (
+        {data && (
           <button className={logoutButtonStyles} onClick={logoutHandler}>
             Logout
           </button>
         )}
 
-        <Burger />
+        <Burger data={data} error={error} isLoading={isLoading} />
       </ul>
     </nav>
   );

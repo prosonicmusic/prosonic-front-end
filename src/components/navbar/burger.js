@@ -4,7 +4,7 @@ import { useState } from "react";
 
 import PhoneNav from "./phoneNav";
 
-export default function Burger() {
+export default function Burger({ data, error, isLoading }) {
   const [status, setStatus] = useState(false);
 
   const burgerList = `w-[1.8rem] h-[0.2rem] bg-[#7e8893] rounded-[10px] burgerList ${
@@ -22,7 +22,13 @@ export default function Burger() {
         <i className={burgerList}></i>
       </div>
 
-      <PhoneNav status={status} setStatus={setStatus} />
+      <PhoneNav
+        status={status}
+        setStatus={setStatus}
+        data={data}
+        error={error}
+        isLoading={isLoading}
+      />
     </>
   );
 }
