@@ -1,14 +1,19 @@
-const { setCookie } = require("nookies");
+import { setCookie } from "nookies";
 
 export default function setTokens(access, refresh) {
-  setCookie(null, "accessToken", access, {
-    path: "/",
-    secure: true,
-    sameSite: "strict",
-  });
-  setCookie(null, "refreshToken", refresh, {
-    path: "/",
-    secure: true,
-    sameSite: "strict",
-  });
+  if (access) {
+    setCookie(null, "accessToken", access, {
+      path: "/",
+      secure: true,
+      sameSite: "strict",
+    });
+  }
+
+  if (refresh) {
+    setCookie(null, "refreshToken", refresh, {
+      path: "/",
+      secure: true,
+      sameSite: "strict",
+    });
+  }
 }
