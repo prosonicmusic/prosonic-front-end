@@ -14,7 +14,7 @@ export async function middleware(req) {
   if (pathname.startsWith("/admin")) {
     const data = await middlewareAuth(req);
     if (!data) return NextResponse.redirect(new URL("/auth", url));
-    if (data && data) return NextResponse.redirect(new URL("/", url)); // if (data && data.role !== 'admin')
+    // if (data && data) return NextResponse.redirect(new URL("/", url)); // if (data && data.role !== 'admin')
   }
 }
 
