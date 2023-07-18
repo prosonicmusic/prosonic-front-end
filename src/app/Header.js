@@ -66,10 +66,7 @@ export default function Header() {
         {data ? (
           <>
             <button className={loginButtonStyles}>
-              <Link href="/dashboard">Dashboard</Link>
-            </button>
-            <button className={loginButtonStyles}>
-              <Link href="/admin">Admin</Link>
+              <Link href="/dashboard/user-profile">Dashboard</Link>
             </button>
           </>
         ) : (

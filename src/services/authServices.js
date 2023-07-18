@@ -26,3 +26,15 @@ export function registerOTP(body) {
 export function getUser() {
   return http.get(`${baseUrl}/user/get`).then(({ data }) => data.data);
 }
+
+export function userInfo(body) {
+  return http.put(`${baseUrl}/user/update`, body);
+}
+
+export function changeAvatar(formData) {
+  return http.put(`${baseUrl}/user/avatar`, formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+    },
+  });
+}
