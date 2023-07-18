@@ -6,6 +6,7 @@ import { Inter } from "next/font/google";
 import Providers from "@/app/Providers";
 import { Toaster } from "react-hot-toast";
 import SideBar from "./SideBar";
+import Header from "@/app/Header";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,12 +16,16 @@ export const metadata = {
 };
 
 export default function dashLayout({ children }) {
+  const dashboardStyles =
+    "text-[#b6c1ce] max-w-5xl m-auto flex max-[900px]:items-center max-[900px]:flex-col max-[900px]:p-3";
+
   return (
     <html lang="en">
       <body className={inter.className}>
         <Providers>
           <Toaster />
-          <div className="">
+          <Header />
+          <div className={dashboardStyles}>
             <SideBar />
             {children}
           </div>
